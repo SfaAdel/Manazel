@@ -525,25 +525,10 @@
             </div>
             </div><!-- End Blog Entry -->
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="blog-entry d-flex align-items-start">
-                <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-                <div class="entry-info m-2">
-                <h4>الفريق الفني</h4>
-                <p class="m-4">عدد من الفنيين الخاضعين لدورات مكثفة في مجال الصيانة و هم الخط الاول و الأساسي لتقديم خدمات الصيانة للعملاء</p>
-                </div>
-            </div>
-            </div><!-- End Blog Entry -->
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="blog-entry d-flex align-items-start">
-                <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-                <div class="entry-info m-2">
-                <h4> الخبراء و المهندسين </h4>
-                <p class="m-4">وهم عبارة مهندسين الكهرباء و الميكانيك و الخبراء في مجال الصيانة يقومون بتشخيص الأعطال و إعطاء تعليماتهم للفريق الفني</p>
-                </div>
+            <div class="center mt-4">
+                <a href="{{ route('blogs') }}" class="btn btn-custom mt-3"> عرض كل المدونات</a>
             </div>
-            </div><!-- End Blog Entry -->
 
         </div>
 

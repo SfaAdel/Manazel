@@ -36,5 +36,11 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact'); }) ->name('contact');
 
-    Route::get('/enroll', function () {
-        return view('enroll'); }) ->name('enroll');
+Route::get('/enroll', function () {
+    return view('enroll'); }) ->name('enroll');
+
+Route::get('/blog', function () {
+    return view('blogs'); }) ->name('blogs');
+
+Route::get('/blog-details', function () {
+    return view('blog_details'); }) ->name('blog_details');

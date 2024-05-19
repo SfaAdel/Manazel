@@ -65,7 +65,7 @@
             </ul>
           </li>
           <li><a href="#portfolio">الخصوصية</a></li>
-          <li><a href="{{ route('about') }}"> المدونة</a></li>
+          <li><a href="{{ route('blogs') }}"> المدونة</a></li>
           <li><a href="{{ route('contact') }}">تواصل معنا</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
