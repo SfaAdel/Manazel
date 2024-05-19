@@ -1,0 +1,69 @@
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    font-size: 1.25rem;
+    color: #6c757d;
+}
+
+.card .card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card .card-text {
+    flex-grow: 1;
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.card .btn {
+    background-color: #0071B8;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.card .btn:hover {
+    background-color:#4CBBD6;
+    color: #ffffff;
+
+}
+
+.btn-custom {
+    background-color: #0071B8;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 30px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block; /* Ensures button width doesn't expand */
+}
+
+.btn-custom:hover {
+    background-color: #4CBBD6;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.center {
+    text-align: center; /* Center aligns inline elements */
+}
+
+.btn-blue{
+background-color: #0071B8;
+color: #ffffff;
+}
+
+.btn-blue:hover{
+    background-color:#4CBBD6;
+    transform: scale(1.05);
+    color: #ffffff;
+
+}
