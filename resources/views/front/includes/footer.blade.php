@@ -1,6 +1,6 @@
 
 {{-- <hr> --}}
-<footer id="footer" class="footer mt-4">
+<footer id="footer" class="footer mt-4  center">
 
     {{-- <div class="footer-newsletter">
       <div class="container">
@@ -19,10 +19,10 @@
       </div>
     </div> --}}
 
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
+    <div class="container footer-top ">
+      <div class="row gy-4 center">
+        <div class="col-lg-4 col-md-6 footer-about ">
+          <a href="{{ route('home') }}" class="center">
             <span class="sitename">منازل</span>
           </a>
           <div class="footer-contact pt-3">
@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-2 col-md-3 footer-links center">
             <h4>خدماتنا</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#">صيانة غسالات </a></li>
@@ -50,19 +50,19 @@
             </ul>
           </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-2 col-md-3 footer-links ">
           <h4>لتصل اسرع</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">الرئيسية</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">من نحن</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">خدماتنا</a></li>
-          </ul>
+                <ul>
+                    <li><i class="bi bi-chevron-right"></i> <a href="#">الرئيسية</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="#">من نحن</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="#">خدماتنا</a></li>
+                </ul>
         </div>
 
 
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-4 col-md-12 ">
           <h4>تابعنا</h4>
-          <div class="social-links d-flex">
+          <div class="social-links d-flex justify-content-center ">
             <a href=""><i class="bi bi-twitter"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
             <a href=""><i class="bi bi-instagram"></i></a>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class="container copyright text-center mt-4">
+    <div class="container copyright text-center mt-2">
       <p> <span></span> <strong class="px-1 sitename">منازل</strong> <span> © جميع الحقوق محفوظة </span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

@@ -51,7 +51,7 @@
     ======================================================== -->
   </head>
 
-<body class="index-page">
+<body class="index-page ">
 
         <!-- partial:partials/_sidebar.html -->
         @include('front/includes.navbar')

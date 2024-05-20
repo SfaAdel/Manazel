@@ -6,10 +6,10 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur mb-5" style="background-image: url('assets/img/background.jpg');">
         <div class="background-blur" style="background-image: url('assets/img/background.jpg');"></div>
-        <div class="container">
+        <div class="container px-4">
             <div class="row gy-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-                    <h1 class="my-3">شركة منازل</h1>
+                    <h1 class="my-3"> اهلا بك في منازل</h1>
                     <hr>
                     <p>لتقديم جميع خدمات الصيانة و التصليح للغسالات و الثلاجات و الفريزرات و الأفران و المكيفات بالاضافة الى خدمات الصبغ و السباكة و الكهرباء في المملكة العربية السعودية 0542936554</p>
                     <div class="d-flex">
@@ -19,7 +19,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                <div class="col-lg-6 order-1 order-lg-2 hero-img center" data-aos="zoom-out" data-aos-delay="200">
                     <img src="assets/img/logo2.png" class="img-fluid animated" alt="">
                 </div>
             </div>

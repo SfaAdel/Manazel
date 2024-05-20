@@ -277,7 +277,7 @@ h6 {
 
 .footer .footer-links ul li {
   padding: 10px 0;
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 
@@ -553,10 +553,6 @@ section,
   }
 
 
-
-
-
-
 .hero h1 {
   margin: 0;
   font-size: 48px;
@@ -604,6 +600,10 @@ section,
   transition: 0.3s;
   line-height: 0;
   margin-right: 8px;
+}
+
+.hero img{
+    max-width: 80%;
 }
 
 .hero .btn-watch-video:hover {
