@@ -54,7 +54,7 @@
 <body class="index-page">
 
         <!-- partial:partials/_sidebar.html -->
-        @include('includes.navbar')
+        @include('front/includes.navbar')
         <!-- partial -->
 
 
@@ -63,7 +63,7 @@
             </div>
 
             <!-- partial:partials/_footer.html -->
-            @include('includes.footer')
+            @include('front/includes.footer')
             <!-- partial -->
 
             <!-- Scroll Top -->

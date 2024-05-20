@@ -18,29 +18,26 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('index'); }) ->name('home');
-
-Route::get('/about', function () {
-    return view('about'); }) ->name('about-us');
+    return view('front/index'); }) ->name('home');
 
 Route::get('/services', function () {
-    return view('services'); }) ->name('services');
+    return view('front/services'); }) ->name('services');
 
 
 Route::get('/service-details', function () {
-    return view('service_details'); }) ->name('details');
+    return view('front/service_details'); }) ->name('service_details');
 
 Route::get('/about', function () {
-    return view('about'); }) ->name('about');
+    return view('front/about'); }) ->name('about');
 
 Route::get('/contact', function () {
-    return view('contact'); }) ->name('contact');
+    return view('front/contact'); }) ->name('contact');
 
 Route::get('/enroll', function () {
-    return view('enroll'); }) ->name('enroll');
+    return view('front/enroll'); }) ->name('enroll');
 
 Route::get('/blog', function () {
-    return view('blogs'); }) ->name('blogs');
+    return view('front/blogs'); }) ->name('blogs');
 
 Route::get('/blog-details', function () {
-    return view('blog_details'); }) ->name('blog_details');
+    return view('front/blog_details'); }) ->name('blog_details');

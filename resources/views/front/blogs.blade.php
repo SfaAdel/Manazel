@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('front/layouts.index')
 @section('page.title', ' المدونة')
 
 @section('content')

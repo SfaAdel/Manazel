@@ -51,17 +51,17 @@
           <li><a href="{{ route('about') }}">من نحن</a></li>
           <li class="dropdown"><a href="{{ route('services') }}"><span>خدماتنا</span> <i class="bi bi-chevron-down toggle-dropdown mx-2"></i></a>
             <ul class="center">
-              <li><a href="{{ route('details') }}">صيانة غسالات </a></li>
-              <li><a href="{{ route('details') }}">تصليح غسالات </a></li>
-              <li><a href="{{ route('details') }}">صيانة افران الغاز </a></li>
-              <li><a href="{{ route('details') }}">صيانة افران</a></li>
-              <li><a href="{{ route('details') }}">صيانة ثلاجات</a></li>
-              <li><a href="{{ route('details') }}">تصليح ثلاجات</a></li>
-              <li><a href="{{ route('details') }}">صيانة مكيفات</a></li>
-              <li><a href="{{ route('details') }}">صيانة مكيفات سبليت</a></li>
-              <li><a href="{{ route('details') }}"> كهربائي</a></li>
-              <li><a href="{{ route('details') }}">  سباك</a></li>
-              <li><a href="{{ route('details') }}">  صباغ</a></li>
+              <li><a href="{{ route('service_details') }}">صيانة غسالات </a></li>
+              <li><a href="{{ route('service_details') }}">تصليح غسالات </a></li>
+              <li><a href="{{ route('service_details') }}">صيانة افران الغاز </a></li>
+              <li><a href="{{ route('service_details') }}">صيانة افران</a></li>
+              <li><a href="{{ route('service_details') }}">صيانة ثلاجات</a></li>
+              <li><a href="{{ route('service_details') }}">تصليح ثلاجات</a></li>
+              <li><a href="{{ route('service_details') }}">صيانة مكيفات</a></li>
+              <li><a href="{{ route('service_details') }}">صيانة مكيفات سبليت</a></li>
+              <li><a href="{{ route('service_details') }}"> كهربائي</a></li>
+              <li><a href="{{ route('service_details') }}">  سباك</a></li>
+              <li><a href="{{ route('service_details') }}">  صباغ</a></li>
             </ul>
           </li>
           <li><a href="#portfolio">الخصوصية</a></li>

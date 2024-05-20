@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('front/layouts.index')
 @section('page.title', 'الرئيسية')
 
 @section('content')
@@ -321,9 +321,9 @@
                     <div class="card service-item shadow-sm border-0">
                         <img src="assets/img/services/1.jpg" class="card-img-top img-fluid" alt="صيانة ثلاجات">
                         <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('details') }}" class="stretched-link">صيانة ثلاجات</a></h4>
+                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة ثلاجات</a></h4>
                             <p class="card-text">فني ثلاجات فلبيني الرياض و صيانة ثلاجات سامسونج الرياض</p>
-                            <a href="{{ route('details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
+                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
                         </div>
                     </div>
                 </div><!-- End Service Item -->
@@ -333,9 +333,9 @@
                     <div class="card service-item shadow-sm border-0">
                         <img src="assets/img/services/2.jpg" class="card-img-top img-fluid" alt="تصليح ثلاجات">
                         <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('details') }}" class="stretched-link">تصليح ثلاجات</a></h4>
+                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">تصليح ثلاجات</a></h4>
                             <p class="card-text">فني ثلاجات فلبيني الرياض و تصليح ثلاجات سامسونج الرياض</p>
-                            <a href="{{ route('details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
+                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
                         </div>
                     </div>
                 </div><!-- End Service Item -->
@@ -345,9 +345,9 @@
                     <div class="card service-item shadow-sm border-0">
                         <img src="assets/img/services/3.jpg" class="card-img-top img-fluid" alt="صيانة افران الغاز">
                         <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('details') }}" class="stretched-link">صيانة افران الغاز</a></h4>
+                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة افران الغاز</a></h4>
                             <p class="card-text">صيانة افران غاز بالرياض و تصليح افران شرق الرياض</p>
-                            <a href="{{ route('details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
+                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
                         </div>
                     </div>
                 </div><!-- End Service Item -->
@@ -357,9 +357,9 @@
                     <div class="card service-item shadow-sm border-0">
                         <img src="assets/img/services/4.jpg" class="card-img-top img-fluid" alt="صيانة مكيفات">
                         <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('details') }}" class="stretched-link">صيانة مكيفات</a></h4>
+                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة مكيفات</a></h4>
                             <p class="card-text">صيانة مكيفات بالرياض و صيانة مكيفات 24 ساعة الرياض</p>
-                            <a href="{{ route('details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
+                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
                         </div>
                     </div>
                 </div><!-- End Service Item -->

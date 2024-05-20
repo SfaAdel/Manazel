@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('front/layouts.index')
 @section('page.title', ' تواصل معنا')
 
 @section('content')
