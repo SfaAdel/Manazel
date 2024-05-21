@@ -7,13 +7,13 @@
     <section id="hero" class="hero section background-blur mb-5" style="background-image: url('assets/img/background.jpg');">
         <div class="background-blur" style="background-image: url('assets/img/background.jpg');"></div>
         <div class="container px-4">
-            <div class="row gy-4">
+            <div class="row gy-4 mr-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
                     <h1 class="my-3"> اهلا بك في منازل</h1>
                     <hr>
-                    <p>لتقديم جميع خدمات الصيانة و التصليح للغسالات و الثلاجات و الفريزرات و الأفران و المكيفات بالاضافة الى خدمات الصبغ و السباكة و الكهرباء في المملكة العربية السعودية 0542936554</p>
-                    <div class="d-flex">
-                        <a href="#about" class="btn-get-started">اتصل بنا</a>
+                    <p class="mt-2">لتقديم جميع خدمات الصيانة و التصليح للغسالات و الثلاجات و الفريزرات و الأفران و المكيفات بالاضافة الى خدمات الصبغ و السباكة و الكهرباء في المملكة العربية السعودية 0542936554</p>
+                    <div class="d-flex mt-3">
+                        <a href="#" class="btn-get-started"> اشترك كمزود خدمة </a>
                         <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center">
                             <i class="bi bi-play-circle mx-2"></i><span>شاهد الان</span>
                         </a>
@@ -103,74 +103,135 @@
 
     </section><!-- /About Section -->
 
-{{-- <hr> --}}
 
-    <!-- Why Us Section -->
-    <section id="why-us" class="section why-us px-4 mt-4" data-builder="section">
 
-      <div class="container-fluid">
+    {{-- <!-- Services Section -->
+    <section id="services" class="services section px-4 mt-4">
 
-        <div class="row gy-4">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>خدماتنا</h2>
+          <p>نقدم لك جميع الخدمات بكل دقة و احترافية مع فريقنا الفني المتكامل في الرياض – شركة الأنظمة الاولية</p>
+        </div><!-- End Section Title -->
 
-          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
+          <div class="container">
 
-            <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
-              <h3 class=""><strong>ماهي الأمور المذهلة التي يمكنك الحصول عليها معنا ؟</strong></h3>
-              <p class="">
-                عند التعامل مع شركتنا المتخصصة في عمليات الصيانة و التصليح و اعمال السباكة و الصبغ و الكهرباء في الملكة العربية السعودية , يمكن للعملاء الحصول على العديد من المزايا و الخدمات المذهلة . ومن بين هذة الميزات :              </p>
-            </div>
+              <div class="row gy-4 mx-3">
+                  <!-- Service Item 1 -->
+                  <div class="col-xl-3 col-md-6 d-flex align-items-stretch " data-aos="fade-up" data-aos-delay="100">
+                      <div class="card service-item shadow-sm border-0">
+                          <img src="assets/img/services/1.jpg" class="card-img-top img-fluid" alt="صيانة ثلاجات">
+                          <div class="card-body d-flex flex-column">
+                              <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة ثلاجات</a></h4>
+                              <p class="card-text">فني ثلاجات فلبيني الرياض و صيانة ثلاجات سامسونج الرياض</p>
+                              <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
+                          </div>
+                      </div>
+                  </div><!-- End Service Item -->
 
-            <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
+                  <!-- Service Item 2 -->
+                  <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                      <div class="card service-item shadow-sm border-0">
+                          <img src="assets/img/services/2.jpg" class="card-img-top img-fluid" alt="تصليح ثلاجات">
+                          <div class="card-body d-flex flex-column">
+                              <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">تصليح ثلاجات</a></h4>
+                              <p class="card-text">فني ثلاجات فلبيني الرياض و تصليح ثلاجات سامسونج الرياض</p>
+                              <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
+                          </div>
+                      </div>
+                  </div><!-- End Service Item -->
 
-              <div class="faq-item">
+                  <!-- Service Item 3 -->
+                  <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                      <div class="card service-item shadow-sm border-0">
+                          <img src="assets/img/services/3.jpg" class="card-img-top img-fluid" alt="صيانة افران الغاز">
+                          <div class="card-body d-flex flex-column">
+                              <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة افران الغاز</a></h4>
+                              <p class="card-text">صيانة افران غاز بالرياض و تصليح افران شرق الرياض</p>
+                              <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
+                          </div>
+                      </div>
+                  </div><!-- End Service Item -->
 
-                <h3 class="mx-0 my-2"><span> (1) </span> استخدام أفضل الأدوات</h3>
-                <div class="">
-                  <p>نقوم بتزويد فريقنا بأفضل الأدوات و معدات الصيانة لتقديم خدمات صيانة موثوقة , بالإضافة إلى استخدام أحدث المعدات في عالم الصيانة .</p>
-                </div>
-                {{-- <i class="faq-toggle bi bi-chevron-right"></i> --}}
-              </div><!-- End Faq item-->
+                  <!-- Service Item 4 -->
+                  <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+                      <div class="card service-item shadow-sm border-0">
+                          <img src="assets/img/services/4.jpg" class="card-img-top img-fluid" alt="صيانة مكيفات">
+                          <div class="card-body d-flex flex-column">
+                              <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة مكيفات</a></h4>
+                              <p class="card-text">صيانة مكيفات بالرياض و صيانة مكيفات 24 ساعة الرياض</p>
+                              <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
+                          </div>
+                      </div>
+                  </div><!-- End Service Item -->
+              </div>
 
-              <div class="faq-item">
-                <h3 class="mx-0 my-2"><span> (2)</span> خدمة متنوعة و شاملة</h3>
-                <div class="">
-                  <p>يمكن لفريقنا الفني بزيارة واحدة لمنزلك أو مكتبك فحص جميع الأعطال و المشاكل في أجهزتك المنزلية و إصلاحها على الفور بدقة و حرفية .</p>
-                </div>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3 class="mx-0 my-2"><span> (3)</span> أفضل خدمة صيانة</h3>
-                <div class="">
-                  <p>إذا كنت تبحث عن خدمة الصيانة رقم واحد في المملكة فنحن خيارك الأفضل , نقدم جميع الخدمات الموثوقة للعملاء وعلى يد أفضل فريق فني .</p>
-                </div>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3 class="mx-0 my-2"><span> (4)</span>  أفضل قيمة مقابل السعر</h3>
-                <div class="">
-                  <p>تعد ميزة الحصول على أفضل قيمة مقابل السعر ميزة مهمة للعملاء , فهي تضمن لهم جودة الخدمة و الكفاءة في العمل بالإضافة للحصول على تكلفة معقولة تناسب الجميع .</p>
-                </div>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <h3 class="mx-0 my-2"><span> (5)</span> خدمة في الوقت المحدد</h3>
-                <div class="">
-                  <p>نحن ندرك اهمية عامل الوقت في تقديم الخدمات , لذلك نحرص على الوصول في الوقت المتفق عليه وانجاز المهمة في الوقت المحدد بدون أي تأخير لجدول مواعيدك .</p>
-                </div>
-              </div><!-- End Faq item-->
-
-            </div>
+              <div class="center mt-4">
+                  <a href="{{ route('services') }}" class="btn btn-custom mt-3">معرض الخدمات</a>
+              </div>
 
           </div>
 
-          <div class="col-lg-5 order-1 order-lg-2 why-us-img">
-            <img src="assets/img/why-us.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+    </section><!-- /Services Section --> --}}
+
+    <!-- Services Section -->
+    <section id="services" class="services section mt-4">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>خدماتنا</h2>
+            <p>نقدم لك جميع الخدمات بكل دقة و احترافية مع فريقنا الفني المتكامل في الرياض – شركة الأنظمة الاولية</p>
+          </div><!-- End Section Title -->
+
+          <div class="container p-3">
+
+            <div class="row gy-4">
+
+              <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-item position-relative">
+                  <div class="icon"><i class="bi bi-activity icon"></i></div>
+                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                    <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+
+                </div>
+              </div><!-- End Service Item -->
+
+              <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                  <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
+                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                  <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                </div>
+              </div><!-- End Service Item -->
+
+              <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-item position-relative">
+                  <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
+                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                  <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                </div>
+              </div><!-- End Service Item -->
+
+              <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-item position-relative">
+                  <div class="icon"><i class="bi bi-broadcast icon"></i></div>
+                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                  <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                </div>
+              </div><!-- End Service Item -->
+
+            </div>
+
+            <div class="center mt-4">
+                <a href="{{ route('services') }}" class="btn btn-custom mt-3">معرض الخدمات</a>
+            </div>
           </div>
-        </div>
+    </section><!-- /Services Section -->
 
-      </div>
-
-    </section><!-- /Why Us Section -->
 
 {{-- <hr> --}}
 
@@ -192,7 +253,7 @@
                 "loop": true,
                 "speed": 600,
                 "autoplay": {
-                  "delay": 5000
+                  "delay": 3000
                 },
                 "slidesPerView": "auto",
                 "pagination": {
@@ -301,77 +362,76 @@
 
     </section><!-- /Testimonials Section -->
 
-
 {{-- <hr> --}}
 
-    <!-- Services Section -->
-    <section id="services" class="services section px-4 mt-4">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>خدماتنا</h2>
-        <p>نقدم لك جميع الخدمات بكل دقة و احترافية مع فريقنا الفني المتكامل في الرياض – شركة الأنظمة الاولية</p>
-      </div><!-- End Section Title -->
+      <!-- Why Us Section -->
+    <section id="why-us" class="section why-us px-4 mt-4 spikes" data-builder="section">
 
-        <div class="container">
+      <div class="container-fluid">
 
-            <div class="row gy-4 mx-3">
-                <!-- Service Item 1 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch " data-aos="fade-up" data-aos-delay="100">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/1.jpg" class="card-img-top img-fluid" alt="صيانة ثلاجات">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة ثلاجات</a></h4>
-                            <p class="card-text">فني ثلاجات فلبيني الرياض و صيانة ثلاجات سامسونج الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
+        <div class="row gy-4">
 
-                <!-- Service Item 2 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/2.jpg" class="card-img-top img-fluid" alt="تصليح ثلاجات">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">تصليح ثلاجات</a></h4>
-                            <p class="card-text">فني ثلاجات فلبيني الرياض و تصليح ثلاجات سامسونج الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
+          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
 
-                <!-- Service Item 3 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/3.jpg" class="card-img-top img-fluid" alt="صيانة افران الغاز">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة افران الغاز</a></h4>
-                            <p class="card-text">صيانة افران غاز بالرياض و تصليح افران شرق الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <!-- Service Item 4 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/4.jpg" class="card-img-top img-fluid" alt="صيانة مكيفات">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة مكيفات</a></h4>
-                            <p class="card-text">صيانة مكيفات بالرياض و صيانة مكيفات 24 ساعة الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-3 align-self-center"> عرض الخدمة</a>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
+            <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
+              <h3 class=""><strong>ماهي الأمور المذهلة التي يمكنك الحصول عليها معنا ؟</strong></h3>
+              <p class="">
+                عند التعامل مع شركتنا المتخصصة في عمليات الصيانة و التصليح و اعمال السباكة و الصبغ و الكهرباء في الملكة العربية السعودية , يمكن للعملاء الحصول على العديد من المزايا و الخدمات المذهلة . ومن بين هذة الميزات :              </p>
             </div>
 
-            <div class="center mt-4">
-                <a href="{{ route('services') }}" class="btn btn-custom mt-3">معرض الخدمات</a>
+            <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
+
+              <div class="faq-item">
+
+                <h3 class="mx-0 my-2"><span> (1) </span> استخدام أفضل الأدوات</h3>
+                <div class="">
+                  <p>نقوم بتزويد فريقنا بأفضل الأدوات و معدات الصيانة لتقديم خدمات صيانة موثوقة , بالإضافة إلى استخدام أحدث المعدات في عالم الصيانة .</p>
+                </div>
+                {{-- <i class="faq-toggle bi bi-chevron-right"></i> --}}
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3 class="mx-0 my-2"><span> (2)</span> خدمة متنوعة و شاملة</h3>
+                <div class="">
+                  <p>يمكن لفريقنا الفني بزيارة واحدة لمنزلك أو مكتبك فحص جميع الأعطال و المشاكل في أجهزتك المنزلية و إصلاحها على الفور بدقة و حرفية .</p>
+                </div>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3 class="mx-0 my-2"><span> (3)</span> أفضل خدمة صيانة</h3>
+                <div class="">
+                  <p>إذا كنت تبحث عن خدمة الصيانة رقم واحد في المملكة فنحن خيارك الأفضل , نقدم جميع الخدمات الموثوقة للعملاء وعلى يد أفضل فريق فني .</p>
+                </div>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3 class="mx-0 my-2"><span> (4)</span>  أفضل قيمة مقابل السعر</h3>
+                <div class="">
+                  <p>تعد ميزة الحصول على أفضل قيمة مقابل السعر ميزة مهمة للعملاء , فهي تضمن لهم جودة الخدمة و الكفاءة في العمل بالإضافة للحصول على تكلفة معقولة تناسب الجميع .</p>
+                </div>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3 class="mx-0 my-2"><span> (5)</span> خدمة في الوقت المحدد</h3>
+                <div class="">
+                  <p>نحن ندرك اهمية عامل الوقت في تقديم الخدمات , لذلك نحرص على الوصول في الوقت المتفق عليه وانجاز المهمة في الوقت المحدد بدون أي تأخير لجدول مواعيدك .</p>
+                </div>
+              </div><!-- End Faq item-->
+
             </div>
 
+          </div>
+
+          <div class="col-lg-5 order-1 order-lg-2 why-us-img">
+            <img src="assets/img/why-us.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+          </div>
         </div>
 
-    </section><!-- /Services Section -->
+      </div>
+
+    </section><!-- /Why Us Section -->
+
 
 {{-- <hr> --}}
 
@@ -392,7 +452,7 @@
                 "loop": true,
                 "speed": 600,
                 "autoplay": {
-                  "delay": 5000
+                  "delay": 3000
                 },
                 "slidesPerView": "auto",
                 "pagination": {
@@ -472,69 +532,86 @@
 
 {{-- <hr> --}}
 
-    <!-- Blog Section -->
-    <section id="blog" class="blog section px-4 mt-4">
+<!-- Blog Section -->
+<section id="blog" class="blog section px-4 mt-4 spikes">
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-        <h2> المدونات</h2>
-        <p>تتكون شركتنا من عدة أقسام و كل قسم مسؤول عن انجاز مهام معينة لتحقيق أفضل استفادة مع العمل المشترك بين الأقسام , نعمل معاً كعائلة واحدة لتقديم خدمات عالية الجودة للعملاء  .</p>
-        </div><!-- End Section Title -->
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2> المدونات</h2>
+      <p>تتكون شركتنا من عدة أقسام و كل قسم مسؤول عن انجاز مهام معينة لتحقيق أفضل استفادة مع العمل المشترك بين الأقسام , نعمل معاً كعائلة واحدة لتقديم خدمات عالية الجودة للعملاء  .</p>
+    </div><!-- End Section Title -->
 
-        <div class="container">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row gy-4">
+      <div class="swiper blog-swiper">
+        <script type="application/json" class="swiper-config">
+          {
+            "loop": true,
+            "speed": 600,
+            "autoplay": {
+              "delay": 3000
+            },
+            "slidesPerView": 1,
+            "pagination": {
+              "el": ".swiper-pagination",
+              "type": "bullets",
+              "clickable": true
+            }
+          }
+        </script>
+        <div class="swiper-wrapper">
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-slide">
             <div class="blog-entry d-flex align-items-start">
-                <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-                <div class="entry-info m-2">
+              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="entry-info m-2">
                 <h4>قسم الترويج و الإعلان</h4>
                 <p class="m-4">مكون من عدد من المتخصصين في مجال الدعاية و التسويق , مهمتهم ايصال خدمات الشركة إلى اكبر عدد من العملاء</p>
-                </div>
+              </div>
             </div>
-            </div><!-- End Blog Entry -->
+          </div><!-- End Blog Entry -->
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="swiper-slide">
             <div class="blog-entry d-flex align-items-start">
-                <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-                <div class="entry-info m-2">
-                <h4>  قسم البحث و التطوير </h4>
+              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="entry-info m-2">
+                <h4>قسم البحث و التطوير</h4>
                 <p class="m-4">يتكون هذا القسم من عدد من المهندسين المتخصصين بتحليل البيانات و مهمتهم تحليل سوق العمل وايجاد أفكار جديدة</p>
-                </div>
+              </div>
             </div>
-            </div><!-- End Blog Entry -->
+          </div><!-- End Blog Entry -->
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-slide">
             <div class="blog-entry d-flex align-items-start">
-                <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-                <div class="entry-info m-2">
+              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="entry-info m-2">
                 <h4>قسم الإدارة</h4>
                 <p class="m-4">يتخصص هذا القسم بمتابعة أعمال الشركة ككل و تنسيق العمل بين الأقسام وتوجيهها لتعمل بتناغم</p>
-                </div>
+              </div>
             </div>
-            </div><!-- End Blog Entry -->
+          </div><!-- End Blog Entry -->
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="swiper-slide">
             <div class="blog-entry d-flex align-items-start">
-                <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-                <div class="entry-info m-2">
-                <h4>  فريق دعم العملاء </h4>
+              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="entry-info m-2">
+                <h4>فريق دعم العملاء</h4>
                 <p class="m-4">وهو قسم من الخبراء في مجال الصيانة مخصص للرد على اتصالات الزبائن و الردعلى جميع الإستفسارات و الأسئلة</p>
-                </div>
+              </div>
             </div>
-            </div><!-- End Blog Entry -->
-
-
-            <div class="center mt-4">
-                <a href="{{ route('blogs') }}" class="btn btn-custom mt-3"> عرض كل المدونات</a>
-            </div>
+          </div><!-- End Blog Entry -->
 
         </div>
+        <div class="swiper-pagination"></div>
+      </div>
 
-        </div>
+      <div class="center mt-4">
+        <a href="{{ route('blogs') }}" class="btn btn-custom mt-3"> عرض كل المدونات</a>
+      </div>
 
-    </section><!-- /blog Section -->
+    </div>
+
+  </section><!-- /Blog Section -->
 
 
 {{-- <hr> --}}
@@ -580,8 +657,6 @@
                   <p>info@example.com</p>
                 </div>
               </div><!-- End Info Item -->
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
 

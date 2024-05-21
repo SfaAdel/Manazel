@@ -1,4 +1,4 @@
-<header id="header" class="header d-flex align-items-center fixed-top navbar navbar-expand-lg bg-body-tertiary">
+<header id="header" class="header d-flex align-items-center fixed-top navbar navbar-expand-lg bg-body-tertiary" style="display: none">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-around">
       <a href="{{ route('home') }}" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="logo" class="img-thumbnail ">
@@ -11,38 +11,37 @@
           <li><a href="{{ route('about') }}">من نحن</a></li>
           <li class="dropdown"><a href="{{ route('services') }}"><span>خدماتنا</span> <i class="bi bi-chevron-down toggle-dropdown mx-2"></i></a>
             <ul class="center">
-              <li><a href="{{ route('details') }}">صيانة غسالات </a></li>
-              <li><a href="{{ route('details') }}">تصليح غسالات </a></li>
-              <li><a href="{{ route('details') }}">صيانة افران الغاز </a></li>
-              <li><a href="{{ route('details') }}">صيانة افران</a></li>
-              <li><a href="{{ route('details') }}">صيانة ثلاجات</a></li>
-              <li><a href="{{ route('details') }}">تصليح ثلاجات</a></li>
-              <li><a href="{{ route('details') }}">صيانة مكيفات</a></li>
-              <li><a href="{{ route('details') }}">صيانة مكيفات سبليت</a></li>
-              <li><a href="{{ route('details') }}"> كهربائي</a></li>
-              <li><a href="{{ route('details') }}">  سباك</a></li>
-              <li><a href="{{ route('details') }}">  صباغ</a></li>
+              <li><a href="{{ route('service_details') }}">صيانة غسالات </a></li>
+              <li><a href="{{ route('service_details') }}">تصليح غسالات </a></li>
+              <li><a href="{{ route('service_details') }}">صيانة افران الغاز </a></li>
+              <li><a href="{{ route('service_details') }}">صيانة افران</a></li>
+              <li><a href="{{ route('service_details') }}">صيانة ثلاجات</a></li>
+              <li><a href="{{ route('service_details') }}">تصليح ثلاجات</a></li>
+              <li><a href="{{ route('service_details') }}">صيانة مكيفات</a></li>
+              <li><a href="{{ route('service_details') }}">صيانة مكيفات سبليت</a></li>
+              <li><a href="{{ route('service_details') }}"> كهربائي</a></li>
+              <li><a href="{{ route('service_details') }}">  سباك</a></li>
+              <li><a href="{{ route('service_details') }}">  صباغ</a></li>
             </ul>
           </li>
           <li><a href="#portfolio">الخصوصية</a></li>
-          <li><a href="{{ route('about') }}"> المدونة</a></li>
+          <li><a href="{{ route('blogs') }}"> المدونة</a></li>
           <li><a href="{{ route('contact') }}">تواصل معنا</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <a class="btn-getstarted" href="#about"> اشترك كمزود خدمة</a>
+
+      <a class="btn-getstarted" href="{{ route('general_order') }}">احجز موعد الان</a>
     </div>
-  </header>
-
-
-
-
-
+</header>
 =
 =
-=======
-
+==
+====
 =
+
+=\\
+
 
 
 /* Global Header */
@@ -74,6 +73,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
   }
+
 
   .header .btn-getstarted,
   .header .btn-getstarted:focus {
@@ -415,3 +415,5 @@
     width:5rem;
     height: 5rem;
 } */
+
+

@@ -36,54 +36,7 @@
 
 <main class="container my-6 p-6">
 
-    {{-- <!-- Services Section -->
-    <section id="services" class="services section mt-4">
 
-        <div class="container p-3">
-
-            <div class="row gy-4">
-
-              <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                <div class="service-item position-relative">
-                  <div class="icon"><i class="bi bi-activity icon"></i></div>
-                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
-                  <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
-                    <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
-
-                </div>
-              </div><!-- End Service Item -->
-
-              <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-item position-relative">
-                  <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
-                  <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
-                  <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
-                </div>
-              </div><!-- End Service Item -->
-
-              <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-                <div class="service-item position-relative">
-                  <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
-                  <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
-                  <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
-                </div>
-              </div><!-- End Service Item -->
-
-              <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-                <div class="service-item position-relative">
-                  <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
-                  <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
-                  <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
-                </div>
-              </div><!-- End Service Item -->
-
-            </div>
-
-          </div>
-    </section><!-- /Services Section --> --}}
 
     <!-- Blog Section -->
     <section id="blog" class="blog section px-4 mt-4">
