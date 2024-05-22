@@ -3,19 +3,26 @@
 
 @section('content')
 
-<div class="mt-6 ">
 
-</div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero section background-blur" style="background-image: url('assets/img/background.jpg');">
+        <div class="background-blur" style="background-image: url('assets/img/service-bg.jpg');"></div>
+        <div class="container ">
+            <div class="row text-center">
+                <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
+
+                    <h1 class="my-3">  تواصل معنا  </h1>
+                    <p>اذا كان لديك أي استفسار أو تساؤل بخصوص شركة الأنظمة الأولية في المملكة العربية السعودية نرجو منك ملئ النموذج التالي و سنكون مسرورين بالإجابة على جميع الإستفسارات و الرد في أسرع وقت ممكن ، فريق خدمة العملاء يتمنى لكم دوام الصحة و العافية
+                        <i class="bi bi-heart text-danger"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <section id="contact" class="contact section mt-6">
 
-    <!-- Section Title -->
-    <div class="container section-title mt-6" data-aos="fade-up">
-      <h2 class="mt-6">تواصل معنا</h2>
-      <p>اذا كان لديك أي استفسار أو تساؤل بخصوص شركة الأنظمة الأولية في المملكة العربية السعودية نرجو منك ملئ النموذج التالي و سنكون مسرورين بالإجابة على جميع الإستفسارات و الرد في أسرع وقت ممكن ، فريق خدمة العملاء يتمنى لكم دوام الصحة و العافية
-          <i class="bi bi-heart text-danger"></i>
-      </p>
-    </div><!-- End Section Title -->
+
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 

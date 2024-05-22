@@ -40,6 +40,8 @@
     <link href="assets/css/nav.css" rel="stylesheet">
     <link href="assets/css/payment_form.css" rel="stylesheet">
     <link href="assets/css/filter.css" rel="stylesheet">
+    <link href="assets/css/card.css" rel="stylesheet">
+    <link href="assets/css/sub_service.css" rel="stylesheet">
 
 
     <!-- =======================================================
@@ -94,6 +96,7 @@
 
             <!-- Main JS File -->
             <script src="assets/js/main.js"></script>
+            <script src="assets/js/sub_service.js"></script>
 
             <script>
             $(document).ready(function() {

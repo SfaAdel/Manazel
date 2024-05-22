@@ -39,60 +39,86 @@
 
         <div class="container">
 
-            <div class="row gy-4">
-                <p>
-                يعود تاريخ شركة الأنظمة الأولية في المملكة العربية السعودية  إلى عام 2000م , عندما قررنا البدء في مجال الصيانة و التصليح لتقديم تجربة استثنائية لجميع العملاء في المملكة . لم تكن الصيانة و التصليح مجرد مهنة نمتهنا بل كانت أكثر من ذلك .
-                </p>
-            <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4 mb-5">
+                <div class="col-12" data-aos="fade-up">
+                    <p class="lead">
+                        يعود تاريخ شركة الأنظمة الأولية في المملكة العربية السعودية  إلى عام 2000م , عندما قررنا البدء في مجال الصيانة و التصليح لتقديم تجربة استثنائية لجميع العملاء في المملكة . لم تكن الصيانة و التصليح مجرد مهنة نمتهنا بل كانت أكثر من ذلك .
+                    </p>
+                </div>
 
-                <h2 class="my-3">لماذا عليك اختيارنا ؟</h2>
-                <ul>
-                <li><i class="bi bi-check2-circle mx-3"></i> <span>قدرتنا على بناء علاقة مميزة مع العميل . </span></li>
-                <li><i class="bi bi-check2-circle mx-3"></i> <span> نحن نعتبر أن رضا العملاء و تحقيق توقعاتهم أمراً حاسماً و مهماً بالنسبة لنا . </span></li>
-                <li><i class="bi bi-check2-circle mx-3"></i> <span>يتم بناء العلاقة القوية بين شركتنا و العملاء عن طريق فهم احتياجات العملاء العامة و الخاصة , و محاولة تقديم حلول مناسبة لها .</span></li>
-                <li><i class="bi bi-check2-circle mx-3"></i> <span>نهتم بجميع تفاصيلهم و نتفاعل مع ملاحظات و الشكاوي بشكل فعال و جدي . </span></li>
-                <li><i class="bi bi-check2-circle mx-3"></i> <span>نعمل بجهد على تحسين خدماتنا بناءً على التعليقات المستلمة من العملاء .</span></li>
-                <li><i class="bi bi-check2-circle mx-3"></i> <span>وهكذا بكل حب و احترام و مودة نقوم ببناء علاقة طويلة الأمد مع العملاء و كسب ثقتهم في المرة الاولى و في كل مرة .</span></li>
 
-                </ul>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="my-3">لماذا عليك اختيارنا ؟</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card border-info">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-check2-circle display-4 text-info mb-3"></i>
+                                    <p class="card-text">قدرتنا على بناء علاقة مميزة مع العميل .</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card border-info">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-check2-circle display-4 text-info mb-3"></i>
+                                    <p class="card-text"> نحن نعتبر أن رضا العملاء و تحقيق توقعاتهم أمراً حاسماً و مهماً بالنسبة لنا .</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card border-info">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-check2-circle display-4 text-info mb-3"></i>
+                                    <p class="card-text">يتم بناء العلاقة القوية بين شركتنا و العملاء عن طريق فهم احتياجات العملاء العامة و الخاصة , و محاولة تقديم حلول مناسبة لها .</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card border-info">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-check2-circle display-4 text-info mb-3"></i>
+                                    <p class="card-text">نهتم بجميع تفاصيلهم و نتفاعل مع ملاحظات و الشكاوي بشكل فعال و جدي .</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="assets/img/why-us.png" class="img-fluid animated rounded" alt="Why Us">
+                </div>
             </div>
 
-            <div class="col-lg-4 mx-5" data-aos="zoom-out" data-aos-delay="200">
-                <img src="assets/img/why-us.png" class="img-fluid animated" alt="">
-            </div>
-            </div>
-
-
-        </div>
-
-        <section class="wow fadeIn animated" style="visibility: visible; animation-name: fadeIn;">
-            <div class="m-4">
+        <section class="wow fadeIn animated " style="visibility: visible; animation-name: fadeIn;">
+            <div class="m-4 mycounter">
                     <div class="row">
                         <!-- counter -->
-                        <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated" data-wow-duration="300ms" style="visibility: visible; animation-duration: 300ms; animation-name: fadeInUp;">
-                            <i class="fa fa-beer medium-icon"></i>
-                            <span id="anim-number-pizza" class="counter-number"></span>
+                        <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated  my-3" data-wow-duration="300ms" style="visibility: visible; animation-duration: 300ms; animation-name: fadeInUp;">
+                            <i class="fa fa-project-diagram medium-icon text-info"></i>
                             <span class="timer counter alt-font appear" data-to="980" data-speed="7000">2800</span>
                             <p class="counter-title">مشروع منجز</p>
                         </div>
                         <!-- end counter -->
                         <!-- counter -->
-                        <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated" data-wow-duration="600ms" style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
-                            <i class="fa fa-heart medium-icon"></i>
-                            <span class="timer counter_text alt-font appear">الرياض</span>
+                        <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3" data-wow-duration="600ms" style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
+                            <i class="fa fa-building medium-icon text-info"></i>
+                            <span class="timer counter_text alt-font appear mb-1">الرياض</span>
                             <span class="counter-title">مقر الشركة</span>
                         </div>
                         <!-- end counter -->
                         <!-- counter -->
-                        <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated" data-wow-duration="900ms" style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
-                            <i class="fa fa-anchor medium-icon"></i>
+                        <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3" data-wow-duration="900ms" style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
+                            <i class="fa fa-smile-beam medium-icon text-info"></i>
                             <span class="timer counter alt-font appear" data-to="810" data-speed="7000">18000</span>
                             <span class="counter-title">عملاء سعداء</span>
                         </div>
                         <!-- end counter -->
                         <!-- counter -->
-                        <div class="col-md-3 col-sm-6 text-center counter-section wow fadeInUp animated" data-wow-duration="1200ms" style="visibility: visible; animation-duration: 1200ms; animation-name: fadeInUp;">
-                            <i class="fa fa-user medium-icon"></i>
+                        <div class="col-md-3 col-sm-6 text-center counter-section wow fadeInUp animated my-3" data-wow-duration="1200ms" style="visibility: visible; animation-duration: 1200ms; animation-name: fadeInUp;">
+                            <i class="fa fa-calendar-alt medium-icon text-info"></i>
                             <span class="timer counter alt-font appear" data-to="600" data-speed="7000">2000</span>
                             <span class="counter-title">تاريخ الانشاء</span>
                         </div>
@@ -190,9 +216,9 @@
               <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
                 <div class="service-item position-relative">
                   <div class="icon"><i class="bi bi-activity icon"></i></div>
-                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
                   <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
-                    <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                    <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
 
                 </div>
               </div><!-- End Service Item -->
@@ -200,27 +226,27 @@
               <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
                 <div class="service-item position-relative">
                   <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
                   <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
-                  <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                  <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
                 </div>
               </div><!-- End Service Item -->
 
               <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
                 <div class="service-item position-relative">
                   <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
                   <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
-                  <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                  <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
                 </div>
               </div><!-- End Service Item -->
 
               <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
                 <div class="service-item position-relative">
                   <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-                  <h4><a href="{{ route('blog_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
                   <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
-                  <a href="{{ route('blog_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                  <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
                 </div>
               </div><!-- End Service Item -->
 
@@ -562,7 +588,7 @@
         <div class="swiper-wrapper">
 
           <div class="swiper-slide">
-            <div class="blog-entry d-flex align-items-start">
+            <div class="blog-entry d-flex align-items-start bg-light">
               <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
               <div class="entry-info m-2">
                 <h4>قسم الترويج و الإعلان</h4>
@@ -572,7 +598,7 @@
           </div><!-- End Blog Entry -->
 
           <div class="swiper-slide">
-            <div class="blog-entry d-flex align-items-start">
+            <div class="blog-entry d-flex align-items-start bg-light">
               <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
               <div class="entry-info m-2">
                 <h4>قسم البحث و التطوير</h4>
@@ -582,7 +608,7 @@
           </div><!-- End Blog Entry -->
 
           <div class="swiper-slide">
-            <div class="blog-entry d-flex align-items-start">
+            <div class="blog-entry d-flex align-items-start bg-light">
               <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
               <div class="entry-info m-2">
                 <h4>قسم الإدارة</h4>
@@ -592,7 +618,7 @@
           </div><!-- End Blog Entry -->
 
           <div class="swiper-slide">
-            <div class="blog-entry d-flex align-items-start">
+            <div class="blog-entry d-flex align-items-start bg-light">
               <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
               <div class="entry-info m-2">
                 <h4>فريق دعم العملاء</h4>

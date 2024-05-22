@@ -3,19 +3,26 @@
 
 @section('content')
 
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section background-blur" style="background-image: url('assets/img/background.jpg');">
+        <div class="background-blur" style="background-image: url('assets/img/service-bg.jpg');"></div>
+        <div class="container ">
+            <div class="row text-center">
+                <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
+
+                    <h1 class="my-3">  من نحن </h1>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
 <main class="container">
-<div>
-    <h1>about us</h1>
-</div>
 
-<section id="about" class="about section p-5">
+<section id="about" class="about section mt-5 p-5">
 
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-        <h2 class="mt-4">من نحن</h2>
-    </div><!-- End Section Title -->
-
-    <div class="container">
+    <div class="container mt-3">
 
         <div class="row gy-4">
             <p> يعود تاريخ شركة الأنظمة الأولية في المملكة العربية السعودية  إلى عام 2000م , عندما قررنا البدء في مجال الصيانة و التصليح لتقديم تجربة استثنائية لجميع العملاء في المملكة . لم تكن الصيانة و التصليح مجرد مهنة نمتهنا بل كانت أكثر من ذلك . نحن نؤمن ان حب العمل و الالتزام به مصدر النجاح الوحيد , تتخصص شركتنا في تقديم خدمات صيانة و تصليح شاملة و موثوقة لجميع أنواع الأجهزة المنزلية مثل الغسالات و الأفران و الثلاجات و الفريزرات , و المكيفات .  بالاضافة لخدمات الصبغ و السباكة و اعمال الكهرباء  . نحن الآن بعد أكثر من 24 سنة من تقديم خدمات الصيانة بكل حب وثقة للعلاء نعد أفضل شركة رائدة في مجالها بجميع أنحاء المملكة العربية السعودية . تتميز شركتنا بفريق مهندسين و فنيين مدربين تدريباً ممتازاً , و ذوي خبرة في مجال صيانة الأجهزة المنزلية . يحمل فريقنا مهارات ومعرفة واسعة في التعامل مع مختلف المشاكل التي قد تواجهك . و أخيراً منذ تأسيس الشركة وحتى يومنا الحالي نلتزم بتقديم خدمات عالية الجودة و موثوقة للعملاء . إذا واجهتك أي مشكلة أو كان لديك أي استفسار فلا تتردد في الاتصال بنا و الاعتماد على خبرتنا للحصول على حل جذري لجميع مشاكلك .
@@ -42,7 +49,7 @@
 
     </div>
 
-    <section class="wow fadeIn animated" style="visibility: visible; animation-name: fadeIn;">
+    <section class="wow fadeIn animated " style="visibility: visible; animation-name: fadeIn;">
         <div class="m-4">
                 <div class="row">
                     <!-- counter -->
@@ -81,7 +88,7 @@
 </section><!-- /About Section -->
 
 
-<section id="why-us" class="section why-us" data-builder="section">
+<section id="why-us" class="section why-us mt-3" data-builder="section">
 
     <div class="container-fluid">
 
@@ -153,7 +160,7 @@
 </section><!-- /Why Us Section -->
 
     <!-- Team Section -->
-<section id="team" class="team section">
+<section id="team" class="team section mt-3 p-4">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">

@@ -70,6 +70,8 @@
                         <li><a class="dropdown-item" href="{{ route('service_details') }}">كهربائي</a></li>
                         <li><a class="dropdown-item" href="{{ route('service_details') }}">سباك</a></li>
                         <li><a class="dropdown-item" href="{{ route('service_details') }}">صباغ</a></li>
+                        <li><a class="dropdown-item" href="{{ route('services') }}">جميع الخدمات</a></li>
+
                     </ul>
                 </div>
                 <a href="#portfolio" class="nav-item mt-1 nav-link">الخصوصية</a>
@@ -81,8 +83,8 @@
         </div>
 
         <div class="m-3">
-            <a  href="https://api.whatsapp.com/send?phone=201012076064"><i class="bi bi-whatsapp mx-2"></i></a>
-            <a href=""><i class="bi bi-phone mx-2"></i></a>
+            <a  href="https://api.whatsapp.com/send?phone=201012076064"><i class="bi bi-whatsapp mx-2 text-success"></i></a>
+            <a href=""><i class="bi bi-phone mx-2 text-info"></i></a>
         </div>
 
     </nav>

@@ -3,123 +3,122 @@
 
 @section('content')
 
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section background-blur" style="background-image: url('assets/img/background.jpg');">
+        <div class="background-blur" style="background-image: url('assets/img/service-bg.jpg');"></div>
+        <div class="container ">
+            <div class="row text-center">
+                <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
+
+                    <h1 class="my-3">  خدماتنا  </h1>
+                    <p>نقدم لك جميع الخدمات بكل دقة و احترافية مع فريقنا الفني المتكامل في الرياض – شركة منازل </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
 <main class="container my-6 p-6">
 
     <!-- Services Section -->
-    <section id="services" class="section ">
-        <!-- Section Title -->
-        <div class="container section-title text-center my-4">
-            <h2 class="mt-5">خدماتنا</h2>
-            <p>نقدم لك جميع الخدمات بكل دقة و احترافية مع فريقنا الفني المتكامل في الرياض – شركة الأنظمة الاولية</p>
-        </div><!-- End Section Title -->
+    <section id="services" class="services section mt-5">
 
-        <div class="container">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>جميع خدماتنا</h2>
+          </div><!-- End Section Title -->
+
+
+        <div class="container mt-3">
 
             <div class="row gy-4">
-                <!-- Service Item 1 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/1.jpg" class="card-img-top img-fluid" alt="صيانة ثلاجات">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة غسالات</a></h4>
-                            <p class="card-text">فني ثلاجات فلبيني الرياض و صيانة ثلاجات سامسونج الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-auto align-self-center">معرفة المزيد</a>
-                        </div>
-                    </div>
+
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                  <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-activity icon"></i></div>
+                    <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                    <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                      <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+
+                  </div>
                 </div><!-- End Service Item -->
 
-                <!-- Service Item 2 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/2.jpg" class="card-img-top img-fluid" alt="تصليح ثلاجات">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">تصليح غسالات</a></h4>
-                            <p class="card-text">فني ثلاجات فلبيني الرياض و تصليح ثلاجات سامسونج الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-auto align-self-center">معرفة المزيد</a>
-                        </div>
-                    </div>
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+                  <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
+                    <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                    <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                    <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                  </div>
                 </div><!-- End Service Item -->
 
-                <!-- Service Item 3 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/3.jpg" class="card-img-top img-fluid" alt="صيانة افران الغاز">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة افران الغاز</a></h4>
-                            <p class="card-text">صيانة افران غاز بالرياض و تصليح افران شرق الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-auto align-self-center">معرفة المزيد</a>
-                        </div>
-                    </div>
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+                  <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
+                    <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                    <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                    <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                  </div>
                 </div><!-- End Service Item -->
 
-                <!-- Service Item 4 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/4.jpg" class="card-img-top img-fluid" alt="صيانة مكيفات">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة مكيفات</a></h4>
-                            <p class="card-text">صيانة مكيفات بالرياض و صيانة مكيفات 24 ساعة الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-auto align-self-center">معرفة المزيد</a>
-                        </div>
-                    </div>
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+                  <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-broadcast icon"></i></div>
+                    <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                    <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                    <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                  </div>
                 </div><!-- End Service Item -->
 
-            </div>
+              </div>
+
 
         </div>
 
         <div class="container mt-4">
 
             <div class="row gy-4">
-                <!-- Service Item 1 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/1.jpg" class="card-img-top img-fluid" alt="صيانة ثلاجات">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة غسالات</a></h4>
-                            <p class="card-text">فني ثلاجات فلبيني الرياض و صيانة ثلاجات سامسونج الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-auto align-self-center">معرفة المزيد</a>
-                        </div>
-                    </div>
+
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                  <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-activity icon"></i></div>
+                    <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                    <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                      <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+
+                  </div>
                 </div><!-- End Service Item -->
 
-                <!-- Service Item 2 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/2.jpg" class="card-img-top img-fluid" alt="تصليح ثلاجات">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">تصليح غسالات</a></h4>
-                            <p class="card-text">فني ثلاجات فلبيني الرياض و تصليح ثلاجات سامسونج الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-auto align-self-center">معرفة المزيد</a>
-                        </div>
-                    </div>
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+                  <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
+                    <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                    <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                    <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                  </div>
                 </div><!-- End Service Item -->
 
-                <!-- Service Item 3 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/3.jpg" class="card-img-top img-fluid" alt="صيانة افران الغاز">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة افران الغاز</a></h4>
-                            <p class="card-text">صيانة افران غاز بالرياض و تصليح افران شرق الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-auto align-self-center">معرفة المزيد</a>
-                        </div>
-                    </div>
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+                  <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
+                    <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                    <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                    <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                  </div>
                 </div><!-- End Service Item -->
 
-                <!-- Service Item 4 -->
-                <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card service-item shadow-sm border-0">
-                        <img src="assets/img/services/4.jpg" class="card-img-top img-fluid" alt="صيانة مكيفات">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title text-center"><a href="{{ route('service_details') }}" class="stretched-link">صيانة مكيفات</a></h4>
-                            <p class="card-text">صيانة مكيفات بالرياض و صيانة مكيفات 24 ساعة الرياض</p>
-                            <a href="{{ route('service_details') }}" class="btn btn-primary mt-auto align-self-center">معرفة المزيد</a>
-                        </div>
-                    </div>
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+                  <div class="service-item position-relative">
+                    <div class="icon"><i class="bi bi-broadcast icon"></i></div>
+                    <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                    <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                    <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                  </div>
                 </div><!-- End Service Item -->
 
-            </div>
+              </div>
+
 
         </div>
     </section><!-- /Services Section -->

@@ -24,6 +24,98 @@
 
     <!-- Services Section -->
     <section id="services" class="section ">
+
+
+
+        <div class="container mt-5">
+            <div class="row">
+
+                        {{-- card 1 --}}
+
+
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-4 mb-3">
+                            <div class="card">
+                              <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">
+                              <div class="card-img-overlay d-flex justify-content-end">
+                                <a href="#" class="card-link text-danger like">
+                                  {{-- <i class="fas fa-heart"></i> --}}
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title"><a href="{{ route('sub_service_details') }}" class="stretched-link">    تصليح غسالة سامسونج   </a>  </h4>
+                                <h6 class="card-subtitle mb-2 text-muted my-1">التصنيف : تصليح غسالات </h6>
+                                <p class="card-text">
+                                    توفر الراحة النفسية لدى ربة البيت وأفراد العائلة بأن عملية ترتيب الملابس بمختلف أنواعها والخاصة بمواسم معينة كالشتاء مثلًا قد تمّت على أكمل وجه.            </p>
+
+                                <div class="buy d-flex  align-items-center mt-3">
+                                    <a href="#" class="btn btn-danger ml-3"><i class="fas fa-shopping-cart"></i>   اضف الى السلة</a>
+                                  <div class="price text-success"><h5 class="mr-3"> 120 ريال سعودي  </h5></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        {{-- card 2 --}}
+
+
+
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-4 mb-3">
+                            <div class="card">
+                              <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">
+                              <div class="card-img-overlay d-flex justify-content-end">
+                                <a href="#" class="card-link text-danger like">
+                                  {{-- <i class="fas fa-heart"></i> --}}
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title"><a href="{{ route('sub_service_details') }}" class="stretched-link">    تصليح غسالة سامسونج   </a>  </h4>
+                                <h6 class="card-subtitle mb-2 text-muted my-1">التصنيف : تصليح غسالات </h6>
+                                <p class="card-text">
+                                    توفر الراحة النفسية لدى ربة البيت وأفراد العائلة بأن عملية ترتيب الملابس بمختلف أنواعها والخاصة بمواسم معينة كالشتاء مثلًا قد تمّت على أكمل وجه.            </p>
+
+                                <div class="buy d-flex  align-items-center mt-3">
+                                    <a href="#" class="btn btn-danger ml-3"><i class="fas fa-shopping-cart"></i>   اضف الى السلة</a>
+                                  <div class="price text-success"><h5 class="mr-3"> 120 ريال سعودي  </h5></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                        {{-- card 3 --}}
+
+                      <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                        <div class="card">
+                          <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">
+                          <div class="card-img-overlay d-flex justify-content-end">
+                            <a href="#" class="card-link text-danger like">
+                              {{-- <i class="fas fa-heart"></i> --}}
+                            </a>
+                          </div>
+                          <div class="card-body">
+                            <h4 class="card-title"><a href="{{ route('sub_service_details') }}" class="stretched-link">    تصليح غسالة سامسونج   </a>  </h4>
+                            <h6 class="card-subtitle mb-2 text-muted my-1">التصنيف : تصليح غسالات </h6>
+                            <p class="card-text">
+                                توفر الراحة النفسية لدى ربة البيت وأفراد العائلة بأن عملية ترتيب الملابس بمختلف أنواعها والخاصة بمواسم معينة كالشتاء مثلًا قد تمّت على أكمل وجه.            </p>
+
+                            <div class="buy d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i>   اضف الى السلة</a>
+                              <div class="price text-success"><h5 class="mt-4"> 120 ريال سعودي  </h5></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                <!-- More product cards can be added here -->
+            </div>
+        </div>
+
+
+
         <!-- Section Title -->
         <div class="container section-title text-center my-4">
             <h2 class="mt-5">صيانة الغسالات</h2>

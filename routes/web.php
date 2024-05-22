@@ -42,6 +42,9 @@ Route::get('/blog', function () {
 Route::get('/blog-details', function () {
     return view('front/blog_details'); }) ->name('blog_details');
 
-    Route::get('/general-order', function () {
-        return view('front/general_order'); }) ->name('general_order');
+Route::get('/general-order', function () {
+    return view('front/general_order'); }) ->name('general_order');
+
+Route::get('/sub-service-details', function () {
+    return view('front/sub_service_details'); }) ->name('sub_service_details');
 

@@ -1957,32 +1957,41 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}
+/* .starter-section {
+} */
 
 /* =============================== */
+.mycounter{
+  background: #0071B8;
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  margin: 0 0.15rem;
+}
 .counter-section i { display:block; margin:0 0 10px}
-.counter-section span.counter {
+.counter-section span.counter , span.counter_text {
     font-size:40px;
     color: var(--accent-color);
     line-height:60px;
     display:block;
-    letter-spacing: 2px;
+    /* letter-spacing: 2px; */
     text-align: center;
     text-shadow: 5px 5px 0px currentColor;
-    -webkit-text-stroke-color: #484848;
+    -webkit-text-stroke-color: #ffffff;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-width: 2px;
 }
-.counter-title{ font-size:12px; text-transform: uppercase}
+.counter-title{
+    -size:12px;
+    -transform: uppercase;
+    color: #fff;
+}
 .counter-icon {top:25px; position:relative}
 .counter-style2 .counter-title {letter-spacing: 0.55px; float: right;}
 .counter-style2 span.counter {
     letter-spacing: 0.55px;
     float: right;
     margin-right: 10px;
-
+    color: #fff;
 }
 .counter-style2 i {float: right; line-height: 26px; margin: 0 10px 0 0}
 .counter-subheadline span {float: right;}
