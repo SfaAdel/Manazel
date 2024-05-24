@@ -4,8 +4,8 @@
 @section('content')
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section background-blur mb-5" style="background-image: url('assets/img/background.jpg');">
-        <div class="background-blur" style="background-image: url('assets/img/background.jpg');"></div>
+    <section id="hero" class="hero section background-blur mb-5" style="background-image: url('front/assets/img/background.jpg');">
+        <div class="background-blur" style="background-image: url('front/assets/img/background.jpg');"></div>
         <div class="container px-4">
             <div class="row gy-4 mr-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img center" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="assets/img/logo2.png" class="img-fluid animated" alt="">
+                    <img src="front/assets/img/logo2.png" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="assets/img/why-us.png" class="img-fluid animated rounded" alt="Why Us">
+                    <img src="front/assets/img/why-us.png" class="img-fluid animated rounded" alt="Why Us">
                 </div>
             </div>
 
@@ -293,7 +293,7 @@
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/1.png" class="testimonial-img" alt="">
+                  <img src="front/assets/img/testimonials/1.png" class="testimonial-img" alt="">
                   <h3>أحمد</h3>
                   {{-- <h4>Ceo &amp; Founder</h4> --}}
                   <div class="stars">
@@ -309,7 +309,7 @@
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/2.png" class="testimonial-img" alt="">
+                  <img src="front/assets/img/testimonials/2.png" class="testimonial-img" alt="">
                   <h3>لمى</h3>
                   {{-- <h4>Designer</h4> --}}
                   <div class="stars">
@@ -328,7 +328,7 @@
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/3.png" class="testimonial-img" alt="">
+                  <img src="front/assets/img/testimonials/3.png" class="testimonial-img" alt="">
                   <h3>ريما</h3>
                   {{-- <h4>Store Owner</h4> --}}
                   <div class="stars">
@@ -346,7 +346,7 @@
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/4.png" class="testimonial-img" alt="">
+                  <img src="front/assets/img/testimonials/4.png" class="testimonial-img" alt="">
                   <h3>نورة</h3>
                   {{-- <h4>Freelancer</h4> --}}
                   <div class="stars">
@@ -364,7 +364,7 @@
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/5.png" class="testimonial-img" alt="">
+                  <img src="front/assets/img/testimonials/5.png" class="testimonial-img" alt="">
                   <h3>خالد</h3>
                   {{-- <h4>Entrepreneur</h4> --}}
                   <div class="stars">
@@ -450,7 +450,7 @@
           </div>
 
           <div class="col-lg-5 order-1 order-lg-2 why-us-img">
-            <img src="assets/img/why-us.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+            <img src="front/assets/img/why-us.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
           </div>
         </div>
 
@@ -494,7 +494,7 @@
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/1.png" class="testimonial-img" alt="">
+                  <img src="front/assets/img/testimonials/1.png" class="testimonial-img" alt="">
                   <h3> قسم الترويج و الإعلان </h3>
                   <p>
 
@@ -508,7 +508,7 @@
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/1.png" class="testimonial-img" alt="">
+                  <img src="front/assets/img/testimonials/1.png" class="testimonial-img" alt="">
                   <h3> قسم الترويج و الإعلان </h3>
                   <p>
 
@@ -522,7 +522,7 @@
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/1.png" class="testimonial-img" alt="">
+                  <img src="front/assets/img/testimonials/1.png" class="testimonial-img" alt="">
                   <h3> قسم الترويج و الإعلان </h3>
                   <p>
 
@@ -536,7 +536,7 @@
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/1.png" class="testimonial-img" alt="">
+                  <img src="front/assets/img/testimonials/1.png" class="testimonial-img" alt="">
                   <h3> قسم الترويج و الإعلان </h3>
                   <p>
 
@@ -589,7 +589,7 @@
 
           <div class="swiper-slide">
             <div class="blog-entry d-flex align-items-start bg-light">
-              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="front/assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
               <div class="entry-info m-2">
                 <h4>قسم الترويج و الإعلان</h4>
                 <p class="m-4">مكون من عدد من المتخصصين في مجال الدعاية و التسويق , مهمتهم ايصال خدمات الشركة إلى اكبر عدد من العملاء</p>
@@ -599,7 +599,7 @@
 
           <div class="swiper-slide">
             <div class="blog-entry d-flex align-items-start bg-light">
-              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="front/assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
               <div class="entry-info m-2">
                 <h4>قسم البحث و التطوير</h4>
                 <p class="m-4">يتكون هذا القسم من عدد من المهندسين المتخصصين بتحليل البيانات و مهمتهم تحليل سوق العمل وايجاد أفكار جديدة</p>
@@ -609,7 +609,7 @@
 
           <div class="swiper-slide">
             <div class="blog-entry d-flex align-items-start bg-light">
-              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="front/assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
               <div class="entry-info m-2">
                 <h4>قسم الإدارة</h4>
                 <p class="m-4">يتخصص هذا القسم بمتابعة أعمال الشركة ككل و تنسيق العمل بين الأقسام وتوجيهها لتعمل بتناغم</p>
@@ -619,7 +619,7 @@
 
           <div class="swiper-slide">
             <div class="blog-entry d-flex align-items-start bg-light">
-              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="front/assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
               <div class="entry-info m-2">
                 <h4>فريق دعم العملاء</h4>
                 <p class="m-4">وهو قسم من الخبراء في مجال الصيانة مخصص للرد على اتصالات الزبائن و الردعلى جميع الإستفسارات و الأسئلة</p>

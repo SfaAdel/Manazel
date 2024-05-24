@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
-
 Route::get('/', function () {
-    return view('front/index'); }) ->name('home');
+    return view('front.index'); }) ->name('home');
 
 Route::get('/services', function () {
     return view('front/services'); }) ->name('services');
@@ -39,6 +36,9 @@ Route::get('/enroll', function () {
 Route::get('/blog', function () {
     return view('front/blogs'); }) ->name('blogs');
 
+Route::get('/cart', function () {
+    return view('front/cart'); }) ->name('cart');
+
 Route::get('/blog-details', function () {
     return view('front/blog_details'); }) ->name('blog_details');
 
@@ -48,3 +48,11 @@ Route::get('/general-order', function () {
 Route::get('/sub-service-details', function () {
     return view('front/sub_service_details'); }) ->name('sub_service_details');
 
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
