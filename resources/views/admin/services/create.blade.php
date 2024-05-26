@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'اضافة خدمة')
+@section('page.title', 'اضافة قسم')
 <!-- Start Content Section -->
 @section('content')
   <!-- Start Card -->
@@ -10,9 +10,9 @@
     <div class="card-header">
         <a href="{{ route('admin.services.index') }}" class="button is-success">
           <span class="icon is-small">
-            <i class="fa fa-handshake"></i>
+            <i class="fa fa-sitemap"></i>
           </span>
-          <span>قائمة الخدمات</span>
+          <span>قائمة الخدمات الرئيسية</span>
         </a>
     </div><!-- End Card Header -->
     <!-- Start Form -->

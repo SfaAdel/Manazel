@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'الخدمات')
+@section('page.title', 'اقسام الكليات')
 <!-- Start Content Section -->
 @section('content')
   <!-- Start Card -->
@@ -12,7 +12,7 @@
         <span class="icon is-small">
           <i class="fa fa-plus-circle"></i>
         </span>
-              <span>اضافة خدمة</span>
+              <span>اضافة خدمة رئيسية</span>
           </a>
       </div><!-- End Card Header -->
     <!-- Start Card Content -->
@@ -21,9 +21,10 @@
             <table class="table is-fullwidth" id="categories">
                 <thead>
                     <tr>
-                        <th>اسم الخدمة</th>
-                        <th>ترتيب الخدمة</th>
-                        <th>حالة الخدمة</th>
+                        <th>الاسم </th>
+                        <th>التصنيف</th>
+                        <th> الوصف</th>
+                        <th>الصورة</th>
                         <th>الاجراءات</th>
                     </tr>
                 </thead>
@@ -31,14 +32,11 @@
                     @foreach ($services as $service)
                         <tr>
                             <td>{{ $service->name }}</td>
-                            <td>{{ $service->priority }}</td>
-                            <td>{{ $service->active ? 'مفعلة' : 'غير مفعلة' }}</td>
+                            <td>{{ $service->category ? $service->category->name : ' - - ' }}</td>
+                            <td>{{ $service->description }}</td>
+                            <td>{{ $service->icon }}</td>
                             <td>
                                 <div class="buttons has-addons">
-                                    @if($service->type == 'page')
-                                        <a target="_blank" class="button is-success" href="{{ route('admin.services.service_layers.index', $service->id) }}">
-                                            المحتوي </a>
-                                    @endif
                                     <a class="button is-info" href="{{ route('admin.services.edit', $service->id) }}">
                                         تعديل </a>
                                 </div>
@@ -51,7 +49,7 @@
     </div><!-- End Card Content -->
     <!-- Start Card Footer -->
     <div class="card-footer with-pagination">
-        {{ $services->links('vendor.pagination.bulma') }}
+        {{-- {{ $departments->links('vendor.pagination.bulma') }} --}}
     </div><!-- End Card Footer -->
   </div><!-- End Card -->
 @endsection

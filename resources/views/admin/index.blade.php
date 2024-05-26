@@ -200,6 +200,4 @@
             </div>
         </div>
     @endif --}}
-
-<h1>hello</h1>
 @endsection<!-- End Content Section -->

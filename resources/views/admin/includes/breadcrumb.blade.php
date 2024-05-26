@@ -2,20 +2,20 @@
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li>
-                <a href="">
+                <a href="{{ route('admin.dashboard') }}">
                     <span class="icon is-small">
                         <i class="fa fa-home" aria-hidden="true"></i>
                     </span>
                     <span>الرئيسية </span>
                 </a>
             </li>
-            {{-- @if (Route::current()->getName() != 'admin.dashboard')
+            @if (Route::current()->getName() != 'admin.dashboard')
                 <li class="is-active">
                     <a href="#">
                         <span>@yield('page.title')</span>
                     </a>
                 </li>
-            @endif --}}
+            @endif
         </ul>
     </nav>
 </div>
