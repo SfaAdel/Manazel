@@ -28,6 +28,7 @@
                                 <label class="label">البريد الإلكتروني </label>
                                 <span class="value"><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></span>
                             </div>
+
                             <div class="info">
                                 <label class="label">محتوي الرسالة </label>
                                 <span class="value">{{ $contact->message }}</span>

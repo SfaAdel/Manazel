@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\AboutUsCounterController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -11,6 +13,10 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\AdvantageController;
+use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\TitleController;
+use App\Http\Controllers\Admin\WhyUsController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('dashboard')->get('/dashboard', function () {
@@ -36,6 +42,17 @@ Route::group([
 
     Route::resource('teams', TeamController::class);
     Route::resource('blogs', BlogController::class);
+    Route::resource('about_us', AboutUsController::class);
+
+    Route::resource('counters', AboutUsCounterController::class);
+    Route::patch('counters/{counter}', [AboutUsCounterController::class, 'update'])->name('counters.update');
+
+    Route::resource('why_us', WhyUsController::class);
+    Route::resource('titles', TitleController::class);
+    Route::resource('questions', QuestionController::class);
+    Route::resource('advantages', AdvantageController::class);
+    Route::resource('contacts', ContactController::class);
+
     Route::resource('orders', OrderController::class);
     Route::resource('contacts', ContactController::class);
     // Route::resource('abouts', TeamController::class);

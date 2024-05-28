@@ -20,7 +20,7 @@
                     <tr>
                         <th>اسم المرسل</th>
                         <th> البريد الإلكتروني</th>
-                        <th>القسم المشرف</th>
+                        <th> عنوان الرسالة</th>
                         <th>الاجراءات</th>
                     </tr>
                     </thead>
@@ -29,7 +29,7 @@
                         <tr>
                             <td>{{ $contact->name }}</td>
                             <td><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></td>
-                            <td>{{$contact->adminDepartment->name}}</td>
+                            <td>{{$contact->title}}</td>
                             <td>
                                 <div class="buttons has-addons">
                                     <a class="button is-info" href="{{ route('admin.contacts.show', $contact->id) }}"> عرض </a>
@@ -42,9 +42,9 @@
                 </table>
             </div>
         </div>
-        <footer class="card-footer with-pagination">
+        {{-- <footer class="card-footer with-pagination">
             {{ $contacts->links('vendor.pagination.bulma') }}
-        </footer>
+        </footer> --}}
     </div>
     @include('admin.partials.deleteModal')
 @endsection

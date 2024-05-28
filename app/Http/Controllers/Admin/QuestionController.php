@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class QuestionController extends Controller
     public function index()
     {
         //
+        $questions = Question::latest()->paginate(10);
+        return view('admin.questions.index', compact('questions'));
     }
 
     /**
@@ -21,6 +24,8 @@ class QuestionController extends Controller
     public function create()
     {
         //
+        return view('admin.questions.create');
+
     }
 
     /**
@@ -29,6 +34,12 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         //
+
+        Question::create($request->except( '_token'));
+
+
+        return redirect()->route('admin.questions.index')->with('success', 'تم اضافة البيانات بنجاح');
+
     }
 
     /**
@@ -45,6 +56,8 @@ class QuestionController extends Controller
     public function edit(Question $question)
     {
         //
+        return view('admin.questions.edit', compact('question'));
+
     }
 
     /**
@@ -53,6 +66,10 @@ class QuestionController extends Controller
     public function update(Request $request, Question $question)
     {
         //
+        $question->update($request->except('_token', '_method'));
+
+        return redirect()->route('admin.questions.index')->with('success', 'تم تعديل البيانات بنجاح');
+
     }
 
     /**
@@ -61,5 +78,8 @@ class QuestionController extends Controller
     public function destroy(Question $question)
     {
         //
+        $question->delete();
+        return redirect()->route('admin.questions.index')->with('delete', 'تم حذف البيانات بنجاح');
+
     }
 }

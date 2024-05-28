@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\WhyUs;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class WhyUsController extends Controller
     public function index()
     {
         //
+        $whyUsQuestions = WhyUs::latest()->paginate(10);
+        return view('admin.why_us.index', compact('whyUsQuestions'));
     }
 
     /**
@@ -21,6 +24,8 @@ class WhyUsController extends Controller
     public function create()
     {
         //
+        return view('admin.why_us.create');
+
     }
 
     /**
@@ -29,6 +34,10 @@ class WhyUsController extends Controller
     public function store(Request $request)
     {
         //
+        WhyUs::create($request->except( '_token'));
+
+        return redirect()->route('admin.why_us.index')->with('success', 'تم اضافة البيانات بنجاح');
+
     }
 
     /**
@@ -45,6 +54,8 @@ class WhyUsController extends Controller
     public function edit(WhyUs $whyUs)
     {
         //
+        return view('admin.why_us.edit', compact('whyUs'));
+
     }
 
     /**
@@ -53,6 +64,10 @@ class WhyUsController extends Controller
     public function update(Request $request, WhyUs $whyUs)
     {
         //
+        $whyUs->update($request->except('_token', '_method'));
+
+        return redirect()->route('admin.why_us.index')->with('success', 'تم تعديل البيانات بنجاح');
+
     }
 
     /**
@@ -61,5 +76,7 @@ class WhyUsController extends Controller
     public function destroy(WhyUs $whyUs)
     {
         //
+        $whyUs->delete();
+        return redirect()->route('admin.why_us.index')->with('delete', 'تم حذف البيانات بنجاح');
     }
 }

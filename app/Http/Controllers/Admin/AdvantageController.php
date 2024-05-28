@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Advantage;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class AdvantageController extends Controller
     public function index()
     {
         //
+        $advantages = Advantage::latest()->paginate(10);
+        return view('admin.advantages.index', compact('advantages'));
     }
 
     /**
@@ -21,6 +24,8 @@ class AdvantageController extends Controller
     public function create()
     {
         //
+        return view('admin.advantages.create');
+
     }
 
     /**
@@ -29,6 +34,17 @@ class AdvantageController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/advantages'), $ImageName);
+        }
+
+        Advantage::create($request->except('icon', '_token') +
+            ['icon' => $ImageName]);
+
+
+        return redirect()->route('admin.advantages.index')->with('success', 'تم اضافة البيانات بنجاح');
+
     }
 
     /**
@@ -45,6 +61,8 @@ class AdvantageController extends Controller
     public function edit(Advantage $advantage)
     {
         //
+        return view('admin.advantages.edit', compact('advantage'));
+
     }
 
     /**
@@ -53,6 +71,14 @@ class AdvantageController extends Controller
     public function update(Request $request, Advantage $advantage)
     {
         //
+        $advantage->update($request->except('icon', '_token', '_method'));
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/advantages'), $ImageName);
+            $advantage->update(['icon' => $ImageName]);
+        }
+        return redirect()->route('admin.advantages.index')->with('success', 'تم تعديل البيانات بنجاح');
+
     }
 
     /**
@@ -61,5 +87,8 @@ class AdvantageController extends Controller
     public function destroy(Advantage $advantage)
     {
         //
+        $advantage->delete();
+        return redirect()->route('admin.advantages.index')->with('delete', 'تم حذف البيانات بنجاح');
+
     }
 }

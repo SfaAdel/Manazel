@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Title;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class TitleController extends Controller
     public function index()
     {
         //
+        $titles = Title::latest()->paginate(10);
+        return view('admin.titles.index', compact('titles'));
     }
 
     /**
@@ -21,6 +24,8 @@ class TitleController extends Controller
     public function create()
     {
         //
+        return view('admin.titles.create');
+
     }
 
     /**
@@ -29,6 +34,17 @@ class TitleController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/titles'), $ImageName);
+        }
+
+        Title::create($request->except('icon', '_token') +
+            ['icon' => $ImageName]);
+
+
+        return redirect()->route('admin.titles.index')->with('success', 'تم اضافة البيانات بنجاح');
+
     }
 
     /**
@@ -45,6 +61,8 @@ class TitleController extends Controller
     public function edit(Title $title)
     {
         //
+        return view('admin.titles.edit', compact('title'));
+
     }
 
     /**
@@ -53,6 +71,14 @@ class TitleController extends Controller
     public function update(Request $request, Title $title)
     {
         //
+        $title->update($request->except('icon', '_token', '_method'));
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/titles'), $ImageName);
+            $title->update(['icon' => $ImageName]);
+        }
+        return redirect()->route('admin.titles.index')->with('success', 'تم تعديل البيانات بنجاح');
+
     }
 
     /**
@@ -61,5 +87,7 @@ class TitleController extends Controller
     public function destroy(Title $title)
     {
         //
+        $title->delete();
+        return redirect()->route('admin.titles.index')->with('delete', 'تم حذف البيانات بنجاح');
     }
 }

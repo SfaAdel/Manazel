@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\Contact;
+use App\Models\AboutUs;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+
+
+class AboutUsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,6 @@ class ContactController extends Controller
     public function index()
     {
         //
-        $contacts = Contact::latest()->paginate(10);
-        return view('admin.contacts.index', compact('contacts'));
     }
 
     /**
@@ -38,17 +37,15 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Contact $contact)
+    public function show(AboutUs $aboutUs)
     {
         //
-        return view('admin.contacts.show', compact('contact'));
-
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contact $contact)
+    public function edit(AboutUs $aboutUs)
     {
         //
     }
@@ -56,7 +53,7 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, AboutUs $aboutUs)
     {
         //
     }
@@ -64,11 +61,8 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contact $contact)
+    public function destroy(AboutUs $aboutUs)
     {
         //
-        $contact->delete();
-
-        return redirect()->route('admin.contacts.index')->with('success', 'تم الحذف بنجاح');
     }
 }
