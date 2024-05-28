@@ -26,4 +26,20 @@ class SubService extends Model
         return $this->belongsTo(Service::class);
     }
 
+    protected static function booted()
+    {
+        static::saving(function ($subService) {
+            if ($subService->service) {
+                $category = $subService->service->category;
+
+                if ($category) {
+                    $providersCount = Provider::where('category_id', $category->id)
+                                              ->where('status', 1)
+                                              ->count();
+                    $subService->providers = $providersCount;
+                }
+            }
+        });
+    }
+
 }

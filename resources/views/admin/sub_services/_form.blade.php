@@ -1,20 +1,6 @@
 <!-- Start Card Content -->
 <div class="card-content">
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label required">التصنيف التابع لها</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    <single-select :inputs="{{ $categories }}" forname=""
-                                   @if(isset($subService) && $subService->service->category) :oldvalues="{{ $subService->service->category()->get(['id', 'name']) }}" @endif>
-                    </single-select>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr />
+
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">الخدمة الرئيسية التابع لها</label>
@@ -22,14 +8,21 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <single-select :inputs="{{ $services }}" forname="service_id"
-                                   @if(isset($subService) && $subService->service) :oldvalues="{{ $subService->service()->get(['id', 'name']) }}" @endif>
-                    </single-select>
+                    <select id="service-select" name="service_id" class="form-control input">
+                        <option value="" disabled selected>اختر خدمة</option>
+                        @foreach($services as $service)
+                            <option value="{{ $service->id }}" {{ isset($subService) && $subService->service_id == $service->id ? 'selected' : '' }}>
+                                {{ $service->name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </div>
     </div>
     <hr />
+
+
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">اسم الخدمة  </label>
@@ -45,17 +38,30 @@
     <hr />
       <div class="field is-horizontal">
           <div class="field-label is-normal">
-              <label class="label required">الوصف  </label>
+              <label class="label required">وصف قصير  </label>
           </div>
           <div class="field-body">
               <div class="field">
                   <div class="control">
-                      {!! Form::text('description', null, ['class' => 'input' , 'required'] )!!}
+                      {!! Form::text('short_description', null, ['class' => 'input' , 'required'] )!!}
                   </div>
               </div>
           </div>
       </div>
       <hr />
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">وصف طويل  </label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::text('long_description', null, ['class' => 'input' , 'required'] )!!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
       <div class="field is-horizontal">
           <div class="field-label is-normal">
               <label class="label required">سعر الخدمة  </label>
@@ -63,13 +69,13 @@
           <div class="field-body">
               <div class="field">
                   <div class="control">
-                      {!! Form::number('price', null, ['class' => 'input' , 'required'] )!!}
+                      {!! Form::number('price', null, ['class' => 'input' , 'required' , 'min' => 0] )!!}
                   </div>
               </div>
           </div>
       </div>
       <hr />
-      <div class="field is-horizontal">
+      {{-- <div class="field is-horizontal">
           <div class="field-label is-normal">
               <label class="label required">عدد مقدمين الخدمة  </label>
           </div>
@@ -81,7 +87,7 @@
               </div>
           </div>
       </div>
-    <hr />
+    <hr /> --}}
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">صورة </label>
@@ -90,7 +96,7 @@
             <div class="field">
                 <div class="control">
                     <uploader label="صورة" name="icon" @if (isset($subService))
-                        file="{{ asset('images/sub_services/' . $subService->icon) }}" @endif></uploader>
+                        file="{{ asset('images/sub_services/' . $subService->icon) }}" @endif required></uploader>
                 </div>
             </div>
         </div>
@@ -123,3 +129,15 @@
     <button type="submit" class="button is-success">حفظ</button>
   </div>
 </div><!-- End Card Footer -->
+
+
+<!-- Include jQuery and Select2 initialization -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#service-select').select2({
+            placeholder: 'اختر خدمة',
+            allowClear: true
+        });
+    });
+</script>

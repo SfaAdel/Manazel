@@ -30,6 +30,27 @@
         <a class="link-item" href="{{ route('admin.blogs.create') }}">اضافة مدونة</a>
         <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة المدونات</a>
     </collapse-item>
+    <collapse-item title=" العناوين" icon="fa fa-handshake">
+        <a class="link-item" href="{{ route('admin.blogs.create') }}"> اضافة عنوان</a>
+        <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة العناوين</a>
+    </collapse-item>
+    <collapse-item title=" الاسئلة" icon="fa fa-handshake">
+        <a class="link-item" href="{{ route('admin.blogs.create') }}"> اضافة سؤال</a>
+        <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة الاسئلة</a>
+    </collapse-item>
+    <collapse-item title=" المميزات" icon="fa fa-handshake">
+        <a class="link-item" href="{{ route('admin.blogs.create') }}"> اضافة ميزة</a>
+        <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة المميزات</a>
+    </collapse-item>
+    <collapse-item title=" من نحن" icon="fa fa-handshake">
+        <a class="link-item" href="{{ route('admin.blogs.create') }}"> اضافة سؤال</a>
+        <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة الاسئلة</a>
+        <a class="link-item" href="{{ route('admin.blogs.create') }}"> اضافة عداد</a>
+        <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة الاعداد</a>
+    </collapse-item>
+    <collapse-item title="اجازات العاملين" icon="fa fa-handshake">
+        <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة الاجازات</a>
+    </collapse-item>
     <collapse-item title="الطلبات" icon="fa fa-handshake">
         <a class="link-item" href="{{ route('admin.orders.index') }}">قائمة الطلبات</a>
     </collapse-item>

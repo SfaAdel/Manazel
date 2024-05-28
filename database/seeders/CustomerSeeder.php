@@ -19,5 +19,23 @@ class CustomerSeeder extends Seeder
             'gender' => 'female',
             'password' => bcrypt('password'),
         ]);
+        Customer::create([
+            'name' => 'بسنت',
+            'phone' => '01012026064',
+            'gender' => 'female',
+            'password' => bcrypt('password'),
+        ]);
+        Customer::create([
+            'name' => 'صفا',
+            'phone' => '01012073064',
+            'gender' => 'female',
+            'password' => bcrypt('password'),
+        ]);
+        Customer::create([
+            'name' => 'احمد',
+            'phone' => '01012976064',
+            'gender' => 'male',
+            'password' => bcrypt('password'),
+        ]);
     }
 }

@@ -84,9 +84,13 @@
     </div><!-- End Card Content -->
     @endif
     <!-- Start Card Footer -->
-    <div class="card-footer with-pagination">
-      {{-- {{ $posts->links('vendor.pagination.bulma') }} --}}
-    </div><!-- End Card Footer -->
+        <div class="center d-flex justify-center align-content-center m-4">
+            <div class="card-footer with-pagination ">
+                {{ $orders->links() }}
+            </div>
+        </div>
+    <!-- End Card Footer -->
+
   </div><!-- End Card -->
 
   <!-- Include Modals -->

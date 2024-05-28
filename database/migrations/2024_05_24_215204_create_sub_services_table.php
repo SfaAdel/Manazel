@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('sub_services', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('description')->nullable();
+            $table->string('short_description')->nullable();
+            $table->text('long_description')->nullable();
             $table->string('icon')->nullable();
             $table->foreignId('service_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->boolean('active')->default(1)->nullable();

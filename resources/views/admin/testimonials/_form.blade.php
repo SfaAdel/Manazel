@@ -47,7 +47,7 @@
             <div class="field">
                 <div class="control">
                     <uploader label="صورة" name="icon" @if (isset($testimonial))
-                        file="{{ asset('images/testimonials/' . $testimonial->icon) }}" @endif></uploader>
+                        file="{{ asset('images/testimonials/' . $testimonial->icon) }}" @endif required></uploader>
                 </div>
             </div>
         </div>
