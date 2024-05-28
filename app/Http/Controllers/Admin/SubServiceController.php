@@ -26,11 +26,10 @@ class SubServiceController extends Controller
      */
     public function create()
     {
-        //
         $categories = Category::all(['id', 'name']);
-        $services = Service::all(['id', 'name']);
+        $services = Service::all(['id', 'name', 'category_id']);
 
-        return view('admin.sub_services.create', compact('categories','services'));
+        return view('admin.sub_services.create', compact('categories', 'services'));
     }
 
     /**
@@ -39,7 +38,15 @@ class SubServiceController extends Controller
     public function store(Request $request)
     {
         //
-        SubService::create($request->except('_token'));
+
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/sub_services'), $ImageName);
+        }
+
+        SubService::create($request->except('icon', '_token') +
+            ['icon' => $ImageName]);
+
 
         return redirect()->route('admin.sub_services.index')->with('success', 'تم اضافة البيانات بنجاح');
     }
@@ -71,7 +78,12 @@ class SubServiceController extends Controller
     public function update(Request $request, SubService $subService)
     {
         //
-        $subService->update($request->except('_method', '_token'));
+        $subService->update($request->except('icon', '_token', '_method'));
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/sub_services'), $ImageName);
+            $subService->update(['icon' => $ImageName]);
+        }
         return redirect()->route('admin.sub_services.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 
@@ -82,4 +94,11 @@ class SubServiceController extends Controller
     {
         //
     }
+
+    public function getServicesByCategory($categoryId)
+    {
+        $services = Service::where('category_id', $categoryId)->get(['id', 'name']);
+        return response()->json($services);
+    }
+
 }

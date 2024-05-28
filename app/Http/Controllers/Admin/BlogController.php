@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -14,6 +15,9 @@ class BlogController extends Controller
     public function index()
     {
         //
+        $blogs = Blog::latest()->paginate(10);
+
+        return view('admin.blogs.index', compact('blogs'));
     }
 
     /**
@@ -22,6 +26,9 @@ class BlogController extends Controller
     public function create()
     {
         //
+        $categories = Category::all(['id', 'name']);
+
+        return view('admin.blogs.create', compact('categories'));
     }
 
     /**
@@ -30,6 +37,16 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/blogs'), $ImageName);
+        }
+
+        Blog::create($request->except('icon', '_token') +
+            ['icon' => $ImageName]);
+
+
+        return redirect()->route('admin.blogs.index')->with('success', 'تم اضافة البيانات بنجاح');
     }
 
     /**
@@ -46,6 +63,10 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
         //
+        $categories = Category::all(['id', 'name']);
+
+        return view('admin.blogs.edit', compact('blog','categories'));
+
     }
 
     /**
@@ -54,6 +75,13 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         //
+        $blog->update($request->except('icon', '_token', '_method'));
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/blogs'), $ImageName);
+            $blog->update(['icon' => $ImageName]);
+        }
+        return redirect()->route('admin.blogs.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 
     /**

@@ -35,8 +35,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-
-        Category::create($request->except('_token'));
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/categories'), $ImageName);
+        }
+        Category::create($request->except('icon', '_token') +
+            ['icon' => $ImageName]);
 
         return redirect()->route('admin.categories.index')->with('success', 'تم اضافة البيانات بنجاح');
     }
@@ -66,7 +70,13 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
-        $category->update($request->except('_method', '_token'));
+        $category->update($request->except('icon', '_token', '_method'));
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/categories'), $ImageName);
+            $category->update(['icon' => $ImageName]);
+        }
+
         return redirect()->route('admin.categories.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 

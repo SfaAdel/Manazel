@@ -19,8 +19,8 @@ class Provider extends Model
         return $this->hasMany(Appointment::class);
     }
 
-    public function subService()
+    public function category()
     {
-        return $this->belongsTo(SubService::class);
+        return $this->belongsTo(Category::class);
     }
 }

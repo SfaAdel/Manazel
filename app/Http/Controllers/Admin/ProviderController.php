@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Provider;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,9 @@ class ProviderController extends Controller
     public function index()
     {
         //
+        $providers = Provider::latest()->paginate(10);
+
+        return view('admin.providers.index', compact('providers'));
     }
 
     /**
@@ -22,6 +26,9 @@ class ProviderController extends Controller
     public function create()
     {
         //
+        $categories = Category::all(['id', 'name']);
+
+        return view('admin.providers.create', compact('categories'));
     }
 
     /**
@@ -30,6 +37,10 @@ class ProviderController extends Controller
     public function store(Request $request)
     {
         //
+
+        Provider::create($request->except('_token'));
+
+        return redirect()->route('admin.providers.index')->with('success', 'تم اضافة البيانات بنجاح');
     }
 
     /**
@@ -46,6 +57,9 @@ class ProviderController extends Controller
     public function edit(Provider $provider)
     {
         //
+        $categories = Category::all(['id', 'name']);
+
+        return view('admin.providers.edit', compact('provider','categories'));
     }
 
     /**
@@ -54,6 +68,9 @@ class ProviderController extends Controller
     public function update(Request $request, Provider $provider)
     {
         //
+        $provider->update($request->except('_token', '_method'));
+
+        return redirect()->route('admin.providers.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 
     /**

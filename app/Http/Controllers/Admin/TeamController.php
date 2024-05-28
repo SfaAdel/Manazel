@@ -13,6 +13,9 @@ class TeamController extends Controller
     public function index()
     {
         //
+        $teams = Team::latest()->paginate(10);
+        return view('admin.teams.index', compact('teams'));
+
     }
 
     /**
@@ -21,6 +24,8 @@ class TeamController extends Controller
     public function create()
     {
         //
+        return view('admin.teams.create');
+
     }
 
     /**
@@ -29,6 +34,16 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/teams'), $ImageName);
+        }
+
+        Team::create($request->except('icon', '_token') +
+            ['icon' => $ImageName]);
+
+
+        return redirect()->route('admin.teams.index')->with('success', 'تم اضافة البيانات بنجاح');
     }
 
     /**
@@ -37,6 +52,7 @@ class TeamController extends Controller
     public function show(Team $team)
     {
         //
+
     }
 
     /**
@@ -45,6 +61,8 @@ class TeamController extends Controller
     public function edit(Team $team)
     {
         //
+        return view('admin.teams.edit', compact('team'));
+
     }
 
     /**
@@ -53,6 +71,13 @@ class TeamController extends Controller
     public function update(Request $request, Team $team)
     {
         //
+        $team->update($request->except('icon', '_token', '_method'));
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/teams'), $ImageName);
+            $team->update(['icon' => $ImageName]);
+        }
+        return redirect()->route('admin.teams.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 
     /**

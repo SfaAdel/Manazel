@@ -1,57 +1,62 @@
 <!-- Start Card Content -->
 <div class="card-content">
-    <student-select
-        old-collage="{{ isset($book) ? $book->category_id : '' }}" old-year="{{ isset($book) ? $book->sub_category_id : ''}}"
-        old-department="{{ isset($book) ? $book->type_id : '' }}" old-student="{{ isset($book) ? $book->sub_type_id : ''}}">
-    </student-select>
-    <hr />
-  <div class="field is-horizontal">
-      <div class="field-label is-normal">
-          <label class="label required">اسم الكتاب </label>
-      </div>
-      <div class="field-body">
-          <div class="field">
-              <div class="control">
-                  {!! Form::text('title', null, ['class' => 'input', 'required']) !!}
-              </div>
-          </div>
-      </div>
-  </div>
-  <hr />
-  <div class="field is-horizontal">
-      <div class="field-label is-normal">
-          <label class="label required"> الكتاب</label>
-      </div>
-      <div class="field-body">
-          <div class="field">
-              <div class="control">
-                  <uploader accept="pdf" label="رفع الملف" name="book" @if (isset($eBook))
-                      file="{{ $eBook->book_path }}" @endif></uploader>
-              </div>
-          </div>
-      </div>
-  </div>
-    <hr />
+
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label"> شروط النشر</label>
+            <label class="label required">الاسم </label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::textarea('description_ar', \App\Models\Setting::first()->publication_policy, ['class' => 'textarea', 'rows' => 4  , 'disabled'] )!!}
+                    {!! Form::text('name', null, ['class' => 'input' , 'required'] )!!}
                 </div>
             </div>
         </div>
     </div>
+    <hr />
+      <div class="field is-horizontal">
+          <div class="field-label is-normal">
+              <label class="label required">رقم الهاتف  </label>
+          </div>
+          <div class="field-body">
+              <div class="field">
+                  <div class="control">
+                      {!! Form::tel('phone', null, ['class' => 'input' , 'required'] )!!}
+                  </div>
+              </div>
+          </div>
+      </div>
+    <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label">الموافقة علي شروط النشر</label>
+            <label class="label required">التصنيف التابع له</label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::checkbox('accepted', true, null) !!}
+                    <single-select :inputs="{{ $categories }}" forname="category_id"
+                                   @if(isset($provider) && $provider->category) :oldvalues="{{ $provider->category()->get(['id', 'name']) }}" @endif>
+                    </single-select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">الحالة</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" name="status" value="1" @if(isset($department) && $department->active) checked @else checked @endif>
+متاح
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="active" value="0" @if(isset($department) && !$department->active) checked  @endif>
+                        غير متاح
+                    </label>
                 </div>
             </div>
         </div>
@@ -60,7 +65,7 @@
 <!-- Start Card Footer -->
 <div class="card-footer">
   <div class="buttons has-addons">
-      <a class="button is-info" href="{{ route('admin.books.students') }}"> الغاء </a>
-      <button type="submit" class="button is-success">حفظ</button>
+    <a class="button is-info" href="{{ route('admin.services.index') }}"> الغاء </a>
+    <button type="submit" class="button is-success">حفظ</button>
   </div>
 </div><!-- End Card Footer -->

@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'اقسام الكليات')
+@section('page.title', 'الخدمات الاساسية')
 <!-- Start Content Section -->
 @section('content')
   <!-- Start Card -->
@@ -34,13 +34,18 @@
                             <td>{{ $service->name }}</td>
                             <td>{{ $service->category ? $service->category->name : ' - - ' }}</td>
                             <td>{{ $service->description }}</td>
-                            <td>{{ $service->icon }}</td>
+                            @if ($service->icon)
                             <td>
-                                <div class="buttons has-addons">
-                                    <a class="button is-info" href="{{ route('admin.services.edit', $service->id) }}">
-                                        تعديل </a>
-                                </div>
+                                <img src="{{ asset('images/services/' . $service->icon) }}" class="icon rounded-circle" alt="icon">
                             </td>
+                        @endif
+                        <td>
+                            <div class="buttons has-addons">
+                                <a class="button is-info" href="{{ route('admin.services.edit', $service->id) }}">
+                                    تعديل
+                                </a>
+                            </div>
+                        </td>
                         </tr>
                     @endforeach
                 </tbody>

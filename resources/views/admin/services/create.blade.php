@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'اضافة قسم')
+@section('page.title', 'اضافة خدمة رئيسية')
 <!-- Start Content Section -->
 @section('content')
   <!-- Start Card -->

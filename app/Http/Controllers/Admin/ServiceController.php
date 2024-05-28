@@ -38,7 +38,15 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         //
-        Service::create($request->except('_token'));
+
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/services'), $ImageName);
+        }
+
+        Service::create($request->except('icon', '_token') +
+            ['icon' => $ImageName]);
+
 
         return redirect()->route('admin.services.index')->with('success', 'تم اضافة البيانات بنجاح');
     }
@@ -69,7 +77,12 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         //
-        $service->update($request->except('_method', '_token'));
+        $service->update($request->except('icon', '_token', '_method'));
+        if ($request->hasFile('icon')) {
+            $ImageName = time() . '.' . $request->icon->extension();
+            $request->icon->move(('images/services'), $ImageName);
+            $service->update(['icon' => $ImageName]);
+        }
         return redirect()->route('admin.services.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 

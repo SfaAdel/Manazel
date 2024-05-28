@@ -1,55 +1,65 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'مراجعي الكتب')
+@section('page.title', 'الخدمات الاساسية')
 <!-- Start Content Section -->
 @section('content')
-    <!-- Start Card -->
-    <div class="card main-card">
-        <!-- Start Card Header -->
-        <div class="card-header is-justify-content-space-between">
-            <a href="{{ route('admin.admins.create') }}" class="button is-success">
+  <!-- Start Card -->
+  <div class="card main-card">
+      <!-- Start Card Header -->
+      <div class="card-header is-justify-content-space-between">
+          <a href="{{ route('admin.testimonials.create') }}" class="button is-success">
         <span class="icon is-small">
           <i class="fa fa-plus-circle"></i>
         </span>
-                <span>اضافة مراجع</span>
-            </a>
-        </div>
-        <!-- End Card Header -->
-        <div class="card-content">
-            <div class="table-container">
-                <table class="table is-fullwidth">
-                    <thead>
+              <span>اضافة مراجعة جديدة</span>
+          </a>
+      </div><!-- End Card Header -->
+    <!-- Start Card Content -->
+    <div class="card-content">
+        <div class="table-container">
+            <table class="table is-fullwidth" id="categories">
+                <thead>
                     <tr>
-                        <th>الاسم</th>
-                        <th>البريد الالكتروني</th>
-                        <th>الكلية</th>
-                        <th>الحالة</th>
+                        <th>الاسم </th>
+                        <th>النجوم</th>
+                        <th> المراجعة</th>
+                        <th>الصورة</th>
                         <th>الاجراءات</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($admins as $admin)
-                    <tr>
-                        <td>{{ $admin->name }}</td>
-                        <td>{{ $admin->email }}</td>
-                        <td>{{ $admin->collage ? $admin->collage->name : ' - - ' }}</td>
-                        <td>{{ $admin->active ? 'مفعل' : 'غير مفعل' }}</td>
+                </thead>
+                <tbody>
+                    @foreach ($testimonials as $testimonial)
+                        <tr>
+                            <td>{{ $testimonial->name }}</td>
+                            <td>
+                                @for ($i = 0; $i < $testimonial->stars; $i++)
+                                <i class="fa-solid fa-star text-warning"></i>
+                                @endfor
+                            </td>
+                            <td>{{ $testimonial->review }}</td>
+                            @if ($testimonial->icon)
+                            <td>
+                                <img src="{{ asset('images/testimonials/' . $testimonial->icon) }}" class="icon rounded-circle" alt="icon">
+                            </td>
+                        @endif
                         <td>
                             <div class="buttons has-addons">
-                                <a class="button is-info" href="{{ route('admin.admins.edit', $admin->id) }}"> تعديل </a>
+                                <a class="button is-info" href="{{ route('admin.testimonials.edit', $testimonial->id) }}">
+                                    تعديل
+                                </a>
                             </div>
                         </td>
-                    </tr>
+                        </tr>
                     @endforeach
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
-        <div class="card-footer with-pagination">
-            {{ $admins->links('vendor.pagination.bulma') }}
-        </div>
-    </div>
-    <!-- End Card -->
+    </div><!-- End Card Content -->
+    <!-- Start Card Footer -->
+    <div class="card-footer with-pagination">
+        {{-- {{ $departments->links('vendor.pagination.bulma') }} --}}
+    </div><!-- End Card Footer -->
+  </div><!-- End Card -->
 @endsection
 <!-- End Content Section -->

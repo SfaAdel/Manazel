@@ -2,14 +2,27 @@
 <div class="card-content">
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">اختيار الكلية</label>
+            <label class="label required">التصنيف التابعة لها</label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <select-all :inputs="{{ $collages }}" forname="collages[]"
-                                   @if(isset($service) && $service->collages) :oldvalues="{{ $service->collages() }}" @endif>
-                    </select-all>
+                    <single-select :inputs="{{ $categories }}" forname="category_id"
+                                   @if(isset($blog) && $blog->category) :oldvalues="{{ $blog->category()->get(['id', 'name']) }}" @endif>
+                    </single-select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">اسم الخدمة الرئيسية </label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::text('name', null, ['class' => 'input' , 'required'] )!!}
                 </div>
             </div>
         </div>
@@ -17,47 +30,31 @@
     <hr />
       <div class="field is-horizontal">
           <div class="field-label is-normal">
-              <label class="label required">اسم الخدمة </label>
+              <label class="label required">الوصف  </label>
           </div>
           <div class="field-body">
               <div class="field">
                   <div class="control">
-                      {!! Form::text('name', null, ['class' => 'input' , 'required'] )!!}
+                      {!! Form::text('description', null, ['class' => 'input' , 'required'] )!!}
                   </div>
               </div>
           </div>
       </div>
-<!--        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">اختيار الخدمة الرئيسية </label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <div class="select is-fullwidth">
-                            {!! Form::select('parent_id', $services, null, ['placeholder' => 'اختيار الخدمة الرئيسية']) !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-    <hr />
-    <service-type @if(isset($service)) old-type="{{ $service->type }}" @endif
-    @if(isset($service) && $service->type == 'link') old-link="{{ $service->link }}" @endif></service-type>
     <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">الترتيب</label>
+            <label class="label required">صورة </label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::number('priority', isset($service) ? $service->priority : \App\Models\Service::count()+1, ['class' => 'input', 'min' => 1] )!!}
+                    <uploader label="صورة" name="icon" @if (isset($blog))
+                        file="{{ asset('images/blogs/' . $blog->icon) }}" @endif></uploader>
                 </div>
             </div>
         </div>
     </div>
-    <hr />
+    {{-- <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label">الحالة</label>
@@ -66,17 +63,17 @@
             <div class="field">
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="active" value="1" @if(isset($service) && $service->active) checked @else checked @endif>
-                        مفعلة
+                        <input type="radio" name="active" value="1" @if(isset($department) && $department->active) checked @else checked @endif>
+                        مفعل
                     </label>
                     <label class="radio">
-                        <input type="radio" name="active" value="0" @if(isset($service) && !$service->active) checked  @endif>
-                        غير مفعلة
+                        <input type="radio" name="active" value="0" @if(isset($department) && !$department->active) checked  @endif>
+                        غير مفعل
                     </label>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div><!-- End Card Content -->
 <!-- Start Card Footer -->
 <div class="card-footer">

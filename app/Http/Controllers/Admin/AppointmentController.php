@@ -54,6 +54,8 @@ class AppointmentController extends Controller
     public function update(Request $request, Appointment $appointment)
     {
         //
+        $appointment->update($request->only('provider_id'));
+        return redirect()->back()->with('success', 'تم تحديث مقدم الخدمة بنجاح');
     }
 
     /**
@@ -62,5 +64,7 @@ class AppointmentController extends Controller
     public function destroy(Appointment $appointment)
     {
         //
+        $appointment->delete();
+        return redirect()->back()->with('success', 'تم حذف الموعد بنجاح');
     }
 }

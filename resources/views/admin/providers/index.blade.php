@@ -1,19 +1,19 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'الكتب الالكترونية')
+@section('page.title', ' العاملين')
 <!-- Start Content Section -->
 @section('content')
   <!-- Start Card -->
   <div class="card main-card">
     <!-- Start Card Header -->
       <div class="card-header">
-          <div>
-                <span class="icon is-small">
-                  <i class="fa fa-book"></i>
-                </span>
-              <span>قائمة الكتب </span>
-          </div>
+        <a href="{{ route('admin.providers.create') }}" class="button is-success">
+            <span class="icon is-small">
+              <i class="fa fa-plus-circle"></i>
+            </span>
+                  <span>اضافة عامل جديد</span>
+              </a>
       </div><!-- End Card Header -->
 
     <!-- Start Card Content -->
@@ -22,26 +22,26 @@
         <table class="table is-fullwidth" id="books">
           <thead>
           <tr>
-            <th>اسم الكتاب</th>
-            <th>الكلية</th>
-            <th>حالة النشر</th>
+            <th>الاسم </th>
+            <th>رقم الهاتف</th>
+            <th> التصنيف التابع له</th>
+            <th>الحالة </th>
             <th>الاجراءات</th>
           </tr>
           </thead>
           <tbody>
-            @foreach($books as $book)
+            @foreach($providers as $provider)
               <tr>
-                <td>{{ $book->title }}</td>
-                <td>{{ ($book->collage ? $book->collage->name : ' - - ').' - '.($book->department ? $book->department->name : '') }}</td>
-                <td>{{ $book->published ? 'تم النشر' : 'في انتظار التأكيد'}}</td>
+                <td>{{ $provider->name }}</td>
+                <td>{{ $provider->phone }}</td>
+                <td>{{  ($provider->category_id ? $provider->category->name : ' - - ') }}</td>
+                <td>{{ $provider->status ? 'متاح' : 'غير متاح '}}</td>
                 <td>
-                  <div class="buttons has-addons">
-                    <a class="button is-primary" target="_blank" href="{{ route('admin.books.show', $book->id) }}"> عرض </a>
-                    <a class="button is-warning" target="_blank" href="{{ route('admin.books.log', $book->id) }}"> السجل </a>
-                    @if($book->published)
-                        <span class="modal-open button is-danger" status-name="تأكيد الغاء النشر"  traget-modal=".deactivate-modal" data_id="{{ $book->id }}" data_name="{{ $book->title }}" data-url="{{ route('admin.books.destroy', $book->id) }}">الغاء النشر</span>
-                    @endif
-                  </div>
+                    <div class="buttons has-addons">
+                        <a class="button is-info" href="{{ route('admin.providers.edit', $provider->id) }}">
+                            تعديل
+                        </a>
+                    </div>
                 </td>
               </tr>
             @endforeach
@@ -50,10 +50,10 @@
       </div>
     </div><!-- End Card Content -->
 
-    <!-- Start Card Footer -->
+    {{-- <!-- Start Card Footer -->
     <div class="card-footer with-pagination">
       {{ $books->links('vendor.pagination.bulma') }}
-    </div><!-- End Card Content -->
+    </div><!-- End Card Content --> --}}
   </div><!-- End Card -->
 
   <!-- Include Modals -->

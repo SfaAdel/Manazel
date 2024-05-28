@@ -33,8 +33,11 @@
                         <tr>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->description }}</td>
-                            <td>{{ $category->icon }}</td>
+                            @if ($category->icon)
                             <td>
+                                <img src="{{ asset('images/categories/' . $category->icon) }}" class="icon rounded-circle" alt="icon">
+                            </td>
+                        @endif                            <td>
                                 <div class="buttons has-addons">
                                     <a class="button is-info" href="{{ route('admin.categories.edit', $category->id) }}">
                                         تعديل </a>

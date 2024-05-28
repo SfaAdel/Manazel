@@ -215,18 +215,22 @@
 
               <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
                 <div class="service-item position-relative">
-                  <div class="icon"><i class="bi bi-activity icon"></i></div>
-                  <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <div class="icon">
+                    <h4> <i class="bi bi-activity icon ml-3"></i> <a href="{{ route('service_details') }}" class="stretched-link">    تصليح الغسالات         </a></h4>
+                </div>
                   <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
+                <div class="center">
                     <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
 
+                </div>
                 </div>
               </div><!-- End Service Item -->
 
               <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
                 <div class="service-item position-relative">
-                  <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                  <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <div class="icon">
+                    <h4> <i class="bi bi-activity icon ml-3"></i> <a href="{{ route('service_details') }}" class="stretched-link"> تصليح الغسالات  </a></h4>
+                </div>
                   <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
                   <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
                 </div>
@@ -234,8 +238,10 @@
 
               <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
                 <div class="service-item position-relative">
-                  <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                  <h4><a href="{{ route('service_details') }}" class="stretched-link">    ترتيب دولاب الملابس بمساعدة العاملات المنزلية    </a></h4>
+                  <div class="icon">
+                    <h4> <i class="bi bi-activity icon ml-3"></i> <a href="{{ route('service_details') }}" class="stretched-link">    تصليح الغسالات         </a></h4>
+
+                </div>
                   <p>    إن ترتيب دولاب ملابس الأفراد مهمة لطيفة ولا تحتاج إلى المجهود الكبير في حال كان .....  </p>
                   <a href="{{ route('service_details') }}" class="btn btn-blue mt-3">معرفة المزيد</a>
                 </div>

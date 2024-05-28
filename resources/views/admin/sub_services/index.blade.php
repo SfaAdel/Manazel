@@ -40,8 +40,11 @@
                         <td>{{ $subService->price }}</td>
                         <td>{{ $subService->providers }}</td>
                         <td>{{ $subService->active ? 'مفعل' : 'غير مفعل' }}</td>
-                        <td>{{ $subService->icon }}</td>
-
+                        @if ($subService->icon)
+                            <td>
+                                <img src="{{ asset('images/sub_services/' . $subService->icon) }}" class="icon rounded-circle" alt="icon">
+                            </td>
+                        @endif
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.sub_services.edit', $subService->id) }}"> تعديل </a>

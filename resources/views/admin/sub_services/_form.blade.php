@@ -89,8 +89,8 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <uploader label="صورة" name="icon" @if (isset($service))
-                        file="{{ $service->icon }}" @endif></uploader>
+                    <uploader label="صورة" name="icon" @if (isset($subService))
+                        file="{{ asset('images/sub_services/' . $subService->icon) }}" @endif></uploader>
                 </div>
             </div>
         </div>

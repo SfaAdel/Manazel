@@ -49,7 +49,7 @@
             <div class="field">
                 <div class="control">
                     <uploader label="صورة" name="icon" @if (isset($service))
-                        file="{{ $service->icon }}" @endif></uploader>
+                        file="{{ asset('images/services/' . $service->icon) }}" @endif></uploader>
                 </div>
             </div>
         </div>

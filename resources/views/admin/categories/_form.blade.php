@@ -35,7 +35,7 @@
             <div class="field">
                 <div class="control">
                     <uploader label="صورة" name="icon" @if (isset($category))
-                        file="{{ $category->icon }}" @endif></uploader>
+                        file="{{ asset('images/categories/' . $category->icon) }}" @endif></uploader>
                 </div>
             </div>
         </div>
