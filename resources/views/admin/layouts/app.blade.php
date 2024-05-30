@@ -30,6 +30,9 @@
     <link rel="mask-icon" href="/admin/img/favicon/safari-pinned-tab.svg" color="#54cc96">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-xX2qm/2s5QTH3BgKu8E0bM2Dr52XYXaRb1XoQ3Dd8r6LOIF6cHDuHFq3TR96EzD2F2CCURQAxufbAqx8g+stMw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">

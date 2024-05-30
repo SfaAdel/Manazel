@@ -896,53 +896,84 @@ section,
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
-.services {
-  --background-color: color-mix(in srgb, var(--heading-color), transparent 95%);
-}
+ .services {
+            --background-color: color-mix(in srgb, var(--heading-color), transparent 95%);
+        }
 
-.services .service-item {
-  box-shadow: 0px 5px 90px 0px color-mix(in srgb, var(--default-color), transparent 90%);
-  padding: 50px 15px;
-  transition: all ease-in-out 0.4s;
-  background-color: var(--contrast-color);
-  height: 100%;
-}
+        .services .service-item {
+            box-shadow: 0px 5px 90px 0px color-mix(in srgb, var(--default-color), transparent 70%);
+            padding: 20px 15px;
+            transition: all ease-in-out 0.4s;
+            background-color: var(--contrast-color);
+            border-radius: 1rem;
+            border-width: 1px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-.services .service-item .icon {
-  margin-bottom: 10px;
-}
+        .services .service-item .icon {
+            margin-bottom: 10px;
+        }
 
-.services .service-item .icon i {
-  color: var(--accent-color);
-  font-size: 32px;
-  transition: 0.3s;
-}
+        .services .service-item .icon i {
+            color: var(--accent-color);
+            font-size: 12px;
+            transition: 0.3s;
+        }
 
-.services .service-item h4 {
-  font-weight: 700;
-  margin-bottom: 15px;
-  font-size: 20px;
-}
+        .services .service-item h4 {
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
 
-.services .service-item h4 a {
-  color: var(--heading-color);
-  transition: ease-in-out 0.3s;
-}
+        .service_icon {
+            width: 2rem;
+        }
 
-.services .service-item p {
-  line-height: 24px;
-  font-size: 14px;
-  margin-bottom: 0;
-}
+        .services .service-item h4 a {
+            color: var(--heading-color);
+            transition: ease-in-out 0.3s;
+        }
 
-.services .service-item:hover {
-  transform: translateY(-10px);
-}
+        .services .service-item p {
+            line-height: 24px;
+            font-size: 14px;
+            margin-bottom: 0;
+            flex-grow: 1;
+        }
 
-.services .service-item:hover h4 a {
-  color: var(--accent-color);
-}
+        .services .service-item:hover {
+            transform: translateY(-10px);
+        }
 
+        .services .service-item:hover h4 a {
+            color: var(--accent-color);
+        }
+
+        .btn {
+            align-self: center;
+        }
+
+        @media (max-width: 768px) {
+            .services .col-sm-6 {
+                flex-basis: 48%;
+                max-width: 48%;
+                min-width: 48%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services .col-6 {
+                flex-basis: 48%;
+                max-width: 48%;
+                min-width: 48%;
+                margin-bottom: 20px;
+            }
+        }
 /*--------------------------------------------------------------
 # Call To Action Section
 --------------------------------------------------------------*/

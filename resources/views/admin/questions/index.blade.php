@@ -15,7 +15,13 @@
               <span>اضافة سؤال جديد</span>
           </a>
       </div><!-- End Card Header -->
-    <!-- Start Card Content -->
+
+      <div class="center">
+        @include('admin.partials.search_result', ['data' => $questions])
+    </div>
+
+    @if (!$questions->isEmpty())
+      <!-- Start Card Content -->
     <div class="card-content">
         <div class="table-container">
             <table class="table is-fullwidth" id="categories">
@@ -47,12 +53,15 @@
             </table>
         </div>
     </div><!-- End Card Content -->
-    <!-- Start Card Footer -->
-    <div class="card-footer with-pagination">
-        {{-- {{ $departments->links('vendor.pagination.bulma') }} --}}
-    </div><!-- End Card Footer -->
-  </div><!-- End Card -->
-  @include('admin.partials.deleteModal')
+    @endif
 
+    <!-- Start Card Footer -->
+    <div class="center d-flex justify-center align-content-center m-4">
+        <div class="card-footer with-pagination ">
+            {{ $questions->links() }}
+        </div>
+    </div>
+    <!-- End Card Footer -->
+    </div>
+    @include('admin.partials.deleteModal')
 @endsection
-<!-- End Content Section -->

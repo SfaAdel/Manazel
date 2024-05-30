@@ -15,7 +15,7 @@ class WhyUsController extends Controller
     {
         //
         $whyUsQuestions = WhyUs::latest()->paginate(10);
-        return view('admin.why_us.index', compact('whyUsQuestions'));
+        return view('admin.why.index', compact('whyUsQuestions'));
     }
 
     /**
@@ -24,7 +24,7 @@ class WhyUsController extends Controller
     public function create()
     {
         //
-        return view('admin.why_us.create');
+        return view('admin.why.create');
 
     }
 
@@ -36,7 +36,7 @@ class WhyUsController extends Controller
         //
         WhyUs::create($request->except( '_token'));
 
-        return redirect()->route('admin.why_us.index')->with('success', 'تم اضافة البيانات بنجاح');
+        return redirect()->route('admin.why.index')->with('success', 'تم اضافة البيانات بنجاح');
 
     }
 
@@ -51,32 +51,29 @@ class WhyUsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(WhyUs $whyUs)
+    public function edit(WhyUs $why)
     {
         //
-        return view('admin.why_us.edit', compact('whyUs'));
+        return view('admin.why.edit', compact('why'));
 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, WhyUs $whyUs)
+    public function update(Request $request, WhyUs $why)
     {
-        //
-        $whyUs->update($request->except('_token', '_method'));
-
-        return redirect()->route('admin.why_us.index')->with('success', 'تم تعديل البيانات بنجاح');
-
+        $why->update($request->except('_token', '_method'));
+        return redirect()->route('admin.why.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(WhyUs $whyUs)
+    public function destroy(WhyUs $why)
     {
         //
-        $whyUs->delete();
-        return redirect()->route('admin.why_us.index')->with('delete', 'تم حذف البيانات بنجاح');
+        $why->delete();
+        return redirect()->route('admin.why.index')->with('delete', 'تم حذف البيانات بنجاح');
     }
 }

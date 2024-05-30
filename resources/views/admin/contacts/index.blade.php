@@ -13,6 +13,12 @@
                 <span>رسائل التواصل</span>
             </div>
         </div>
+
+        <div class="center">
+            @include('admin.partials.search_result', ['data' => $contacts])
+        </div>
+
+        @if (!$contacts->isEmpty())
         <div class="card-content">
             <div class="table-container">
                 <table class="table is-fullwidth">
@@ -33,7 +39,7 @@
                             <td>
                                 <div class="buttons has-addons">
                                     <a class="button is-info" href="{{ route('admin.contacts.show', $contact->id) }}"> عرض </a>
-                                    <span class="modal-open button is-danger" traget-modal=".delete-modal" data_id="{{ $contact->id }}" data_name="{{ $contact->full_name }}" data-url="{{ route('admin.contacts.destroy', $contact->id) }}">مسح</span>
+                                    <span class="modal-open button is-danger" traget-modal=".delete-modal" data_id="{{ $contact->id }}" data_name="{{ $contact->name }}" data-url="{{ route('admin.contacts.destroy', $contact->id) }}">مسح</span>
                                 </div>
                             </td>
                         </tr>
@@ -42,9 +48,15 @@
                 </table>
             </div>
         </div>
-        {{-- <footer class="card-footer with-pagination">
-            {{ $contacts->links('vendor.pagination.bulma') }}
-        </footer> --}}
+        @endif
+
+    <!-- Start Card Footer -->
+    <div class="center d-flex justify-center align-content-center m-4">
+        <div class="card-footer with-pagination ">
+            {{ $contacts->links() }}
+        </div>
+    </div>
+    <!-- End Card Footer -->
     </div>
     @include('admin.partials.deleteModal')
 @endsection

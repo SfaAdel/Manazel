@@ -2,7 +2,7 @@
 <div class="card-content">
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">السؤال </label>
+            <label class="label required">العنوان </label>
         </div>
         <div class="field-body">
             <div class="field">
@@ -15,7 +15,7 @@
     <hr />
       <div class="field is-horizontal">
           <div class="field-label is-normal">
-              <label class="label required">الاجابة  </label>
+              <label class="label required">المحتوي  </label>
           </div>
           <div class="field-body">
               <div class="field">
@@ -31,7 +31,7 @@
 <!-- Start Card Footer -->
 <div class="card-footer">
   <div class="buttons has-addons">
-    <a class="button is-info" href="{{ route('admin.why_us.index') }}"> الغاء </a>
+    <a class="button is-info" href="{{ route('admin.why.index') }}"> الغاء </a>
     <button type="submit" class="button is-success">حفظ</button>
   </div>
 </div><!-- End Card Footer -->

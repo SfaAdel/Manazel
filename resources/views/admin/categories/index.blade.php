@@ -15,6 +15,13 @@
               <span>اضافة تصنيف</span>
           </a>
       </div><!-- End Card Header -->
+
+
+      <div class="center">
+        @include('admin.partials.search_result', ['data' => $categories])
+    </div>
+
+    @if (!$categories->isEmpty())
     <!-- Start Card Content -->
     <div class="card-content">
         <div class="table-container">
@@ -41,6 +48,8 @@
                                 <div class="buttons has-addons">
                                     <a class="button is-info" href="{{ route('admin.categories.edit', $category->id) }}">
                                         تعديل </a>
+                                        <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $category->id }}" data_name="{{ $category->name }}" data-url="{{ route('admin.categories.destroy', $category->id) }}">حذف</a>
+
                                 </div>
                             </td>
                         </tr>
@@ -49,10 +58,16 @@
             </table>
         </div>
     </div><!-- End Card Content -->
+    @endif
+
     <!-- Start Card Footer -->
-    <div class="card-footer with-pagination">
-        {{-- {{ $categories->links('vendor.pagination.bulma') }} --}}
-    </div><!-- End Card Footer -->
-  </div><!-- End Card -->
+    <div class="center d-flex justify-center align-content-center m-4">
+        <div class="card-footer with-pagination ">
+            {{ $categories->links() }}
+        </div>
+    </div>
+    <!-- End Card Footer -->
+    </div>
+    @include('admin.partials.deleteModal')
 @endsection
 <!-- End Content Section -->

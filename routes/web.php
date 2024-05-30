@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front\AuthController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,15 +37,16 @@ use Illuminate\Support\Facades\Route;
     });
 
 
-Route::get('/', function () {
-    return view('front.index'); }) ->name('home');
-
-Route::get('/services', function () {
-    return view('front/services'); }) ->name('services');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
-Route::get('/service-details', function () {
-    return view('front/service_details'); }) ->name('service_details');
+    Route::get('/services/{id}', [HomeController::class, 'service'])->name('services');
+    Route::get('/service-details/{id}', [HomeController::class, 'service_details'])->name('service_details');
+    Route::get('/sub-service-details/{id}', [HomeController::class, 'sub_service_details'])->name('sub_service_details');
+    Route::post('sub_service/{id}/review', [HomeController::class, 'submit_review'])->name('submit_review');
+
+
+
 
 Route::get('/about', function () {
     return view('front/about'); }) ->name('about');
@@ -67,8 +69,6 @@ Route::get('/blog-details', function () {
 Route::get('/general-order', function () {
     return view('front/general_order'); }) ->name('general_order');
 
-Route::get('/sub-service-details', function () {
-    return view('front/sub_service_details'); }) ->name('sub_service_details');
 
 
 

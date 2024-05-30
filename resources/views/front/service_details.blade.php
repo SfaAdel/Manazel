@@ -11,9 +11,9 @@
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
                     <p class=""> تفاصيل خدمة  </p>
-                    <h1 class="my-3">  صيانة الغسالات </h1>
+                    <h1 class="my-3">  {{$service->name}}</h1>
                     <div class=" center">
-                        <a href="{{ route('enroll') }}" class="btn-get-started mt-3">احجز خدمتك الان </a>
+                        {{-- <a href="{{ route('enroll') }}" class="btn-get-started mt-3">احجز خدمتك الان </a> --}}
                     </div>
                 </div>
             </div>
@@ -24,107 +24,55 @@
 
     <!-- Services Section -->
     <section id="services" class="section ">
-
-
-
-        <div class="container mt-5">
+        <div class="container custom-card-container mx-4 ">
             <div class="row">
-
-                        {{-- card 1 --}}
-
-
-                        <div class="col-12 col-sm-8 col-md-6 col-lg-4 mb-3">
-                            <div class="card">
-                              <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">
-                              <div class="card-img-overlay d-flex justify-content-end">
-                                <a href="#" class="card-link text-danger like">
-                                  {{-- <i class="fas fa-heart"></i> --}}
-                                </a>
-                              </div>
-                              <div class="card-body">
-                                <h4 class="card-title"><a href="{{ route('sub_service_details') }}" class="stretched-link">    تصليح غسالة سامسونج   </a>  </h4>
-                                <h6 class="card-subtitle mb-2 text-muted my-1">التصنيف : تصليح غسالات </h6>
-                                <p class="card-text">
-                                    توفر الراحة النفسية لدى ربة البيت وأفراد العائلة بأن عملية ترتيب الملابس بمختلف أنواعها والخاصة بمواسم معينة كالشتاء مثلًا قد تمّت على أكمل وجه.            </p>
-
-                                <div class="buy d-flex  align-items-center mt-3">
-                                    <a href="#" class="btn btn-danger ml-3"><i class="fas fa-shopping-cart"></i>   اضف الى السلة</a>
-                                  <div class="price text-success"><h5 class="mr-3"> 120 ريال سعودي  </h5></div>
+                @foreach($sub_services as $sub_service)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4"> <!-- Added col-6 for mobile view -->
+                        <div class="custom-card">
+                            <div class="center">
+                                <img class="custom-card-img-top my-3" src="{{ asset('images/sub_services/' . $sub_service->icon) }}" alt="{{ $sub_service->name }}">
+                            </div>
+                            <div class="card-img-overlay d-flex justify-content-end">
+                                <!-- Optionally, you can keep the like button here if needed -->
+                            </div>
+                            <div class="custom-card-body">
+                                <h4 class="custom-card-title">
+                                    <a href="{{ route('sub_service_details', $sub_service->id) }}" class="stretched-link">{{ $sub_service->name }}</a>
+                                </h4>
+                                <h6 class="custom-card-subtitle mb-2 text-muted my-1">التصنيف : {{ $sub_service->service->category->name }}</h6>
+                                <p class="custom-card-text">{{ $sub_service->short_description }}</p>
+                                <div class="buy d-flex align-items-center mt-3">
+                                    <a href="#" class="btn btn-danger ml-3 custom-btn">
+                                        <i class="fas fa-shopping-cart"></i> اضف الى السلة
+                                    </a>
+                                    <div class="price text-success custom-price">
+                                        <h5 class="mr-3">{{ $sub_service->price }} ريال</h5>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-                          </div>
-
-
-                        {{-- card 2 --}}
-
-
-
-                        <div class="col-12 col-sm-8 col-md-6 col-lg-4 mb-3">
-                            <div class="card">
-                              <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">
-                              <div class="card-img-overlay d-flex justify-content-end">
-                                <a href="#" class="card-link text-danger like">
-                                  {{-- <i class="fas fa-heart"></i> --}}
-                                </a>
-                              </div>
-                              <div class="card-body">
-                                <h4 class="card-title"><a href="{{ route('sub_service_details') }}" class="stretched-link">    تصليح غسالة سامسونج   </a>  </h4>
-                                <h6 class="card-subtitle mb-2 text-muted my-1">التصنيف : تصليح غسالات </h6>
-                                <p class="card-text">
-                                    توفر الراحة النفسية لدى ربة البيت وأفراد العائلة بأن عملية ترتيب الملابس بمختلف أنواعها والخاصة بمواسم معينة كالشتاء مثلًا قد تمّت على أكمل وجه.            </p>
-
-                                <div class="buy d-flex  align-items-center mt-3">
-                                    <a href="#" class="btn btn-danger ml-3"><i class="fas fa-shopping-cart"></i>   اضف الى السلة</a>
-                                  <div class="price text-success"><h5 class="mr-3"> 120 ريال سعودي  </h5></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-
-
-                        {{-- card 3 --}}
-
-                      <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                        <div class="card">
-                          <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" alt="Vans">
-                          <div class="card-img-overlay d-flex justify-content-end">
-                            <a href="#" class="card-link text-danger like">
-                              {{-- <i class="fas fa-heart"></i> --}}
-                            </a>
-                          </div>
-                          <div class="card-body">
-                            <h4 class="card-title"><a href="{{ route('sub_service_details') }}" class="stretched-link">    تصليح غسالة سامسونج   </a>  </h4>
-                            <h6 class="card-subtitle mb-2 text-muted my-1">التصنيف : تصليح غسالات </h6>
-                            <p class="card-text">
-                                توفر الراحة النفسية لدى ربة البيت وأفراد العائلة بأن عملية ترتيب الملابس بمختلف أنواعها والخاصة بمواسم معينة كالشتاء مثلًا قد تمّت على أكمل وجه.            </p>
-
-                            <div class="buy d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i>   اضف الى السلة</a>
-                              <div class="price text-success"><h5 class="mt-4"> 120 ريال سعودي  </h5></div>
-                            </div>
-                          </div>
                         </div>
-                      </div>
-
-
-
-                <!-- More product cards can be added here -->
+                    </div>
+                @endforeach
             </div>
         </div>
 
 
 
+
+                <!-- More product cards can be added here -->
+
+
+
+
         <!-- Section Title -->
         <div class="container section-title text-center my-4">
-            <h2 class="mt-5">صيانة الغسالات</h2>
-            <p>صيانة غسالات الرياض , صيانة غسالات اتوماتيك الرياض , صيانة غسالات سامسونغ الرياض مع شركة الأنظمة الأولية في الرياض . تعتبر الغسالة من الأجهزة الأساسية في المنزل التي تساعدنا في إتمام مهام الغسيل بكفاءة و سرعة , ومع زيادة استخدامها في حياتنا اليومية أصبح الحفاظ على صحة وأداء الغسالة أمرًا ذا أهمية قصوى. لذلك توفر شركتنا في الرياض خدمة صيانة الغسالات المتخصصة للمساعدة في الحفاظ على أداء أمثل للغسالة وتمديد عمرها الافتراضي.</p>
+            <h2 class="mt-5">{{$service->name}} </h2>
+            <p>{{$service->description}}</p>
         </div><!-- End Section Title -->
 
         <div class="container mt-4">
 
-            <section id="why-us" class="section why-us" data-builder="section">
+            {{-- <section id="why-us" class="section why-us" data-builder="section">
 
                 <div class="container-fluid">
 
@@ -191,7 +139,7 @@
 
                 </div>
 
-            </section><!-- /Why Us Section -->
+            </section><!-- /Why Us Section --> --}}
 
         </div>
         <div class="center mt-4">

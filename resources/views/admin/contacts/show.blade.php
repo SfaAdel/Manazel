@@ -37,7 +37,7 @@
                                 <ul>
                                     <li class=" tooltip is-tooltip-right" data-tooltip="تاريخ الرسالة">
                                         <div class="available">
-                                            {{ $contact->created_at->toDayDateTimeString() }}
+                                            {{ $contact->created_at ? $contact->created_at->toDayDateTimeString() : '--' }}
                                         </div>
                                     </li>
                                 </ul>

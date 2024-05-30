@@ -47,7 +47,10 @@ Route::group([
     Route::resource('counters', AboutUsCounterController::class);
     Route::patch('counters/{counter}', [AboutUsCounterController::class, 'update'])->name('counters.update');
 
-    Route::resource('why_us', WhyUsController::class);
+    Route::resource('why', WhyUsController::class);
+    Route::patch('why/{why}', [WhyUsController::class, 'update'])->name('why.update');
+
+
     Route::resource('titles', TitleController::class);
     Route::resource('questions', QuestionController::class);
     Route::resource('advantages', AdvantageController::class);

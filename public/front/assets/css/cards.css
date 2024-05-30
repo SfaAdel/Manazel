@@ -23,20 +23,19 @@
 }
 
 .card .btn {
-    background-color: #0071B8;
+    background-color: #0071b8;
     color: #ffffff;
     font-size: 1rem;
     padding: 0.5rem 1.5rem;
 }
 
 .card .btn:hover {
-    background-color:#4CBBD6;
+    background-color: #4cbbd6;
     color: #ffffff;
-
 }
 
 .btn-custom {
-    background-color: #0071B8;
+    background-color: #0071b8;
     color: #ffffff;
     font-size: 18px;
     padding: 10px 30px;
@@ -47,7 +46,7 @@
 }
 
 .btn-custom:hover {
-    background-color: #4CBBD6;
+    background-color: #4cbbd6;
     color: #ffffff;
     transform: scale(1.05);
 }
@@ -56,14 +55,68 @@
     text-align: center; /* Center aligns inline elements */
 }
 
-.btn-blue{
-background-color: #0071B8;
-color: #ffffff;
+.btn-blue {
+    background-color: #0071b8;
+    color: #ffffff;
 }
 
-.btn-blue:hover{
-    background-color:#4CBBD6;
+.btn-blue:hover {
+    background-color: #4cbbd6;
     transform: scale(1.05);
     color: #ffffff;
+}
 
+/* service_details card */
+.custom-card-container {
+    margin-top: 20px;
+}
+
+.custom-card {
+    overflow: hidden;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #e6e6e968;
+}
+
+.custom-card-img-top {
+    height: 130px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.custom-card-body {
+    padding: 15px;
+}
+
+.custom-card-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.custom-card-title:hover {
+    font-size: 1.2rem;
+    color: #4cbbd6;
+}
+
+.custom-card-subtitle {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.custom-card-text {
+    font-size: 0.9rem;
+}
+
+.custom-btn {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    background-color: #4cbbd6;
+    border-color: #4cbbd6;
+}
+
+.custom-price {
+    font-size: 1rem;
 }

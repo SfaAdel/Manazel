@@ -26,6 +26,11 @@ class SubService extends Model
         return $this->belongsTo(Service::class);
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(CustomerReview::class);
+    }
+
     protected static function booted()
     {
         static::saving(function ($subService) {

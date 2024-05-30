@@ -15,6 +15,12 @@
               <span>اضافة عداد جديد</span>
           </a>
       </div><!-- End Card Header -->
+
+      <div class="center">
+        @include('admin.partials.search_result', ['data' => $counters])
+    </div>
+
+    @if (!$counters->isEmpty())
     <!-- Start Card Content -->
     <div class="card-content">
         <div class="table-container">
@@ -52,12 +58,17 @@
             </table>
         </div>
     </div><!-- End Card Content -->
-    <!-- Start Card Footer -->
-    <div class="card-footer with-pagination">
-        {{-- {{ $departments->links('vendor.pagination.bulma') }} --}}
-    </div><!-- End Card Footer -->
-  </div><!-- End Card -->
-  @include('admin.partials.deleteModal')
+    @endif
 
+
+    <!-- Start Card Footer -->
+    <div class="center d-flex justify-center align-content-center m-4">
+        <div class="card-footer with-pagination ">
+            {{ $counters->links() }}
+        </div>
+    </div>
+    <!-- End Card Footer -->
+    </div>
+    @include('admin.partials.deleteModal')
 @endsection
 <!-- End Content Section -->

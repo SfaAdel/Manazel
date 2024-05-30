@@ -15,7 +15,13 @@
               <span>اضافة خدمة رئيسية</span>
           </a>
       </div><!-- End Card Header -->
-    <!-- Start Card Content -->
+
+    <div class="center">
+        @include('admin.partials.search_result', ['data' => $services])
+    </div>
+
+      @if (!$services->isEmpty())
+      <!-- Start Card Content -->
     <div class="card-content">
         <div class="table-container">
             <table class="table is-fullwidth" id="categories">
@@ -44,6 +50,7 @@
                                 <a class="button is-info" href="{{ route('admin.services.edit', $service->id) }}">
                                     تعديل
                                 </a>
+                                <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $service->id }}" data_name="{{ $service->name }}" data-url="{{ route('admin.services.destroy', $service->id) }}">حذف</a>
                             </div>
                         </td>
                         </tr>
@@ -52,10 +59,18 @@
             </table>
         </div>
     </div><!-- End Card Content -->
+    @endif
+
     <!-- Start Card Footer -->
-    <div class="card-footer with-pagination">
-        {{-- {{ $departments->links('vendor.pagination.bulma') }} --}}
-    </div><!-- End Card Footer -->
+    <div class="center d-flex justify-center align-content-center m-4">
+        <div class="card-footer with-pagination ">
+            {{ $services->links() }}
+        </div>
+    </div>
+    <!-- End Card Footer -->
+
   </div><!-- End Card -->
+  @include('admin.partials.deleteModal')
+
 @endsection
 <!-- End Content Section -->

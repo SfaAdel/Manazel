@@ -14,9 +14,9 @@
       <span>قائمة الطلبات</span>
     </div><!-- End Card Header -->
 
-    <div class="row justify-content-end mr-4">
-        <div class="col-md-4 search">
-            <form action="{{ route('admin.orders.index') }}" method="GET" class="d-flex mb-3">
+    {{-- <div class="row justify-content-end mr-4">
+        <div class="field has-addons search-input">
+            <form action="" method="GET" class="d-flex mb-3">
                 <input type="text" class="form-control me-2" placeholder="ابحث بالاسم او التاريخ" name="search" />
                 <button class="btn btn-link" type="submit">
                     <i class="link-icon" data-feather="search"></i>
@@ -24,11 +24,26 @@
                 </button>
             </form>
         </div>
+    </div> --}}
+    <div class="row justify-content-end mr-4">
+    <form action="{{ route('admin.orders.index') }}" method="get">
+        <div class="field has-addons search-input">
+            <div class="control">
+                <input type="text" class="input" name="search"
+                       value="{{ isset($search) ? $search : '' }}"
+                       placeholder="بحث ...">
+            </div>
+            <div class="control">
+                <button class="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        </form>
     </div>
 
     <div class="center">
         @include('admin.partials.search_result', ['search' => $search, 'data' => $orders])
-
     </div>
 
     @if (!$orders->isEmpty())

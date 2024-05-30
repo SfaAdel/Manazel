@@ -16,6 +16,11 @@
               </a>
       </div><!-- End Card Header -->
 
+      <div class="center">
+        @include('admin.partials.search_result', ['data' => $providers])
+    </div>
+
+    @if (!$providers->isEmpty())
     <!-- Start Card Content -->
     <div class="card-content">
       <div class="table-container">
@@ -41,6 +46,8 @@
                         <a class="button is-info" href="{{ route('admin.providers.edit', $provider->id) }}">
                             تعديل
                         </a>
+                        <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $provider->id }}" data_name="{{ $provider->name }}" data-url="{{ route('admin.providers.destroy', $provider->id) }}">حذف</a>
+
                     </div>
                 </td>
               </tr>
@@ -50,14 +57,17 @@
       </div>
     </div><!-- End Card Content -->
 
-    {{-- <!-- Start Card Footer -->
-    <div class="card-footer with-pagination">
-      {{ $books->links('vendor.pagination.bulma') }}
-    </div><!-- End Card Content --> --}}
-  </div><!-- End Card -->
+    @endif
 
-  <!-- Include Modals -->
-  @include('admin.partials.deactivateModal')
-@endsection<!-- End Content Section -->
+    <!-- Start Card Footer -->
+    <div class="center d-flex justify-center align-content-center m-4">
+        <div class="card-footer with-pagination ">
+            {{ $providers->links() }}
+        </div>
+    </div>
+    <!-- End Card Footer -->
+    </div>
+    @include('admin.partials.deleteModal')
+@endsection
 
 

@@ -6,5 +6,5 @@
     <div class="alert alert-primary mx-3">نتائج بحث عن : "{{ $search }}"</div>
 @endif
 @elseif($data->isEmpty())
-<div class="alert alert-secondary mx-3">لا توجد بيانات متاحة بعد</div>
+<div class="alert alert-secondary mx-3">لا يوجد بيانات متاحة بعد</div>
 @endif

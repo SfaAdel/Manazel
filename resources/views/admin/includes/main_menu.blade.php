@@ -2,6 +2,10 @@
 
     <a href="{{ route('dashboard') }}" class="card link-item-no-collapse "><i
             class="fas fa-tachometer-alt"></i><span>لوحه التحكم</span></a>
+            <div class="card-link text-danger like">
+                <i class="fas fa-heart"></i>
+            </div>
+
     <collapse-item title="التصنيفات" icon="fa fa-building">
         <a class="link-item" href="{{ route('admin.categories.create') }}">اضافة تصنيف</a>
         <a class="link-item" href="{{ route('admin.categories.index') }}">قائمة التصنيفات</a>
@@ -43,8 +47,8 @@
         <a class="link-item" href="{{ route('admin.advantages.index') }}">قائمة المميزات</a>
     </collapse-item>
     <collapse-item title=" من نحن" icon="fa fa-handshake">
-        <a class="link-item" href="{{ route('admin.why_us.create') }}"> اضافة سؤال</a>
-        <a class="link-item" href="{{ route('admin.why_us.index') }}">قائمة الاسئلة</a>
+        <a class="link-item" href="{{ route('admin.why.create') }}"> اضافة معلومة</a>
+        <a class="link-item" href="{{ route('admin.why.index') }}">قائمة المعلومات</a>
         <a class="link-item" href="{{ route('admin.counters.create') }}"> اضافة عداد</a>
         <a class="link-item" href="{{ route('admin.counters.index') }}">قائمة الاعداد</a>
     </collapse-item>

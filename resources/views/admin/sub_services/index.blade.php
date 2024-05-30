@@ -15,6 +15,13 @@
                 <span>اضافة خدمة جديدة</span>
             </a>
         </div>
+
+
+        <div class="center">
+            @include('admin.partials.search_result', ['data' => $subServices])
+        </div>
+
+        @if (!$subServices->isEmpty())
         <!-- End Card Header -->
         <div class="card-content">
             <div class="table-container">
@@ -48,6 +55,8 @@
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.sub_services.edit', $subService->id) }}"> تعديل </a>
+                                <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $subService->id }}" data_name="{{ $subService->name }}" data-url="{{ route('admin.teams.destroy', $subService->id) }}">حذف</a>
+
                             </div>
                         </td>
                     </tr>
@@ -56,10 +65,15 @@
                 </table>
             </div>
         </div>
-        <div class="card-footer with-pagination">
-            {{-- {{ $staffMembers->links('vendor.pagination.bulma') }} --}}
+        @endif
+
+        <!-- Start Card Footer -->
+        <div class="center d-flex justify-center align-content-center m-4">
+            <div class="card-footer with-pagination ">
+                {{ $subServices->links() }}
+            </div>
         </div>
-    </div>
-    <!-- End Card -->
-@endsection
-<!-- End Content Section -->
+        <!-- End Card Footer -->
+        </div>
+        @include('admin.partials.deleteModal')
+    @endsection
