@@ -23,4 +23,19 @@ class Provider extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+}
+
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        'eloquent.saved: App\Models\Provider' => [
+            'App\Listeners\UpdateSubServiceProviders',
+        ],
+        'eloquent.deleted: App\Models\Provider' => [
+            'App\Listeners\UpdateSubServiceProviders',
+        ],
+    ];
 }

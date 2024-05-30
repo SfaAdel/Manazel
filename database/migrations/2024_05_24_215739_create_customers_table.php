@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('profile_img')->nullable();
             $table->text('address')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
+            $table->string('verification_code')->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

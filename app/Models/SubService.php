@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class SubService extends Model
 {
@@ -45,6 +46,21 @@ class SubService extends Model
                 }
             }
         });
+    }
+
+    public function initializeAvailability() {
+        $startDate = Carbon::now()->startOfDay();
+        $endDate = Carbon::now()->addDays(30)->endOfDay();
+
+        $dates = [];
+        for ($date = $startDate; $date->lte($endDate); $date->addDay()) {
+            $dates[] = $date->copy();
+        }
+
+        foreach ($dates as $date) {
+            // Calculate available time slots and insert into sub_service_availabilities table
+            $this->calculateAndInsertAvailabilityForDate($date);
+        }
     }
 
 }

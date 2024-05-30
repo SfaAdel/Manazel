@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\SmsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,11 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+    // Route::get('register', [AuthController::class, 'registerForm'])->name('register');
+
+    // Route::post('register', [AuthController::class, 'register'])->name('register_success');
+
+    // Route::get('login', [AuthController::class, 'loginForm'])->name('login');
+
+    // Route::post('verify', [AuthController::class, 'verifyCode'])->name('verify_code');
+
     Route::get('register', [AuthController::class, 'registerForm'])->name('register');
-
-    Route::post('register', [AuthController::class, 'register'])->name('register_success');
-
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('verify', [AuthController::class, 'verifyCode'])->name('verify_code');
     Route::get('login', [AuthController::class, 'loginForm'])->name('login');
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    // Route::get('verification', [AuthController::class, 'verificationForm'])->name('verification.form');
+    Route::post('/send-verification-code', [SmsController::class, 'sendVerificationCode']);
+    Route::post('verify', [SmsController::class, 'verifyCode'])->name('verify_code');
 
 
 //any home routes
