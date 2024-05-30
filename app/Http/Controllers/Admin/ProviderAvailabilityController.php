@@ -1,67 +1,75 @@
 <?php
+// app/Http/Controllers/Admin/ProviderAvailabilityController.php
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\providerAvailability;
+use App\Models\Provider;
+use App\Models\ProviderAvailability;
 use Illuminate\Http\Request;
 
 class ProviderAvailabilityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $providerAvailabilities = ProviderAvailability::latest()->paginate(10);
+        return view('admin.provider_availabilities.index', compact('providerAvailabilities'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $providers = Provider::all();
+        return view('admin.provider_availabilities.create', compact('providers'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'provider_id' => 'required|exists:providers,id',
+            'month' => 'required|date_format:Y-m|unique:provider_availabilities,month,null,null,provider_id,'.$request->provider_id,
+            'off_days' => 'required|array',
+            'off_days.*' => 'date_format:Y-m-d',
+        ], [
+            'month.unique' => 'The combination of provider and month already exists.',
+        ]);
+
+        ProviderAvailability::create([
+            'provider_id' => $validated['provider_id'],
+            'off_days' => json_encode($validated['off_days']),
+            'month' => $validated['month'],
+        ]);
+
+        return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم اضافة بيانات الموظف بنجاح.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(providerAvailability $providerAvailability)
+
+    public function edit(ProviderAvailability $providerAvailability)
     {
-        //
+        $providers = Provider::all();
+        return view('admin.provider_availabilities.edit', compact('providerAvailability', 'providers'));
+    }
+    public function update(Request $request, ProviderAvailability $providerAvailability)
+    {
+        $validated = $request->validate([
+            'provider_id' => 'required|exists:providers,id',
+            'off_days' => 'required|string', // No need to validate as JSON here
+            'month' => 'required|date_format:Y-m',
+        ]);
+
+        $off_days = explode(',', $validated['off_days']); // Convert the comma-separated string into an array
+
+        $providerAvailability->update([
+            'provider_id' => $validated['provider_id'],
+            'off_days' => json_encode($off_days), // Store as JSON
+            'month' => $validated['month'],
+        ]);
+
+        return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم تعديل اجازات الموظف بنجاح.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(providerAvailability $providerAvailability)
+    public function destroy(ProviderAvailability $providerAvailability)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, providerAvailability $providerAvailability)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(providerAvailability $providerAvailability)
-    {
-        //
+        $providerAvailability->delete();
+        return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم حذف اجازات الموظف بنجاح');
     }
 }

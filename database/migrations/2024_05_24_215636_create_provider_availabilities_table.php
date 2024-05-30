@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // migration file for provider_availabilities table
         Schema::create('provider_availabilities', function (Blueprint $table) {
             $table->id();
-            $table->date('off_days')->nullable();
+            $table->json('off_days')->nullable();
             $table->foreignId('provider_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->date('month')->default(now()->startOfMonth()); // Default to the start of the current month
             $table->timestamps();
+
+            $table->unique(['provider_id', 'month']);
         });
+
     }
 
     /**

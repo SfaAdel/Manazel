@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('short_description');
             $table->string('icon');
-            $table->enum('section',['about_us','services','testimonials','advantages','teams','blogs','contacts'])->nullable();
+            $table->enum('section',['about_us','services','testimonials','advantages','teams','blogs','contacts','main'])->nullable();
             $table->timestamps();
         });
     }

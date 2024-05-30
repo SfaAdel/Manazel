@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdvantageController;
+use App\Http\Controllers\Admin\ProviderAvailabilityController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\WhyUsController;
@@ -64,6 +65,8 @@ Route::group([
     Route::patch('orders/{order}', [OrderController::class, 'update'])->name('admin.orders.update');
     Route::resource('appointments', AppointmentController::class, ['only' => ['update', 'destroy']]);
     Route::resource('orders', OrderController::class, ['except' => 'show']);
+
+    Route::resource('provider_availabilities', ProviderAvailabilityController::class);
 
 
 

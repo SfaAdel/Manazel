@@ -53,7 +53,7 @@
         <a class="link-item" href="{{ route('admin.counters.index') }}">قائمة الاعداد</a>
     </collapse-item>
     <collapse-item title="اجازات العاملين" icon="fa fa-handshake">
-        <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة الاجازات</a>
+        <a class="link-item" href="{{ route('admin.provider_availabilities.index') }}">قائمة الاجازات</a>
     </collapse-item>
     <collapse-item title="الطلبات" icon="fa fa-handshake">
         <a class="link-item" href="{{ route('admin.orders.index') }}">قائمة الطلبات</a>
