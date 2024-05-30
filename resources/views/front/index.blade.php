@@ -81,7 +81,7 @@
                             <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
                                 data-wow-duration="600ms"
                                 style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
-                                <i class="fa fa-building medium-icon text-info"></i>
+                                <img src="{{ asset('images/counters/' . 'مقر-الشركة-الرئيسي.PNG') }}" class="img ml-1" alt="Main Company Headquarters">
                                 <span class="timer counter_text alt-font appear mb-1">الرياض</span>
                                 <span class="counter-title">مقر الشركة</span>
                             </div>

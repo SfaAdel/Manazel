@@ -17,9 +17,11 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
     <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 
 
     <!-- Fonts -->
@@ -37,6 +39,7 @@
     <!-- Main CSS File -->
     <link href="front/assets/css/main.css" rel="stylesheet">
     <link href="front/assets/css/nav.css" rel="stylesheet">
+    <link href="front/assets/css/login.css" rel="stylesheet">
 
 
 
@@ -51,9 +54,9 @@
 
 <body class="index-page ">
 
-    <header id="header" class="container-xxl position-relative p-0 bg-light">
+    <header id="header" class="container-xxl position p-0 bg-light">
         <nav class="navbar navbar-expand-lg navbar-light m-auto text-center px-4 px-lg-5 py-3 py-lg-0" id="navbar">
-            <a href="{{ route('home') }}" class="navbar-brand p-0">
+            <a href="{{ route('home') }}" class="navbar-brand p-2">
                 <img src="front/assets/img/logo.png" alt="logo" class="img-thumbnail ml-3">
             </a>
 
@@ -77,7 +80,7 @@
 
 
     <main class="container mt-4">
-        <div class="container mt-4">
+        {{-- <div class="container mt-4">
             <div class="row justify-content-center mt-4 mt-4">
                 <div class="col-md-8 mt-5">
                     <div class="card mt-5">
@@ -138,7 +141,51 @@
                     </div>
                 </div>
             </div>
+        </div> --}}
+
+        <div class="custom-wrapper">
+            <div class="custom-logo">
+                <img src="{{ asset('images/website/login.JPG') }}" alt="">
+            </div>
+            <div class="text-center mt-4 custom-name">
+                منازل
+            </div>
+            <form method="POST" class="p-3 mt-3" action="{{ route('login_success') }}">
+                @csrf
+
+                <div>
+                    <span class="far fa-user m-2"></span>
+                    <input id="phone" type="text" class="custom-form-field p-2 @error('phone') is-invalid @enderror" name="phone" placeholder="رقم الهاتف" value="{{ old('phone') }}" required>
+                    @error('phone')
+                    <div class="invalid-feedback mb-4 center">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                    @enderror
+                </div>
+
+
+                <div>
+                    <span class="fas fa-key m-2"></span>
+                    <input id="password" type="password" class="custom-form-field p-2 @error('password') is-invalid @enderror" name="password" placeholder="كلمة المرور" required>
+                    @error('password')
+                    <div class="invalid-feedback mb-4 center">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                    @enderror
+                </div>
+
+
+
+
+                <button class="custom-btn mt-3">تسجيل الدخول</button>
+            </form>
+            <div class="text-center fs-6">
+                <a href="#">هل نسيت كلمة المرور؟</a> ام <a href="{{ route('register') }}">تريد انشاء حساب جديد</a>
+            </div>
         </div>
+
+
+
     </main>
 
 
@@ -166,7 +213,8 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <!-- Main JS File -->
             <script src="front/assets/js/main.js"></script>
             <script src="front/assets/js/sub_service.js"></script>

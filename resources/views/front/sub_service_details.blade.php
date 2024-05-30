@@ -34,7 +34,7 @@
                             <div class="product-info">
                                 <div>
                                     <div class="product-name">{{ $sub_service->name }} </div>
-                                    <div class="rate mx-3">
+                                    <div class="rate mx-1">
                                         <input type="radio" id="star5" name="rate" value="5" checked />
                                         <label for="star5" title="text">5 stars</label>
                                         <input type="radio" id="star4" name="rate" value="4" checked />
@@ -48,16 +48,16 @@
                                     </div>
                                 </div>
 
-                                <div class="">
+                                <div class="m-2">
                                     <span>3 مراجعات</span>
                                 </div>
-                                <div class="product-price-discount"><span>{{ $sub_service->price }} ريال</span></div>
-                                {{-- <span class="line-through">$29.00</span> --}}
                             </div>
                             <p>{{ $sub_service->short_description }} </p>
 
                             <div class="product-count">
                                 <a href="#" class="round-black-btn"> اضف الى السلة </a>
+                                <div class="product-price-discount d-inline mx-3"><span>{{ $sub_service->price }} ريال</span></div>
+                                {{-- <span class="line-through">$29.00</span> --}}
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                                                     @if($i <= $review->stars)
                                                         <i class="fas fa-star text-warning"></i>
                                                     @else
-                                                        <i class="far fa-star text-warning"></i>
+                                                        <i class="far fa-star text-secondry"></i>
                                                     @endif
                                                 @endfor
                                             </div>

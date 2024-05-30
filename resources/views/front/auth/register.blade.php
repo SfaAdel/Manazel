@@ -17,9 +17,11 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
     <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 
 
     <!-- Fonts -->
@@ -37,6 +39,7 @@
     <!-- Main CSS File -->
     <link href="front/assets/css/main.css" rel="stylesheet">
     <link href="front/assets/css/nav.css" rel="stylesheet">
+    <link href="front/assets/css/login.css" rel="stylesheet">
 
 
 
@@ -51,11 +54,12 @@
 
 <body class="index-page ">
 
-    <header id="header" class="container-xxl position-relative p-0 bg-light">
+    <header id="header" class="container-xxl position p-0 bg-light">
         <nav class="navbar navbar-expand-lg navbar-light m-auto text-center px-4 px-lg-5 py-3 py-lg-0" id="navbar">
-            <a href="{{ route('home') }}" class="navbar-brand p-0">
+            <a href="{{ route('home') }}" class="navbar-brand p-2">
                 <img src="front/assets/img/logo.png" alt="logo" class="img-thumbnail ml-3">
             </a>
+
 
             <button class="navbar-toggler" style="box-shadow: none; border: none" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarCollapse">

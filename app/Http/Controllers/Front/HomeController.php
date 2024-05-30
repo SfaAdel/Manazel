@@ -25,16 +25,32 @@ class HomeController extends Controller
     public function index()
     {
         //
+        // $mainSection = Title::where('section', 'main')->first();
+
         $categories = Category::latest()->get();
+        $serviceSection = Title::where('section', 'services')->first();
+
         $teams = Team::latest()->limit(4)->get();
+        $teamSection = Title::where('section', 'teams')->first();
+
         $titles = Title::latest()->limit(4)->get();
+
         $advantages = Advantage::latest()->limit(5)->get();
+        $advantageSection = Title::where('section', 'advantages')->first();
+
         $blogs = Blog::latest()->limit(4)->get();
         $blogSection = Title::where('section', 'blogs')->first();
+
         $testimonials = Testimonial::latest()->get();
+        $testimonialSection = Title::where('section', 'testimonials')->first();
+
+        $contactSection = Title::where('section', 'contacts')->first();
+        $aboutSection = Title::where('section', 'about_us')->first();
+
         $whyUsAnsweres = WhyUs::latest()->limit(4)->get();
         $counters=AboutUsCounter::latest()->limit(3)->get();
-        return view('front.index', compact('categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
+
+        return view('front.index', compact( 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
     }
 
     public function service($id)
