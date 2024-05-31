@@ -17,10 +17,10 @@
       </div><!-- End Card Header -->
 
       <div class="center">
-        @include('admin.partials.search_result', ['data' => $contacts])
+        @include('admin.partials.search_result', ['data' => $titles])
     </div>
 
-    @if (!$contacts->isEmpty())
+    @if (!$titles->isEmpty())
       <!-- Start Card Content -->
     <div class="card-content">
         <div class="table-container">
@@ -43,6 +43,8 @@
                         'teams' => 'فرق العمل',
                         'blogs' => 'المدونات',
                         'contacts' => 'اتصل بنا',
+                        'main' => 'الرئيسي',
+
                     ];
                     @endphp
                 <tbody>
@@ -61,7 +63,7 @@
                                 <a class="button is-info" href="{{ route('admin.titles.edit', $title->id) }}">
                                     تعديل
                                 </a>
-                                <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $title->id }}" data_name="{{ $title->title }}" data-url="{{ route('admin.titles.destroy', $title->id) }}">حذف</a>
+                                {{-- <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $title->id }}" data_name="{{ $title->title }}" data-url="{{ route('admin.titles.destroy', $title->id) }}">حذف</a> --}}
 
                             </div>
                         </td>
@@ -76,7 +78,7 @@
     <!-- Start Card Footer -->
     <div class="center d-flex justify-center align-content-center m-4">
         <div class="card-footer with-pagination ">
-            {{ $services->links() }}
+            {{ $titles->links() }}
         </div>
     </div>
     <!-- End Card Footer -->

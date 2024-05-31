@@ -37,17 +37,14 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2 class="">من نحن</h2>
+                <h2 class=""> {{$aboutSection->title}}</h2>
             </div><!-- End Section Title -->
 
             <div class="container">
 
                 <div class="row gy-4 mb-5">
                     <div class="col-12" data-aos="fade-up">
-                        <p class="lead">
-                            يعود تاريخ شركة الأنظمة الأولية في المملكة العربية السعودية إلى عام 2000م , عندما قررنا البدء في
-                            مجال الصيانة و التصليح لتقديم تجربة استثنائية لجميع العملاء في المملكة . لم تكن الصيانة و
-                            التصليح مجرد مهنة نمتهنا بل كانت أكثر من ذلك .
+                        <p class="lead">{{$aboutSection->short_description}}
                         </p>
                     </div>
 
@@ -70,7 +67,7 @@
                     </div>
 
                     <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="front/assets/img/why-us.png" class="img-fluid animated rounded" alt="Why Us">
+                        <img src="{{ asset('images/titles/' . $aboutSection->icon) }}" class="img-fluid animated rounded" alt="Why Us">
                     </div>
                 </div>
 
@@ -110,40 +107,40 @@
         </section><!-- /About Section -->
 
 
-<!-- /Services Section -->
-<section id="services" class="services section mt-4">
+        <!-- /Services Section -->
+        <section id="services" class="services section mt-4">
 
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-        <h2>خدماتنا</h2>
-        <p>نقدم لك جميع الخدمات بكل دقة و احترافية مع فريقنا الفني المتكامل في الرياض – شركة الأنظمة الاولية</p>
-    </div><!-- End Section Title -->
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>{{$serviceSection->title}}</h2>
+                <p>{{$serviceSection->short_description}}</p>
+            </div><!-- End Section Title -->
 
-    <div class="container p-3">
-        <div class="row gy-4 justify-content-evenly">
-            @foreach ($categories as $category)
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 d-flex">
-                    <div class="service-item position-relative" data-aos="fade-up"
-                        data-aos-delay="{{ $loop->iteration * 100 }}">
-                        <div class="icon">
-                            <h4>
-                                <img src="{{ asset('images/categories/' . $category->icon) }}"
-                                    class="service_icon ml-1" alt="icon">
-                                {{ $category->name }}
-                            </h4>
-                        </div>
-                        <p>{{ $category->description }}</p>
-                        <a href="{{ route('services', $category->id) }}" class="btn btn-blue mt-3">معرفة المزيد</a>
-                    </div>
-                </div><!-- End Service Item -->
-            @endforeach
-        </div>
+            <div class="container p-3">
+                <div class="row gy-4 justify-content-evenly">
+                    @foreach ($categories as $category)
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 d-flex">
+                            <div class="service-item position-relative" data-aos="fade-up"
+                                data-aos-delay="{{ $loop->iteration * 100 }}">
+                                <div class="icon">
+                                    <h4>
+                                        <img src="{{ asset('images/categories/' . $category->icon) }}"
+                                            class="service_icon ml-1" alt="icon">
+                                        {{ $category->name }}
+                                    </h4>
+                                </div>
+                                <p>{{ $category->description }}</p>
+                                <a href="{{ route('services', $category->id) }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                            </div>
+                        </div><!-- End Service Item -->
+                    @endforeach
+                </div>
 
-        <div class="center mt-4">
-            {{-- <a href="{{ route('services') }}" class="btn btn-custom mt-3">معرض الخدمات</a> --}}
-        </div>
-    </div>
-</section><!-- /Services Section -->
+                <div class="center mt-4">
+                    {{-- <a href="{{ route('services') }}" class="btn btn-custom mt-3">معرض الخدمات</a> --}}
+                </div>
+            </div>
+        </section><!-- /Services Section -->
 
 
 
@@ -152,8 +149,8 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>اراء عملائنا</h2>
-                <p>تحقق من رأي العملاء في خدمتنا </p>
+                <h2>{{$testimonialSection->title}}</h2>
+                <p>{{$testimonialSection->short_description}} </p>
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -221,11 +218,8 @@
                     <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
 
                         <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
-                            <h3 class=""><strong>ماهي الأمور المذهلة التي يمكنك الحصول عليها معنا ؟</strong></h3>
-                            <p class="">
-                                عند التعامل مع شركتنا المتخصصة في عمليات الصيانة و التصليح و اعمال السباكة و الصبغ و
-                                الكهرباء في الملكة العربية السعودية , يمكن للعملاء الحصول على العديد من المزايا و الخدمات
-                                المذهلة . ومن بين هذة الميزات : </p>
+                            <h3 class=""><strong>{{$whyUsSection->title}}</strong></h3>
+                            <p class=""> {{$whyUsSection->short_description}} </p>
                         </div>
 
                         <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
@@ -263,9 +257,8 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2> فريق العمل</h2>
-                <p>تتكون شركتنا من عدة أقسام و كل قسم مسؤول عن انجاز مهام معينة لتحقيق أفضل استفادة مع العمل المشترك بين
-                    الأقسام , نعمل معاً كعائلة واحدة لتقديم خدمات عالية الجودة للعملاء .</p>
+                <h2> {{$teamSection->title}} </h2>
+                <p>{{$teamSection->short_description}}</p>
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -327,26 +320,26 @@
 
                 <!-- Blog Entries -->
                 @if (!isset($blogs) || $blogs->isEmpty())
-                    <h4>لا يوجد مدونات بعد</h4>
+                    <h4 class="mt-3" >لا يوجد مدونات بعد</h4>
                 @else
                     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                         <div class="swiper blog-swiper">
                             <script type="application/json" class="swiper-config">
-          {
-            "loop": true,
-            "speed": 600,
-            "autoplay": {
-              "delay": 3000
-            },
-            "slidesPerView": 1,
-            "pagination": {
-              "el": ".swiper-pagination",
-              "type": "bullets",
-              "clickable": true
-            }
-          }
-        </script>
+                                {
+                                    "loop": true,
+                                    "speed": 600,
+                                    "autoplay": {
+                                    "delay": 3000
+                                    },
+                                    "slidesPerView": 1,
+                                    "pagination": {
+                                    "el": ".swiper-pagination",
+                                    "type": "bullets",
+                                    "clickable": true
+                                    }
+                                }
+                            </script>
 
 
                             <div class="swiper-container">
@@ -371,6 +364,8 @@
                             <div class="center mt-4">
                                 <a href="{{ route('blogs') }}" class="btn btn-custom mt-3">عرض كل المدونات</a>
                             </div>
+                        </div>
+                    </div>
                 @endif
             </div>
 
@@ -384,10 +379,9 @@
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>تواصل معنا</h2>
-                <p>اذا كان لديك أي استفسار أو تساؤل بخصوص شركة الأنظمة الأولية في المملكة العربية السعودية نرجو منك ملئ
-                    النموذج التالي و سنكون مسرورين بالإجابة على جميع الإستفسارات و الرد في أسرع وقت ممكن ، فريق خدمة العملاء
-                    يتمنى لكم دوام الصحة و العافية
+                <h2>{{$contactSection->title}} </h2>
+                <p>
+                    {{$contactSection->short_description}}
                     <i class="bi bi-heart text-danger"></i>
                 </p>
             </div><!-- End Section Title -->
@@ -398,7 +392,7 @@
 
                     <div class="col-lg-5">
 
-                        <div class="info-wrap">
+                        <div class="info-wrap ">
                             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
                                 <i class="bi bi-geo-alt flex-shrink-0 mx-3"></i>
                                 <div>
@@ -422,6 +416,14 @@
                                     <p>info@example.com</p>
                                 </div>
                             </div><!-- End Info Item -->
+
+
+                            {{-- <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                                <div>
+                                    <img  class="img" src="{{ asset('images/titles/' . $contactSection->icon) }}" alt="">
+                                </div>
+                            </div><!-- End Info Item --> --}}
+
                         </div>
                     </div>
 

@@ -4,14 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Events\ProviderAvailabilityUpdated;
 
 class Provider extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name', 'phone', 'category_id', 'status', // Add other fields as needed
+    ];
+
     public function providerAvailabilities()
     {
-        return $this->hasMany(providerAvailability::class);
+        return $this->hasMany(ProviderAvailability::class);
     }
 
     public function appointment()
@@ -24,18 +29,16 @@ class Provider extends Model
         return $this->belongsTo(Category::class);
     }
 
+    // Fire event when provider is created or updated
+    protected static function booted()
+    {
+        static::saved(function ($provider) {
+            event(new ProviderAvailabilityUpdated($provider->id, $provider->status));
+        });
+
+        static::deleted(function ($provider) {
+            event(new ProviderAvailabilityUpdated($provider->id, false));
+        });
+    }
 }
 
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-
-class EventServiceProvider extends ServiceProvider
-{
-    protected $listen = [
-        'eloquent.saved: App\Models\Provider' => [
-            'App\Listeners\UpdateSubServiceProviders',
-        ],
-        'eloquent.deleted: App\Models\Provider' => [
-            'App\Listeners\UpdateSubServiceProviders',
-        ],
-    ];
-}

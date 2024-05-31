@@ -5,8 +5,8 @@
 
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section background-blur" style="background-image: url('assets/img/background.jpg');">
-        <div class="background-blur" style="background-image: url('assets/img/service-bg.jpg');"></div>
+    <section id="hero" class="hero section background-blur" style="background-image: url('front/assets/img/background.jpg');">
+        <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
         <div class="container ">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -19,16 +19,10 @@
             </div>
         </div>
     </section>
-
     <main class="container my-6 p-6">
-
         <div class="pd-wrap">
             <div class="container">
-                {{-- <div class="heading-section">
-                <h2>Product Details</h2>
-            </div> --}}
                 <div class="row p-3">
-
                     <div class="col-md-6">
                         <div class="product-dtl">
                             <div class="product-info">
@@ -47,114 +41,108 @@
                                         <label for="star1" title="text">1 star</label>
                                     </div>
                                 </div>
+                                <p>{{ $sub_service->short_description }}</p>
 
-                                <div class="m-2">
-                                    <span>3 مراجعات</span>
+                                <form method="POST" action="{{ route('book_appointment') }}">
+                                    @csrf
+                                    <div class="row mt-3">
+                                        <!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="day">اليوم</label>
+                                                <select id="day" class="form-control" name="day" required>
+                                                    <option value="">اختر يوم</option>
+                                                    @foreach ($availabilities as $date => $times)
+                                                        <option value="{{ $date }}">{{ $date }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- Col -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="time">المعاد</label>
+                                                <select id="time" class="form-control" name="time" required>
+                                                    <option value="">اختر معاد</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <label class="form-label" for="map">اختر عنوان</label>
+                                        <div id="map" style="width: 100%; height: 270px;"></div>
+                                    </div>
+
+                                    <input type="hidden" id="latitude" name="latitude">
+                                    <input type="hidden" id="longitude" name="longitude">
+                                    <input type="hidden" name="sub_service_id" value="{{ $sub_service->id }}" />
+
+                                    <button type="submit" class="round-black-btn"> حجز الخدمة </button>
+                                </form>
+                                <div class="product-price-discount d-inline m-3">
+                                    <span>{{ $sub_service->price }} ريال</span>
                                 </div>
-                            </div>
-                            <p>{{ $sub_service->short_description }} </p>
-
-                            <div class="product-count">
-                                <a href="#" class="round-black-btn"> اضف الى السلة </a>
-                                <div class="product-price-discount d-inline mx-3"><span>{{ $sub_service->price }} ريال</span></div>
-                                {{-- <span class="line-through">$29.00</span> --}}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('images/sub_services/' . $sub_service->icon) }}"
-                            class="img-fluid animated rounded m-3" alt="photo">
+                        <img src="{{ asset('images/sub_services/' . $sub_service->icon) }}" class="img-fluid animated rounded m-3" alt="photo">
                     </div>
                 </div>
-                <div class="product-info-tabs mt-5">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description"
-                                role="tab" aria-controls="description" aria-selected="true">الوصف</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab"
-                                aria-controls="review" aria-selected="false">المراجعات (0)</a>
-                        </li>
-                    </ul>
-                    <hr>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="description" role="tabpanel"
-                            aria-labelledby="description-tab">
-                            {{ $sub_service->long_description }}
-                        </div>
-                        <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-                            <div class="review-heading">المراجعات</div>
-                            @if($sub_service->reviews->isEmpty())
-                                <p class="mb-20">لا يوجد مراجعات حتي الان</p>
-                            @else
-                                @foreach($sub_service->reviews as $review)
-                                    <div class="review">
-                                        <div class="d-flex align-items-center">
-                                            <div class="review-user">
-                                                <h6>{{ $review->customer->name }}</h6>
-                                            </div>
-                                            <div class="rate mx-3">
-                                                @for($i = 1; $i <= 5; $i++)
-                                                    @if($i <= $review->stars)
-                                                        <i class="fas fa-star text-warning"></i>
-                                                    @else
-                                                        <i class="far fa-star text-secondry"></i>
-                                                    @endif
-                                                @endfor
-                                            </div>
-                                        </div>
-                                        <p>{{ $review->comment }}</p>
-                                    </div>
-                                    <hr>
-                                @endforeach
-                            @endif
-
-                            <form class="review-form" method="POST" action="{{ route('submit_review', $sub_service->id) }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label>اعطي تقيمك</label>
-                                    <div class="reviews-counter">
-                                        <div class="rate mx-3">
-                                            <input type="radio" id="star5" name="rate" value="5" />
-                                            <label for="star5" title="text">5 stars</label>
-                                            <input type="radio" id="star4" name="rate" value="4" />
-                                            <label for="star4" title="text">4 stars</label>
-                                            <input type="radio" id="star3" name="rate" value="3" />
-                                            <label for="star3" title="text">3 stars</label>
-                                            <input type="radio" id="star2" name="rate" value="2" />
-                                            <label for="star2" title="text">2 stars</label>
-                                            <input type="radio" id="star1" name="rate" value="1" />
-                                            <label for="star1" title="text">1 star</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>اترك تعليقك </label>
-                                    <textarea class="form-control" name="comment" rows="10"></textarea>
-                                </div>
-                                {{-- <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" name="name" class="form-control" placeholder="الاسم" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-control" placeholder="البريد الالكتروني" required>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                <button class="round-black-btn" type="submit"> تسجيبل</button>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-
             </div>
         </div>
-
-
     </main>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const availabilities = @json($availabilities);
+
+            document.getElementById('day').addEventListener('change', function() {
+                const selectedDate = this.value;
+                const timeSelect = document.getElementById('time');
+
+                // Clear previous options
+                timeSelect.innerHTML = '<option value="">اختر معاد</option>';
+
+                if (availabilities[selectedDate]) {
+                    availabilities[selectedDate].forEach(function(availability) {
+                        const option = document.createElement('option');
+                        option.value = availability.time;
+                        option.textContent = availability.time;
+                        timeSelect.appendChild(option);
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 40.712776, lng: -74.005974},
+                zoom: 13
+            });
+
+            var marker = new google.maps.Marker({
+                position: {lat: 40.712776, lng: -74.005974},
+                map: map,
+                draggable: true
+            });
+
+            google.maps.event.addListener(marker, 'dragend', function(event) {
+                document.getElementById('latitude').value = event.latLng.lat();
+                document.getElementById('longitude').value = event.latLng.lng();
+            });
+
+            map.addListener('click', function(event) {
+                marker.setPosition(event.latLng);
+                document.getElementById('latitude').value = event.latLng.lat();
+                document.getElementById('longitude').value = event.latLng.lng();
+            });
+        }
+
+        // Initialize the map
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+
 @endsection

@@ -37,6 +37,8 @@
                                 <td>{{ $appointment->day }}</td>
                                 <td>{{ $appointment->time }}</td>
                                 <td>{{ $appointment->subService->price }}</td>
+                                <td>{{ $appointment->latitude }}</td>
+                                <td>{{ $appointment->longitude }}</td>
                                 <td>
                                   <form action="{{ route('admin.appointments.update', $appointment->id) }}" method="POST">
                                       @csrf

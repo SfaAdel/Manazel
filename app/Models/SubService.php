@@ -12,10 +12,10 @@ class SubService extends Model
 
 
 
-    public function subServiceAvailabilities()
-    {
-        return $this->hasMany(SubServiceAvailability::class);
-    }
+    // public function subServiceAvailabilities()
+    // {
+    //     return $this->hasMany(SubServiceAvailability::class);
+    // }
 
     public function appointments()
     {
@@ -31,6 +31,13 @@ class SubService extends Model
     {
         return $this->hasMany(CustomerReview::class);
     }
+
+    public function availabilities()
+    {
+        return $this->hasMany(SubServiceAvailability::class);
+    }
+
+
 
     protected static function booted()
     {

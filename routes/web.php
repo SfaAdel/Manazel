@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\SmsController;
@@ -57,6 +58,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/service-details/{id}', [HomeController::class, 'service_details'])->name('service_details');
     Route::get('/sub-service-details/{id}', [HomeController::class, 'sub_service_details'])->name('sub_service_details');
     Route::post('sub_service/{id}/review', [HomeController::class, 'submit_review'])->name('submit_review');
+
+    Route::post('/appointments', [AppointmentController::class, 'bookAppointment'])->name('book_appointment');
 
 
 

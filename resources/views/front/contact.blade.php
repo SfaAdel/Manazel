@@ -6,7 +6,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur" style="background-image: url('assets/img/background.jpg');">
-        <div class="background-blur" style="background-image: url('assets/img/service-bg.jpg');"></div>
+        <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
         <div class="container ">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">

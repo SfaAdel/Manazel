@@ -11,11 +11,14 @@ use App\Models\Customer;
 use App\Models\CustomerReview;
 use App\Models\Service;
 use App\Models\SubService;
+use App\Models\SubServiceAvailability;
 use App\Models\Team;
 use App\Models\Testimonial;
 use App\Models\Title;
 use App\Models\WhyUs;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 use SebastianBergmann\LinesOfCode\Counter;
 
 class HomeController extends Controller
@@ -35,7 +38,7 @@ class HomeController extends Controller
 
         $titles = Title::latest()->limit(4)->get();
 
-        $advantages = Advantage::latest()->limit(5)->get();
+        $advantages = Advantage::latest()->limit(6)->get();
         $advantageSection = Title::where('section', 'advantages')->first();
 
         $blogs = Blog::latest()->limit(4)->get();
@@ -48,9 +51,11 @@ class HomeController extends Controller
         $aboutSection = Title::where('section', 'about_us')->first();
 
         $whyUsAnsweres = WhyUs::latest()->limit(4)->get();
+        $whyUsSection = Title::where('section', 'advantages')->first();
+
         $counters=AboutUsCounter::latest()->limit(3)->get();
 
-        return view('front.index', compact( 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
+        return view('front.index', compact('contactSection','whyUsSection', 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
     }
 
     public function service($id)
@@ -76,7 +81,17 @@ class HomeController extends Controller
         // Fetch all services where category_id matches the given id
         $sub_service = SubService::with('reviews.customer')->find($id);
 
-        return view('front.sub_service_details', compact('sub_service'));
+        $subService = SubService::with('availabilities')->findOrFail($id);
+
+        // Fetch available dates and times within the next 30 days
+        $availabilities = SubServiceAvailability::where('sub_service_id', $id)
+            ->where('day', '>=', Carbon::today())
+            ->where('day', '<=', Carbon::today()->addDays(30))
+            ->where('availability', true)
+            ->get()
+            ->groupBy('day');
+
+        return view('front.sub_service_details', compact('sub_service','availabilities'));
     }
 
     public function submit_review(Request $request, $id)
