@@ -7,7 +7,7 @@
         </div>
         <div class="field-body">
             <div class="field">
-                <div class="control">
+                <div class="form-control">
                     <select id="service-select" name="service_id" class="form-control input">
                         <option value="" disabled selected>اختر خدمة</option>
                         @foreach($services as $service)

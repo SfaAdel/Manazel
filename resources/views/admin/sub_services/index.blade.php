@@ -55,7 +55,7 @@
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.sub_services.edit', $subService->id) }}"> تعديل </a>
-                                <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $subService->id }}" data_name="{{ $subService->name }}" data-url="{{ route('admin.teams.destroy', $subService->id) }}">حذف</a>
+                                <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $subService->id }}" data_name="{{ $subService->name }}" data-url="{{ route('admin.sub_services.destroy', $subService->id) }}">حذف</a>
 
                             </div>
                         </td>

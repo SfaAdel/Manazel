@@ -38,6 +38,7 @@ class SubServiceController extends Controller
     public function store(Request $request)
     {
         //
+        $ImageName = null;
 
         if ($request->hasFile('icon')) {
             $ImageName = time() . '.' . $request->icon->extension();
@@ -93,6 +94,8 @@ class SubServiceController extends Controller
     public function destroy(SubService $subService)
     {
         //
+        $subService->delete();
+        return redirect()->route('admin.sub_services.index')->with('delete', 'تم حذف البيانات بنجاح');
     }
 
     public function getServicesByCategory($categoryId)

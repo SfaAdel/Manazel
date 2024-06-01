@@ -8,12 +8,12 @@
   <div class="card main-card">
       <!-- Start Card Header -->
       <div class="card-header is-justify-content-space-between">
-          <a href="{{ route('admin.titles.create') }}" class="button is-success">
+          <span  class="">
         <span class="icon is-small">
           <i class="fa fa-plus-circle"></i>
         </span>
-              <span>اضافة عنوان جديد</span>
-          </a>
+              <span>قائمة  العناوين</span>
+          </span>
       </div><!-- End Card Header -->
 
       <div class="center">

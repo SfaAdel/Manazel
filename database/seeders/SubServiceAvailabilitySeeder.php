@@ -28,7 +28,7 @@ class SubServiceAvailabilitySeeder extends Seeder
 
             // Seed availability for the next 30 days
             for ($day = 0; $day < 30; $day++) {
-                $date = Carbon::today()->addDays($day);
+                $date = Carbon::tomorrow()->addDays($day);
 
                 foreach ($appointmentTimes as $time) {
                     for ($i = 0; $i < $providerCount; $i++) {

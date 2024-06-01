@@ -37,6 +37,8 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         //
+        $ImageName = null;
+
         if ($request->hasFile('icon')) {
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/blogs'), $ImageName);
@@ -90,5 +92,7 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
+        $blog->delete();
+        return redirect()->route('admin.blogs.index')->with('delete', 'تم حذف البيانات بنجاح');
     }
 }

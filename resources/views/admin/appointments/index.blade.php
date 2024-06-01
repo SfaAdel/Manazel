@@ -9,7 +9,7 @@
     <!-- Start Card Header -->
     <div class="card-header">
       <span class="icon is-small">
-        <i class="fa fa-plus-circle"></i>
+        <i class="bi bi-plus-circle"></i>
       </span>
       <span>قائمة الطلبات</span>
     </div><!-- End Card Header -->
@@ -54,13 +54,14 @@
             <thead>
             <tr>
               <th>اسم العميل</th>
+              <th>رقم الهاتف </th>
               <th>الخدمة</th>
               <th>التاريخ</th>
               <th>الوقت</th>
               <th>السعر</th>
               <th>العنوان</th>
               {{-- <th>مقدم الخدمة</th> --}}
-              <th>حالة الطلب</th>
+              <th> الاجراءات</th>
 
             </tr>
             </thead>
@@ -70,6 +71,7 @@
                 @foreach($appointments as $appointment)
                     <tr>
                         <td>{{ $appointment->customer->name }}</td>
+                        <td>{{ $appointment->customer->phone }}</td>
                         <td>{{ $appointment->subService->name }}</td>
                         <td>{{ $appointment->day }}</td>
                         <td>{{ $appointment->time }}</td>
