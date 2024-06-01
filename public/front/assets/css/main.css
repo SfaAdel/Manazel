@@ -509,7 +509,9 @@ section,
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-    --background-color: #484848;
+    --background-color: #0071B8;
+    /* --background-color: #4CBBD6; */
+
     --default-color: #ffffff;
     --heading-color: #ffffff;
     --contrast-color: #0071B8;

@@ -5,7 +5,8 @@
 
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section background-blur" style="background-image: url('front/assets/img/background.jpg');">
+    <section id="hero" class="hero section background-blur"
+        style="background-image: url('front/assets/img/background.jpg');">
         <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
         <div class="container ">
             <div class="row text-center">
@@ -19,15 +20,21 @@
             </div>
         </div>
     </section>
-    <main class="container my-6 p-6">
+    <main class="container my-6 p-6 ">
         <div class="pd-wrap">
             <div class="container">
                 <div class="row p-3">
-                    <div class="col-md-6">
+                    <div class="col-md-9">
                         <div class="product-dtl">
                             <div class="product-info">
                                 <div>
-                                    <div class="product-name">{{ $sub_service->name }} </div>
+
+                                    <div class="product-name">
+                                        <img src="{{ asset('images/sub_services/' . $sub_service->icon) }}"
+                                        class="img-fluid animated rounded m-3" alt="photo">
+                                        {{ $sub_service->name }}
+
+                                    </div>
                                     <div class="rate mx-1">
                                         <input type="radio" id="star5" name="rate" value="5" checked />
                                         <label for="star5" title="text">5 stars</label>
@@ -39,6 +46,7 @@
                                         <label for="star2" title="text">2 stars</label>
                                         <input type="radio" id="star1" name="rate" value="1" />
                                         <label for="star1" title="text">1 star</label>
+
                                     </div>
                                 </div>
                                 <p>{{ $sub_service->short_description }}</p>
@@ -68,7 +76,11 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row mt-3">
+                                        <label class="form-label" for="address">العنوان</label>
+                                        <input type="text" name="address" value=""
+                                            placeholder="من فضلك ادخل عنوانك بالتفصيل" class="form-control">
+                                    </div>
                                     <div class="row mt-3">
                                         <label class="form-label" for="map">اختر عنوان</label>
                                         <div id="map" style="width: 100%; height: 270px;"></div>
@@ -77,18 +89,27 @@
                                     <input type="hidden" id="latitude" name="latitude">
                                     <input type="hidden" id="longitude" name="longitude">
                                     <input type="hidden" name="sub_service_id" value="{{ $sub_service->id }}" />
+                                    @if (auth()->guard('customer')->check())
+                                    <input type="hidden" name="customer_id" value="{{ auth('customer')->user()->id }}" />
+                                    @endif
+<br>
+                                    <div class="product-price-discount d-inline m-3">
+                                        <h3 class="d-inline">سعر الخدمة :</h3>
+                                        <span>{{ $sub_service->price }} ريال</span>
+                                    </div>
 
-                                    <button type="submit" class="round-black-btn"> حجز الخدمة </button>
+                                    @if (auth()->guard('customer')->check())
+                                        <button type="submit" class="round-black-btn"> تأكيد الحجز </button>
+                                    @else
+                                        <a  class="round-black-btn" href="{{ route('login') }}"> يجب عليك تسجيل الدخول قبل حجز الخدمة </a>
+                                    @endif
+
                                 </form>
-                                <div class="product-price-discount d-inline m-3">
-                                    <span>{{ $sub_service->price }} ريال</span>
-                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <img src="{{ asset('images/sub_services/' . $sub_service->icon) }}" class="img-fluid animated rounded m-3" alt="photo">
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -119,12 +140,18 @@
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 40.712776, lng: -74.005974},
+                center: {
+                    lat: 40.712776,
+                    lng: -74.005974
+                },
                 zoom: 13
             });
 
             var marker = new google.maps.Marker({
-                position: {lat: 40.712776, lng: -74.005974},
+                position: {
+                    lat: 40.712776,
+                    lng: -74.005974
+                },
                 map: map,
                 draggable: true
             });

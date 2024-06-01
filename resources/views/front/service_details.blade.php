@@ -5,7 +5,7 @@
 
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section background-blur" style="background-image: url('front/assets/img/background.jpg');">
+    <section id="hero" class="hero section background-blur" style="background-image:url('front/assets/img/background.jpg');">
         <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
         <div class="container ">
             <div class="row text-center">
@@ -22,9 +22,21 @@
 
 <main class="container my-6 p-6">
 
+
+
+
+
     <!-- Services Section -->
     <section id="services" class="section ">
-        <div class="container custom-card-container mx-4 ">
+
+        <!-- Section Title -->
+        <div class="container section-title text-center my-4">
+            <h2 class="mt-5">{{$service->name}} </h2>
+            <p>{{$service->description}}</p>
+        </div><!-- End Section Title -->
+
+
+        <div class="container custom-card-container mx-4">
             <div class="row">
                 @foreach($sub_services as $sub_service)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4"> <!-- Added col-6 for mobile view -->
@@ -43,7 +55,7 @@
                                 <p class="custom-card-text">{{ $sub_service->short_description }}</p>
                                 <div class="buy d-flex align-items-center mt-3">
                                     <a href="#" class="btn btn-danger ml-3 custom-btn">
-                                        <i class="fas fa-shopping-cart"></i> اضف الى السلة
+                                        <i class="fas fa-shopping-cart"></i>حجز الخدمة
                                     </a>
                                     <div class="price text-success custom-price">
                                         <h5 class="mr-3">{{ $sub_service->price }} ريال</h5>
@@ -63,12 +75,6 @@
 
 
 
-
-        <!-- Section Title -->
-        <div class="container section-title text-center my-4">
-            <h2 class="mt-5">{{$service->name}} </h2>
-            <p>{{$service->description}}</p>
-        </div><!-- End Section Title -->
 
         <div class="container mt-4">
 
@@ -142,9 +148,9 @@
             </section><!-- /Why Us Section --> --}}
 
         </div>
-        <div class="center mt-4">
+        {{-- <div class="center mt-4">
             <a class="btn-getstarted btn btn-blue" href="{{ route('enroll') }}" >احجز خدمتك الان</a>
-        </div>
+        </div> --}}
     </section><!-- /Services Section -->
 
 

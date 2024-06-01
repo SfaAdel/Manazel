@@ -28,6 +28,7 @@ class OrderController extends Controller
         }
 
         $orders = $orders->paginate(5);
+
         return view('admin.orders.index', compact('orders','search'));
 
 

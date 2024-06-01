@@ -71,9 +71,9 @@
         </div>
 
         <div class="m-3">
-            @if (auth()->guard('customer')->check())
+            {{-- @if (auth()->guard('customer')->check())
             <a href="{{ route('cart') }}" class="mx-3"><i class=" bi bi-cart"></i></a>
-            @endif
+            @endif --}}
             <a href="https://api.whatsapp.com/send?phone=201012076064"><i
                     class="bi bi-whatsapp mx-2 text-success"></i></a>
             <a href=""><i class="bi bi-phone mx-2 text-info"></i></a>

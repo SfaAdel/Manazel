@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use App\Models\Provider;
 use App\Models\SubService;
 use App\Models\SubServiceAvailability;
 use Illuminate\Http\Request;
@@ -16,6 +17,22 @@ class AppointmentController extends Controller
     public function index()
     {
         //
+        $search = request()->input('search');
+        $appointments = Appointment::latest();
+
+        if ($search) {
+            $appointments->where(function ($query) use ($search) {
+                $query->where('day', 'like', '%' . $search . '%')
+                      ->orWhereHas('customer', function ($query) use ($search) {
+                          $query->where('name', 'like', '%' . $search . '%');
+                      });
+            });
+        }
+
+        $appointments = $appointments->paginate(5);
+        $providers = Provider::all(); // Fetch all providers to allow selection
+
+        return view('admin.appointments.index', compact('appointments','search','providers'));
     }
 
     /**
@@ -55,8 +72,7 @@ class AppointmentController extends Controller
 
 
         // Create the appointment
-        $appointment = Appointment::create($request->except( '_token')+
-        ['order_id' => 1]);
+        $appointment = Appointment::create($request->except( '_token'));
 
         // Check the number of already booked appointments for this sub_service at the same day and time
         $bookedCount = Appointment::where('sub_service_id', $appointment->sub_service_id)
@@ -77,7 +93,9 @@ class AppointmentController extends Controller
                 ->update(['availability' => false]);
         }
 
-        return response()->json(['message' => 'Appointment booked successfully']);
+        // return response()->json(['message' => 'Appointment booked successfully']);
+        return redirect()->back()->with('success', 'تم حجز الخدمة بنجاح');
+
     }
 
 
@@ -87,6 +105,14 @@ class AppointmentController extends Controller
     public function update(Request $request, Appointment $appointment)
     {
         //
+        $status = $request->input('status');
+        // Update the order status
+        if ($status === 'canceled') {
+            // Delete related appointments if the order is canceled
+            $appointment->delete();
+        }
+        $appointment->update(['status' => $status]);
+
         $appointment->update($request->only('provider_id'));
         return redirect()->back()->with('success', 'تم تحديث مقدم الخدمة بنجاح');
     }

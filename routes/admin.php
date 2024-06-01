@@ -58,6 +58,8 @@ Route::group([
     Route::resource('contacts', ContactController::class);
 
     Route::resource('orders', OrderController::class);
+    Route::resource('appointments', AppointmentController::class);
+
     Route::resource('contacts', ContactController::class);
     // Route::resource('abouts', TeamController::class);
 

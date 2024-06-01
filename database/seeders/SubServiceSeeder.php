@@ -23,7 +23,6 @@ class SubServiceSeeder extends Seeder
             'service_id' => 6,
             'active' => 1,
             'price' => 200,
-            'providers'=>2,
         ]);
 
         SubService::create([
@@ -34,7 +33,6 @@ class SubServiceSeeder extends Seeder
             'service_id' => 6,
             'active' => 1,
             'price' => 220,
-            'providers'=>1,
         ]);
 
         SubService::create([
@@ -45,7 +43,6 @@ class SubServiceSeeder extends Seeder
             'service_id' => 6,
             'active' => 1,
             'price' => 180,
-            'providers'=>3,
         ]);
 
 
@@ -57,7 +54,6 @@ class SubServiceSeeder extends Seeder
             'service_id' => 1,
             'active' => 1,
             'price' => 230,
-            'providers'=>2,
         ]);
 
 

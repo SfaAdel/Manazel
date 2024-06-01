@@ -31,7 +31,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return view('front.index');
+        return redirect()->route('home');
     }
 
     public function registerForm(): View
@@ -44,7 +44,7 @@ class AuthController extends Controller
         Auth::guard('customer')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return view('front.index');
+        return view('front.auth.login');
     }
 
     public function register(Request $request)
@@ -59,46 +59,73 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // $verificationCode = Str::random(6); // Generate 6-digit random code
-
         $user = Customer::create([
             'name' => $request->name,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
         ]);
-            // Generate verification code
-            $verificationCode = rand(100000, 999999);
 
-            // Save the verification code (you may want to store this in the database associated with the user)
-            $user->verification_code = $verificationCode;
-            $user->save();
+        // Generate and store verification code
+        $verificationCode = rand(100000, 999999);
+        $user->verification_code = $verificationCode;
+        $user->save();
 
-            // Send the verification code via SMS
-            $smsController = new SmsController();
-            $smsController->sendVerificationCode($user->phone_number, $verificationCode);
+        // Send verification code via SMS
+        try {
+            $twilio = new Client(env('TWILIO_SID'), env('TWILIO_AUTH_TOKEN'));
+            $message = $twilio->messages->create($user->phone, [
+                'from' => env('TWILIO_PHONE_NUMBER'),
+                'body' => "Your verification code is: $verificationCode",
+            ]);
+            Log::info("Twilio message sent: " . $message->sid);
+        } catch (\Twilio\Exceptions\RestException $e) {
+            Log::error("Twilio SMS failed: " . $e->getMessage());
+            return redirect()->back()->withErrors(['phone' => 'Failed to send verification code. Please ensure your phone number is correct and try again.'])->withInput();
+        }
 
+        event(new Registered($user));
+        Auth::login($user);
 
-        return redirect()->route('verification.form')->with('message', 'Verification code sent to your phone.');
+        return redirect()->route('login')->with('message', 'Verification code sent to your phone.');
     }
 
-    public function sendVerificationCode($phoneNumber, $verificationCode)
+
+    public function verify(Request $request)
     {
-        $sid = env('TWILIO_SID');
-        $token = env('TWILIO_AUTH_TOKEN');
-        $twilioNumber = env('TWILIO_PHONE_NUMBER');
+        $request->validate([
+            'code' => 'required|numeric',
+        ]);
 
-        $client = new Client($sid, $token);
+        $user = Auth::user();
 
-        $message = $client->messages->create(
-            $phoneNumber, // Destination phone number
-            [
-                'from' => $twilioNumber,
-                'body' => "Your verification code is: $verificationCode"
-            ]
-        );
+        if ($user->verification_code === $request->code) {
+            $user->verification_code = null;
+            // $user->save();
 
-        return $message->sid;
+            return redirect()->route('home')->with('message', 'Your phone number has been verified.');
+        }
+
+        return redirect()->back()->withErrors(['code' => 'Invalid verification code.']);
     }
+
+    // public function sendVerificationCode($phoneNumber, $verificationCode)
+    // {
+    //     $sid = env('TWILIO_SID');
+    //     $token = env('TWILIO_AUTH_TOKEN');
+    //     $twilioNumber = env('TWILIO_PHONE_NUMBER');
+
+    //     $client = new Client($sid, $token);
+
+    //     $message = $client->messages->create(
+    //         $phoneNumber, // Destination phone number
+    //         [
+    //             'from' => $twilioNumber,
+    //             'body' => "Your verification code is: $verificationCode"
+    //         ]
+    //     );
+
+    //     return $message->sid;
+    // }
     // private function sendVerificationCode($to, $code)
     // {
     //     try {

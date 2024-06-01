@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\SmsController;
@@ -52,7 +53,7 @@ use Illuminate\Support\Facades\Route;
 
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
-
+    Route::post('verify', [AuthController::class, 'verify'])->name('verify');
 
     Route::get('/services/{id}', [HomeController::class, 'service'])->name('services');
     Route::get('/service-details/{id}', [HomeController::class, 'service_details'])->name('service_details');
@@ -60,27 +61,32 @@ use Illuminate\Support\Facades\Route;
     Route::post('sub_service/{id}/review', [HomeController::class, 'submit_review'])->name('submit_review');
 
     Route::post('/appointments', [AppointmentController::class, 'bookAppointment'])->name('book_appointment');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact_store');
+
+    Route::get('/about', [HomeController::class, 'about'])->name('about');
+    Route::get('/blog', [HomeController::class, 'blog'])->name('blogs');
+    Route::get('/blog-details', [HomeController::class, 'blog_details'])->name('blog_details');
 
 
 
 
-Route::get('/about', function () {
-    return view('front/about'); }) ->name('about');
-
-Route::get('/contact', function () {
-    return view('front/contact'); }) ->name('contact');
+// Route::get('/about', function () {
+//     return view('front/about'); }) ->name('about');
+// Route::get('/contact', function () {
+//     return view('front/contact'); }) ->name('contact');
 
 Route::get('/enroll', function () {
     return view('front/enroll'); }) ->name('enroll');
 
-Route::get('/blog', function () {
-    return view('front/blogs'); }) ->name('blogs');
+// Route::get('/blog', function () {
+//     return view('front/blogs'); }) ->name('blogs');
 
 Route::get('/cart', function () {
     return view('front/cart'); }) ->name('cart');
 
-Route::get('/blog-details', function () {
-    return view('front/blog_details'); }) ->name('blog_details');
+// Route::get('/blog-details', function () {
+//     return view('front/blog_details'); }) ->name('blog_details');
 
 Route::get('/general-order', function () {
     return view('front/general_order'); }) ->name('general_order');

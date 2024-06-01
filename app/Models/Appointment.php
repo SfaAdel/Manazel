@@ -9,9 +9,14 @@ class Appointment extends Model
 {
     use HasFactory;
 
-    public function order()
+    // public function order()
+    // {
+    //     return $this->belongsTo(Order::class);
+    // }
+
+    public function customer()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Customer::class);
     }
 
     public function subService()

@@ -33,6 +33,9 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //
+        Contact::create($request->except('_token'));
+        return redirect()->back()->with('success', 'تم ارسال رسالتك بنجاح!');
+
     }
 
     /**

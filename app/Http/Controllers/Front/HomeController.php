@@ -53,9 +53,11 @@ class HomeController extends Controller
         $whyUsAnsweres = WhyUs::latest()->limit(4)->get();
         $whyUsSection = Title::where('section', 'advantages')->first();
 
+        $mainSection = Title::where('section', 'main')->first();
+
         $counters=AboutUsCounter::latest()->limit(3)->get();
 
-        return view('front.index', compact('contactSection','whyUsSection', 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
+        return view('front.index', compact('mainSection','contactSection','whyUsSection', 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
     }
 
     public function service($id)
@@ -114,6 +116,48 @@ class HomeController extends Controller
         $review->save();
 
         return redirect()->back()->with('success', 'تم اضافة المراجعة بنجاح');
+    }
+
+    public function contact()
+    {
+
+        $contactSection = Title::where('section', 'contacts')->first();
+
+        return view('front.contact', compact('contactSection'));
+    }
+
+    public function about()
+    {
+        $teams = Team::latest()->get();
+        $teamSection = Title::where('section', 'teams')->first();
+
+        $advantages = Advantage::latest()->get();
+        $advantageSection = Title::where('section', 'advantages')->first();
+
+        $contactSection = Title::where('section', 'contacts')->first();
+        $aboutSection = Title::where('section', 'about_us')->first();
+
+        $whyUsAnsweres = WhyUs::latest()->get();
+        $whyUsSection = Title::where('section', 'advantages')->first();
+
+        $counters=AboutUsCounter::latest()->limit(3)->get();
+
+        return view('front.about', compact('whyUsAnsweres','whyUsSection','counters','teams','teamSection', 'advantages','advantageSection','contactSection','aboutSection'));
+    }
+
+    public function blog()
+    {
+        $blogs = Blog::latest()->get();
+        $blogSection = Title::where('section', 'blogs')->first();
+        $categories = Category::latest()->get();
+
+        return view('front.blogs', compact('blogs','blogSection','categories'));
+    }
+
+    public function blog_details($id)
+    {
+        $blog = Blog::find($id);
+        return view('front.blog_details', compact('blog'));
     }
 
 }

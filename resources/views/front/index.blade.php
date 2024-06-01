@@ -10,10 +10,9 @@
         <div class="container px-4">
             <div class="row gy-4 mr-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-                    <h1 class="my-3"> اهلا بك في منازل</h1>
+                    <h1 class="my-3">   {{$mainSection->title}} </h1>
                     <hr>
-                    <p class="mt-2">لتقديم جميع خدمات الصيانة و التصليح للغسالات و الثلاجات و الفريزرات و الأفران و
-                        المكيفات بالاضافة الى خدمات الصبغ و السباكة و الكهرباء في المملكة العربية السعودية 0542936554</p>
+                    <p class="mt-2">{{$mainSection->short_description}}</p>
                     <div class="d-flex mt-3">
                         <a href="#" class="btn-get-started"> اشترك كمزود خدمة </a>
                         <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
@@ -427,44 +426,53 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-7">
-                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-                            data-aos-delay="200">
+                    <div class="col-lg-7 info-wrap">
+                        <form action="{{ route('contact_store') }}" method="POST" data-aos="fade-up" data-aos-delay="200">
+                            @csrf
                             <div class="row gy-4">
-
                                 <div class="col-md-6">
-                                    <label for="name-field" class="pb-2">الاسم</label>
-                                    <input type="text" name="name" id="name-field" class="form-control"
-                                        required="">
+                                    <div class="mb-3">
+                                        <label for="name-field" class="form-label">الاسم</label>
+                                        <input type="text" name="name" id="name-field" class="form-control" required="">
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="email-field" class="pb-2">البريد الالكتروني</label>
-                                    <input type="email" class="form-control" name="email" id="email-field"
-                                        required="">
+                                    <div class="mb-3">
+                                        <label for="email-field" class="form-label">البريد الالكتروني</label>
+                                        <input type="email" class="form-control" name="email" id="email-field" required="">
+                                    </div>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="subject-field" class="pb-2">عنوان الموضوع</label>
-                                    <input type="text" class="form-control" name="subject" id="subject-field"
-                                        required="">
+                                    <div class="mb-3">
+                                        <label for="phone-field" class="form-label">رقم الهاتف</label>
+                                        <input type="text" class="form-control" name="phone" id="phone-field" required="">
+                                    </div>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="message-field" class="pb-2">الرسالة</label>
-                                    <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                                    <div class="mb-3">
+                                        <label for="title-field" class="form-label">عنوان الموضوع</label>
+                                        <input type="text" class="form-control" name="title" id="title-field" required="">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="message-field" class="form-label">الرسالة</label>
+                                        <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-12 text-center">
-                                    <div class="loading">جاري التحميل</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">تم استلام رسالتك بنجاح ، شكرا لتواصلك معنا !</div>
-
-                                    <button type="submit">ارسال</button>
+                                    <button type="submit" class="btn btn-primary">ارسال</button>
                                 </div>
-
                             </div>
                         </form>
+
+
+
                     </div><!-- End Contact Form -->
 
                 </div>

@@ -35,7 +35,7 @@
         <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة المدونات</a>
     </collapse-item>
     <collapse-item title=" العناوين" icon="fa fa-handshake">
-        <a class="link-item" href="{{ route('admin.titles.create') }}"> اضافة عنوان</a>
+        {{-- <a class="link-item" href="{{ route('admin.titles.create') }}"> اضافة عنوان</a> --}}
         <a class="link-item" href="{{ route('admin.titles.index') }}">قائمة العناوين</a>
     </collapse-item>
     <collapse-item title=" الاسئلة" icon="fa fa-handshake">
@@ -55,8 +55,11 @@
     <collapse-item title="اجازات العاملين" icon="fa fa-handshake">
         <a class="link-item" href="{{ route('admin.provider_availabilities.index') }}">قائمة الاجازات</a>
     </collapse-item>
-    <collapse-item title="الطلبات" icon="fa fa-handshake">
+    {{-- <collapse-item title="الطلبات" icon="fa fa-handshake">
         <a class="link-item" href="{{ route('admin.orders.index') }}">قائمة الطلبات</a>
+    </collapse-item> --}}
+    <collapse-item title="المواعيد والحجوزات" icon="fa fa-handshake">
+        <a class="link-item" href="{{ route('admin.appointments.index') }}">قائمة المواعيد</a>
     </collapse-item>
     <collapse-item title="الرسائل" icon="fa fa-handshake">
         <a class="link-item" href="{{ route('admin.contacts.index') }}">قائمة الرسائل</a>
