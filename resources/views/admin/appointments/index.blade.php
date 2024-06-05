@@ -89,11 +89,18 @@
                                       <div class="select d-inline">
                                           <select name="provider_id" {{ $appointment->status == 'completed' ? 'disabled' : '' }}>
                                               <option value="" selected disabled>اختر مقدم خدمة</option>
-                                              @foreach($providers as $provider)
+                                              {{-- @foreach($providers as $provider)
                                                   <option value="{{ $provider->id }}" {{ $appointment->provider_id == $provider->id ? 'selected' : '' }}>
                                                       {{ $provider->name }}
                                                   </option>
-                                              @endforeach
+                                              @endforeach --}}
+
+                                              @foreach($providers[$appointment->id] ?? [] as $provider)
+                                              <option value="{{ $provider->id }}" {{ $appointment->provider_id == $provider->id ? 'selected' : '' }}>
+                                                  {{ $provider->name }}
+                                              </option>
+                                          @endforeach
+
                                           </select>
                                       </div>
 
@@ -123,7 +130,7 @@
     <!-- Start Card Footer -->
         <div class="center d-flex justify-center align-content-center m-4">
             <div class="card-footer with-pagination ">
-                {{ $appointments->links() }}
+                {{-- {{ $appointments->links() }} --}}
             </div>
         </div>
     <!-- End Card Footer -->

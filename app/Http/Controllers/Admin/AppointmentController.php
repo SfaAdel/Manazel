@@ -29,8 +29,21 @@ class AppointmentController extends Controller
             });
         }
 
+
         $appointments = $appointments->paginate(5);
-        $providers = Provider::all(); // Fetch all providers to allow selection
+        // $providers = Provider::all(); // Fetch all providers to allow selection
+
+        $appointments = Appointment::with(['customer', 'subService.service.category'])->get();
+
+        // Get the category ID of each appointment's sub-service
+        $providers = collect();
+        foreach ($appointments as $appointment) {
+            if ($appointment->subService && $appointment->subService->service && $appointment->subService->service->category) {
+                $categoryId = $appointment->subService->service->category->id;
+                $providers[$appointment->id] = Provider::where('category_id', $categoryId)->get();
+            }
+        }
+
 
         return view('admin.appointments.index', compact('appointments','search','providers'));
     }

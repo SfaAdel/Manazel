@@ -20,6 +20,8 @@
             </div>
         </div>
     </div>
+
+
     <hr />
 
 
@@ -136,7 +138,7 @@
 <script>
     $(document).ready(function() {
         $('#service-select').select2({
-            placeholder: 'اختر خدمة',
+            placeholder: 'ابحث عن خدمة',
             allowClear: true
         });
     });

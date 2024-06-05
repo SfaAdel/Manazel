@@ -27,6 +27,8 @@
 
 {{-- main --}}
 <link href="{{ asset('/admin/css/main.css') }}" rel="stylesheet" type="text/css">
+{{-- Font Awesome --}}
+<link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
 
 
     <!-- Favicon -->

@@ -2,9 +2,7 @@
 
     <a href="{{ route('dashboard') }}" class="card link-item-no-collapse "><i
             class="fas fa-tachometer-alt"></i><span>لوحه التحكم</span></a>
-            <div class="card-link text-danger like">
-                <i class="fas fa-heart"></i>
-            </div>
+
 
     <collapse-item title="التصنيفات" icon="fa fa-building">
         <a class="link-item" href="{{ route('admin.categories.create') }}">اضافة تصنيف</a>
@@ -18,9 +16,9 @@
         <a class="link-item" href="{{ route('admin.sub_services.create') }}">اضافة خدمة</a>
         <a class="link-item" href="{{ route('admin.sub_services.index') }}">قائمة الخدمات</a>
     </collapse-item>
-    <collapse-item title=" العاملين" icon="fa fa-book">
-        <a class="link-item" href="{{ route('admin.providers.create') }}">اضافة عامل</a>
-        <a class="link-item" href="{{ route('admin.providers.index') }}">قائمة العمال</a>
+    <collapse-item title="الموظفين" icon="fa fa-book">
+        <a class="link-item" href="{{ route('admin.providers.create') }}">اضافة موظف</a>
+        <a class="link-item" href="{{ route('admin.providers.index') }}">قائمة الموظفين</a>
     </collapse-item>
     <collapse-item title=" المراجعات" icon="fa fa-user-check">
         <a class="link-item" href="{{ route('admin.testimonials.create') }}">اضافة مراجعة</a>

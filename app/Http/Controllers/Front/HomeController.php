@@ -30,7 +30,7 @@ class HomeController extends Controller
         //
         // $mainSection = Title::where('section', 'main')->first();
 
-        $categories = Category::latest()->get();
+        $categories = Category::latest()->limit(4)->get();
         $serviceSection = Title::where('section', 'services')->first();
 
         $teams = Team::latest()->limit(4)->get();

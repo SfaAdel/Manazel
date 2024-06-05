@@ -392,6 +392,49 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# fixed contact icons
+--------------------------------------------------------------*/
+
+.fixed-icon {
+    position: fixed;
+    visibility: hidden;
+    opacity: 1;
+    left: 15px;
+    bottom: 20px; /* Adjust bottom value as needed to stack icons */
+    z-index: 99999;
+    background-color: var(--background-color);
+    width: 35px;
+    height: 35px;
+    padding: 20px;
+    border-radius: 50px;
+    transition: all 0.4s;
+}
+
+.fixed-icon.active {
+    visibility: visible;
+    opacity: 1;
+    bottom: 15px;
+  }
+
+.fixed-icon i {
+    font-size: 24px;
+    color: var(--contrast-color);
+    line-height: 0;
+}
+
+.fixed-icon:hover {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+    color: var(--contrast-color);
+}
+
+.fixed-icon.whatsapp {
+    left: 64px; /* Adjust to stack icons */
+}
+
+
+
+
+/*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {

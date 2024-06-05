@@ -45,6 +45,27 @@
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
 
+ /**
+  * Scroll top button
+  */
+ let fixedIcon = document.querySelector('.fixed-icon');
+
+ function toggleScrollTop() {
+   if (fixedIcon) {
+     window.scrollY > 100 ? fixedIcon.classList.add('active') : fixedIcon.classList.remove('active');
+   }
+ }
+ fixedIcon.addEventListener('click', (e) => {
+   e.preventDefault();
+   window.scrollTo({
+     top: 0,
+     behavior: 'smooth'
+   });
+ });
+
+ window.addEventListener('load', toggleScrollTop);
+ document.addEventListener('scroll', toggleScrollTop);
+
   /**
    * Animation on scroll function and init
    */
