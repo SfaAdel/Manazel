@@ -350,7 +350,7 @@
                                                     <h4 class="mb-4 ">{{ $blog->main_title }}</h4>
                                                     <p class="d-inline mt-4">{{ $blog->short_description }}</p>
 
-                                                    <a href="{{ route('blogs' , $blog->id)}}" class="btn mt-3 d-inline text-primary">قراءة المزيد . . .</a>
+                                                    <a href="{{ route('blog_details' , $blog->id)}}" class="btn mt-3 d-inline text-primary">قراءة المزيد . . .</a>
 
                                                 </div>
                                             </div>
@@ -369,6 +369,69 @@
             </div>
 
         </section><!-- /Blog Section -->
+
+{{-- <!-- Blog Section -->
+<section id="blog" class="blog section px-4 mt-4 spikes">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <!-- Section Title and Description -->
+      @if (isset($blogSection))
+        <h2>{{ $blogSection->title }}</h2>
+        <p class="mb-4">{{ $blogSection->short_description }}</p>
+      @endif
+
+      <!-- Blog Entries -->
+      @if (!isset($blogs) || $blogs->isEmpty())
+        <h4 class="mt-3">لا يوجد مدونات بعد</h4>
+      @else
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="swiper blog-swiper">
+            <script type="application/json" class="swiper-config">
+              {
+                "loop": true,
+                "speed": 600,
+                "autoplay": {
+                  "delay": 3000
+                },
+                "slidesPerView": 1,
+                "pagination": {
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                  "clickable": true
+                }
+              }
+            </script>
+
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                @foreach ($blogs as $blog)
+                  <div class="swiper-slide">
+                    <div class="blog-entry d-flex align-items-start bg-light">
+                      <div class="pic">
+                        <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="img-fluid" alt="">
+                      </div>
+                      <div class="entry-info m-2 mx-3">
+                        <h4>{{ $blog->main_title }}</h4>
+                        <p class="d-inline mt-3">{{ $blog->short_description }}</p>
+                        <a href="{{ route('blog_details', $blog->id) }}" class="btn mt-3 d-inline text-primary">قراءة المزيد . . .</a>
+                      </div>
+                    </div>
+                  </div><!-- End Blog Entry -->
+                @endforeach
+              </div>
+            </div>
+
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      @endif
+    </div>
+
+</section><!-- /Blog Section --> --}}
+
+
 
 
         {{-- <hr> --}}

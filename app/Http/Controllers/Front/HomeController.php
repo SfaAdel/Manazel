@@ -171,6 +171,26 @@ class HomeController extends Controller
         return view('front.blog_details', compact('blog','navCategories'));
     }
 
+    public function filterByCategory($id = null)
+    {
+        $categories = Category::all();
+        $blogSection = Title::where('section', 'blogs')->first();
+        $navCategories = Category::latest()->get();
+
+        if ($id) {
+            $blogs = Blog::where('category_id', $id)->get();
+            $selectedCategory = Category::find($id);
+        } else {
+            $blogs = Blog::all();
+            $selectedCategory = null;
+        }
+
+        $noBlogsMessage = $blogs->isEmpty() ? 'لا يوجد مدونات في هذه الفئة' : '';
+
+        return view('front.blogs', compact('blogs', 'categories', 'blogSection', 'navCategories', 'selectedCategory', 'noBlogsMessage'));
+    }
+
+
 
     public function all_categories()
     {

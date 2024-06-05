@@ -1561,6 +1561,97 @@ section,
   }
 
 
+
+/*--------------------------------------------------------------
+# Bloggggggggggg 2 Section
+--------------------------------------------------------------*/
+.blog .section-header {
+    margin-bottom: 40px;
+  }
+
+  .blog .blog-carousel,
+  .blog .blog-swiper {
+    overflow: hidden;
+  }
+
+  .blog .blog-entry {
+    box-shadow: 0px 2px 15px color-mix(in srgb, var(--default-color), transparent 90%);
+    position: relative;
+    border-radius: 5px;
+    transition: 0.5s;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--background-color);
+  }
+
+  .blog .blog-entry:hover {
+    transform: translateY(-10px);
+  }
+
+  .blog .blog-entry .pic {
+    overflow: hidden;
+    width: 150px;
+    border-radius: 10%;
+    flex-shrink: 0;
+  }
+
+  .blog .blog-entry .pic img {
+    transition: ease-in-out 0.3s;
+  }
+
+  .blog .blog-entry .entry-info {
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .blog .blog-entry h4 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-align: right;
+  }
+
+  .blog .blog-entry p {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+  }
+
+  .blog .swiper-wrapper {
+    height: auto;
+  }
+
+  .blog .swiper-pagination {
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .blog .swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+    background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  }
+
+  .blog .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: var(--accent-color);
+  }
+
+  @media (max-width: 468px) {
+    .blog .blog-entry {
+      flex-direction: column;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    .blog .blog-entry .entry-info {
+      padding: 30px 0 0 0;
+      text-align: center;
+    }
+  }
+
+
 /*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/

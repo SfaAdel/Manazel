@@ -70,6 +70,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/about', [HomeController::class, 'about'])->name('about');
     Route::get('/blogs', [HomeController::class, 'blog'])->name('blogs');
     Route::get('/blog-details/{id}', [HomeController::class, 'blog_details'])->name('blog_details');
+    Route::get('/blogs/category/{id?}', [HomeController::class, 'filterByCategory'])->name('blogs.filter');
 
 
 
