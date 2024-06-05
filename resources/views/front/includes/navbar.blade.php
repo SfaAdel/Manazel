@@ -14,38 +14,32 @@
                     class="nav-item mt-1 nav-link {{ Request::is('home') ? 'active' : '' }}">الرئيسية</a>
                 <a href="{{ route('about') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('about') ? 'active' : '' }}">من نحن</a>
-                {{-- <div class="nav-item dropdown">
-                    <a href="{{ route('services') }}"
+                <div class="nav-item dropdown">
+                    <a href="#"
                         class="nav-link dropdown-toggle {{ Request::is('services') ? 'active' : '' }}"
                         id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         خدماتنا
                         <i class="bi bi-caret-down mr-1"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">صيانة غسالات</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">تصليح غسالات</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">صيانة افران الغاز</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">صيانة افران</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">صيانة ثلاجات</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">تصليح ثلاجات</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">صيانة مكيفات</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">صيانة مكيفات سبليت</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">كهربائي</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">سباك</a></li>
-                        <li><a class="dropdown-item" href="{{ route('service_details') }}">صباغ</a></li>
-                        <li><a class="dropdown-item" href="{{ route('services') }}">جميع الخدمات</a></li>
+
+                   @foreach ($navCategories as $navCategory)
+                        <li><a class="dropdown-item" href="{{ route('services', $navCategory->id) }}"> {{ $navCategory->name }} </a></li>
+                    @endforeach
 
                     </ul>
-                </div> --}}
+                </div>
                 <a href="#portfolio" class="nav-item mt-1 nav-link">الخصوصية</a>
                 <a href="{{ route('blogs') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('blogs') ? 'active' : '' }}">المدونة</a>
                 <a href="{{ route('contact') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('contact') ? 'active' : '' }}">تواصل معنا</a>
             </div>
+            <a href="{{ route('cart') }}" class="btn-getstarted "> اشترك كمزود خدمة </a>
+
             @if (!(auth()->guard('customer')->check()))
             <a class="btn-getstarted mx-2" href="{{ route('login') }}"> تسجيل الدخول </a>
-        @else
+            @else
             <div class="dropdown">
                 <button class="btn-getstarted mx-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @if (Auth::guard('customer')->user()->image)
@@ -60,24 +54,17 @@
                         @csrf
                         <button type="submit" class="dropdown-item">تسجيل الخروج</button>
                     </form>
-                    <a class="dropdown-item" href="{{ route('general_order') }}">احجز موعد الان</a>
+                    {{-- <a class="dropdown-item" href="{{ route('general_order') }}">احجز موعد الان</a> --}}
 
                     <!-- Other dropdown items can be added here -->
                 </div>
             </div>
-        @endif
+            @endif
 
 
         </div>
 
-        <div class="m-3">
-            {{-- @if (auth()->guard('customer')->check())
-            <a href="{{ route('cart') }}" class="mx-3"><i class=" bi bi-cart"></i></a>
-            @endif --}}
-            <a href="https://api.whatsapp.com/send?phone=201012076064"><i
-                    class="bi bi-whatsapp mx-2 text-success"></i></a>
-            <a href=""><i class="bi bi-phone mx-2 text-info"></i></a>
-        </div>
+
 
     </nav>
 </header>

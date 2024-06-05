@@ -55,6 +55,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::post('verify', [AuthController::class, 'verify'])->name('verify');
 
+
+    Route::get('/categories', [HomeController::class, 'all_categories'])->name('categories');
+
     Route::get('/services/{id}', [HomeController::class, 'service'])->name('services');
     Route::get('/service-details/{id}', [HomeController::class, 'service_details'])->name('service_details');
     Route::get('/sub-service-details/{id}', [HomeController::class, 'sub_service_details'])->name('sub_service_details');
@@ -65,8 +68,8 @@ use Illuminate\Support\Facades\Route;
     Route::post('/contact', [ContactController::class, 'store'])->name('contact_store');
 
     Route::get('/about', [HomeController::class, 'about'])->name('about');
-    Route::get('/blog', [HomeController::class, 'blog'])->name('blogs');
-    Route::get('/blog-details', [HomeController::class, 'blog_details'])->name('blog_details');
+    Route::get('/blogs', [HomeController::class, 'blog'])->name('blogs');
+    Route::get('/blog-details/{id}', [HomeController::class, 'blog_details'])->name('blog_details');
 
 
 

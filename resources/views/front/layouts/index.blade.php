@@ -77,16 +77,15 @@
             <!-- partial -->
 
             <!-- Scroll Top -->
-
-            <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-            <a href="tel:+1234567890" id="fixed-icon" class="fixed-icon phone d-flex align-items-center justify-content-center">
-                <i class="fas fa-phone"></i>
-            </a>
-
-            <a href="https://wa.me/1234567890" id="fixed-icon" class="fixed-icon whatsapp d-flex align-items-center justify-content-center">
+            <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+                <i class="bi bi-arrow-up-short"></i>
+              </a>
+              <a href="tel:+1234567890" class="fixed-icon phone d-flex align-items-center justify-content-center text-info">
+                <i class="bi bi-phone"></i>
+              </a>
+              <a href="https://wa.me/1234567890" class="fixed-icon whatsapp d-flex align-items-center justify-content-center text-success">
                 <i class="fab fa-whatsapp"></i>
-            </a>
+              </a>
 
 
             <!-- Preloader -->

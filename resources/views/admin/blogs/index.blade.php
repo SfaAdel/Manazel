@@ -28,9 +28,11 @@
             <table class="table is-fullwidth" id="categories">
                 <thead>
                     <tr>
-                        <th>العنوان </th>
+                        <th>العنوان الرئيسي </th>
                         <th>التصنيف</th>
-                        <th> الوصف</th>
+                        <th> الوصف القصير</th>
+                        <th> العنوان الثانوي</th>
+                        <th> الوصف الطويل</th>
                         <th>الصورة</th>
                         <th>الاجراءات</th>
                     </tr>
@@ -38,9 +40,11 @@
                 <tbody>
                     @foreach ($blogs as $blog)
                         <tr>
-                            <td>{{ $blog->name }}</td>
+                            <td>{{ $blog->main_title }}</td>
                             <td>{{ $blog->category ? $blog->category->name : ' - - ' }}</td>
-                            <td>{{ $blog->description }}</td>
+                            <td>{{ $blog->short_description }}</td>
+                            <td>{{ $blog->second_title }}</td>
+                            <td> ` {{ $blog->long_description }} `</td>
                             @if ($blog->icon)
                             <td>
                                 <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="icon rounded-circle" alt="icon">

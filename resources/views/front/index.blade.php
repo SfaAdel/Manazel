@@ -14,7 +14,8 @@
                     <hr>
                     <p class="mt-2">{{$mainSection->short_description}}</p>
                     <div class="d-flex mt-3">
-                        <a href="#" class="btn-get-started"> اشترك كمزود خدمة </a>
+                        <a href="#" class="btn-get-started"> اتصل بنا</a>
+
                         <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
                             class="glightbox btn-watch-video d-flex align-items-center">
                             <i class="bi bi-play-circle mx-2"></i><span>شاهد الان</span>
@@ -46,8 +47,6 @@
                         <p class="lead">{{$aboutSection->short_description}}
                         </p>
                     </div>
-
-
 
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                         <h2 class="my-3">لماذا عليك اختيارنا ؟</h2>
@@ -136,12 +135,10 @@
                 </div>
 
                 <div class="center mt-4">
-                    {{-- <a href="{{ route('services') }}" class="btn btn-custom mt-3">معرض الخدمات</a> --}}
+                    <a href="{{ route('categories') }}" class="btn btn-custom mt-3">عرض جميع التصنيفات</a>
                 </div>
             </div>
         </section><!-- /Services Section -->
-
-
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials section px-4 mt-4">
@@ -205,7 +202,6 @@
         </section><!-- /Testimonials Section -->
 
         {{-- <hr> --}}
-
 
         <!-- Why Us Section -->
         <section id="why-us" class="section why-us px-4 mt-4 spikes" data-builder="section">
@@ -314,7 +310,7 @@
                 <!-- Section Title and Description -->
                 @if (isset($blogSection))
                     <h2>{{ $blogSection->title }}</h2>
-                    <p>{{ $blogSection->short_description }}</p>
+                    <p class="mb-4">{{ $blogSection->short_description }}</p>
                 @endif
 
                 <!-- Blog Entries -->
@@ -347,14 +343,18 @@
                                         <div class="swiper-slide">
                                             <div class="blog-entry d-flex align-items-start bg-light">
                                                 <div class="pic">
-                                                    <img src="{{ asset('images/teams/' . $blog->icon) }}"
+                                                    <img src="{{ asset('images/blogs/' . $blog->icon) }}"
                                                         class="img-fluid" alt="">
                                                 </div>
-                                                <div class="entry-info m-2">
-                                                    <h4>{{ $blog->name }}</h4>
-                                                    <p class="m-4">{{ $blog->short_description }}</p>
+                                                <div class="entry-info m-2 mx-3">
+                                                    <h4 class="mb-4 ">{{ $blog->main_title }}</h4>
+                                                    <p class="d-inline mt-4">{{ $blog->short_description }}</p>
+
+                                                    <a href="{{ route('blogs' , $blog->id)}}" class="btn mt-3 d-inline text-primary">قراءة المزيد . . .</a>
+
                                                 </div>
                                             </div>
+
                                         </div><!-- End Blog Entry -->
                                     @endforeach
                                 </div>

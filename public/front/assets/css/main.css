@@ -360,76 +360,76 @@ h6 {
 /*--------------------------------------------------------------
 # Scroll Top Button
 --------------------------------------------------------------*/
-.scroll-top {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  right: 15px;
-  bottom: -15px;
-  z-index: 99999;
-  background-color: var(--background-color);
-  width: 44px;
-  height: 44px;
-  border-radius: 50px;
-  transition: all 0.4s;
-}
+    /* Scroll Top Button */
+    .scroll-top {
+        position: fixed;
+        visibility: hidden;
+        opacity: 0;
+        right: 15px;
+        bottom: -15px;
+        z-index: 99999;
+        background-color: var(--background-color);
+        width: 44px;
+        height: 44px;
+        border-radius: 50px;
+        transition: all 0.4s;
+      }
 
-.scroll-top i {
-  font-size: 24px;
-  color: var(--contrast-color);
-  line-height: 0;
-}
+      .scroll-top i {
+        font-size: 24px;
+        color: var(--contrast-color);
+        line-height: 0;
+      }
 
-.scroll-top:hover {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
-  color: var(--contrast-color);
-}
+      .scroll-top:hover {
+        background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+        color: var(--contrast-color);
+      }
 
-.scroll-top.active {
-  visibility: visible;
-  opacity: 1;
-  bottom: 15px;
-}
+      .scroll-top.active {
+        visibility: visible;
+        opacity: 1;
+        bottom: 15px;
+      }
 
-/*--------------------------------------------------------------
-# fixed contact icons
---------------------------------------------------------------*/
+      /* Fixed Contact Icons */
+      .fixed-icon {
+        position: fixed;
+        visibility: hidden;
+        opacity: 0;
+        left: 15px;
+        z-index: 99999;
+        background-color: var(--background-color);
+        width: 44px;
+        height: 44px;
+        border-radius: 50px;
+        transition: all 0.4s;
+      }
 
-.fixed-icon {
-    position: fixed;
-    visibility: hidden;
-    opacity: 1;
-    left: 15px;
-    bottom: 20px; /* Adjust bottom value as needed to stack icons */
-    z-index: 99999;
-    background-color: var(--background-color);
-    width: 35px;
-    height: 35px;
-    padding: 20px;
-    border-radius: 50px;
-    transition: all 0.4s;
-}
+      .fixed-icon i {
+        font-size: 24px;
+        color: var(--contrast-color);
+        line-height: 0;
+      }
 
-.fixed-icon.active {
-    visibility: visible;
-    opacity: 1;
-    bottom: 15px;
-  }
+      .fixed-icon:hover {
+        background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+        color: var(--contrast-color);
+      }
 
-.fixed-icon i {
-    font-size: 24px;
-    color: var(--contrast-color);
-    line-height: 0;
-}
+      .fixed-icon.whatsapp {
+        bottom: 20px;
+        left: 68px;
+      }
 
-.fixed-icon:hover {
-    background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
-    color: var(--contrast-color);
-}
+      .fixed-icon.phone {
+        bottom: 20px;
+      }
 
-.fixed-icon.whatsapp {
-    left: 64px; /* Adjust to stack icons */
-}
+      .fixed-icon.active {
+        visibility: visible;
+        opacity: 1;
+      }
 
 
 
@@ -1457,7 +1457,7 @@ section,
   .blog .blog-entry .pic {
     overflow: hidden;
     width: 150px;
-    border-radius: 50%;
+    border-radius: 10%;
     flex-shrink: 0;
   }
 
@@ -1483,7 +1483,8 @@ section,
   .blog .blog-entry h4 {
     font-weight: 700;
     margin-bottom: 5px;
-    font-size: 20px;
+    text-align: right;
+    /* font-size: 20px; */
   }
 
   .blog .blog-entry span {

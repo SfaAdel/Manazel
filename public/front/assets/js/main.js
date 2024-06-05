@@ -27,44 +27,32 @@
   /**
    * Scroll top button
    */
-  let scrollTop = document.querySelector('.scroll-top');
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollTop = document.querySelector('.scroll-top');
+    const fixedIcons = document.querySelectorAll('.fixed-icon');
 
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    function toggleScrollTop() {
+      if (scrollTop) {
+        window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+      }
+      fixedIcons.forEach(icon => {
+        window.scrollY > 100 ? icon.classList.add('active') : icon.classList.remove('active');
+      });
     }
-  }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+
+    if (scrollTop) {
+      scrollTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    window.addEventListener('load', toggleScrollTop);
+    document.addEventListener('scroll', toggleScrollTop);
   });
-
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
-
- /**
-  * Scroll top button
-  */
- let fixedIcon = document.querySelector('.fixed-icon');
-
- function toggleScrollTop() {
-   if (fixedIcon) {
-     window.scrollY > 100 ? fixedIcon.classList.add('active') : fixedIcon.classList.remove('active');
-   }
- }
- fixedIcon.addEventListener('click', (e) => {
-   e.preventDefault();
-   window.scrollTo({
-     top: 0,
-     behavior: 'smooth'
-   });
- });
-
- window.addEventListener('load', toggleScrollTop);
- document.addEventListener('scroll', toggleScrollTop);
 
   /**
    * Animation on scroll function and init

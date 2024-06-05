@@ -30,6 +30,8 @@ class HomeController extends Controller
         //
         // $mainSection = Title::where('section', 'main')->first();
 
+        $navCategories = Category::latest()->get();
+
         $categories = Category::latest()->limit(4)->get();
         $serviceSection = Title::where('section', 'services')->first();
 
@@ -57,7 +59,7 @@ class HomeController extends Controller
 
         $counters=AboutUsCounter::latest()->limit(3)->get();
 
-        return view('front.index', compact('mainSection','contactSection','whyUsSection', 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
+        return view('front.index', compact('navCategories','mainSection','contactSection','whyUsSection', 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
     }
 
     public function service($id)
@@ -65,8 +67,9 @@ class HomeController extends Controller
         // Fetch all services where category_id matches the given id
         $services = Service::where('category_id', $id)->latest()->get();
         $category = Category::find($id);
+        $navCategories = Category::latest()->get();
 
-        return view('front.services', compact('services','category'));
+        return view('front.services', compact('navCategories','services','category'));
     }
 
     public function service_details($id)
@@ -74,8 +77,9 @@ class HomeController extends Controller
         // Fetch all services where category_id matches the given id
         $sub_services = SubService::where('service_id', $id)->latest()->get();
         $service = Service::find($id);
+        $navCategories = Category::latest()->get();
 
-        return view('front.service_details', compact('sub_services','service'));
+        return view('front.service_details', compact('navCategories','sub_services','service'));
     }
 
     public function sub_service_details($id)
@@ -93,7 +97,9 @@ class HomeController extends Controller
             ->get()
             ->groupBy('day');
 
-        return view('front.sub_service_details', compact('sub_service','availabilities'));
+        $navCategories = Category::latest()->get();
+
+        return view('front.sub_service_details', compact('navCategories','sub_service','availabilities'));
     }
 
     public function submit_review(Request $request, $id)
@@ -142,7 +148,9 @@ class HomeController extends Controller
 
         $counters=AboutUsCounter::latest()->limit(3)->get();
 
-        return view('front.about', compact('whyUsAnsweres','whyUsSection','counters','teams','teamSection', 'advantages','advantageSection','contactSection','aboutSection'));
+        $navCategories = Category::latest()->get();
+
+        return view('front.about', compact('navCategories','whyUsAnsweres','whyUsSection','counters','teams','teamSection', 'advantages','advantageSection','contactSection','aboutSection'));
     }
 
     public function blog()
@@ -150,14 +158,25 @@ class HomeController extends Controller
         $blogs = Blog::latest()->get();
         $blogSection = Title::where('section', 'blogs')->first();
         $categories = Category::latest()->get();
+        $navCategories = Category::latest()->get();
 
-        return view('front.blogs', compact('blogs','blogSection','categories'));
+        return view('front.blogs', compact('navCategories','blogs','blogSection','categories'));
     }
 
     public function blog_details($id)
     {
         $blog = Blog::find($id);
-        return view('front.blog_details', compact('blog'));
+        $navCategories = Category::latest()->get();
+
+        return view('front.blog_details', compact('blog','navCategories'));
+    }
+
+
+    public function all_categories()
+    {
+        $navCategories = Category::latest()->get();
+
+        return view('front.categories', compact('navCategories'));
     }
 
 }

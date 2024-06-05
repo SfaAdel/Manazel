@@ -8,18 +8,17 @@
         <div class="field-body">
             <div class="field">
                 <div class="form-control">
-                    <select id="service-select" name="service_id" class="form-control input">
-                        <option value="" disabled selected>اختر خدمة</option>
-                        @foreach($services as $service)
-                            <option value="{{ $service->id }}" {{ isset($subService) && $subService->service_id == $service->id ? 'selected' : '' }}>
-                                {{ $service->name }}
-                            </option>
-                        @endforeach
-                    </select>
+                    <div class="control">
+                        <single-select :inputs="{{ $services }}" forname="category_id"
+                                       @if(isset($subService) && $subService->service) :oldvalues="{{ $subService->service()->get(['id', 'name']) }}" @endif>
+                        </single-select>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 
     <hr />
@@ -133,13 +132,3 @@
 </div><!-- End Card Footer -->
 
 
-<!-- Include jQuery and Select2 initialization -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#service-select').select2({
-            placeholder: 'ابحث عن خدمة',
-            allowClear: true
-        });
-    });
-</script>

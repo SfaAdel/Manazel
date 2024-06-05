@@ -17,12 +17,12 @@
     <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">اسم الخدمة الرئيسية </label>
+            <label class="label required">العنوان الرئيسي </label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::text('name', null, ['class' => 'input' , 'required'] )!!}
+                    {!! Form::text('main_title', null, ['class' => 'input' , 'required'] )!!}
                 </div>
             </div>
         </div>
@@ -30,17 +30,44 @@
     <hr />
       <div class="field is-horizontal">
           <div class="field-label is-normal">
-              <label class="label required">الوصف  </label>
+              <label class="label required">وصف قصير  </label>
           </div>
           <div class="field-body">
               <div class="field">
                   <div class="control">
-                      {!! Form::text('description', null, ['class' => 'input' , 'required'] )!!}
+                      {!! Form::text('short_description', null, ['class' => 'input' , 'required'] )!!}
                   </div>
               </div>
           </div>
       </div>
+      <hr />
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">العنوان الثانوي </label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::text('second_title', null, ['class' => 'input' , 'required'] )!!}
+                </div>
+            </div>
+        </div>
+    </div>
+
     <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">وصف طويل  </label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::textarea('long_description', null, ['class' => 'input' , 'required'] )!!}
+                </div>
+            </div>
+        </div>
+    </div>
+  <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">صورة </label>
