@@ -2195,3 +2195,12 @@ section,
 
 /* ===========about=========== */
 
+.blog_img{
+width: 15rem;
+height: 10rem;
+}
+
+.blog_card{
+    width: 35rem;
+    height: 25rem;
+}

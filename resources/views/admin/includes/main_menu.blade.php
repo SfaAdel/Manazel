@@ -67,7 +67,7 @@
     <a href="{{ route('admin.settings.edit') }}" class="card link-item-no-collapse"><i class="fa fa-cogs"></i><span>الاعدادات</span></a> --}}
 
     <a class="link-item" href="{{ route('admin.contacts.index') }}"> <i class="fa fa-envelope"></i><span>رسائل التواصل</span> </a>
-
+    <a class="link-item" href="{{ route('admin.provider_form.index') }}"> <i class="fa-solid fa-bell"></i><span>طلبات الانضمام كمزود خدمة</span> </a>
 
     <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();" class="card link-item-no-collapse">

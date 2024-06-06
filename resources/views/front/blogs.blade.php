@@ -53,9 +53,9 @@
 
                 @foreach($blogs as $blog)
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="blog-entry d-flex align-items-start center card bg-success-subtle p-4">
+                        <div class="blog-entry d-flex align-items-start center card bg-success-subtle p-4 blog_card">
                             <div class="entry-info m-2 center">
-                                <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="card-img-top" alt="">
+                                <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="card-img-top blog_img" alt="">
                                 <h4 class="mt-4">{{ $blog->main_title }}</h4>
                                 <p class="mt-2">{{ $blog->short_description }}</p>
                                 <a href="{{ route('blog_details', $blog->id) }}" class="btn btn-blue mt-2 mx-3">قراءة المزيد</a>

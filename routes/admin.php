@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\ProviderAvailabilityController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\WhyUsController;
+use App\Http\Controllers\Admin\ProviderFormController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('dashboard')->get('/dashboard', function () {
@@ -56,6 +57,7 @@ Route::group([
     Route::resource('questions', QuestionController::class);
     Route::resource('advantages', AdvantageController::class);
     Route::resource('contacts', ContactController::class);
+    Route::resource('provider_form', ProviderFormController::class);
 
     Route::resource('orders', OrderController::class);
     Route::resource('appointments', AppointmentController::class);

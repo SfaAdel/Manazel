@@ -2,7 +2,7 @@
 <div class="card-content">
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">التصنيف التابعة لها</label>
+            <label class="label required">التصنيف التابع لها</label>
         </div>
         <div class="field-body">
             <div class="field">

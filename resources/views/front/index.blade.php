@@ -14,7 +14,7 @@
                     <hr>
                     <p class="mt-2">{{$mainSection->short_description}}</p>
                     <div class="d-flex mt-3">
-                        <a href="#" class="btn-get-started"> اتصل بنا</a>
+                        <a href="tel:+1234567890" class="btn-get-started"> اتصل بنا</a>
 
                         <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
                             class="glightbox btn-watch-video d-flex align-items-center">
@@ -31,6 +31,28 @@
 
 
     <main class="container ">
+
+
+                           {{-- errors --}}
+                           @if(session()->has('success'))
+                           <div class="alert alert-success" id="success-alert">
+                               {{ session('success') }}
+                           </div>
+                       @endif
+
+                       @if(count($errors) > 0)
+                           <alert
+                               alert-title="خطأ في البيانات"
+                               alert-type="error"
+                               :alert-messages="{{ collect($errors->all()) }}">
+                           </alert>
+                       @endif
+
+                       @if(session()->has('error'))
+                           <alert title="خطأ في البيانات" alert-type="error" alert-title="{{ session('error') }}"></alert>
+                       @endif
+                           {{-- end errors --}}
+
 
         <!-- About Section -->
         <section id="about" class="about section p-5">
@@ -546,3 +568,19 @@
 
     </main>
 @endsection
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const successAlert = document.getElementById('success-alert');
+        if (successAlert) {
+            setTimeout(() => {
+                successAlert.style.transition = 'opacity 1s ease-out';
+                successAlert.style.opacity = '0';
+                setTimeout(() => {
+                    successAlert.remove();
+                }, 1000); // Ensure the alert is completely hidden before removing it
+            }, 3000); // 3 seconds
+        }
+    });
+</script>

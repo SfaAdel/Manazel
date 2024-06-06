@@ -128,8 +128,9 @@ class HomeController extends Controller
     {
 
         $contactSection = Title::where('section', 'contacts')->first();
+        $navCategories = Category::latest()->get();
 
-        return view('front.contact', compact('contactSection'));
+        return view('front.contact', compact('contactSection','navCategories'));
     }
 
     public function about()
@@ -198,5 +199,14 @@ class HomeController extends Controller
 
         return view('front.categories', compact('navCategories'));
     }
+
+    public function provider_form()
+    {
+        $navCategories = Category::latest()->get();
+
+        return view('front.provider_form', compact('navCategories'));
+    }
+
+
 
 }

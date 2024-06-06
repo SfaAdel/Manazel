@@ -35,7 +35,7 @@
                 <a href="{{ route('contact') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('contact') ? 'active' : '' }}">تواصل معنا</a>
             </div>
-            <a href="{{ route('cart') }}" class="btn-getstarted "> اشترك كمزود خدمة </a>
+            <a href="{{ route('provider_form') }}" class="btn-getstarted "> اشترك كمزود خدمة </a>
 
             @if (!(auth()->guard('customer')->check()))
             <a class="btn-getstarted mx-2" href="{{ route('login') }}"> تسجيل الدخول </a>

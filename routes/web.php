@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\SmsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ProviderFormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +67,10 @@ use Illuminate\Support\Facades\Route;
     Route::post('/appointments', [AppointmentController::class, 'bookAppointment'])->name('book_appointment');
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
     Route::post('/contact', [ContactController::class, 'store'])->name('contact_store');
+
+     Route::get('/provider-form', [HomeController::class, 'provider_form'])->name('provider_form');
+    Route::post('/provider-form', [ProviderFormController::class, 'store'])->name('provider_form_store');
+
 
     Route::get('/about', [HomeController::class, 'about'])->name('about');
     Route::get('/blogs', [HomeController::class, 'blog'])->name('blogs');
