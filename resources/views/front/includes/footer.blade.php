@@ -25,36 +25,34 @@
           <a href="{{ route('home') }}" class="center">
             <span class="sitename">منازل</span>
           </a>
-          <div class="footer-contact pt-3 text-right">
-            <p><strong> المقر :</strong> <span>المملكة العربية السعودية</span></p>
-            <p class="mt-3"><strong>رقم الهاتف :</strong> <span>00966542936554</span></p>
-            <p><strong>البريد الالكتروني:</strong> <span>primsystems2024@gmail.com</span></p>
-          </div>
+          <div class="footer-contact pt-3 text-right d-flex flex-column align-items-center">
+            <div class="footer-contact pt-3 text-right d-flex flex-column align-items-start">
+                <p> <i class="fa fa-location-dot text-info mx-2"></i> <strong class=""> المقر :</strong> <span> الرياض - المملكة العربية السعودية</span></p>
+                <p class="mt-3"> <i class="fa fa-phone text-info mx-2"></i> <strong class="">رقم الهاتف :</strong> <span>00966542936554</span> </p>
+                <p class="mt-3"><i class="fa fa-envelope text-info mx-2"></i> <strong class="">البريد الالكتروني:</strong> <span>primsystems2024@gmail.com</span></p>
+            </div>
         </div>
+    </div>
+
 
         <div class="col-lg-2 col-md-3 footer-links center">
             <h4>خدماتنا</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">صيانة غسالات </a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">تصليح غسالات </a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">صيانة افران الغاز </a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">صيانة افران</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">صيانة ثلاجات</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">تصليح ثلاجات</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">صيانة مكيفات</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">صيانة مكيفات سبليت</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">كهربائي</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">سباك</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">صباغ </a></li>
+                @foreach ($navCategories as $navCategory)
+                <li><i class="bi bi-chevron-right"></i> <a href="{{ route('services', $navCategory->id) }}">  {{ $navCategory->name }} </a></li>
+                @endforeach
             </ul>
           </div>
 
         <div class="col-lg-2 col-md-3 footer-links ">
           <h4>لتصل اسرع</h4>
                 <ul>
-                    <li><i class="bi bi-chevron-right"></i> <a href="#">الرئيسية</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="#">من نحن</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="#">خدماتنا</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('home') }}">الرئيسية</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('blogs') }}">المدونات</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('about') }}">من نحن</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('categories') }}">خدماتنا</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('contact') }}">تواصل معنا </a></li>
+
                 </ul>
         </div>
 
@@ -79,7 +77,7 @@
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        صنع بكل حب <a href="https://bootstrapmade.com/"><i class="bi bi-heart text-danger"></i></a>
+        صنع بكل حب <a href="https://bootstrapmade.com/"><i class="fa fa-heart text-danger"></i></a>
       </div>
     </div>
 
