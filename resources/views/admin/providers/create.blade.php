@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'اضافة عامل جديد')
+@section('page.title', 'اضافة موظف جديد')
 <!-- Start Content Section -->
 @section('content')
   <!-- Start Card -->
@@ -10,9 +10,9 @@
     <div class="card-header">
       <a href="{{ route('admin.providers.index') }}" class="button is-success">
           <span class="icon is-small">
-            <i class="fa fa-book"></i>
+            <i class="fa-solid fa-users"></i>
           </span>
-        <span>قائمة العاملين</span>
+        <span>قائمة الموظفين</span>
       </a>
     </div><!-- End Card Header -->
     <!-- Start Form -->

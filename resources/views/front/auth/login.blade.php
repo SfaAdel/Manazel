@@ -145,10 +145,10 @@
 
         <div class="custom-wrapper">
             <div class="custom-logo">
-                <img src="{{ asset('images/website/login.JPG') }}" alt="">
+                <img src="{{ asset('images/website/logo.PNG') }}" alt="">
             </div>
             <div class="text-center mt-4 custom-name">
-                منازل
+تسجيل الدخول
             </div>
             <form method="POST" class="p-3 mt-3" action="{{ route('login_success') }}">
                 @csrf

@@ -36,7 +36,7 @@ class ProviderFormController extends Controller
     {
         //
         ProviderForm::create($request->except('_token'));
-        return redirect()->route('home')->with('success', 'تم استقبال بياناتك بنجاحك ، سنتواصل معك قريبا!');
+        return redirect()->back()->with('success', 'تم استقبال بياناتك بنجاحك ، سنتواصل معك قريبا!');
     }
 
     /**

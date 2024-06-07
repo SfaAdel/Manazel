@@ -25,9 +25,8 @@
           <a href="{{ route('home') }}" class="center">
             <span class="sitename">منازل</span>
           </a>
-          <div class="footer-contact pt-3">
-            <p>الرياض  </p>
-            <p>المملكة العربية السعودية </p>
+          <div class="footer-contact pt-3 text-right">
+            <p><strong> المقر :</strong> <span>المملكة العربية السعودية</span></p>
             <p class="mt-3"><strong>رقم الهاتف :</strong> <span>00966542936554</span></p>
             <p><strong>البريد الالكتروني:</strong> <span>primsystems2024@gmail.com</span></p>
           </div>

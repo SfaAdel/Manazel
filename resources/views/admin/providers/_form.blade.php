@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    {{-- <hr />
+    <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label">الحالة</label>
@@ -50,17 +50,17 @@
             <div class="field">
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="status" value="1" @if(isset($department) && $department->active) checked @else checked @endif>
+                        <input type="radio" name="status" value="1" @if(isset($provider) && $provider->status) checked @else checked @endif>
 متاح
                     </label>
                     <label class="radio">
-                        <input type="radio" name="active" value="0" @if(isset($department) && !$department->active) checked  @endif>
+                        <input type="radio" name="status" value="0" @if(isset($provider) && !$provider->status) checked  @endif>
                         غير متاح
                     </label>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 </div><!-- End Card Content -->
 <!-- Start Card Footer -->
 <div class="card-footer">

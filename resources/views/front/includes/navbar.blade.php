@@ -45,7 +45,7 @@
                     @if (Auth::guard('customer')->user()->image)
                         <img src="{{ Auth::guard('customer')->user()->image }}" alt="{{ Auth::guard('customer')->user()->name }}" class="user-avatar">
                     @else
-                        <img src="{{ asset('front/assets/img/customer-profile/female.png') }}" alt="Default Image" class="user-avatar profile_img">
+                        <img src="{{ asset('front/assets/img/customer-profile/user.png') }}" alt="Default Image" class="user-avatar profile_img">
                     @endif
                     {{ Auth::guard('customer')->user()->name }}
                 </button>

@@ -44,7 +44,6 @@ class AppointmentController extends Controller
             }
         }
 
-
         return view('admin.appointments.index', compact('appointments','search','providers'));
     }
 
@@ -69,7 +68,14 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        //
+        $providers = collect();
+
+        if ($appointment->subService && $appointment->subService->service && $appointment->subService->service->category) {
+            $categoryId = $appointment->subService->service->category->id;
+            $providers = Provider::where('category_id', $categoryId)->get();
+        }
+
+        return view('admin.appointments.show', compact('appointment', 'providers'));
     }
 
     /**

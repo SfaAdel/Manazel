@@ -93,7 +93,7 @@
                                         <!-- Col -->
                                         <div class="col-sm-6">
                                             <div class="mb-3">
-                                                <label class="form-label" for="time">المعاد</label>
+                                                <label class="form-label" for="time">المواعيد المتاحة </label>
                                                 <select id="time" class="form-control" name="time" required>
                                                     <option value="">اختر معاد</option>
                                                 </select>

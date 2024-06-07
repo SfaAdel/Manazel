@@ -16,9 +16,29 @@
         </div>
     </section>
 
-    <main class="container my-6 p-6">
-        <!-- Combined User Information and Payment Section -->
+    <main class="container my-6 p-6 p-2">
 
+                        {{-- errors --}}
+                    @if(session()->has('success'))
+                        <div class="alert alert-success mt-3" id="success-alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if(count($errors) > 0)
+                        <alert
+                            alert-title="خطأ في البيانات"
+                            alert-type="error"
+                            :alert-messages="{{ collect($errors->all()) }}">
+                        </alert>
+                    @endif
+
+                    @if(session()->has('error'))
+                        <alert title="خطأ في البيانات" alert-type="error" alert-title="{{ session('error') }}"></alert>
+                    @endif
+                        {{-- end errors --}}
+
+        <!-- Combined User Information and Payment Section -->
         <section id="contact" class="contact section px-4 mt-4">
 
             <div class="container py-5">
@@ -112,3 +132,19 @@
         </section>
     </main>
 @endsection
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const successAlert = document.getElementById('success-alert');
+        if (successAlert) {
+            setTimeout(() => {
+                successAlert.style.transition = 'opacity 1s ease-out';
+                successAlert.style.opacity = '0';
+                setTimeout(() => {
+                    successAlert.remove();
+                }, 1000); // Ensure the alert is completely hidden before removing it
+            }, 10000); // 10 seconds
+        }
+    });
+</script>
