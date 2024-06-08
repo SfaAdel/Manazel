@@ -29,14 +29,18 @@ class DashboardController extends Controller
         $techniciansQuery = Provider::select('providers.*')
             ->leftJoin('provider_availabilities', 'providers.id', '=', 'provider_availabilities.provider_id');
 
-        if ($offDayFilter === 'on') {
-            $techniciansQuery->whereJsonContains('provider_availabilities.off_days', $today);
-        } elseif ($offDayFilter === 'off') {
-            $techniciansQuery->where(function ($query) use ($today) {
-                $query->whereJsonDoesntContain('provider_availabilities.off_days', $today)
-                      ->orWhereNull('provider_availabilities.off_days');
-            });
-        }
+            if ($offDayFilter === 'on') {
+                $techniciansQuery->whereHas('providerAvailabilities', function ($query) use ($today) {
+                    $query->whereJsonContains('off_days', $today);
+                });
+            } elseif ($offDayFilter === 'off') {
+                $techniciansQuery->whereDoesntHave('providerAvailabilities', function ($query) use ($today) {
+                    $query->whereJsonContains('off_days', $today);
+                })->orWhereHas('providerAvailabilities', function ($query) use ($today) {
+                    $query->whereJsonDoesntContain('off_days', $today);
+                });
+            }
+
 
         $technicians = $techniciansQuery->get();
 

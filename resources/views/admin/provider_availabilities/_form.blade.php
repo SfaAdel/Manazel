@@ -1,38 +1,36 @@
-<!-- resources/views/admin/provider_availabilities/_form.blade.php -->
-
 <div class="card-content">
-<div class="mb-3 ">
-    <label for="employee_id" class="form-label">اختر الموظف</label>
-    <div class="field-body">
-        <div class="field">
-            <div class="control">
-                {!! Form::select('provider_id', $providers->pluck('name', 'id'), null, ['class' => 'input', 'required']) !!}
+    <div class="mb-3">
+        <label for="employee_id" class="form-label">اختر الموظف</label>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::select('provider_id', $providers->pluck('name', 'id'), null, ['class' => 'input', 'required']) !!}
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="mb-3">
-    <label for="month" class="form-label">الشهر</label>
-    <div class="field-body">
-        <div class="field">
-            <div class="control">
-                <select id="month" name="month" class="input" required>
-                    <!-- Options will be populated dynamically using JavaScript -->
-                </select>
+    <div class="mb-3">
+        <label for="month" class="form-label">الشهر</label>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <select id="month" name="month" class="input" required>
+                        <!-- Options will be populated dynamically using JavaScript -->
+                    </select>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="mb-3">
-    <label for="off_days" class="form-label "> ايام الاجازة</label>
-<br>
-    <select id="off_days" name="off_days[]" class="form-select " multiple required>
-        <!-- Days will be populated dynamically using JavaScript -->
-    </select>
-    <div class="invalid-feedback">
-        من فضلك اختر على الاقل يوما واحدا
+    <div class="mb-3">
+        <label for="off_days" class="form-label">ايام الاجازة</label>
+        <br>
+        <select id="off_days" name="off_days[]" class="form-select" multiple required>
+            <!-- Days will be populated dynamically using JavaScript -->
+        </select>
+        <div class="invalid-feedback">
+            من فضلك اختر على الاقل يوما واحدا
+        </div>
     </div>
-</div>
 </div>
 <div class="card-footer">
     <div class="buttons has-addons">
@@ -40,8 +38,6 @@
         <button type="submit" class="button is-success">حفظ</button>
     </div>
 </div>
-
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

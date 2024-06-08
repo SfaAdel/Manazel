@@ -1,6 +1,5 @@
 <?php
 // app/Http/Controllers/Admin/ProviderAvailabilityController.php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -42,25 +41,24 @@ class ProviderAvailabilityController extends Controller
         return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم اضافة بيانات الموظف بنجاح.');
     }
 
-
     public function edit(ProviderAvailability $providerAvailability)
     {
         $providers = Provider::all();
         return view('admin.provider_availabilities.edit', compact('providerAvailability', 'providers'));
     }
+
     public function update(Request $request, ProviderAvailability $providerAvailability)
     {
         $validated = $request->validate([
             'provider_id' => 'required|exists:providers,id',
-            'off_days' => 'required|string', // No need to validate as JSON here
+            'off_days' => 'required|array',
+            'off_days.*' => 'date_format:Y-m-d',
             'month' => 'required|date_format:Y-m',
         ]);
 
-        $off_days = explode(',', $validated['off_days']); // Convert the comma-separated string into an array
-
         $providerAvailability->update([
             'provider_id' => $validated['provider_id'],
-            'off_days' => json_encode($off_days), // Store as JSON
+            'off_days' => json_encode($validated['off_days']),
             'month' => $validated['month'],
         ]);
 
@@ -73,3 +71,4 @@ class ProviderAvailabilityController extends Controller
         return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم حذف اجازات الموظف بنجاح');
     }
 }
+
