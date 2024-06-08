@@ -26,6 +26,6 @@ class Appointment extends Model
 
     public function provider()
     {
-        return $this->belongsTo(Provider::class);
+        return $this->belongsTo(Provider::class, 'provider_id'); // Assuming 'provider_id' is the foreign key
     }
 }

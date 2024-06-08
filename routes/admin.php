@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdvantageController;
+use App\Http\Controllers\Admin\ClickController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProviderAvailabilityController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\TitleController;
@@ -21,9 +23,9 @@ use App\Http\Controllers\Admin\WhyUsController;
 use App\Http\Controllers\Admin\ProviderFormController;
 use Illuminate\Support\Facades\Route;
 
-Route::name('dashboard')->get('/dashboard', function () {
-    return view('admin.index');
-})->middleware('auth:admin');
+
+
+Route::name('dashboard')->get('/dashboard', [DashboardController::class, 'index'])->middleware('auth:admin');
 
 Route::group([
     'prefix' => 'dashboard',
@@ -31,6 +33,9 @@ Route::group([
     'middleware' => ['auth:admin'] // Remove 'dashboard' if it's not a valid middleware
 ], function () {
     // Resource routes
+
+    Route::post('/register-click', [ClickController::class, 'registerClick'])->name('register.click');
+
     Route::resource('categories', CategoryController::class, ['except' => 'show']);
     Route::patch('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 

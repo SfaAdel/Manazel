@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\ClickController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\HomeController;
@@ -70,6 +71,8 @@ use Illuminate\Support\Facades\Route;
 
      Route::get('/provider-form', [HomeController::class, 'provider_form'])->name('provider_form');
     Route::post('/provider-form', [ProviderFormController::class, 'store'])->name('provider_form_store');
+
+    Route::post('/register-click', [ClickController::class, 'registerClick'])->name('register.click');
 
 
     Route::get('/about', [HomeController::class, 'about'])->name('about');

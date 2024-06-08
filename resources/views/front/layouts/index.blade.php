@@ -80,12 +80,12 @@
             <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
                 <i class="bi bi-arrow-up-short"></i>
               </a>
-              <a href="tel:+1234567890" class="fixed-icon phone d-flex align-items-center justify-content-center text-info">
+              <a href="tel:+1234567890" class="fixed-icon phone d-flex align-items-center justify-content-center text-info" onclick="registerClick('call')">
                 <i class="bi bi-phone"></i>
-              </a>
-              <a href="https://wa.me/1234567890" class="fixed-icon whatsapp d-flex align-items-center justify-content-center text-success">
+            </a>
+            <a href="https://wa.me/1234567890" class="fixed-icon whatsapp d-flex align-items-center justify-content-center text-success" onclick="registerClick('whatsapp')">
                 <i class="fab fa-whatsapp"></i>
-              </a>
+            </a>
 
 
             <!-- Preloader -->
@@ -137,7 +137,24 @@
 
             </script>
 
-
+<script>
+    function registerClick(type) {
+        $.ajax({
+            url: '{{ route('register.click') }}',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                type: type
+            },
+            success: function(response) {
+                console.log('Click registered successfully');
+            },
+            error: function(error) {
+                console.log('Error registering click:', error);
+            }
+        });
+    }
+</script>
 
 
             </body>
