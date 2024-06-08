@@ -34,7 +34,9 @@
                         <th> العنوان الثانوي</th>
                         <th> الوصف الطويل</th>
                         <th>الصورة</th>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <th>الاجراءات</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +52,8 @@
                                 <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="icon rounded-circle" alt="icon">
                             </td>
                         @endif
+
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.blogs.edit', $blog->id) }}">
@@ -59,6 +63,7 @@
 
                             </div>
                         </td>
+                        @endif
                         </tr>
                     @endforeach
                 </tbody>

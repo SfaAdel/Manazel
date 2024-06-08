@@ -59,6 +59,12 @@
     <collapse-item title="المواعيد والحجوزات" icon="fa-regular fa-calendar-check">
         <a class="link-item" href="{{ route('admin.appointments.index') }}">قائمة المواعيد</a>
     </collapse-item>
+    @if (auth('admin')->user()->role == 'super_admin')
+    <collapse-item title=" الادارة" icon="fa fa-user-lock">
+        <a class="link-item" href="{{ route('admin.admins.create') }}">اضافة مدير</a>
+         <a cl ass="link-item" href="{{ route('admin.admins.index') }}">قائمة المديرين</a>
+     </collapse-item>
+    @endif
     {{-- <collapse-item title="الرسائل" icon="fa-regular fa-envelope">
         <a class="link-item" href="{{ route('admin.contacts.index') }}">قائمة الرسائل</a>
     </collapse-item> --}}

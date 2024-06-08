@@ -26,7 +26,9 @@
                         <th>الموظف</th>
                         <th>ايام الاجازات</th>
                         <th>الشهر</th>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <th>الاجراءات</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -40,12 +42,14 @@
                             @endforeach
                         </td>
                         <td>{{ $providerAvailability->month->format('Y-m') }}</td>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.provider_availabilities.edit', $providerAvailability->id) }}">تعديل</a>
                                 <a class="modal-open button is-danger" status-name="Confirm Delete" traget-modal=".delete-modal" data_id="{{ $providerAvailability->id }}" data_name="{{ $providerAvailability->provider->name }}" data-url="{{ route('admin.provider_availabilities.destroy', $providerAvailability->id) }}">حذف</a>
                             </div>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

@@ -28,7 +28,9 @@
                     <tr>
                         <th>العنوان </th>
                         <th> المحتوي</th>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <th>الاجراءات</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -36,15 +38,17 @@
                         <tr>
                             <td>{{ $whyUsQuestion->question }}</td>
                             <td>{{ $whyUsQuestion->answer }}</td>
-                        <td>
-                            <div class="buttons has-addons">
-                                <a class="button is-info" href="{{ route('admin.why.edit', $whyUsQuestion->id) }}" >
-                                    تعديل
-                                </a>
-                                <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $whyUsQuestion->id }}" data_name="{{ $whyUsQuestion->question }}" data-url="{{ route('admin.why.destroy', $whyUsQuestion->id) }}">حذف</a>
+                            @if (auth('admin')->user()->role == 'super_admin')
+                            <td>
+                                <div class="buttons has-addons">
+                                    <a class="button is-info" href="{{ route('admin.why.edit', $whyUsQuestion->id) }}" >
+                                        تعديل
+                                    </a>
+                                    <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $whyUsQuestion->id }}" data_name="{{ $whyUsQuestion->question }}" data-url="{{ route('admin.why.destroy', $whyUsQuestion->id) }}">حذف</a>
 
-                            </div>
-                        </td>
+                                </div>
+                            </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

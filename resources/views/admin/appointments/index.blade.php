@@ -49,8 +49,9 @@
                                 <th>السعر</th>
                                 {{-- <th>العنوان</th> --}}
                                 <th>حالة الطلب</th>
+                                @if (auth('admin')->user()->role == 'super_admin')
                                 <th> الاجراءات</th>
-
+                                @endif
                             </tr>
                         </thead>
 
@@ -119,10 +120,13 @@
                                                             </select>
                                                         </div>
                                                     </div>
-
+                                                    @if (auth('admin')->user()->role == 'super_admin')
                                                     <button type="submit" class="button is-primary mx-3"
-                                                        {{ $appointment->status == 'completed' ? 'disabled' : '' }}>تحديث</button>
-                                                </div>
+                                                        {{ $appointment->status == 'completed' ? 'disabled' : '' }}> تحديث
+
+                                                    </button>
+                                                    @endif
+                                                    </div>
                                             </div>
                                         </form>
                                     </td>

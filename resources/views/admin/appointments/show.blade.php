@@ -73,7 +73,9 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
+                                                    @if (auth('admin')->user()->role == 'super_admin')
                                                         <button type="submit" class="button is-primary mx-3" {{ $appointment->status == 'completed' ? 'disabled' : '' }}>تحديث</button>
+                                                    @endif
                                                     </div>
                                                 </div>
                                             </form>

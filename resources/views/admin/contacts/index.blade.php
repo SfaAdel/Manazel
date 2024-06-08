@@ -39,7 +39,9 @@
                             <td>
                                 <div class="buttons has-addons">
                                     <a class="button is-info" href="{{ route('admin.contacts.show', $contact->id) }}"> عرض </a>
+                                    @if (auth('admin')->user()->role == 'super_admin')
                                     <span class="modal-open button is-danger" traget-modal=".delete-modal" data_id="{{ $contact->id }}" data_name="{{ $contact->name }}" data-url="{{ route('admin.contacts.destroy', $contact->id) }}">مسح</span>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

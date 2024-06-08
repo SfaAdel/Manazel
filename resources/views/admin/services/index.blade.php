@@ -31,7 +31,9 @@
                         <th>التصنيف</th>
                         <th> الوصف</th>
                         <th>الصورة</th>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <th>الاجراءات</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -45,6 +47,7 @@
                                 <img src="{{ asset('images/services/' . $service->icon) }}" class="icon rounded-circle" alt="icon">
                             </td>
                         @endif
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.services.edit', $service->id) }}">
@@ -53,6 +56,7 @@
                                 <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $service->id }}" data_name="{{ $service->name }}" data-url="{{ route('admin.services.destroy', $service->id) }}">حذف</a>
                             </div>
                         </td>
+                        @endif
                         </tr>
                     @endforeach
                 </tbody>

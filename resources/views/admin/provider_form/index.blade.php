@@ -27,7 +27,9 @@
                         <th>الاسم </th>
                         <th> القسم الذي يود الانضمام اليه </th>
                         <th> رقم الهاتف </th>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <th>الاجراءات</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -37,12 +39,14 @@
                             <td>{{ $providerForm->category }}</td>
 
                             <td><a href="tel:{{ $providerForm->phone }}">{{ $providerForm->phone }}</a></td>
+                            @if (auth('admin')->user()->role == 'super_admin')
                             <td>
                                 <div class="buttons has-addons">
                                     <a class="button is-info" href="{{ route('admin.provider_form.show', $providerForm->id) }}"> عرض </a>
                                     <span class="modal-open button is-danger" traget-modal=".delete-modal" data_id="{{ $providerForm->id }}" data_name="{{ $providerForm->name }}" data-url="{{ route('admin.provider_form.destroy', $providerForm->id) }}">مسح</span>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>

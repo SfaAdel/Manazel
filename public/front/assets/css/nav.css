@@ -159,7 +159,8 @@ color: #0071B8;
   }
 
 .profile_img{
-width: 30px;
-height: 30px;
+width: 20px;
+height: 20px;
+margin-inline: 5px;
 }
 

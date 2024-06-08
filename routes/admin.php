@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AboutUsCounterController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -35,6 +36,9 @@ Route::group([
     // Resource routes
 
     Route::post('/register-click', [ClickController::class, 'registerClick'])->name('register.click');
+
+    // Admins
+    Route::resource('admins', AdminController::class, ['except' => 'show']);
 
     Route::resource('categories', CategoryController::class, ['except' => 'show']);
     Route::patch('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');

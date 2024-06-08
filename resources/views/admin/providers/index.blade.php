@@ -31,7 +31,9 @@
             <th>رقم الهاتف</th>
             <th> التصنيف التابع له</th>
             <th>الحالة </th>
+            @if (auth('admin')->user()->role == 'super_admin')
             <th>الاجراءات</th>
+            @endif
           </tr>
           </thead>
           <tbody>
@@ -41,6 +43,7 @@
                 <td>{{ $provider->phone }}</td>
                 <td>{{  ($provider->category_id ? $provider->category->name : ' - - ') }}</td>
                 <td>{{ $provider->status ? 'متاح' : 'غير متاح '}}</td>
+                @if (auth('admin')->user()->role == 'super_admin')
                 <td>
                     <div class="buttons has-addons">
                         <a class="button is-info" href="{{ route('admin.providers.edit', $provider->id) }}">
@@ -50,6 +53,7 @@
 
                     </div>
                 </td>
+                @endif
               </tr>
             @endforeach
           </tbody>

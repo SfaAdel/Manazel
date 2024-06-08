@@ -168,9 +168,9 @@
         <div class="custom-card-body">
             <form method="GET" action="{{ route('dashboard') }}" class="form-inline mb-4">
                 <div class="form-group mr-2">
-                    <label for="sub_category_id" class="mr-2">التصنيف الفرعي:</label>
+                    <label for="sub_category_id" class="mr-2">الخدمة:</label>
                     <select id="sub_category_id" name="sub_category_id" class="form-control">
-                        <option value="">اختر التصنيف الفرعي</option>
+                        <option value="">اختر الخدمة</option>
                         @foreach($subCategories as $subCategory)
                             <option value="{{ $subCategory->id }}" {{ request('sub_category_id') == $subCategory->id ? 'selected' : '' }}>
                                 {{ $subCategory->name }}

@@ -31,7 +31,9 @@
                         <th> وصف قصير</th>
                         <th>القسم</th>
                         <th>الصورة</th>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <th>الاجراءات</th>
+                        @endif
                     </tr>
                 </thead>
                     @php

@@ -31,7 +31,9 @@
                         <th>النجوم</th>
                         <th> المراجعة</th>
                         <th>الصورة</th>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <th>الاجراءات</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -51,6 +53,7 @@
                                 <span>لا توجد صورة</span>
                             @endif
                         </td>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.testimonials.edit', $testimonial->id) }}">
@@ -59,6 +62,7 @@
                                 <a class="modal-open button is-danger" status-name="تأكيد الحذف" target-modal=".delete-modal" data_id="{{ $testimonial->id }}" data_name="{{ $testimonial->name }}" data-url="{{ route('admin.testimonials.destroy', $testimonial->id) }}">حذف</a>
                             </div>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

@@ -29,7 +29,9 @@
                     <tr>
                         <th>السؤال </th>
                         <th> الاجابة</th>
+                        @if (auth('admin')->user()->role == 'super_admin')
                         <th>الاجراءات</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -37,16 +39,17 @@
                         <tr>
                             <td>{{ $question->question }}</td>
                             <td>{{ $question->answer }}</td>
+                            @if (auth('admin')->user()->role == 'super_admin')
+                            <td>
+                                <div class="buttons has-addons">
+                                    <a class="button is-info" href="{{ route('admin.questions.edit', $question->id) }}">
+                                        تعديل
+                                    </a>
+                                    <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $question->id }}" data_name="{{ $question->question }}" data-url="{{ route('admin.questions.destroy', $question->id) }}">حذف</a>
 
-                        <td>
-                            <div class="buttons has-addons">
-                                <a class="button is-info" href="{{ route('admin.questions.edit', $question->id) }}">
-                                    تعديل
-                                </a>
-                                <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $question->id }}" data_name="{{ $question->question }}" data-url="{{ route('admin.questions.destroy', $question->id) }}">حذف</a>
-
-                            </div>
-                        </td>
+                                </div>
+                            </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
