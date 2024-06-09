@@ -36,11 +36,12 @@
                     <tr>
                         <td>{{ $providerAvailability->provider->name }}</td>
                         <td>
-                            @foreach (json_decode($providerAvailability->off_days, true) as $offDay)
-                                {{ date('d', strtotime($offDay)) }}  {{-- Display just the day part --}}
-/
+                            @foreach ($providerAvailability->off_days as $offDay)
+                                {{ date('d', strtotime($offDay)) }} {{-- Display just the day part --}}
+                                /
                             @endforeach
                         </td>
+
                         <td>{{ $providerAvailability->month->format('Y-m') }}</td>
                         @if (auth('admin')->user()->role == 'super_admin')
                         <td>

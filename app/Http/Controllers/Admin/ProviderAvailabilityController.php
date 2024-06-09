@@ -1,5 +1,5 @@
 <?php
-// app/Http/Controllers/Admin/ProviderAvailabilityController.php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -34,7 +34,7 @@ class ProviderAvailabilityController extends Controller
 
         ProviderAvailability::create([
             'provider_id' => $validated['provider_id'],
-            'off_days' => json_encode($validated['off_days']),
+            'off_days' => $validated['off_days'],
             'month' => $validated['month'],
         ]);
 
@@ -58,7 +58,7 @@ class ProviderAvailabilityController extends Controller
 
         $providerAvailability->update([
             'provider_id' => $validated['provider_id'],
-            'off_days' => json_encode($validated['off_days']),
+            'off_days' => $validated['off_days'],
             'month' => $validated['month'],
         ]);
 
@@ -71,4 +71,3 @@ class ProviderAvailabilityController extends Controller
         return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم حذف اجازات الموظف بنجاح');
     }
 }
-
