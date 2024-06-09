@@ -8,6 +8,7 @@ use App\Models\Provider;
 use App\Models\SubService;
 use App\Models\SubServiceAvailability;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -68,15 +69,16 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        $providers = collect();
+        $availableProviders = collect();
 
         if ($appointment->subService && $appointment->subService->service && $appointment->subService->service->category) {
             $categoryId = $appointment->subService->service->category->id;
-            $providers = Provider::where('category_id', $categoryId)->get();
+            $availableProviders = $this->getAvailableProvidersForSubServiceOnDate($appointment->subService, Carbon::parse($appointment->day));
         }
 
-        return view('admin.appointments.show', compact('appointment', 'providers'));
+        return view('admin.appointments.show', compact('appointment', 'availableProviders'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -88,10 +90,8 @@ class AppointmentController extends Controller
 
     public function bookAppointment(Request $request)
     {
-
-
-        // Create the appointment
-        $appointment = Appointment::create($request->except( '_token'));
+        // Validate and create the appointment
+        $appointment = Appointment::create($request->except('_token'));
 
         // Check the number of already booked appointments for this sub_service at the same day and time
         $bookedCount = Appointment::where('sub_service_id', $appointment->sub_service_id)
@@ -99,12 +99,12 @@ class AppointmentController extends Controller
             ->where('time', $appointment->time)
             ->count();
 
-        // Get the number of providers for the sub_service
+        // Get the number of available providers for the sub_service on the same day
         $subService = SubService::find($appointment->sub_service_id);
-        $providerCount = $subService->providers;
+        $availableProviders = $this->getAvailableProvidersForSubServiceOnDate($subService, Carbon::parse($appointment->day))->count();
 
         // If the number of booked appointments is equal to or greater than the number of providers
-        if ($bookedCount >= $providerCount) {
+        if ($bookedCount >= $availableProviders) {
             // Mark the availability as false
             SubServiceAvailability::where('sub_service_id', $appointment->sub_service_id)
                 ->where('day', $appointment->day)
@@ -112,10 +112,25 @@ class AppointmentController extends Controller
                 ->update(['availability' => false]);
         }
 
-        // return response()->json(['message' => 'Appointment booked successfully']);
         return redirect()->back()->with('success', 'تم حجز الخدمة بنجاح');
-
     }
+
+    private function getAvailableProvidersForSubServiceOnDate(SubService $subService, Carbon $date)
+    {
+        $category = $subService->service->category;
+
+        if (!$category) {
+            return collect();
+        }
+
+        return Provider::where('category_id', $category->id)
+            ->where('status', true)
+            ->whereDoesntHave('providerAvailabilities', function ($query) use ($date) {
+                $query->whereJsonContains('off_days', $date->toDateString());
+            })
+            ->get();
+    }
+
 
 
     /**

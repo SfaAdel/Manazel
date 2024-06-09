@@ -1,10 +1,10 @@
 <?php
 
-
 namespace App\Jobs;
 
 use App\Models\SubService;
 use App\Models\SubServiceAvailability;
+use App\Models\Provider;
 use App\Models\ProviderAvailability;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
@@ -32,28 +32,44 @@ class UpdateSubServiceAvailabilityJob implements ShouldQueue
                 ->where('day', '<', Carbon::today()->subDays(30))
                 ->delete();
 
-            // Calculate the number of providers available for the sub-service
-            $providerCount = $subService->providers;
-
             // Generate availability for the new day at the end of the 30-day period
             $newDay = Carbon::today()->addDays(30);
             $appointmentTimes = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00'];
 
             foreach ($appointmentTimes as $time) {
-                for ($i = 0; $i < $providerCount; $i++) {
-                    // Check if there are providers available on the new day
-                    $providerAvailability = ProviderAvailability::where('off_days', '!=', $newDay->format('Y-m-d'))->get();
+                // Calculate the number of available providers for the sub-service on the new day
+                $availableProviders = $this->getAvailableProvidersForSubServiceOnDate($subService, $newDay);
 
-                    if ($providerAvailability->isNotEmpty()) {
-                        SubServiceAvailability::create([
+                // Create or update availability records for each time slot
+                foreach ($availableProviders as $provider) {
+                    SubServiceAvailability::updateOrCreate(
+                        [
                             'sub_service_id' => $subService->id,
                             'day' => $newDay,
                             'time' => $time,
+                        ],
+                        [
                             'availability' => true,
-                        ]);
-                    }
+                        ]
+                    );
                 }
             }
         }
+    }
+
+    private function getAvailableProvidersForSubServiceOnDate(SubService $subService, Carbon $date)
+    {
+        $category = $subService->service->category;
+
+        if (!$category) {
+            return collect();
+        }
+
+        return Provider::where('category_id', $category->id)
+            ->where('status', true)
+            ->whereDoesntHave('providerAvailabilities', function ($query) use ($date) {
+                $query->whereJsonContains('off_days', $date->toDateString());
+            })
+            ->get();
     }
 }

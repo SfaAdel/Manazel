@@ -66,12 +66,13 @@
                                                     <div class="select d-inline">
                                                         <select name="provider_id" {{ $appointment->status == 'completed' ? 'disabled' : '' }}>
                                                             <option value="" selected disabled>اختر مقدم خدمة</option>
-                                                            @foreach($providers as $provider)
+                                                            @foreach($availableProviders as $provider)
                                                                 <option value="{{ $provider->id }}" {{ $appointment->provider_id == $provider->id ? 'selected' : '' }}>
                                                                     {{ $provider->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
+
                                                     </div>
                                                     @if (auth('admin')->user()->role == 'super_admin')
                                                         <button type="submit" class="button is-primary mx-3" {{ $appointment->status == 'completed' ? 'disabled' : '' }}>تحديث</button>
