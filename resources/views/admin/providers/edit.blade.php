@@ -10,7 +10,7 @@
     <div class="card-header">
       <a href="{{ route('admin.providers.index') }}" class="button is-success">
         <span class="icon is-small">
-          <i class="fa-solid fa-users"></i>
+            <i class="fa-solid fa-list"></i>
         </span>
         <span>قائمة الموظفين</span>
       </a>

@@ -67,17 +67,53 @@ class AppointmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Appointment $appointment)
-    {
-        $availableProviders = collect();
+   // In AppointmentController.php
+   private function getAvailableProvidersForSubServiceOnDate(SubService $subService, Carbon $date, $selectedProviderId = null)
+   {
+       $category = $subService->service->category;
 
-        if ($appointment->subService && $appointment->subService->service && $appointment->subService->service->category) {
-            $categoryId = $appointment->subService->service->category->id;
-            $availableProviders = $this->getAvailableProvidersForSubServiceOnDate($appointment->subService, Carbon::parse($appointment->day));
-        }
+       if (!$category) {
+           return collect();
+       }
 
-        return view('admin.appointments.show', compact('appointment', 'availableProviders'));
-    }
+       // Get the IDs of appointments for the same sub-service at the same day and time
+       $bookedAppointmentIds = Appointment::where('sub_service_id', $subService->id)
+           ->where('day', $date->format('Y-m-d'))
+           ->where('time', $date->format('H:i:s'))
+           ->pluck('provider_id')
+           ->toArray();
+
+       $query = Provider::where('category_id', $category->id)
+           ->where('status', true)
+           ->whereDoesntHave('providerAvailabilities', function ($query) use ($date) {
+               $query->whereJsonContains('off_days', $date->toDateString());
+           });
+
+       // Exclude the selected provider for the current appointment
+       if ($selectedProviderId !== null) {
+           $query->where('id', '!=', $selectedProviderId);
+       }
+
+       // Exclude providers already assigned to appointments at the same day and time
+       $query->whereNotIn('id', $bookedAppointmentIds);
+
+       return $query->get();
+   }
+
+   public function show(Appointment $appointment)
+   {
+       $availableProviders = collect();
+
+       if ($appointment->subService && $appointment->subService->service && $appointment->subService->service->category) {
+           $categoryId = $appointment->subService->service->category->id;
+           $selectedProviderId = $appointment->provider_id;
+           $availableProviders = $this->getAvailableProvidersForSubServiceOnDate($appointment->subService, Carbon::parse($appointment->day), $selectedProviderId);
+       }
+
+       return view('admin.appointments.show', compact('appointment', 'availableProviders'));
+   }
+
+
 
 
     /**
@@ -115,21 +151,11 @@ class AppointmentController extends Controller
         return redirect()->back()->with('success', 'تم حجز الخدمة بنجاح');
     }
 
-    private function getAvailableProvidersForSubServiceOnDate(SubService $subService, Carbon $date)
-    {
-        $category = $subService->service->category;
+  // In AppointmentController.php
 
-        if (!$category) {
-            return collect();
-        }
 
-        return Provider::where('category_id', $category->id)
-            ->where('status', true)
-            ->whereDoesntHave('providerAvailabilities', function ($query) use ($date) {
-                $query->whereJsonContains('off_days', $date->toDateString());
-            })
-            ->get();
-    }
+
+
 
 
 

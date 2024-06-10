@@ -34,9 +34,11 @@
 
                 <div class="row gy-4">
                     @foreach ($services as $service)
-                        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                            <div class="service-item position-relative">
-                                <div class="icon"><i class="bi bi-activity icon"></i></div>
+                        <div class="col-xl-3 col-md-6 d-flex align-items-center m-auto my-3" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-item position-relative center">
+                                <div class="icon">
+                                    <img class="custom-card-img-top my-3" src="{{ asset('images/services/' . $service->icon) }}" alt="{{ $service->name }}">
+                                </div>
                                 <h4><a href="{{ route('service_details', $service->id) }}"
                                         class="stretched-link">{{ $service->name }} </a></h4>
                                 <p> {{ $service->description }} </p>
@@ -45,6 +47,7 @@
 
                             </div>
                         </div><!-- End Service Item -->
+
                     @endforeach
                 </div>
             </div>

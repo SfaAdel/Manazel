@@ -6,6 +6,8 @@
 @section('content')
     <!-- Start Card -->
     <div class="card main-card">
+
+        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
         <!-- Start Card Header -->
         <div class="card-header is-justify-content-space-between">
             <a href="{{ route('admin.sub_services.create') }}" class="button is-success">
@@ -15,7 +17,7 @@
                 <span>اضافة خدمة جديدة</span>
             </a>
         </div>
-
+        @endif
 
         <div class="center">
             @include('admin.partials.search_result', ['data' => $subServices])
@@ -34,8 +36,11 @@
                         <th> السعر</th>
                         <th>عدد مقدمين الخدمة</th>
                         <th> الحالة</th>
+                        <th> يوجد خصم </th>
+                        <th> نسبة الخصم </th>
+                        <th> السعر النهائي</th>
                         <th> الصورة</th>
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
                         @endif
                     </tr>
@@ -49,12 +54,16 @@
                         <td>{{ $subService->price }}</td>
                         <td>{{ $subService->providers }}</td>
                         <td>{{ $subService->active ? 'مفعل' : 'غير مفعل' }}</td>
+                        <td>{{ $subService->offer ? 'نعم' : ' لا' }}</td>
+                        <td>{{ $subService->discount_percentage ?? '- -'}}</td>
+                        <td>{{ $subService->final_price }}</td>
+
                         @if ($subService->icon)
                             <td>
                                 <img src="{{ asset('images/sub_services/' . $subService->icon) }}" class="icon rounded-circle" alt="icon">
                             </td>
                         @endif
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.sub_services.edit', $subService->id) }}"> تعديل </a>

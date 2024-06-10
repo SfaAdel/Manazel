@@ -36,6 +36,7 @@
 
         @if (!$appointments->isEmpty())
             <!-- Start Card Content -->
+            <div>
             <div class="card-content">
                 <div class="table-container">
                     <table class="table is-fullwidth" id="posts">
@@ -46,8 +47,9 @@
                                 <th>الخدمة</th>
                                 <th>التاريخ</th>
                                 <th>الوقت</th>
-                                <th>السعر</th>
+                                {{-- <th>السعر</th> --}}
                                 {{-- <th>العنوان</th> --}}
+                                <th>مقدم الخدمة</th>
                                 <th>حالة الطلب</th>
                                 @if (auth('admin')->user()->role == 'super_admin')
                                 <th> الاجراءات</th>
@@ -61,14 +63,14 @@
                                 <tr>
                                     <td>{{ $appointment->customer->name }}</td>
                                     {{-- <td>
-                            <a
-                                target="_blank"
-                                href="https://api.whatsapp.com/send?phone=2{{ $appointment->customer->phone }}&text={{ urlencode('عزيزي ' . $appointment->customer->name . ' تم بنجاح حجز موعد يوم ' . $appointment->day . ' الساعة ' . $appointment->time . ' من اجل خدمة ' . $appointment->subService->name . ' اذا كان لديك اى استفسارات تواصل معنا من خلال الرقم التالى') }}"
-                                class="text-black"
-                            >
-                                {{ $appointment->customer->phone }}
-                            </a>
-                        </td> --}}
+                                            <a
+                                                target="_blank"
+                                                href="https://api.whatsapp.com/send?phone=2{{ $appointment->customer->phone }}&text={{ urlencode('عزيزي ' . $appointment->customer->name . ' تم بنجاح حجز موعد يوم ' . $appointment->day . ' الساعة ' . $appointment->time . ' من اجل خدمة ' . $appointment->subService->name . ' اذا كان لديك اى استفسارات تواصل معنا من خلال الرقم التالى') }}"
+                                                class="text-black"
+                                            >
+                                                {{ $appointment->customer->phone }}
+                                            </a>
+                                        </td> --}}
                                     <td>
                                         <a
                                             href="tel:{{ $appointment->customer->phone }}">{{ $appointment->customer->phone }}</a>
@@ -76,14 +78,16 @@
                                     <td>{{ $appointment->subService->name }}</td>
                                     <td>{{ $appointment->day }}</td>
                                     <td>{{ $appointment->time }}</td>
-                                    <td>{{ $appointment->subService->price }}</td>
+                                    {{-- <td>{{ $appointment->subService->price }}</td> --}}
+                                    <td>{{ $appointment->provider->name ?? '- -' }}</td>
+
                                     {{-- <td>{{ $appointment->latitude }}</td>
-                        <td>{{ $appointment->longitude }}</td> --}}
+                                    <td>{{ $appointment->longitude }}</td> --}}
                                     {{-- <td>{{ $appointment->address }}</td> --}}
 
                                     <td>
-                                        <form action="{{ route('admin.appointments.update', $appointment->id) }}"
-                                            method="POST">
+                                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
+                                        method="POST">
                                             @csrf
                                             @method('PATCH')
                                             <div class="field">
@@ -120,7 +124,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    @if (auth('admin')->user()->role == 'super_admin')
+                                                    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                                                     <button type="submit" class="button is-primary mx-3"
                                                         {{ $appointment->status == 'completed' ? 'disabled' : '' }}> تحديث
 
@@ -133,11 +137,11 @@
                                     <td>
                                         <div class="buttons has-addons">
                                             @if ($appointment->status === 'canceled')
-                                                <a class="button is-warning is-disabled" disabled>عرض تفاصيل الطلب</a>
+                                                <a class="button is-warning is-disabled" disabled>عرض المزيد</a>
                                             @else
                                                 <a class="button is-warning"
                                                     href="{{ route('admin.appointments.show', $appointment->id) }}">عرض
-                                                    تفاصيل الطلب</a>
+                                                    المزيد</a>
                                             @endif
 
 
@@ -160,7 +164,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
+            </div>
             </div><!-- End Card Content -->
         @endif
         <!-- Start Card Footer -->

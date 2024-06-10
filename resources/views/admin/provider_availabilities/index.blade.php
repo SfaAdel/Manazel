@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="card main-card">
+    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
     <div class="card-header is-justify-content-space-between">
         <a href="{{ route('admin.provider_availabilities.create') }}" class="button is-success">
             <span class="icon is-small">
@@ -14,6 +15,7 @@
             <span>اضافة اجازات موظف </span>
         </a>
     </div>
+    @endif
     <div class="center">
         @include('admin.partials.search_result', ['data' => $providerAvailabilities])
     </div>
@@ -26,7 +28,7 @@
                         <th>الموظف</th>
                         <th>ايام الاجازات</th>
                         <th>الشهر</th>
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
                         @endif
                     </tr>
@@ -43,7 +45,7 @@
                         </td>
 
                         <td>{{ $providerAvailability->month->format('Y-m') }}</td>
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.provider_availabilities.edit', $providerAvailability->id) }}">تعديل</a>

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->foreignId('service_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->boolean('active')->default(1)->nullable();
             $table->decimal('price')->nullable();
+            $table->boolean('offer')->default(0)->nullable();
+            $table->decimal('discount_percentage')->nullable();
+            $table->decimal('final_price')->nullable();
             $table->integer('providers')->nullable();
             $table->timestamps();
         });

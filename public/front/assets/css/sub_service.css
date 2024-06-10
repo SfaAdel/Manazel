@@ -267,3 +267,13 @@ color: #0071B8;
 	text-transform: uppercase;
 	cursor: pointer;
 }
+
+.original-price {
+    text-decoration: line-through;
+    color: red;
+    margin-right: 10px;
+font-size: 14px;
+}
+.final-price {
+    color: green;
+}

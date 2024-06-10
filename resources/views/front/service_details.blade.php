@@ -39,7 +39,7 @@
         <div class="container custom-card-container mx-4">
             <div class="row">
                 @foreach($sub_services as $sub_service)
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 mb-4"> <!-- Added col-6 for mobile view -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 align-items-center m-auto my-3"> <!-- Added col-6 for mobile view -->
                         <div class="custom-card">
                             <div class="center">
                                 <img class="custom-card-img-top my-3" src="{{ asset('images/sub_services/' . $sub_service->icon) }}" alt="{{ $sub_service->name }}">

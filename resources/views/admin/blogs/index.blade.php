@@ -4,18 +4,20 @@
 @section('page.title', ' المدونات')
 <!-- Start Content Section -->
 @section('content')
+
   <!-- Start Card -->
   <div class="card main-card">
-      <!-- Start Card Header -->
-      <div class="card-header is-justify-content-space-between">
-          <a href="{{ route('admin.blogs.create') }}" class="button is-success">
-        <span class="icon is-small">
-          <i class="fa fa-plus-circle"></i>
-        </span>
-              <span>اضافة مدونة جديدة</span>
-          </a>
-      </div><!-- End Card Header -->
-
+        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
+        <!-- Start Card Header -->
+        <div class="card-header is-justify-content-space-between">
+            <a href="{{ route('admin.blogs.create') }}" class="button is-success">
+            <span class="icon is-small">
+            <i class="fa fa-plus-circle"></i>
+            </span>
+                <span>اضافة مدونة جديدة</span>
+            </a>
+        </div><!-- End Card Header -->
+        @endif
       <div class="center">
         @include('admin.partials.search_result', ['data' => $blogs])
     </div>
@@ -34,7 +36,7 @@
                         <th> العنوان الثانوي</th>
                         <th> الوصف الطويل</th>
                         <th>الصورة</th>
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
                         @endif
                     </tr>
@@ -53,7 +55,7 @@
                             </td>
                         @endif
 
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.blogs.edit', $blog->id) }}">

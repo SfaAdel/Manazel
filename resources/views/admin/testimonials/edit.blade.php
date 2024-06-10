@@ -10,7 +10,7 @@
     <div class="card-header">
       <a href="{{ route('admin.testimonials.index') }}" class="button is-success">
         <span class="icon is-small">
-          <i class="fa fa-sitemap"></i>
+            <i class="fa-solid fa-list"></i>
         </span>
         <span>قائمة المراجعات</span>
       </a>

@@ -43,6 +43,9 @@
             <p>{{ $blogSection->short_description }}</p>
         </div><!-- End Section Title -->
 
+        @if (!isset($blogs) || $blogs->isEmpty())
+        <h4 class="my-3 center" >لا يوجد مدونات بعد <i class="fa-solid fa-ban mx-2"></i> </h4>
+        @else
         <div class="container">
             <div class="row gy-4">
                 @if(!empty($noBlogsMessage))
@@ -65,6 +68,7 @@
                 @endforeach
             </div>
         </div>
+        @endif
     </section><!-- /blog Section -->
 </main>
 

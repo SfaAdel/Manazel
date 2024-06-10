@@ -35,8 +35,10 @@
                 <div class="row gy-4">
                     @foreach ($navCategories as $navCategory)
                         <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                            <div class="service-item position-relative">
-                                <div class="icon"><i class="bi bi-activity icon"></i></div>
+                            <div class="service-item position-relative center">
+                                <div class="icon">
+                                    <img class="custom-card-img-top my-3" src="{{ asset('images/categories/' . $navCategory->icon) }}" alt="{{ $navCategory->name }}">
+                                </div>
                                 <h4><a href="{{ route('service_details', $navCategory->id) }}"
                                         class="stretched-link">{{ $navCategory->name }} </a></h4>
                                 <p> {{ $navCategory->description }} </p>

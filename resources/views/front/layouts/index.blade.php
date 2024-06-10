@@ -50,6 +50,7 @@
     <link href="{{asset('front/assets/css/filter.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/css/card.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/css/sub_service.css')}}" rel="stylesheet">
+    <link href="{{asset('front/assets/css/offers.css')}}" rel="stylesheet">
 
 
     <!-- =======================================================

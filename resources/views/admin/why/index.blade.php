@@ -6,6 +6,8 @@
 @section('content')
   <!-- Start Card -->
   <div class="card main-card">
+
+    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
       <!-- Start Card Header -->
       <div class="card-header is-justify-content-space-between">
           <a href="{{ route('admin.why.create') }}" class="button is-success">
@@ -15,6 +17,7 @@
               <span>اضافة معلومة جديدة عن من نحن</span>
           </a>
       </div><!-- End Card Header -->
+    @endif
       <div class="center">
         @include('admin.partials.search_result', ['data' => $whyUsQuestions])
     </div>
@@ -28,7 +31,7 @@
                     <tr>
                         <th>العنوان </th>
                         <th> المحتوي</th>
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
                         @endif
                     </tr>
@@ -38,7 +41,7 @@
                         <tr>
                             <td>{{ $whyUsQuestion->question }}</td>
                             <td>{{ $whyUsQuestion->answer }}</td>
-                            @if (auth('admin')->user()->role == 'super_admin')
+                            @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                             <td>
                                 <div class="buttons has-addons">
                                     <a class="button is-info" href="{{ route('admin.why.edit', $whyUsQuestion->id) }}" >

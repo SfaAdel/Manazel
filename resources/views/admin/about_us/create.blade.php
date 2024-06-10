@@ -10,8 +10,8 @@
     <div class="card-header">
         <a href="{{ route('admin.teams.index') }}" class="button is-success">
           <span class="icon is-small">
-            <i class="fa fa-sitemap"></i>
-          </span>
+            <i class="fa-solid fa-list"></i>
+        </span>
           <span>قائمة فرق العمل</span>
         </a>
     </div><!-- End Card Header -->

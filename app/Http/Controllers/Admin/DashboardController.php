@@ -144,7 +144,7 @@ private function getProfits($period)
     $query = Appointment::join('sub_services', 'appointments.sub_service_id', '=', 'sub_services.id')
         ->select(
             DB::raw('count(appointments.id) as number_of_orders'),
-            DB::raw('sum(sub_services.price) as total_profits')
+            DB::raw('sum(sub_services.final_price) as total_profits')
         );
 
     if ($period == 'today') {

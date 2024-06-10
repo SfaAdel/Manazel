@@ -10,7 +10,7 @@
         <div class="card-header">
             <a href="{{ route('admin.sub_services.index') }}" class="button is-success">
         <span class="icon is-small">
-          <i class="fa fa-user-tie"></i>
+            <i class="fa-solid fa-list"></i>
         </span>
                 <span>قائمة الخدمات</span>
             </a>

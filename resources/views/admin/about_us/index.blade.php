@@ -7,6 +7,8 @@
   <!-- Start Card -->
   <div class="card main-card">
       <!-- Start Card Header -->
+      @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
+
       <div class="card-header is-justify-content-space-between">
           <a href="{{ route('admin.teams.create') }}" class="button is-success">
         <span class="icon is-small">
@@ -15,6 +17,7 @@
               <span>اضافة فريق عمل جديد</span>
           </a>
       </div><!-- End Card Header -->
+@endif
     <!-- Start Card Content -->
     <div class="card-content">
         <div class="table-container">
@@ -24,7 +27,7 @@
                         <th>الاسم </th>
                         <th> الوصف</th>
                         <th>الصورة</th>
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
                         @endif
                     </tr>
@@ -40,7 +43,7 @@
                             </td>
                         @endif
 
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.teams.edit', $team->id) }}">

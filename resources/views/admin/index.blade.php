@@ -132,7 +132,7 @@
 
     <div class="custom-card-body">
         <p>عدد الطلبات: <strong>{{ $profits->number_of_orders }}</strong></p>
-        <p>إجمالي الأرباح: <strong>{{ $profits->total_profits }} ريال</strong></p>
+        <p>إجمالي الأرباح: <strong>{{ $profits->total_profits ?? '0' }} ريال</strong></p>
     </div>
 </div>
 

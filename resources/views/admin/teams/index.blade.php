@@ -6,6 +6,8 @@
 @section('content')
   <!-- Start Card -->
   <div class="card main-card">
+
+    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
       <!-- Start Card Header -->
       <div class="card-header is-justify-content-space-between">
           <a href="{{ route('admin.teams.create') }}" class="button is-success">
@@ -15,7 +17,7 @@
               <span>اضافة فريق عمل جديد</span>
           </a>
       </div><!-- End Card Header -->
-
+    @endif
 
       <div class="center">
         @include('admin.partials.search_result', ['data' => $teams])
@@ -31,7 +33,7 @@
                         <th>الاسم </th>
                         <th> الوصف</th>
                         <th>الصورة</th>
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
                         @endif
                     </tr>
@@ -46,7 +48,7 @@
                                 <img src="{{ asset('images/teams/' . $team->icon) }}" class="icon rounded-circle" alt="icon">
                             </td>
                         @endif
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.teams.edit', $team->id) }}">

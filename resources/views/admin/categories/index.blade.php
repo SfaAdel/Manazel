@@ -7,6 +7,8 @@
   <!-- Start Card -->
   <div class="card main-card">
       <!-- Start Card Header -->
+      @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
+
       <div class="card-header is-justify-content-space-between">
           <a href="{{ route('admin.categories.create') }}" class="button is-success">
         <span class="icon is-small">
@@ -15,7 +17,7 @@
               <span>اضافة تصنيف</span>
           </a>
       </div><!-- End Card Header -->
-
+    @endif
 
       <div class="center">
         @include('admin.partials.search_result', ['data' => $categories])
@@ -31,7 +33,7 @@
                         <th>الاسم </th>
                         <th> الوصف</th>
                         <th>الصورة</th>
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
                         @endif
                     </tr>
@@ -47,8 +49,8 @@
                             </td>
                         @endif
 
-                        @if (auth('admin')->user()->role == 'super_admin')
-                            <td>
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
+                        <td>
                                 <div class="buttons has-addons">
                                     <a class="button is-info" href="{{ route('admin.categories.edit', $category->id) }}">
                                         تعديل </a>

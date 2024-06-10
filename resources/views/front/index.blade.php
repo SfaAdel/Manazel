@@ -54,8 +54,40 @@
                            {{-- end errors --}}
 
 
+ <!-- /offers Section -->
+@if($subServicesWithOffer->isNotEmpty())
+<section id="services" class="services section mt-4">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>العروض و الخصومات <i class="fa fa-fire text-danger"></i> </h2>
+        <p>نقدم لكم افضل العروض والخصومات على جميع خدماتنا</p>
+    </div><!-- End Section Title -->
+
+    <div class="container p-3 offers_section">
+        @foreach ($subServicesWithOffer as $subService)
+        <div class="offer-box card mx-3">
+            <div class="box">
+                <div class="offer_content">
+                    <img class="my-3" src="{{ asset('images/sub_services/' . $subService->icon) }}">
+                    <h2>احصل على خصم {{ $subService->discount_percentage }}% <br> على  خدمة </h2>
+                    <p>{{ $subService->name }}<br> العرض لفترة محدودة!</p>
+                    <a href="{{ route('sub_service_details', $subService->id) }}" class="btn mb-3">احصل على العرض الان</a>
+
+                </div>
+                <div class="ribbon-wrap">
+                    <div class="ribbon">خصم {{ $subService->discount_percentage }}%</div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</section><!-- /offers Section -->
+@endif
+
+
         <!-- About Section -->
-        <section id="about" class="about section p-5">
+        <section id="about" class="about section p-5 mt-4">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
@@ -139,7 +171,7 @@
             <div class="container p-3">
                 <div class="row gy-4 justify-content-evenly">
                     @foreach ($categories as $category)
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 d-flex">
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 d-flex align-items-center m-auto my-3">
                             <div class="service-item position-relative" data-aos="fade-up"
                                 data-aos-delay="{{ $loop->iteration * 100 }}">
                                 <div class="icon">
@@ -323,7 +355,7 @@
         </section><!-- /Testimonials Section -->
 
         {{-- <hr> --}}
-
+        @if($blogs->isNotEmpty())
         <!-- Blog Section -->
         <section id="blog" class="blog section px-4 mt-4 spikes">
 
@@ -391,67 +423,7 @@
             </div>
 
         </section><!-- /Blog Section -->
-
-{{-- <!-- Blog Section -->
-<section id="blog" class="blog section px-4 mt-4 spikes">
-
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-      <!-- Section Title and Description -->
-      @if (isset($blogSection))
-        <h2>{{ $blogSection->title }}</h2>
-        <p class="mb-4">{{ $blogSection->short_description }}</p>
-      @endif
-
-      <!-- Blog Entries -->
-      @if (!isset($blogs) || $blogs->isEmpty())
-        <h4 class="mt-3">لا يوجد مدونات بعد</h4>
-      @else
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="swiper blog-swiper">
-            <script type="application/json" class="swiper-config">
-              {
-                "loop": true,
-                "speed": 600,
-                "autoplay": {
-                  "delay": 3000
-                },
-                "slidesPerView": 1,
-                "pagination": {
-                  "el": ".swiper-pagination",
-                  "type": "bullets",
-                  "clickable": true
-                }
-              }
-            </script>
-
-            <div class="swiper-container">
-              <div class="swiper-wrapper">
-                @foreach ($blogs as $blog)
-                  <div class="swiper-slide">
-                    <div class="blog-entry d-flex align-items-start bg-light">
-                      <div class="pic">
-                        <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="img-fluid" alt="">
-                      </div>
-                      <div class="entry-info m-2 mx-3">
-                        <h4>{{ $blog->main_title }}</h4>
-                        <p class="d-inline mt-3">{{ $blog->short_description }}</p>
-                        <a href="{{ route('blog_details', $blog->id) }}" class="btn mt-3 d-inline text-primary">قراءة المزيد . . .</a>
-                      </div>
-                    </div>
-                  </div><!-- End Blog Entry -->
-                @endforeach
-              </div>
-            </div>
-
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      @endif
-    </div>
-
-</section><!-- /Blog Section --> --}}
+        @endif
 
 
 

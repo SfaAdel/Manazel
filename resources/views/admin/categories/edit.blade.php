@@ -10,7 +10,7 @@
     <div class="card-header">
       <a href="{{ route('admin.categories.index') }}" class="button is-success">
         <span class="icon is-small">
-          <i class="fa fa-building"></i>
+            <i class="fa-solid fa-list"></i>
         </span>
         <span>قائمة التصنيفات</span>
       </a>

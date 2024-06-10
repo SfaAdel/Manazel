@@ -9,7 +9,8 @@
     <div class="card-header">
         <a href="{{ route('admin.provider_availabilities.index') }}" class="button is-success">
             <span class="icon is-small">
-                <i class="fa fa-list"></i>
+                <i class="fa-solid fa-list"></i>
+
             </span>
             <span>قائمة اجازات الموظفين </span>
         </a>

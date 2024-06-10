@@ -59,7 +59,9 @@ class HomeController extends Controller
 
         $counters=AboutUsCounter::latest()->limit(3)->get();
 
-        return view('front.index', compact('navCategories','mainSection','contactSection','whyUsSection', 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
+        $subServicesWithOffer = SubService::where('offer', 1)->get();
+
+        return view('front.index', compact('subServicesWithOffer','navCategories','mainSection','contactSection','whyUsSection', 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
     }
 
     public function service($id)

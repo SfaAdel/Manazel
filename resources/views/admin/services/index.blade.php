@@ -7,6 +7,7 @@
   <!-- Start Card -->
   <div class="card main-card">
       <!-- Start Card Header -->
+      @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
       <div class="card-header is-justify-content-space-between">
           <a href="{{ route('admin.services.create') }}" class="button is-success">
         <span class="icon is-small">
@@ -15,7 +16,7 @@
               <span>اضافة خدمة رئيسية</span>
           </a>
       </div><!-- End Card Header -->
-
+    @endif
     <div class="center">
         @include('admin.partials.search_result', ['data' => $services])
     </div>
@@ -31,7 +32,7 @@
                         <th>التصنيف</th>
                         <th> الوصف</th>
                         <th>الصورة</th>
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
                         @endif
                     </tr>
@@ -47,7 +48,7 @@
                                 <img src="{{ asset('images/services/' . $service->icon) }}" class="icon rounded-circle" alt="icon">
                             </td>
                         @endif
-                        @if (auth('admin')->user()->role == 'super_admin')
+                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <td>
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.services.edit', $service->id) }}">

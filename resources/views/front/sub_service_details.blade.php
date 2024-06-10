@@ -2,7 +2,7 @@
 @section('page.title', ' خدماتنا')
 
 @section('content')
-@include('front.partials.alerts')
+    @include('front.partials.alerts')
 
 
     <!-- Hero Section -->
@@ -29,23 +29,22 @@
                         <div class="product-dtl">
 
                             {{-- errors --}}
-                            @if(session()->has('success'))
-                            <div class="alert alert-success" id="success-alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif
+                            @if (session()->has('success'))
+                                <div class="alert alert-success" id="success-alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
 
-                        @if(count($errors) > 0)
-                            <alert
-                                alert-title="خطأ في البيانات"
-                                alert-type="error"
-                                :alert-messages="{{ collect($errors->all()) }}">
-                            </alert>
-                        @endif
+                            @if (count($errors) > 0)
+                                <alert alert-title="خطأ في البيانات" alert-type="error"
+                                    :alert-messages="{{ collect($errors->all()) }}">
+                                </alert>
+                            @endif
 
-                        @if(session()->has('error'))
-                            <alert title="خطأ في البيانات" alert-type="error" alert-title="{{ session('error') }}"></alert>
-                        @endif
+                            @if (session()->has('error'))
+                                <alert title="خطأ في البيانات" alert-type="error" alert-title="{{ session('error') }}">
+                                </alert>
+                            @endif
                             {{-- end errors --}}
 
 
@@ -54,7 +53,7 @@
 
                                     <div class="product-name">
                                         <img src="{{ asset('images/sub_services/' . $sub_service->icon) }}"
-                                        class="img-fluid animated rounded m-3" alt="photo">
+                                            class="img-fluid animated rounded m-3" alt="photo">
                                         {{ $sub_service->name }}
 
                                     </div>
@@ -114,18 +113,33 @@
                                     <input type="hidden" id="longitude" name="longitude">
                                     <input type="hidden" name="sub_service_id" value="{{ $sub_service->id }}" />
                                     @if (auth()->guard('customer')->check())
-                                    <input type="hidden" name="customer_id" value="{{ auth('customer')->user()->id }}" />
+                                        <input type="hidden" name="customer_id"
+                                            value="{{ auth('customer')->user()->id }}" />
                                     @endif
-<br>
+                                    <br>
                                     <div class="product-price-discount d-inline m-3">
                                         <h3 class="d-inline">سعر الخدمة :</h3>
-                                        <span>{{ $sub_service->price }} ريال</span>
+                                        @if ($sub_service->offer && $sub_service->discount_percentage > 0)
+                                            <span class="original-price mx-2"
+                                                style="text-decoration: line-through; color: red; ">
+                                                {{ $sub_service->price }}
+                                            </span>
+                                            <span class="final-price" style="color: green;">
+                                                {{ $sub_service->final_price }} ريال
+                                            </span>
+                                        @else
+                                            <span class="final-price">
+                                                {{ $sub_service->price }} ريال
+                                            </span>
+                                        @endif
                                     </div>
+
 
                                     @if (auth()->guard('customer')->check())
                                         <button type="submit" class="round-black-btn"> تأكيد الحجز </button>
                                     @else
-                                        <a  class="round-black-btn" href="{{ route('login') }}"> يجب عليك تسجيل الدخول قبل حجز الخدمة </a>
+                                        <a class="round-black-btn" href="{{ route('login') }}"> يجب عليك تسجيل الدخول قبل
+                                            حجز الخدمة </a>
                                     @endif
 
                                 </form>
@@ -197,19 +211,19 @@
     </script>
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const successAlert = document.getElementById('success-alert');
-        if (successAlert) {
-            setTimeout(() => {
-                successAlert.style.transition = 'opacity 1s ease-out';
-                successAlert.style.opacity = '0';
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const successAlert = document.getElementById('success-alert');
+            if (successAlert) {
                 setTimeout(() => {
-                    successAlert.remove();
-                }, 1000); // Ensure the alert is completely hidden before removing it
-            }, 3000); // 3 seconds
-        }
-    });
-</script>
+                    successAlert.style.transition = 'opacity 1s ease-out';
+                    successAlert.style.opacity = '0';
+                    setTimeout(() => {
+                        successAlert.remove();
+                    }, 1000); // Ensure the alert is completely hidden before removing it
+                }, 3000); // 3 seconds
+            }
+        });
+    </script>
 
 @endsection
