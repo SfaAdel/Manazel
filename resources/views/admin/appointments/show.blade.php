@@ -56,6 +56,14 @@
                                         <span class="value">{{ $appointment->address }}</span>
                                     </div>
                                     <div class="info">
+                                        <label class="label"> حالة الطلب </label>
+                                        <span class="value">{{ $appointment->status ?? 'قيد الانتظار' }}</span>
+                                    </div>
+                                    <div class="info">
+                                        <label class="label"> مقدم الخدمة </label>
+                                        <span class="value">{{ $appointment->provider->name ?? 'لم يتم اختياره بعد'}}</span>
+                                    </div>
+                                    {{-- <div class="info">
                                         <label class="label"> مقدم الخدمة </label>
                                         <span>
                                             <form action="{{ route('admin.appointments.update', $appointment->id) }}" method="POST" class="d-inline">
@@ -81,8 +89,7 @@
                                                 </div>
                                             </form>
                                         </span>
-
-                                    </div>
+                                    </div> --}}
                                     {{-- <div class="info">
                                         <label class="label"> احداثيات العرض </label>
                                         <span class="value">{{ $appointment->latitude }}</span>

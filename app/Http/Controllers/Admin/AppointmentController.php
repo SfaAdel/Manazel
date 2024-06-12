@@ -10,6 +10,7 @@ use App\Models\SubService;
 use App\Models\SubServiceAvailability;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
 {
@@ -163,20 +164,38 @@ class AppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(AppointmentRequest $request, Appointment $appointment)
-    {
-        //
-        $status = $request->input('status');
-        // Update the order status
-        if ($status === 'canceled') {
-            // Delete related appointments if the order is canceled
-            $appointment->delete();
-        }
-        $appointment->update(['status' => $status]);
 
-        $appointment->update($request->only('provider_id'));
-        return redirect()->back()->with('success', 'تم تحديث مقدم الخدمة بنجاح');
-    }
+     public function update(AppointmentRequest $request, Appointment $appointment)
+     {
+         try {
+             // Update the appointment status if provided
+             if ($request->input('status')) {
+                 $status = $request->input('status');
+                 if ($status === 'canceled') {
+                     $appointment->delete();
+                 } else {
+                     $appointment->update(['status' => $status]);
+                 }
+             }
+
+             // Update the provider_id if provided
+             if ($request->filled('provider_id')) {
+                 $appointment->update($request->only('provider_id'));
+             }
+
+             return redirect()->back()->with('success', 'تم تحديث البيانات بنجاح');
+         } catch (\Illuminate\Database\QueryException $e) {
+             // Handle unique constraint violation
+             if ($e->errorInfo[1] == 1062) { // MySQL error code for unique constraint violation
+                 return redirect()->back()->withErrors(['provider_id' => 'هذا الفني لديه موعد آخر في هذا اليوم وهذا الوقت.']);
+             }
+
+             return redirect()->back()->withErrors(['error' => 'حدث خطأ غير متوقع. يرجى المحاولة لاحقًا.']);
+         }
+     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

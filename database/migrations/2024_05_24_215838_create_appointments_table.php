@@ -21,6 +21,10 @@ return new class extends Migration
             $table->foreignId('provider_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->enum('status',['canceled','pending','completed'])->default('pending')->nullable();
             $table->timestamps();
+
+            $table->unique(['day', 'time', 'provider_id']);
+            $table->unique(['customer_id', 'day', 'sub_service_id']);
+
         });
     }
 

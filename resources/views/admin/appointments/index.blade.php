@@ -81,7 +81,7 @@
                                     <td>{{ $appointment->provider->name ?? '- -' }}</td>
 
                                     {{-- <td>{{ $appointment->latitude }}</td>
-                        <td>{{ $appointment->longitude }}</td> --}}
+                                    <td>{{ $appointment->longitude }}</td> --}}
                                     {{-- <td>{{ $appointment->address }}</td> --}}
                                     @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                                     <td>
@@ -90,47 +90,42 @@
                                             @method('PATCH')
                                             <div class="field">
                                                 <div class="control">
-                                                    {{-- <div class="select d-inline">
-                                          <select name="provider_id" {{ $appointment->status == 'completed' ? 'disabled' : '' }}>
-                                              <option value="" selected disabled>اختر مقدم خدمة</option>
-
-
+                                                    <div class="select d-inline">
+                                                        <select name="provider_id" {{ $appointment->status == 'completed' ? 'disabled' : '' }}>
+                                                            <option value="" selected disabled>اختر مقدم خدمة</option>
                                                             @foreach ($providers[$appointment->id] ?? [] as $provider)
-                                                            <option value="{{ $provider->id }}" {{ $appointment->provider_id == $provider->id ? 'selected' : '' }}>
-                                                                {{ $provider->name }}
-                                                            </option>
-                                                        @endforeach
-
+                                                                <option value="{{ $provider->id }}" {{ $appointment->provider_id == $provider->id ? 'selected' : '' }}>
+                                                                    {{ $provider->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
-                                                    </div> --}}
+                                                    </div>
+
+                                                    {{-- @if ($errors->has('provider_id'))
+                                                        <span class="text-danger">{{ $errors->first('provider_id') }}</span>
+                                                    @endif --}}
 
                                                     <div class="field d-inline">
                                                         <div class="select">
                                                             <select name="status" onchange="this.form.submit()"
                                                                 {{ in_array($appointment->status, ['canceled', 'completed']) ? 'disabled' : '' }}>
-                                                                <option value="" selected disabled>اختر حالة الطلب
-                                                                </option>
-                                                                <option value="pending"
-                                                                    {{ $appointment->status == 'pending' ? 'selected' : '' }}>
-                                                                    قيد الانتظار</option>
-                                                                <option value="completed"
-                                                                    {{ $appointment->status == 'completed' ? 'selected' : '' }}>
-                                                                    تم بنجاح</option>
-                                                                <option value="canceled"
-                                                                    {{ $appointment->status == 'canceled' ? 'selected' : '' }}>
-                                                                    تم إلغاؤه</option>
+                                                                <option value="" selected disabled>اختر حالة الطلب</option>
+                                                                <option value="pending" {{ $appointment->status == 'pending' ? 'selected' : '' }}>قيد الانتظار</option>
+                                                                <option value="completed" {{ $appointment->status == 'completed' ? 'selected' : '' }}>تم بنجاح</option>
+                                                                <option value="canceled" {{ $appointment->status == 'canceled' ? 'selected' : '' }}>تم إلغاؤه</option>
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')                                                    <button type="submit" class="button is-primary mx-3"
-                                                        {{ $appointment->status == 'completed' ? 'disabled' : '' }}> تحديث
 
-                                                    </button>
+                                                    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
+                                                        <button type="submit" class="button is-primary mx-3" {{ $appointment->status == 'completed' ? 'disabled' : '' }}>تحديث</button>
                                                     @endif
-                                                    </div>
+                                                </div>
                                             </div>
                                         </form>
                                     </td>
+
+
                                     @endif
                                     <td>
                                         <div class="buttons has-addons">
