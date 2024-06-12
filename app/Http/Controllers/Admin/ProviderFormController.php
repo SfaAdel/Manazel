@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProviderFormRequest;
 use App\Models\Category;
 use App\Models\ProviderForm;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class ProviderFormController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProviderFormRequest $request)
     {
         //
         ProviderForm::create($request->except('_token'));

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('about_us_counters', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->unique();
             $table->string('icon');
             $table->integer('number');
             $table->timestamps();

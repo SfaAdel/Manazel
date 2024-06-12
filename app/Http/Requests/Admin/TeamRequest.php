@@ -4,14 +4,12 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceRequest extends FormRequest
+class TeamRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -19,27 +17,23 @@ class ServiceRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3|max:50',
-            'description' => 'required|string|max:10000',
+            //
+            'name' => 'required|string|min:3|max:100',
+            'description' => 'required|string',
             'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
-
-            // 'collages' => 'required|array',
-            'category_id' => 'required|numeric|exists:categories,id',
         ];
     }
-
     public function attributes()
     {
         return [
             'name' => 'اسم الخدمة',
-            'description' => 'وصف الخدمة',
+            'description' => ' الوصف',
             'icon' => 'صورة الخدمة',
-            'category_id' => ' التصنيف'
         ];
     }
 }

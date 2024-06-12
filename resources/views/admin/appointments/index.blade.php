@@ -36,7 +36,6 @@
 
         @if (!$appointments->isEmpty())
             <!-- Start Card Content -->
-            <div>
             <div class="card-content">
                 <div class="table-container">
                     <table class="table is-fullwidth" id="posts">
@@ -63,14 +62,14 @@
                                 <tr>
                                     <td>{{ $appointment->customer->name }}</td>
                                     {{-- <td>
-                                            <a
-                                                target="_blank"
-                                                href="https://api.whatsapp.com/send?phone=2{{ $appointment->customer->phone }}&text={{ urlencode('عزيزي ' . $appointment->customer->name . ' تم بنجاح حجز موعد يوم ' . $appointment->day . ' الساعة ' . $appointment->time . ' من اجل خدمة ' . $appointment->subService->name . ' اذا كان لديك اى استفسارات تواصل معنا من خلال الرقم التالى') }}"
-                                                class="text-black"
-                                            >
-                                                {{ $appointment->customer->phone }}
-                                            </a>
-                                        </td> --}}
+                            <a
+                                target="_blank"
+                                href="https://api.whatsapp.com/send?phone=2{{ $appointment->customer->phone }}&text={{ urlencode('عزيزي ' . $appointment->customer->name . ' تم بنجاح حجز موعد يوم ' . $appointment->day . ' الساعة ' . $appointment->time . ' من اجل خدمة ' . $appointment->subService->name . ' اذا كان لديك اى استفسارات تواصل معنا من خلال الرقم التالى') }}"
+                                class="text-black"
+                            >
+                                {{ $appointment->customer->phone }}
+                            </a>
+                        </td> --}}
                                     <td>
                                         <a
                                             href="tel:{{ $appointment->customer->phone }}">{{ $appointment->customer->phone }}</a>
@@ -82,12 +81,11 @@
                                     <td>{{ $appointment->provider->name ?? '- -' }}</td>
 
                                     {{-- <td>{{ $appointment->latitude }}</td>
-                                    <td>{{ $appointment->longitude }}</td> --}}
+                        <td>{{ $appointment->longitude }}</td> --}}
                                     {{-- <td>{{ $appointment->address }}</td> --}}
-
+                                    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                                     <td>
-                                        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
-                                        method="POST">
+                                        <form action="{{ route('admin.appointments.update', $appointment->id) }}" method="POST">
                                             @csrf
                                             @method('PATCH')
                                             <div class="field">
@@ -97,14 +95,14 @@
                                               <option value="" selected disabled>اختر مقدم خدمة</option>
 
 
-                                              @foreach ($providers[$appointment->id] ?? [] as $provider)
-                                              <option value="{{ $provider->id }}" {{ $appointment->provider_id == $provider->id ? 'selected' : '' }}>
-                                                  {{ $provider->name }}
-                                              </option>
-                                          @endforeach
+                                                            @foreach ($providers[$appointment->id] ?? [] as $provider)
+                                                            <option value="{{ $provider->id }}" {{ $appointment->provider_id == $provider->id ? 'selected' : '' }}>
+                                                                {{ $provider->name }}
+                                                            </option>
+                                                        @endforeach
 
-                                          </select>
-                                      </div> --}}
+                                                        </select>
+                                                    </div> --}}
 
                                                     <div class="field d-inline">
                                                         <div class="select">
@@ -124,8 +122,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
-                                                    <button type="submit" class="button is-primary mx-3"
+                                                    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')                                                    <button type="submit" class="button is-primary mx-3"
                                                         {{ $appointment->status == 'completed' ? 'disabled' : '' }}> تحديث
 
                                                     </button>
@@ -134,6 +131,7 @@
                                             </div>
                                         </form>
                                     </td>
+                                    @endif
                                     <td>
                                         <div class="buttons has-addons">
                                             @if ($appointment->status === 'canceled')
@@ -164,7 +162,7 @@
                             @endforeach
                         </tbody>
                     </table>
-            </div>
+                </div>
             </div><!-- End Card Content -->
         @endif
         <!-- Start Card Footer -->

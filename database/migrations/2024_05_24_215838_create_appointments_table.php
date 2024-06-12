@@ -19,7 +19,7 @@ return new class extends Migration
             $table->time('time')->nullable();
             $table->text('address')->nullable();
             $table->foreignId('provider_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
-            $table->enum('status',['canceled','pending','completed'])->nullable();
+            $table->enum('status',['canceled','pending','completed'])->default('pending')->nullable();
             $table->timestamps();
         });
     }

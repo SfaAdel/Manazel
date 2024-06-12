@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CustomerRequest extends FormRequest
+class ProviderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,8 @@ class CustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3|max:50',
+            //
+            'name' => 'required|string|min:3|max:255|unique',
             'phone' => [
                 'required',
                 'string',
@@ -30,17 +31,21 @@ class CustomerRequest extends FormRequest
                 'unique:customers,phone', // Assuming the phone number is stored in the 'users' table
                 'regex:/^05[0-9]{8}$/', // Saudi phone number format
             ],
-            'password' => $this->method() === 'POST' ? 'required|string|min:6' : '',
+            'category_id' => 'required|numeric|exists:categories,id',
+            'status' => 'required|boolean',
 
         ];
     }
+
 
     public function attributes()
     {
         return [
             'name' => ' الاسم',
             'phone' => 'رقم الهاتف',
-            'password' => ' كلمة المرور'
+            'category_id' => 'القسم',
+            'status' => 'الحالة',
+
         ];
     }
 }

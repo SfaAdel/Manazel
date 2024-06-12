@@ -4,7 +4,7 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::select('provider_id', $providers->pluck('name', 'id'), null, ['class' => 'input', 'required']) !!}
+                    {!! Form::select('provider_id', $providers->pluck('name', 'id'), $providerAvailability->provider_id ?? null, ['class' => 'input', 'required']) !!}
                 </div>
             </div>
         </div>
@@ -43,7 +43,6 @@
     document.addEventListener('DOMContentLoaded', function() {
         const monthSelect = document.getElementById('month');
         const daysOffSelect = document.getElementById('off_days');
-
         const currentDate = new Date();
         const currentYear = currentDate.getFullYear();
         const currentMonth = currentDate.getMonth();
@@ -73,9 +72,25 @@
                 option.text = `${year}-${month}-${formattedDay}`;
                 daysOffSelect.appendChild(option);
             }
+
+            // Set selected off days from the database
+            const oldOffDays = @json($providerAvailability->off_days ?? []);
+            oldOffDays.forEach(function(day) {
+                const option = daysOffSelect.querySelector(`option[value="${day}"]`);
+                if (option) {
+                    option.selected = true;
+                }
+            });
         });
 
         // Trigger change event on page load to populate days for the initially selected month
         monthSelect.dispatchEvent(new Event('change'));
+
+        // Set the initially selected month
+        const initialMonth = @json($providerAvailability->month ?? '');
+        if (initialMonth) {
+            monthSelect.value = initialMonth.substring(0, 7); // Set value without the day part
+            monthSelect.dispatchEvent(new Event('change'));
+        }
     });
 </script>

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CustomerRequest extends FormRequest
+class TestimonialRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,25 +22,20 @@ class CustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
+            //
             'name' => 'required|string|min:3|max:50',
-            'phone' => [
-                'required',
-                'string',
-                'size:10', // Ensure the phone number is exactly 10 characters long
-                'unique:customers,phone', // Assuming the phone number is stored in the 'users' table
-                'regex:/^05[0-9]{8}$/', // Saudi phone number format
-            ],
-            'password' => $this->method() === 'POST' ? 'required|string|min:6' : '',
-
+            'stars' => 'required|numeric|min:0|max:5',
+            'review' => 'required|string|max:10000',
+            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
         ];
     }
-
     public function attributes()
     {
         return [
-            'name' => ' الاسم',
-            'phone' => 'رقم الهاتف',
-            'password' => ' كلمة المرور'
+            'name' => 'الاسم',
+            'stars' => 'عدد النجوم',
+            'review' => ' المراجعة',
+            'icon' => 'صورة',
         ];
     }
 }

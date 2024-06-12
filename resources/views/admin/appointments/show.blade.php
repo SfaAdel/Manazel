@@ -74,7 +74,7 @@
                                                         </select>
 
                                                     </div>
-                                                    @if (auth('admin')->user()->role == 'super_admin')
+                                                    @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                                                         <button type="submit" class="button is-primary mx-3" {{ $appointment->status == 'completed' ? 'disabled' : '' }}>تحديث</button>
                                                     @endif
                                                     </div>

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class SubServiceAvailabilityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,18 +23,20 @@ class CategoryRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|string|min:3|max:50',
-            'description' => 'required|string|max:10000',
-            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'sub_service_id' => 'required|numeric|exists:sub_services,id',
+            'availability' => 'required|boolean',
+            'day' => 'required|date_format:Y-m-d',
+            'time' => 'required',
+
         ];
     }
-
     public function attributes()
     {
         return [
-            'name' => 'اسم الخدمة',
-            'description' => 'وصف الخدمة',
-            'icon' => 'صورة الخدمة'
+            'sub_service_id' => ' الخدمة',
+            'availability' => 'حالة الموعد',
+            'day' => ' اليوم',
+            'time' => 'الوقت',
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class TitleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,18 +23,20 @@ class CategoryRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|string|min:3|max:50',
-            'description' => 'required|string|max:10000',
+            'title' => 'required|string|min:3|max:50|unique',
+            'short_description' => 'required|string|min:3|max:10000',
+            'section' => 'required|string|unique',
             'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+
         ];
     }
-
     public function attributes()
     {
         return [
-            'name' => 'اسم الخدمة',
-            'description' => 'وصف الخدمة',
-            'icon' => 'صورة الخدمة'
+            'title' => ' العنوان',
+            'short_description' => 'وصف قصير',
+            'section' => 'القسم',
+            'icon' => 'صورة',
         ];
     }
 }

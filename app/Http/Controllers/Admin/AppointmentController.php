@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AppointmentRequest;
 use App\Models\Appointment;
 use App\Models\Provider;
 use App\Models\SubService;
@@ -124,7 +125,7 @@ class AppointmentController extends Controller
         //
     }
 
-    public function bookAppointment(Request $request)
+    public function bookAppointment(AppointmentRequest $request)
     {
         // Validate and create the appointment
         $appointment = Appointment::create($request->except('_token'));
@@ -162,7 +163,7 @@ class AppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Appointment $appointment)
+    public function update(AppointmentRequest $request, Appointment $appointment)
     {
         //
         $status = $request->input('status');

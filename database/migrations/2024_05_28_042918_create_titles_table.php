@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('titles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->unique();
             $table->string('short_description');
             $table->string('icon');
-            $table->enum('section',['about_us','services','testimonials','advantages','teams','blogs','contacts','main'])->nullable();
+            $table->enum('section',['about_us','services','testimonials','advantages','teams','blogs','contacts','main'])->unique()->nullable();
             $table->timestamps();
         });
     }

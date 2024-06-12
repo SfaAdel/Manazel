@@ -15,10 +15,9 @@ return new class extends Migration
         Schema::create('provider_availabilities', function (Blueprint $table) {
             $table->id();
             $table->json('off_days')->nullable();
-            $table->foreignId('provider_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->date('month')->default(now()->startOfMonth()); // Default to the start of the current month
+            $table->foreignId('provider_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->date('month');
             $table->timestamps();
-
             $table->unique(['provider_id', 'month']);
         });
 

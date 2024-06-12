@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProviderAvailabilityRequest;
 use App\Models\Provider;
 use App\Models\ProviderAvailability;
-use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class ProviderAvailabilityController extends Controller
 {
@@ -21,24 +22,19 @@ class ProviderAvailabilityController extends Controller
         return view('admin.provider_availabilities.create', compact('providers'));
     }
 
-    public function store(Request $request)
+    public function store(ProviderAvailabilityRequest $request)
     {
-        $validated = $request->validate([
-            'provider_id' => 'required|exists:providers,id',
-            'month' => 'required|date_format:Y-m|unique:provider_availabilities,month,null,null,provider_id,'.$request->provider_id,
-            'off_days' => 'required|array',
-            'off_days.*' => 'date_format:Y-m-d',
-        ], [
-            'month.unique' => 'The combination of provider and month already exists.',
-        ]);
+        try {
+            ProviderAvailability::create($request->validated());
 
-        ProviderAvailability::create([
-            'provider_id' => $validated['provider_id'],
-            'off_days' => $validated['off_days'],
-            'month' => $validated['month'],
-        ]);
-
-        return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم اضافة بيانات الموظف بنجاح.');
+            return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم اضافة بيانات الموظف بنجاح.');
+        } catch (QueryException $exception) {
+            if ($exception->getCode() == '23000') {
+                // 23000 is the SQL state for integrity constraint violation
+                return redirect()->back()->withErrors(['month' => 'الاجازة لهذا الموظف في هذا الشهر موجودة بالفعل.'])->withInput();
+            }
+            throw $exception; // If it's a different error, throw it
+        }
     }
 
     public function edit(ProviderAvailability $providerAvailability)
@@ -47,22 +43,18 @@ class ProviderAvailabilityController extends Controller
         return view('admin.provider_availabilities.edit', compact('providerAvailability', 'providers'));
     }
 
-    public function update(Request $request, ProviderAvailability $providerAvailability)
+    public function update(ProviderAvailabilityRequest $request, ProviderAvailability $providerAvailability)
     {
-        $validated = $request->validate([
-            'provider_id' => 'required|exists:providers,id',
-            'off_days' => 'required|array',
-            'off_days.*' => 'date_format:Y-m-d',
-            'month' => 'required|date_format:Y-m',
-        ]);
+        try {
+            $providerAvailability->update($request->validated());
 
-        $providerAvailability->update([
-            'provider_id' => $validated['provider_id'],
-            'off_days' => $validated['off_days'],
-            'month' => $validated['month'],
-        ]);
-
-        return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم تعديل اجازات الموظف بنجاح.');
+            return redirect()->route('admin.provider_availabilities.index')->with('success', 'تم تعديل اجازات الموظف بنجاح.');
+        } catch (QueryException $exception) {
+            if ($exception->getCode() == '23000') {
+                return redirect()->back()->withErrors(['month' => 'الاجازة لهذا الموظف في هذا الشهر موجودة بالفعل.'])->withInput();
+            }
+            throw $exception;
+        }
     }
 
     public function destroy(ProviderAvailability $providerAvailability)

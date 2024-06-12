@@ -234,9 +234,9 @@
                                     <h3>{{ $testimonial->name }}</h3>
                                     {{-- <h4>Ceo &amp; Founder</h4> --}}
                                     <div class="stars">
-                                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                            class="bi bi-star-fill"></i>
+                                        @for ($i = 0; $i < $testimonial->stars; $i++)
+                                        <i class="fa-solid fa-star text-warning"></i>
+                                        @endfor
                                     </div>
                                     <p>
                                         <i class="bi bi-quote quote-icon-left"></i>
