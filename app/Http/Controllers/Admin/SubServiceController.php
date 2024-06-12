@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\SubServiceRequest;
 use App\Models\Category;
 use App\Models\Service;
 use App\Models\SubService;
@@ -35,7 +36,7 @@ class SubServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SubServiceRequest $request)
     {
         //
         $ImageName = null;
@@ -76,7 +77,7 @@ class SubServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SubService $subService)
+    public function update(SubServiceRequest $request, SubService $subService)
     {
         //
         $subService->update($request->except('icon', '_token', '_method'));

@@ -25,8 +25,8 @@ class TestimonialRequest extends FormRequest
             //
             'name' => 'required|string|min:3|max:50',
             'stars' => 'required|numeric|min:0|max:5',
-            'review' => 'required|string|max:10000',
-            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'review' => 'required|string',
+            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
         ];
     }
     public function attributes()

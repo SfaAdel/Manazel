@@ -23,7 +23,7 @@ class WhyRequest extends FormRequest
     {
         return [
             //
-                'question' => 'required|string|min:3|unique',
+                'question' => 'required|string|min:3|unique:why_us,question',
                 'answer' => 'required|string|min:3',
         ];
     }

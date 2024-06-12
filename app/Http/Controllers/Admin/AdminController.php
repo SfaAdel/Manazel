@@ -63,7 +63,7 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Admin $admin)
+    public function update(AdminRequest $request, Admin $admin)
     {
         //
         if ($request->filled('password') && $admin->password != $request->get('password')) {

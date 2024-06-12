@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProviderRequest;
 use App\Models\Category;
 use App\Models\Provider;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class ProviderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProviderRequest $request)
     {
         //
 
@@ -54,7 +55,7 @@ class ProviderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Provider $provider)
+    public function edit(ProviderRequest $provider)
     {
         //
         $categories = Category::all(['id', 'name']);
@@ -65,7 +66,7 @@ class ProviderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Provider $provider)
+    public function update(ProviderRequest $request, Provider $provider)
     {
         //
         $provider->update($request->except('_token', '_method'));

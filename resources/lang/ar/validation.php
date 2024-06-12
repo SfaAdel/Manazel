@@ -56,7 +56,7 @@ return [
     ],
     "not_in"           => "الحقل :attribute لاغٍ",
     "numeric"          => "يجب على الحقل :attribute أن يكون رقمًا",
-    "regex"            => "صيغة الحقل :attribute .غير صحيحة",
+    "regex"            => "صيغة الحقل :attribute . غير صحيحة ، يجب ان يكون رقم الهاتف سعودي",
     "required"         => "الحقل :attribute مطلوب.",
     "required_if"      => "الحقل :attribute مطلوب في حال ما إذا كان :other يساوي :value.",
     "required_with"    => "الحقل :attribute إذا توفّر :values.",

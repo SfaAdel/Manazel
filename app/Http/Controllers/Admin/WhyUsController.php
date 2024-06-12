@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\WhyRequest;
 use App\Models\WhyUs;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class WhyUsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(WhyRequest $request)
     {
         //
         WhyUs::create($request->except( '_token'));
@@ -61,7 +62,7 @@ class WhyUsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, WhyUs $why)
+    public function update(WhyRequest $request, WhyUs $why)
     {
         $why->update($request->except('_token', '_method'));
         return redirect()->route('admin.why.index')->with('success', 'تم تعديل البيانات بنجاح');

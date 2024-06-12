@@ -11,6 +11,7 @@ use App\Models\SubServiceAvailability;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\QueryException;
 
 class AppointmentController extends Controller
 {
@@ -128,29 +129,38 @@ class AppointmentController extends Controller
 
     public function bookAppointment(AppointmentRequest $request)
     {
-        // Validate and create the appointment
-        $appointment = Appointment::create($request->except('_token'));
+        try {
+            // Validate and create the appointment
+            $appointment = Appointment::create($request->except('_token'));
 
-        // Check the number of already booked appointments for this sub_service at the same day and time
-        $bookedCount = Appointment::where('sub_service_id', $appointment->sub_service_id)
-            ->where('day', $appointment->day)
-            ->where('time', $appointment->time)
-            ->count();
-
-        // Get the number of available providers for the sub_service on the same day
-        $subService = SubService::find($appointment->sub_service_id);
-        $availableProviders = $this->getAvailableProvidersForSubServiceOnDate($subService, Carbon::parse($appointment->day))->count();
-
-        // If the number of booked appointments is equal to or greater than the number of providers
-        if ($bookedCount >= $availableProviders) {
-            // Mark the availability as false
-            SubServiceAvailability::where('sub_service_id', $appointment->sub_service_id)
+            // Check the number of already booked appointments for this sub_service at the same day and time
+            $bookedCount = Appointment::where('sub_service_id', $appointment->sub_service_id)
                 ->where('day', $appointment->day)
                 ->where('time', $appointment->time)
-                ->update(['availability' => false]);
-        }
+                ->count();
 
-        return redirect()->back()->with('success', 'تم حجز الخدمة بنجاح');
+            // Get the number of available providers for the sub_service on the same day
+            $subService = SubService::find($appointment->sub_service_id);
+            $availableProviders = $this->getAvailableProvidersForSubServiceOnDate($subService, Carbon::parse($appointment->day))->count();
+
+            // If the number of booked appointments is equal to or greater than the number of providers
+            if ($bookedCount >= $availableProviders) {
+                // Mark the availability as false
+                SubServiceAvailability::where('sub_service_id', $appointment->sub_service_id)
+                    ->where('day', $appointment->day)
+                    ->where('time', $appointment->time)
+                    ->update(['availability' => false]);
+            }
+
+            return redirect()->back()->with('success', 'تم حجز الخدمة بنجاح');
+        } catch (QueryException $e) {
+            // Catch the exception for duplicate entry violation
+            if ($e->errorInfo[1] == 1062) {
+                return redirect()->back()->with('error', 'لقد قمت بالفعل بحجز هذه الخدمة .');
+            }
+            // Handle other query exceptions or rethrow the exception
+            throw $e;
+        }
     }
 
   // In AppointmentController.php

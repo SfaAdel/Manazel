@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AdvantageRequest;
 use App\Models\Advantage;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class AdvantageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AdvantageRequest $request)
     {
         //
         if ($request->hasFile('icon')) {
@@ -68,7 +69,7 @@ class AdvantageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Advantage $advantage)
+    public function update(AdvantageRequest $request, Advantage $advantage)
     {
         //
         $advantage->update($request->except('icon', '_token', '_method'));

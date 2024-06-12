@@ -23,8 +23,8 @@ class AdvantageRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|string|min:3',
-            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'name' => 'required|string|min:3|unique:advantages,name',
+            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
         ];
     }
     public function attributes()

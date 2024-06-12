@@ -24,9 +24,9 @@ class ServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:3|max:50',
+            'name' => 'required|string|min:3|max:50|unique:services,name',
             'description' => 'required|string|max:10000',
-            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
 
             // 'collages' => 'required|array',
             'category_id' => 'required|numeric|exists:categories,id',

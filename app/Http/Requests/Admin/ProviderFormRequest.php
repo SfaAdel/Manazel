@@ -24,12 +24,13 @@ class ProviderFormRequest extends FormRequest
         return [
             //
             'name' => 'required|string|min:3|max:255',
-            'email' => 'required|string|email|max:255|unique',
+            'email' => 'required|string|email|max:255|unique:provider_forms,email',
             'phone' => [
                 'required',
                 'string',
                 'size:10', // Ensure the phone number is exactly 10 characters long
-                'unique:customers,phone', // Assuming the phone number is stored in the 'users' table
+                'unique:provider_forms,phone',
+                'unique:providers,phone',
                 'regex:/^05[0-9]{8}$/', // Saudi phone number format
             ],
             'category' => 'required|string',

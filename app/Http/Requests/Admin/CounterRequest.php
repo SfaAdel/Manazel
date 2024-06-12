@@ -23,8 +23,8 @@ class CounterRequest extends FormRequest
     {
         return [
             //
-            'title' => 'required|string|min:3|max:100',
-            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'title' => 'required|string|min:3|max:255|unique:about_us_counters,name',
+            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
             'number' => 'required|numeric|min:0',
         ];
     }

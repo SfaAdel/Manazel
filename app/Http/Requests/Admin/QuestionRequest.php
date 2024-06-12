@@ -24,7 +24,7 @@ class QuestionRequest extends FormRequest
 
             return [
                 //
-                    'question' => 'required|string|min:3|unique',
+                    'question' => 'required|string|min:3|unique:questions,question',
                     'answer' => 'required|string|min:3',
             ];
         }

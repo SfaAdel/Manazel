@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TestimonialRequest;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class TestimonialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TestimonialRequest $request)
     {
         //
         if ($request->hasFile('icon')) {
@@ -69,7 +70,7 @@ class TestimonialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(TestimonialRequest $request, Testimonial $testimonial)
     {
         //
         $testimonial->update($request->except('icon', '_token', '_method'));

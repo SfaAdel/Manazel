@@ -24,11 +24,11 @@ class BlogRequest extends FormRequest
     {
         return [
             //
-            'main_title' => 'required|string|min:3|max:1000',
-            'second_title' => 'required|string|min:3|max:1000',
+            'main_title' => 'required|string|min:3|max:1000|unique:blogs,main_title',
+            'second_title' => 'required|string|min:3|max:3000',
             'short_description' => 'required|string|min:10|max:10000',
             'long_description' => 'required|string|min:10',
-            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
             'category_id' => 'required|numeric|exists:categories,id',
         ];
     }

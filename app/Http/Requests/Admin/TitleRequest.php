@@ -23,10 +23,10 @@ class TitleRequest extends FormRequest
     {
         return [
             //
-            'title' => 'required|string|min:3|max:50|unique',
+            'title' => 'required|string|min:3|max:50|unique:titles,title',
             'short_description' => 'required|string|min:3|max:10000',
-            'section' => 'required|string|unique',
-            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'section' => 'required|string|unique:titles,section',
+            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
 
         ];
     }

@@ -23,9 +23,9 @@ class TeamRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|string|min:3|max:100',
+            'name' => 'required|string|min:3|max:255|unique:teams,name',
             'description' => 'required|string',
-            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
         ];
     }
     public function attributes()

@@ -24,7 +24,7 @@
         </a>
       </div>
       <div class="navbar-end">
-        <div class="navbar-item has-dropdown is-hoverable">
+        {{-- <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link " href="#">
             <i class="far fa-bell has-text-white fa-lg"></i>
           </a>
@@ -63,7 +63,7 @@
               See More Notifications
             </a>
           </div>
-        </div>
+        </div> --}}
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link " href="#">
             <figure class="image is-48x48 avatar">

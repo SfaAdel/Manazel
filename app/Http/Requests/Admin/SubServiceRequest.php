@@ -23,10 +23,10 @@ class SubServiceRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|string|min:3|max:50',
+            'name' => 'required|string|min:3|max:255|unique:sub_services,name',
             'short_description' => 'required|string|max:10000',
             'long_description' => 'required|string',
-            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
             'service_id' => 'required|numeric|exists:services,id',
             'offer' => 'required|boolean',
             'active' => 'required|boolean',

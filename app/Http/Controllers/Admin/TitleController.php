@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TitleRequest;
 use App\Models\Title;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class TitleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TitleRequest $request)
     {
         //
         if ($request->hasFile('icon')) {
@@ -68,7 +69,7 @@ class TitleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Title $title)
+    public function update(TitleRequest $request, Title $title)
     {
         //
         $title->update($request->except('icon', '_token', '_method'));

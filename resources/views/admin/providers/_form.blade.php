@@ -8,24 +8,30 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::text('name', null, ['class' => 'input' , 'required'] )!!}
+                    {!! Form::text('name', null, ['class' => 'input', 'required']) !!}
                 </div>
             </div>
         </div>
     </div>
+    {{-- <p style="margin-right: 15rem;">يجب أن لا يقل الاسم عن 3 احرف</p> --}}
+
     <hr />
-      <div class="field is-horizontal">
-          <div class="field-label is-normal">
-              <label class="label required">رقم الهاتف  </label>
-          </div>
-          <div class="field-body">
-              <div class="field">
-                  <div class="control">
-                      {!! Form::tel('phone', null, ['class' => 'input' , 'required'] )!!}
-                  </div>
-              </div>
-          </div>
-      </div>
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">رقم الهاتف </label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::tel('phone', null, ['class' => 'input', 'required']) !!}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{-- <p style="margin-right: 15rem;">يجب أن يكون رقم الهاتف رقم سعودي</p> --}}
+
+
     <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
@@ -35,7 +41,7 @@
             <div class="field">
                 <div class="control">
                     <single-select :inputs="{{ $categories }}" forname="category_id"
-                                   @if(isset($provider) && $provider->category) :oldvalues="{{ $provider->category()->get(['id', 'name']) }}" @endif>
+                        @if (isset($provider) && $provider->category) :oldvalues="{{ $provider->category()->get(['id', 'name']) }}" @endif>
                     </single-select>
                 </div>
             </div>
@@ -50,11 +56,13 @@
             <div class="field">
                 <div class="control">
                     <label class="radio">
-                        <input type="radio" name="status" value="1" @if(isset($provider) && $provider->status) checked @else checked @endif>
-متاح
+                        <input type="radio" name="status" value="1"
+                            @if (isset($provider) && $provider->status) checked @else checked @endif>
+                        متاح
                     </label>
                     <label class="radio">
-                        <input type="radio" name="status" value="0" @if(isset($provider) && !$provider->status) checked  @endif>
+                        <input type="radio" name="status" value="0"
+                            @if (isset($provider) && !$provider->status) checked @endif>
                         غير متاح
                     </label>
                 </div>
@@ -64,8 +72,8 @@
 </div><!-- End Card Content -->
 <!-- Start Card Footer -->
 <div class="card-footer">
-  <div class="buttons has-addons">
-    <a class="button is-info" href="{{ route('admin.services.index') }}"> الغاء </a>
-    <button type="submit" class="button is-success">حفظ</button>
-  </div>
+    <div class="buttons has-addons">
+        <a class="button is-info" href="{{ route('admin.services.index') }}"> الغاء </a>
+        <button type="submit" class="button is-success">حفظ</button>
+    </div>
 </div><!-- End Card Footer -->
