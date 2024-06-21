@@ -34,7 +34,7 @@ class AppointmentController extends Controller
         }
 
 
-        $appointments = $appointments->paginate(5);
+        $appointments = $appointments->paginate(10);
         // $providers = Provider::all(); // Fetch all providers to allow selection
 
         $appointments = Appointment::with(['customer', 'subService.service.category'])->get();
@@ -182,6 +182,12 @@ class AppointmentController extends Controller
              if ($request->input('status')) {
                  $status = $request->input('status');
                  if ($status === 'canceled') {
+                    // Mark the availability as true
+                    SubServiceAvailability::where('sub_service_id', $appointment->sub_service_id)
+                    ->where('day', $appointment->day)
+                    ->where('time', $appointment->time)
+                    ->update(['availability' => true]);
+
                      $appointment->delete();
                  } else {
                      $appointment->update(['status' => $status]);

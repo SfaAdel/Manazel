@@ -28,4 +28,9 @@ class Appointment extends Model
     {
         return $this->belongsTo(Provider::class, 'provider_id'); // Assuming 'provider_id' is the foreign key
     }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
 }

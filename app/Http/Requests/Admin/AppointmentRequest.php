@@ -44,6 +44,11 @@ class AppointmentRequest extends FormRequest
             $rules['time'] = 'required|date_format:H:i:s';
         }
 
+
+        if ($this->isMethod('post') || $this->has('district_id')) {
+            $rules['district_id'] = 'required';
+        }
+
         if ($this->isMethod('post') || $this->has('address')) {
             $rules['address'] = 'required|string|min:5';
         }

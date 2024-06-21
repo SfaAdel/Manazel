@@ -1,66 +1,54 @@
 @extends('front/layouts.index')
-@section('page.title', ' خدماتنا')
+@section('page.title', 'خدماتنا')
 
 @section('content')
-@include('front.partials.alerts')
-
+    @include('front.partials.alerts')
 
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur"
         style="background-image: url('front/assets/img/background.jpg');">
         <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
-        <div class="container ">
+        <div class="container">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
-                    <p class=""> تفاصيل خدمة </p>
-                    <h1 class="my-3"> {{ $sub_service->name }} </h1>
-                    <div class=" center">
-                        {{-- <a href="{{ route('enroll') }}" class="btn-get-started mt-3">احجز خدمتك الان </a> --}}
-                    </div>
+                    <p class="">تفاصيل خدمة</p>
+                    <h1 class="my-3">{{ $sub_service->name }}</h1>
                 </div>
             </div>
         </div>
     </section>
-    <main class="container my-6 p-6 ">
+    <main class="container my-6 p-6">
         <div class="pd-wrap">
             <div class="container">
                 <div class="row p-3">
                     <div class="col-md-9">
                         <div class="product-dtl">
-
-                           {{-- errors --}}
-                           @if(session()->has('success'))
-                           <div class="alert alert-success" id="success-alert">
-                               {{ session('success') }}
-                           </div>
-                       @endif
-
-                       @if(count($errors) > 0)
-                           <div class="alert alert-danger">
-                               <ul>
-                                   @foreach ($errors->all() as $error)
-                                       <li>{{ $error }}</li>
-                                   @endforeach
-                               </ul>
-                           </div>
-                       @endif
-
-                       @if(session()->has('error'))
-                           <div class="alert alert-danger">
-                               {{ session('error') }}
-                           </div>
-                       @endif
-                       {{-- end errors --}}
-
+                            @if (session()->has('success'))
+                                <div class="alert alert-success" id="success-alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (session()->has('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
 
                             <div class="product-info">
                                 <div>
-
                                     <div class="product-name">
                                         <img src="{{ asset('images/sub_services/' . $sub_service->icon) }}"
-                                        class="img-fluid animated rounded m-3" alt="photo">
+                                            class="img-fluid animated rounded m-3" alt="photo">
                                         {{ $sub_service->name }}
-
                                     </div>
 
                                     <div class="rate mx-1">
@@ -74,7 +62,6 @@
                                         <label for="star2" title="text">2 stars</label>
                                         <input type="radio" id="star1" name="rate" value="1" />
                                         <label for="star1" title="text">1 star</label>
-
                                     </div>
                                 </div>
                                 <p>{{ $sub_service->long_description }}</p>
@@ -82,7 +69,6 @@
                                 <form method="POST" action="{{ route('book_appointment') }}">
                                     @csrf
                                     <div class="row mt-3">
-                                        <!-- Col -->
                                         <div class="col-sm-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="day">اليوم</label>
@@ -94,16 +80,44 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <!-- Col -->
                                         <div class="col-sm-6">
                                             <div class="mb-3">
-                                                <label class="form-label" for="time">المواعيد المتاحة </label>
+                                                <label class="form-label" for="time">المواعيد المتاحة</label>
                                                 <select id="time" class="form-control" name="time" required>
                                                     <option value="">اختر معاد</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    <div class="row mt-3">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="city">المدينة</label>
+                                                <select name="" id="city" class="form-control" required>
+                                                    <option value="" disabled selected>اختر المدينة</option>
+                                                    @foreach($cities as $city)
+                                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="district">الحي</label>
+                                                <select name="district_id" id="district" class="form-control" disabled required>
+                                                    <option value="">اختر الحي </option>
+                                                    @foreach($districts as $district)
+                                                        <option value="{{ $district->id }}" data-city-id="{{ $district->city_id }}">{{ $district->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                                     <div class="row mt-3">
                                         <label class="form-label" for="address">العنوان</label>
                                         <input type="text" name="address" value=""
@@ -113,49 +127,78 @@
                                         <label class="form-label" for="map">اختر عنوان</label>
                                         <div id="map" style="width: 100%; height: 270px;"></div>
                                     </div>
-
                                     <input type="hidden" id="latitude" name="latitude">
                                     <input type="hidden" id="longitude" name="longitude">
-                                    <input type="hidden" name="sub_service_id" value="{{ $sub_service->id }}" />
+                                    <input type="hidden" name="sub_service_id" value="{{ $sub_service->id }}">
                                     @if (auth()->guard('customer')->check())
-                                    <input type="hidden" name="customer_id" value="{{ auth('customer')->user()->id }}" />
+                                        <input type="hidden" name="customer_id"
+                                            value="{{ auth('customer')->user()->id }}">
                                     @endif
-<br>
-<div class="product-price-discount d-inline m-3">
-    <h3 class="d-inline">سعر الخدمة :</h3>
-    @if($sub_service->offer && $sub_service->discount_percentage > 0)
-        <span class="original-price mx-" style="text-decoration: line-through; color: red; ">
-            {{ $sub_service->price }}
-        </span>
-        <span class="final-price" style="color: green;">
-            {{ $sub_service->final_price }} ريال
-        </span>
-    @else
-        <span class="final-price">
-            {{ $sub_service->price }} ريال
-        </span>
-    @endif
-</div>
-
-
+                                    <br>
+                                    <div class="product-price-discount d-inline m-3">
+                                        <h3 class="d-inline">سعر الخدمة:</h3>
+                                        @if ($sub_service->offer && $sub_service->discount_percentage > 0)
+                                            <span class="original-price mx-"
+                                                style="text-decoration: line-through; color: red;">
+                                                {{ $sub_service->price }}
+                                            </span>
+                                            <span class="final-price" style="color: green;">
+                                                {{ $sub_service->final_price }} ريال
+                                            </span>
+                                        @else
+                                            <span class="final-price">
+                                                {{ $sub_service->price }} ريال
+                                            </span>
+                                        @endif
+                                    </div>
                                     @if (auth()->guard('customer')->check())
-                                        <button type="submit" class="round-black-btn"> تأكيد الحجز </button>
+                                        <button type="submit" class="round-black-btn">تأكيد الحجز</button>
                                     @else
-                                        <a  class="round-black-btn" href="{{ route('login') }}"> يجب عليك تسجيل الدخول قبل حجز الخدمة </a>
+                                        <a class="round-black-btn" href="{{ route('login') }}">يجب عليك تسجيل الدخول قبل
+                                            حجز الخدمة</a>
                                     @endif
-
                                 </form>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </main>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDHZzBR9t3gE648cp8FRHfs0qUP5S6f1o&callback=initMap" async
+        defer></script>
     <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: 24.7136,
+                    lng: 46.6753
+                }, // Center the map to Riyadh, Saudi Arabia
+                zoom: 13
+            });
+
+            var marker = new google.maps.Marker({
+                position: {
+                    lat: 24.7136,
+                    lng: 46.6753
+                },
+                map: map,
+                draggable: true
+            });
+
+            google.maps.event.addListener(marker, 'dragend', function(event) {
+                document.getElementById('latitude').value = event.latLng.lat();
+                document.getElementById('longitude').value = event.latLng.lng();
+            });
+
+            map.addListener('click', function(event) {
+                marker.setPosition(event.latLng);
+                document.getElementById('latitude').value = event.latLng.lat();
+                document.getElementById('longitude').value = event.latLng.lng();
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const availabilities = @json($availabilities);
 
@@ -176,56 +219,47 @@
                 }
             });
         });
-    </script>
-    <script>
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: 40.712776,
-                    lng: -74.005974
-                },
-                zoom: 13
-            });
 
-            var marker = new google.maps.Marker({
-                position: {
-                    lat: 40.712776,
-                    lng: -74.005974
-                },
-                map: map,
-                draggable: true
-            });
-
-            google.maps.event.addListener(marker, 'dragend', function(event) {
-                document.getElementById('latitude').value = event.latLng.lat();
-                document.getElementById('longitude').value = event.latLng.lng();
-            });
-
-            map.addListener('click', function(event) {
-                marker.setPosition(event.latLng);
-                document.getElementById('latitude').value = event.latLng.lat();
-                document.getElementById('longitude').value = event.latLng.lng();
-            });
-        }
-
-        // Initialize the map
-        google.maps.event.addDomListener(window, 'load', initMap);
-    </script>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const successAlert = document.getElementById('success-alert');
-        if (successAlert) {
-            setTimeout(() => {
-                successAlert.style.transition = 'opacity 1s ease-out';
-                successAlert.style.opacity = '0';
+        document.addEventListener('DOMContentLoaded', function() {
+            const successAlert = document.getElementById('success-alert');
+            if (successAlert) {
                 setTimeout(() => {
-                    successAlert.remove();
-                }, 1000); // Ensure the alert is completely hidden before removing it
-            }, 3000); // 3 seconds
-        }
+                    successAlert.style.transition = 'opacity 1s ease-out';
+                    successAlert.style.opacity = '0';
+                    setTimeout(() => {
+                        successAlert.remove();
+                    }, 1000); // Ensure the alert is completely hidden before removing it
+                }, 3000); // 3 seconds
+            }
+        });
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#city').change(function() {
+            var cityId = $(this).val();
+            if (cityId) {
+                $('#district').prop('disabled', false);
+                $('#district option').each(function() {
+                    var districtCityId = $(this).data('city-id');
+                    if (districtCityId == cityId) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+                $('#district').val('');
+            } else {
+                $('#district').prop('disabled', true);
+                $('#district option').hide();
+                $('#district option[value=""]').show(); // Show the placeholder option
+            }
+        });
     });
 </script>
+
+
+
 
 @endsection

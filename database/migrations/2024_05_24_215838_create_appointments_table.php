@@ -17,6 +17,9 @@ return new class extends Migration
             $table->foreignId('sub_service_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->date('day')->nullable();
             $table->time('time')->nullable();
+            // $table->enum('city',['riyadh','jeddah'])->nullable();
+            // $table->enum('district',['alsharq','almanakh','south'])->nullable();
+            $table->foreignId('district_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->text('address')->nullable();
             $table->foreignId('provider_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->enum('status',['canceled','pending','completed'])->default('pending')->nullable();

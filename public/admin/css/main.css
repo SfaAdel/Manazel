@@ -1,3 +1,9 @@
 .center {
     text-align: center; /* Center aligns inline elements */
 }
+
+.center_table{
+    text-align: center !important;
+    margin: auto !important;
+    justify-content: center !important;
+    }

@@ -7,8 +7,10 @@ use App\Models\AboutUsCounter;
 use App\Models\Advantage;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Customer;
 use App\Models\CustomerReview;
+use App\Models\District;
 use App\Models\Service;
 use App\Models\SubService;
 use App\Models\SubServiceAvailability;
@@ -101,7 +103,10 @@ class HomeController extends Controller
 
         $navCategories = Category::latest()->get();
 
-        return view('front.sub_service_details', compact('navCategories','sub_service','availabilities'));
+        $cities = City::latest()->get();
+        $districts = District::latest()->get();
+
+        return view('front.sub_service_details', compact('navCategories','sub_service','availabilities','cities','districts'));
     }
 
     public function submit_review(Request $request, $id)

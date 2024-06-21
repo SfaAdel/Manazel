@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="info">
                                         <label class="label">رقم الهاتف </label>
-                                        <span class="value"><a href="tel:{{ $appointment->customer->phone }}">{{ $appointment->customer->phone }}</a></span>
+                                        <span class="value"><a  style="color: rgb(20, 119, 96)" href="tel:{{ $appointment->customer->phone }}">{{ $appointment->customer->phone }}</a></span>
                                     </div>
                                     {{-- <div class="info">
                                         <label class="label">البريد الإلكتروني </label>
@@ -50,6 +50,14 @@
                                     <div class="info">
                                         <label class="label"> المعاد </label>
                                         <span class="value">{{ $appointment->time }}</span>
+                                    </div>
+                                    <div class="info">
+                                        <label class="label"> المدينة </label>
+                                        <span class="value">{{ $appointment->district->city->name }}</span>
+                                    </div>
+                                    <div class="info">
+                                        <label class="label"> الحي </label>
+                                        <span class="value">{{ $appointment->district->name }}</span>
                                     </div>
                                     <div class="info">
                                         <label class="label"> العنوان </label>
@@ -90,14 +98,22 @@
                                             </form>
                                         </span>
                                     </div> --}}
-                                    {{-- <div class="info">
-                                        <label class="label"> احداثيات العرض </label>
-                                        <span class="value">{{ $appointment->latitude }}</span>
+                                    <div class="info">
+                                        <label class="label">  رقمه </label>
+                                        <span class="value" >
+                                            <a target="_blank"
+style="color: rgb(20, 119, 96)"
+                                            href="https://api.whatsapp.com/send?phone=2{{ $appointment->provider->phone ?? '00' }}"
+                                            class="text-success mx-2">
+                                            {{ $appointment->provider->phone ?? '- -' }}                                        </a>
+                                        </span>
                                     </div>
                                     <div class="info">
-                                        <label class="label"> احداثيات الطول </label>
-                                        <span class="value">{{ $appointment->longitude }}</span>
-                                    </div> --}}
+                                        <label class="label">الموقع على الخريطة</label>
+                                        <a  class="text-success" style="color: rgb(20, 119, 96)"
+
+                                        href="https://maps.google.com/?q={{ $appointment->latitude }},{{ $appointment->longitude }}" target="_blank">عرض على خرائط جوجل</a>
+                                    </div>
 
                                     <div class="info left-buttons">
                                         <ul>
@@ -120,3 +136,5 @@
     </div>
     @include('admin.partials.deleteModal')
 @endsection
+
+

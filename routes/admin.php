@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AboutUsCounterController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdvantageController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\ClickController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProviderAvailabilityController;
@@ -22,6 +24,8 @@ use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\WhyUsController;
 use App\Http\Controllers\Admin\ProviderFormController;
+use App\Models\City;
+use App\Models\District;
 use Illuminate\Support\Facades\Route;
 
 
@@ -44,6 +48,9 @@ Route::group([
     Route::patch('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 
     Route::resource('services', ServiceController::class, ['except' => 'show']);
+
+    Route::resource('cities', CityController::class, ['except' => 'show']);
+    Route::resource('districts', DistrictController::class, ['except' => 'show']);
 
     Route::resource('sub_services', SubServiceController::class, ['except' => 'show']);
     Route::get('get-services/{category_id}', [SubServiceController::class, 'getServicesByCategory'])->name('get.services.by.category');

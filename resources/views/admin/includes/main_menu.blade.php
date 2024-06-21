@@ -22,6 +22,16 @@
         @endif
         <a class="link-item" href="{{ route('admin.sub_services.index') }}">قائمة الخدمات</a>
     </collapse-item>
+    <collapse-item title="الاماكن" icon="fa-solid fa-city">
+        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
+            <a class="link-item" href="{{ route('admin.cities.create') }}">اضافة مدينة</a>
+        @endif
+        <a class="link-item" href="{{ route('admin.cities.index') }}">قائمة المدن</a>
+        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
+            <a class="link-item" href="{{ route('admin.districts.create') }}">اضافة حي</a>
+        @endif
+        <a class="link-item" href="{{ route('admin.districts.index') }}">قائمة الأحياء</a>
+    </collapse-item>
     <collapse-item title="الموظفين" icon="fa-solid fa-users">
         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
             <a class="link-item" href="{{ route('admin.providers.create') }}">اضافة موظف</a>

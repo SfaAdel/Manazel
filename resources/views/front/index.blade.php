@@ -14,7 +14,7 @@
                     <hr>
                     <p class="mt-2">{{$mainSection->short_description}}</p>
                     <div class="d-flex mt-3">
-                        <a href="tel:+1234567890" class="btn-get-started"> اتصل بنا</a>
+                        <a href="tel:+1234567890" class="btn-get-started" onclick="registerClick('call')"> اتصل بنا</a>
 
                         <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
                             class="glightbox btn-watch-video d-flex align-items-center">
