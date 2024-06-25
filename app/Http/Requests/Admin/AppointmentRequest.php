@@ -68,7 +68,7 @@ class AppointmentRequest extends FormRequest
     }
 
 
-    /**
+     /**
      * Handle a failed validation attempt.
      *
      * @param Validator $validator
@@ -76,10 +76,11 @@ class AppointmentRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json([
-            'success' => false,
-            'errors' => $validator->errors()
-        ], 422));
+        $errors = $validator->errors();
+
+        throw new HttpResponseException(
+            redirect()->back()->withErrors($errors)->withInput()
+        );
     }
 
     public function attributes()
