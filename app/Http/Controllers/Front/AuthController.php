@@ -5,18 +5,28 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\LoginRequest;
 use App\Models\Customer;
+use App\Notifications\SendVerificationCode;
+use App\Notifications\SendVerifySMS;
 use App\Providers\RouteServiceProvider;
+use App\Services\Vonage as ServicesVonage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Notifications\Facades\Vonage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Log;
+use Vonage\Client;
+use Vonage\Client\Credentials\Basic;
+use Vonage\SMS\Message\SMS;
+use Vonage\Client\Credentials\Basic as VonageCredentials;
+use Vonage\SMS\Message\SentSMS;
+use Illuminate\Validation\ValidationException;
+
 
 class AuthController extends Controller
 {
@@ -25,13 +35,27 @@ class AuthController extends Controller
         return view('front.auth.login');
     }
 
+    public function verifyForm(): View
+    {
+        return view('front.auth.Verification');
+    }
+
     public function login(LoginRequest $request)
     {
-        $request->authenticate();
 
-        $request->session()->regenerate();
 
-        return redirect()->route('home');
+        if ($request->customer && $request->customer->phone_verified_at) {
+            // Log the customer in
+            $request->authenticate();
+
+            $request->session()->regenerate();
+            return redirect()->route('home');
+        } else {
+            throw ValidationException::withMessages([
+                'phone' => 'لم يتم توثيق هذا الرقم بعد',
+            ]);
+        }
+
     }
 
     public function registerForm(): View
@@ -47,119 +71,88 @@ class AuthController extends Controller
         return view('front.auth.login');
     }
 
+
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        // Validate phone number
+        $request->validate([
+            'phone' => ['required', 'regex:/^\+9665[0-9]{8}$/'],
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:255', 'unique:customers'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $user = Customer::create([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
-        ]);
-
-        // Generate and store verification code
-        $verificationCode = rand(100000, 999999);
-        $user->verification_code = $verificationCode;
-        $user->save();
-
-        // Send verification code via SMS
-        try {
-            $twilio = new Client(env('TWILIO_SID'), env('TWILIO_AUTH_TOKEN'));
-            $message = $twilio->messages->create($user->phone, [
-                'from' => env('TWILIO_PHONE_NUMBER'),
-                'body' => "Your verification code is: $verificationCode",
+        // Check if phone already exists
+        if (Customer::where('phone', $request->phone)->exists()) {
+            throw ValidationException::withMessages([
+                'phone' => 'هذا الرقم موجود بالفعل',
             ]);
-            Log::info("Twilio message sent: " . $message->sid);
-        } catch (\Twilio\Exceptions\RestException $e) {
-            Log::error("Twilio SMS failed: " . $e->getMessage());
-            return redirect()->back()->withErrors(['phone' => 'Failed to send verification code. Please ensure your phone number is correct and try again.'])->withInput();
         }
 
-        event(new Registered($user));
-        Auth::login($user);
+        // Create a new customer entry
+        $customer = new Customer();
+        $customer->phone = $request->phone;
+        $customer->name = $request->name;
+        $customer->password = bcrypt($request->password);
+        $customer->generateOTP();
+        $customer->save();
 
-        return redirect()->route('login')->with('message', 'Verification code sent to your phone.');
+        // Send OTP to SMS using provider
+        if (config('verification.otp_provider') == 'vonage') {
+            (new \App\Services\Vonage())->send($customer);
+        }
+
+        // Return view for OTP verification
+        return redirect()->route('verify_code', ['phone' => $request->phone])->with('success', 'تم ارسال رمز التحقق الى رقم الهاتف الخاص بك');
     }
 
+    /**
+     * Display the OTP verification form.
+     */
 
+    /**
+     * Handle OTP verification.
+     */
     public function verify(Request $request)
     {
+        // Validate phone and OTP
         $request->validate([
-            'code' => 'required|numeric',
+            // 'phone' => ['required', 'regex:/^\+9665[0-9]{8}$/'],
+            'otp' => ['required'],
         ]);
 
-        $user = Auth::user();
+        // Check if phone exists in database
+        $customer = Customer::where('phone', $request->phone)->first();
 
-        if ($user->verification_code === $request->code) {
-            $user->verification_code = null;
-            // $user->save();
-
-            return redirect()->route('home')->with('message', 'Your phone number has been verified.');
+        // If not exists -> throw validation error
+        if (!$customer) {
+            throw ValidationException::withMessages([
+                'phone' => trans('auth.failed'),
+            ]);
         }
 
-        return redirect()->back()->withErrors(['code' => 'Invalid verification code.']);
+         // Verify OTP
+         if ($customer->otp == $request->otp) {
+            if (now() < $customer->otp_till) {
+                $customer->resetOTP();
+                Auth::guard('customer')->login($customer);
+                $request->session()->regenerate();
+                return redirect()->route('home');
+            } else {
+                return back()->withErrors(['otp' => 'انتهت صلاحية هذا الرمز']);
+            }
+        } else {
+            return back()->withErrors(['otp' => ' الرمز الذي ادخلته غير صحيح']);
+
+        }
     }
 
-    // public function sendVerificationCode($phoneNumber, $verificationCode)
-    // {
-    //     $sid = env('TWILIO_SID');
-    //     $token = env('TWILIO_AUTH_TOKEN');
-    //     $twilioNumber = env('TWILIO_PHONE_NUMBER');
 
-    //     $client = new Client($sid, $token);
 
-    //     $message = $client->messages->create(
-    //         $phoneNumber, // Destination phone number
-    //         [
-    //             'from' => $twilioNumber,
-    //             'body' => "Your verification code is: $verificationCode"
-    //         ]
-    //     );
 
-    //     return $message->sid;
-    // }
-    // private function sendVerificationCode($to, $code)
-    // {
-    //     try {
-    //         $twilio = new Client(env('TWILIO_SID'), env('TWILIO_AUTH_TOKEN'));
 
-    //         $twilio->messages->create(
-    //             $to,
-    //             [
-    //                 'from' => env('TWILIO_PHONE_NUMBER'),
-    //                 'body' => "Your verification code is: $code"
-    //             ]
-    //         );
 
-    //         Log::info("SMS sent to $to with code $code");
-    //     } catch (\Exception $e) {
-    //         Log::error("Failed to send SMS: " . $e->getMessage());
-    //     }
-    // }
 
-    // public function verifyCode(Request $request)
-    // {
-    //     $request->validate([
-    //         'phone' => 'required|string',
-    //         'verification_code' => 'required|string',
-    //     ]);
 
-    //     $user = Customer::where('phone', $request->phone)->first();
 
-    //     if (!$user || $user->verification_code !== $request->verification_code) {
-    //         return redirect()->back()->withErrors(['verification_code' => 'Invalid verification code.']);
-    //     }
 
-    //     Auth::guard('customer')->login($user);
-
-    //     return redirect()->route('login')->with('message', 'Registration successful.');
-    // }
 }

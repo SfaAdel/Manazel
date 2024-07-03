@@ -50,7 +50,7 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-  </head>
+</head>
 
 <body class="index-page ">
 
@@ -60,19 +60,17 @@
                 <img src="front/assets/img/logo.png" alt="logo" class="img-thumbnail ml-3">
             </a>
 
-            <button class="navbar-toggler" style="box-shadow: none; border: none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse">
+            <button class="navbar-toggler" style="box-shadow: none; border: none" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span><i class="fas fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse mr-4 justify-content-center" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0 my-3">
-                    <a href="{{ route('home') }}"
-                        {{-- class="nav-item mt-1 nav-link text-primary {{ Request::is('home') ? 'active' : '' }}">الرئيسية</a> --}}
+                    <a href="{{ route('home') }}" {{-- class="nav-item mt-1 nav-link text-primary {{ Request::is('home') ? 'active' : '' }}">الرئيسية</a> --}} </div>
+
                 </div>
 
-            </div>
-
-            <a class="btn-getstarted mx-2" href="{{ route('register') }}">  انشاء حساب  </a>
+                <a class="btn-getstarted mx-2" href="{{ route('register') }}"> انشاء حساب </a>
 
         </nav>
     </header>
@@ -148,29 +146,33 @@
                 <img src="{{ asset('images/website/logo.PNG') }}" alt="">
             </div>
             <div class="text-center mt-4 custom-name">
-تسجيل الدخول
+                تسجيل الدخول
             </div>
             <form method="POST" class="p-3 mt-3" action="{{ route('login_success') }}">
                 @csrf
 
                 <div>
                     <span class="far fa-user m-2"></span>
-                    <input id="phone" type="text" class="custom-form-field p-2 @error('phone') is-invalid @enderror" name="phone" placeholder="رقم الهاتف" value="{{ old('phone') }}" required>
+                    <input id="phone" type="text"
+                        class="custom-form-field p-2 @error('phone') is-invalid @enderror" name="phone"
+                        placeholder="رقم الهاتف" value="{{ old('phone') }}" required>
                     @error('phone')
-                    <div class="invalid-feedback mb-4 center">
-                        <strong>{{ $message }}</strong>
-                    </div>
+                        <div class="invalid-feedback mb-4 center">
+                            <strong>{{ $message }}</strong>
+                        </div>
                     @enderror
                 </div>
 
 
                 <div>
                     <span class="fas fa-key m-2"></span>
-                    <input id="password" type="password" class="custom-form-field p-2 @error('password') is-invalid @enderror" name="password" placeholder="كلمة المرور" required>
+                    <input id="password" type="password"
+                        class="custom-form-field p-2 @error('password') is-invalid @enderror" name="password"
+                        placeholder="كلمة المرور" required>
                     @error('password')
-                    <div class="invalid-feedback mb-4 center">
-                        <strong>{{ $message }}</strong>
-                    </div>
+                        <div class="invalid-feedback mb-4 center">
+                            <strong>{{ $message }}</strong>
+                        </div>
                     @enderror
                 </div>
 
@@ -189,46 +191,36 @@
     </main>
 
 
-            <!-- partial:partials/_footer.html -->
-            {{-- @include('front.includes.footer') --}}
-            <!-- partial -->
+    <!-- partial:partials/_footer.html -->
+    {{-- @include('front.includes.footer') --}}
+    <!-- partial -->
 
 
-            <!-- Vendor JS Files -->
-            <script src="front/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-            <script src="front/assets/vendor/php-email-form/validate.js"></script>
-            <script src="front/assets/vendor/aos/aos.js"></script>
-            <script src="front/assets/vendor/glightbox/js/glightbox.min.js"></script>
-            <script src="front/assets/vendor/swiper/swiper-bundle.min.js"></script>
-            <script src="front/assets/vendor/waypoints/noframework.waypoints.js"></script>
-            <script src="front/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-            <script src="front/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="front/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="front/assets/vendor/php-email-form/validate.js"></script>
+    <script src="front/assets/vendor/aos/aos.js"></script>
+    <script src="front/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="front/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="front/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="front/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="front/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 
-            <!-- Include jQuery, Popper.js, and Bootstrap JS -->
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <!-- Main JS File -->
-            <script src="front/assets/js/main.js"></script>
-            <script src="front/assets/js/sub_service.js"></script>
+    <!-- Include jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Main JS File -->
+    <script src="front/assets/js/main.js"></script>
+    <script src="front/assets/js/sub_service.js"></script>
 
-            </body>
+</body>
 
-            </html>
-
-
-
-
-
-
-
-
-
-
+</html>

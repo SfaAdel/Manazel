@@ -38,7 +38,7 @@
                         @foreach($technicians as $technician)
                         <tr>
                             <td>{{ $technician->name }}</td>
-                            <td>{{ $technician->category->name }}</td>
+                            <td>{{ $technician->category->name ?? '--' }}</td>
                             <td>{{ $technician->phone }}</td>
                             <td>{{ $technician->status == 1 ? 'متاح' : 'غير متاح' }}</td>
                         </tr>

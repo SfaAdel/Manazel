@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\DeleteExpiredOtp;
 use App\Jobs\UpdateSubServiceAvailabilityJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -15,6 +16,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->job(new UpdateSubServiceAvailabilityJob)->everyMinute();
+        $schedule->command('otp:cleanup')->everyMinute();
 
     }
 
@@ -27,4 +29,6 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+
 }

@@ -15,11 +15,21 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('phone')->unique();
+
+            // $table->timestamp('mobile_verified_at')->nullable();
+            // $table->string('mobile_verify_code')->unique()->nullable();
+            // $table->tinyInteger('mobile_attempts_left')->default(0);
+            // $table->timestamp('mobile_last_attempt_date')->nullable();
+            // $table->timestamp('mobile_verify_code_sent_at')->nullable();
+
+            $table->string('otp')->nullable();
+            $table->timestamp('otp_till')->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
+
             $table->string('password');
             $table->string('profile_img')->nullable();
             $table->text('address')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
-            $table->string('verification_code')->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

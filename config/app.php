@@ -210,6 +210,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+
+    'Vonage' => \Vonage\Laravel\Facade\Vonage::class,
+
     ])->toArray(),
 
 ];
