@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CityRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class CityRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,9 +22,18 @@ class CityRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $cityId = optional($this->route('city'))->id;
+
         return [
             //
-            'name' => 'required|string|min:3|max:1000|unique:cities,name',
+            'name' => [
+                'required',
+                'string',
+                'min:3',
+                'max:1000',
+                Rule::unique('cities', 'name')->ignore($cityId),
+            ],
         ];
     }
     public function attributes()

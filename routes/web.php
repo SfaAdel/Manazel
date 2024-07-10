@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\ClickController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\SmsController;
@@ -68,6 +69,9 @@ Route::post('login', [AuthController::class, 'login']);
         // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 //any routes of orders
+
+        Route::get('/customer-profile/edit', [CustomerController::class, 'edit'])->name('customer_edit');
+        Route::post('/profile/edit', [CustomerController::class, 'update'])->name('customer.profile.update');
 
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     });

@@ -15,7 +15,7 @@
                 <a href="{{ route('about') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('about') ? 'active' : '' }}">من نحن</a>
                 <div class="nav-item dropdown">
-                    <a href="#"
+                    <a href="services"
                         class="nav-link dropdown-toggle {{ Request::is('services') ? 'active' : '' }}"
                         id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         خدماتنا
@@ -23,13 +23,15 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
 
-                   @foreach ($navCategories as $navCategory)
-                        <li><a class="dropdown-item" href="{{ route('services', $navCategory->id) }}"> {{ $navCategory->name }} </a></li>
-                    @endforeach
+                        @foreach ($navCategories as $navCategory)
+                            <li>
+                                <a class="dropdown-item" href="{{ route('services', $navCategory->id) }}"> {{ $navCategory->name }} </a>
+                            </li>
+                        @endforeach
 
                     </ul>
                 </div>
-                <a href="#portfolio" class="nav-item mt-1 nav-link">الخصوصية</a>
+                {{-- <a href="#portfolio" class="nav-item mt-1 nav-link">الخصوصية</a> --}}
                 <a href="{{ route('blogs') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('blogs') ? 'active' : '' }}">المدونة</a>
                 <a href="{{ route('contact') }}"
@@ -38,7 +40,7 @@
             <a href="{{ route('provider_form') }}" class="btn-getstarted "> اشترك كمزود خدمة </a>
 
             @if (!(auth()->guard('customer')->check()))
-            <a class="btn-getstarted mx-2" href="{{ route('login') }}"> تسجيل الدخول </a>
+            <a class="btn-getstarted mx-2" id="login" href="{{ route('login') }}"> تسجيل الدخول </a>
             @else
             <div class="dropdown">
                 <button class="btn-getstarted mx-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,6 +52,8 @@
                     {{ Auth::guard('customer')->user()->name }}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{ route('customer_edit') }}">تعديل الحساب الشخصي</a>
+
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="dropdown-item">تسجيل الخروج</button>

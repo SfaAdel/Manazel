@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CustomerRequest extends FormRequest
 {
@@ -21,14 +22,23 @@ class CustomerRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $customerId = optional($this->route('customer'))->id;
+
         return [
-            'name' => 'required|string|min:3|max:50',
+            'name' => [
+                'required',
+                'string',
+                'min:3',
+                'max:100',
+                Rule::unique('customers', 'name')->ignore($customerId),
+            ],
             'phone' => [
                 'required',
                 'string',
                 'size:10', // Ensure the phone number is exactly 10 characters long
-                'unique:customers,phone', // Assuming the phone number is stored in the 'users' table
                 'regex:/^05[0-9]{8}$/', // Saudi phone number format
+                Rule::unique('customers', 'phone')->ignore($customerId),
             ],
             'password' => $this->method() === 'POST' ? 'required|string|min:6' : '',
 

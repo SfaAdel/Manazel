@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class WhyRequest extends FormRequest
 {
@@ -21,10 +22,18 @@ class WhyRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $why_usId = optional($this->route('why_us'))->id;
+
         return [
             //
-                'question' => 'required|string|min:3|unique:why_us,question',
-                'answer' => 'required|string|min:3',
+            'question' => [
+                'required',
+                'string',
+                'min:3',
+                Rule::unique('why_us', 'question')->ignore($why_usId),
+            ],
+            'answer' => 'required|string|min:3',
         ];
     }
 

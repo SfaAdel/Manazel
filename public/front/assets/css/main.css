@@ -2130,49 +2130,61 @@ section,
 
 /* =============================== */
 .mycounter{
-  background: #0071B8;
-  border-radius: 16px;
-  padding: 2rem 1rem;
-  margin: 0 0.15rem;
-}
-.counter-section i { display:block; margin:0 0 10px}
-.counter-section span.counter , span.counter_text {
-    font-size:40px;
-    color: var(--accent-color);
-    line-height:60px;
-    display:block;
-    /* letter-spacing: 2px; */
-    text-align: center;
-    text-shadow: 5px 5px 0px currentColor;
-    -webkit-text-stroke-color: #ffffff;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 2px;
-}
-.counter-title{
-    -size:12px;
-    -transform: uppercase;
-    color: #fff;
-}
-.counter-icon {top:25px; position:relative}
-.counter-style2 .counter-title {letter-spacing: 0.55px; float: right;}
-.counter-style2 span.counter {
-    letter-spacing: 0.55px;
-    float: right;
-    margin-right: 10px;
-    color: #fff;
-}
-.counter-style2 i {float: right; line-height: 26px; margin: 0 10px 0 0}
-.counter-subheadline span {float: right;}
+    background: #0071B8;
+    border-radius: 16px;
+    padding: 2rem 1rem;
+    margin: 0 0.15rem;
+  }
+  .counter-section i { display:block; margin:0 0 10px}
+  .counter-section span.counter , span.counter_text {
+      font-size:40px;
+      color: var(--accent-color);
+      line-height:60px;
+      display:block;
+      /* letter-spacing: 2px; */
+      text-align: center;
+      text-shadow: 5px 5px 0px currentColor;
+      -webkit-text-stroke-color: #ffffff;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-width: 2px;
+  }
+  .counter-title{
+      -size:12px;
+      -transform: uppercase;
+      color: #fff;
+  }
+  .counter-icon {top:25px; position:relative}
+  .counter-style2 .counter-title {letter-spacing: 0.55px; float: right;}
+  .counter-style2 span.counter {
+      letter-spacing: 0.55px;
+      float: right;
+      margin-right: 10px;
+      color: #fff;
+  }
+  .counter-style2 i {float: right; line-height: 26px; margin: 0 10px 0 0}
+  .counter-subheadline span {float: right;}
 
-.counter_text{
-    font-size:40px; color: var(--accent-color); line-height:60px; display:block; letter-spacing: 2px
-}
+  .counter_text{
+      font-size:40px; color: var(--accent-color); line-height:60px; display:block; letter-spacing: 2px
+  }
 
-.medium-icon {
-    font-size: 40px !important;
-    margin-bottom: 15px !important;
-}
+  .medium-icon {
+      font-size: 40px !important;
+      margin-bottom: 15px !important;
+  }
 
+  /* Add media query for mobile view */
+  @media (max-width: 768px) {
+    .mycounter .row {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+    .counter-section {
+      flex: 0 0 auto;
+      margin-right: 10px;
+    }
+  }
 
 .spikes {
     position: relative;
@@ -2203,4 +2215,41 @@ height: 10rem;
 .blog_card{
     width: 35rem;
     height: 25rem;
+}
+
+/* ==========counters responsive=========== */
+/* Mobile view adjustments for carousel
+@media (max-width: 767.98px) {
+    .carousel-inner .carousel-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #000;
+        border-radius: 50%;
+        padding: 10px;
+    }
+} */
+
+#advantage_mobile{
+    display: none;
+    }
+
+@media (max-width: 767.98px) {
+    #advantage_web{
+        display: none;
+    }
+#advantage_mobile{
+display: block;
+}
+
+#login{
+display: block;
+margin-block: 15px;
+width: 55%;
+margin-right: 65px !important;
+}
 }

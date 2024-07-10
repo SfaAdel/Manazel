@@ -34,8 +34,9 @@
             <div class="field">
                 <div class="control">
                     <div class="select">
-                        <select name="section" required>
+                        <select name="section" required >
                             <option value="" disabled selected>اختر قسمًا</option>
+                            <option value="main" {{ isset($title) && $title->section == 'main' ? 'selected' : '' }}>الرئيسي</option>
                             <option value="about_us" {{ isset($title) && $title->section == 'about_us' ? 'selected' : '' }}>من نحن</option>
                             <option value="services" {{ isset($title) && $title->section == 'services' ? 'selected' : '' }}>الخدمات</option>
                             <option value="testimonials" {{ isset($title) && $title->section == 'testimonials' ? 'selected' : '' }}>اراء العملاء</option>

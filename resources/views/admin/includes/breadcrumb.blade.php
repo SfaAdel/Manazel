@@ -2,7 +2,7 @@
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li>
-                <a href="{{ route('admin.dashboard') }}">
+                <a href="{{ route('dashboard') }}">
                     <span class="icon is-small">
                         <i class="fa fa-home" aria-hidden="true"></i>
                     </span>

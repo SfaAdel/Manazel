@@ -30,7 +30,7 @@
                 <thead>
                     <tr>
                         <th>العنوان </th>
-                        <th> الرقم</th>
+                        <th> القيمة</th>
                         <th>الصورة</th>
                         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>

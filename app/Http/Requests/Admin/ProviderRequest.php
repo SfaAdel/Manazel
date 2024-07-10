@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProviderRequest extends FormRequest
 {
@@ -21,17 +22,25 @@ class ProviderRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $providerId = optional($this->route('provider'))->id;
+
         return [
             //
-            'name' => 'required|string|min:3|max:255|unique:providers,name',
-            'phone' => [
-                'required',
-                'string',
-                'size:10',
-                'unique:providers,phone',
-                'regex:/^05[0-9]{8}$/',
-            ],
-
+'name' => [
+            'required',
+            'string',
+            'min:3',
+            'max:1000',
+            Rule::unique('providers', 'name')->ignore($providerId),
+        ],
+'phone' => [
+            'required',
+            'string',
+            'size:10',
+            'regex:/^05[0-9]{8}$/',
+            Rule::unique('providers', 'phone')->ignore($providerId),
+        ],
             'category_id' => 'required|numeric|exists:categories,id',
             'status' => 'required|boolean',
 

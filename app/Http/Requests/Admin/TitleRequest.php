@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TitleRequest extends FormRequest
 {
@@ -21,11 +22,24 @@ class TitleRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $titleId = optional($this->route('title'))->id;
+
         return [
             //
-            'title' => 'required|string|min:3|max:50|unique:titles,title',
+            'title' => [
+                'required',
+                'string',
+                'min:3',
+                'max:100',
+                Rule::unique('titles', 'title')->ignore($titleId),
+            ],
             'short_description' => 'required|string|min:3|max:10000',
-            'section' => 'required|string|unique:titles,section',
+            'section' => [
+                'required',
+                'string',
+                Rule::unique('titles', 'section')->ignore($titleId),
+            ],
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
 
         ];

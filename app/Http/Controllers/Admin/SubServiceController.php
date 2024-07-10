@@ -74,8 +74,12 @@ class SubServiceController extends Controller
 
     }
 
-    /**
+ /**
      * Update the specified resource in storage.
+     *
+     * @param SubServiceRequest $request
+     * @param \App\Models\SubService $subService
+     * @return \Illuminate\Http\Response
      */
     public function update(SubServiceRequest $request, SubService $subService)
     {

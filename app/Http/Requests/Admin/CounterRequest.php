@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CounterRequest extends FormRequest
 {
@@ -21,9 +22,15 @@ class CounterRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $counterId = $this->route('counter'); // Get the counter ID from the route
+
         return [
             //
-            'title' => 'required|string|min:3|max:255|unique:about_us_counters,name',
+            'title' => ['required','string','min:3','max:255',
+        Rule::unique('about_us_counters', 'title')->ignore($counterId), // Ignore the current counter ID
+            ]
+        ,
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
             'number' => 'required|numeric|min:0',
         ];

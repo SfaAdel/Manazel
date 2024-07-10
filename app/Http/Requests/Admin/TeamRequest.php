@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TeamRequest extends FormRequest
 {
@@ -21,9 +22,18 @@ class TeamRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $teamId = optional($this->route('team'))->id;
+
         return [
             //
-            'name' => 'required|string|min:3|max:255|unique:teams,name',
+            'name' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+                Rule::unique('teams', 'name')->ignore($teamId),
+            ],
             'description' => 'required|string',
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
         ];

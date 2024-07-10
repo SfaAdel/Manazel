@@ -38,6 +38,9 @@
         @endif
         <a class="link-item" href="{{ route('admin.providers.index') }}">قائمة الموظفين</a>
     </collapse-item>
+    <collapse-item title="العملاء" icon="fa-solid fa-users">
+        <a class="link-item" href="{{ route('admin.customers.index') }}">قائمة بيانات العملاء</a>
+    </collapse-item>
     <collapse-item title=" المراجعات" icon="fa fa-user-check">
         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
             <a class="link-item" href="{{ route('admin.testimonials.create') }}">اضافة مراجعة</a>

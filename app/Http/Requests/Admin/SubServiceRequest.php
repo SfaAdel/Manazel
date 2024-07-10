@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SubServiceRequest extends FormRequest
 {
@@ -21,9 +22,16 @@ class SubServiceRequest extends FormRequest
      */
     public function rules(): array
     {
+        $subServiceId = $this->route('sub_service'); // Get the sub_service ID from the route
+
         return [
-            //
-            'name' => 'required|string|min:3|max:255|unique:sub_services,name',
+            'name' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+                Rule::unique('sub_services', 'name')->ignore($subServiceId), // Ignore the current sub_service ID
+            ],
             'short_description' => 'required|string|max:10000',
             'long_description' => 'required|string',
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',

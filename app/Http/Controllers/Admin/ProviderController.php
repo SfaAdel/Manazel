@@ -55,7 +55,7 @@ class ProviderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProviderRequest $provider)
+    public function edit(Provider $provider)
     {
         //
         $categories = Category::all(['id', 'name']);

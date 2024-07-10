@@ -78,12 +78,12 @@ class HomeController extends Controller
 
     public function service_details($id)
     {
-        // Fetch all services where category_id matches the given id
-        $sub_services = SubService::where('service_id', $id)->latest()->get();
+        // Fetch all active sub-services where service_id matches the given id
+        $sub_services = SubService::where('service_id', $id)->where('active', 1)->latest()->get();
         $service = Service::find($id);
         $navCategories = Category::latest()->get();
 
-        return view('front.service_details', compact('navCategories','sub_services','service'));
+        return view('front.service_details', compact('navCategories', 'sub_services', 'service'));
     }
 
     public function sub_service_details($id)

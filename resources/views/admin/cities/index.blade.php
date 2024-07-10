@@ -16,6 +16,12 @@
         </span>
               <span>اضافة مدينة</span>
           </a>
+          <a href="{{ route('admin.districts.create') }}" class="button is-success">
+            <span class="icon">
+                <i class="fa-solid fa-plus"></i>
+            </span>
+                  <span>اضافة حي</span>
+              </a>
       </div><!-- End Card Header -->
     @endif
 

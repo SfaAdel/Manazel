@@ -2,7 +2,7 @@
 <div class="card-content">
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">الاسم </label>
+            <label class="label required">الميزة الجديدة </label>
         </div>
         <div class="field-body">
             <div class="field">
@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <hr />
+    {{-- <hr />
 
     <div class="field is-horizontal">
         <div class="field-label is-normal">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 </div><!-- End Card Content -->
 <!-- Start Card Footer -->

@@ -58,7 +58,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CategoryRequest $category)
+    public function edit(Category $category)
     {
         //
         return view('admin.categories.edit', compact('category'));
@@ -68,7 +68,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         //
         $category->update($request->except('icon', '_token', '_method'));

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AdvantageRequest extends FormRequest
 {
@@ -21,10 +22,19 @@ class AdvantageRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $advantageId = optional($this->route('advantage'))->id;
+
         return [
             //
-            'name' => 'required|string|min:3|unique:advantages,name',
-            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'name' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+                Rule::unique('advantages', 'name')->ignore($advantageId),
+            ],
+            // 'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
         ];
     }
     public function attributes()

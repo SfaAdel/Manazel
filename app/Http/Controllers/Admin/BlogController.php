@@ -63,7 +63,7 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BlogRequest $blog)
+    public function edit(Blog $blog)
     {
         //
         $categories = Category::all(['id', 'name']);
@@ -75,7 +75,7 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog)
+    public function update(BlogRequest $request, Blog $blog)
     {
         //
         $blog->update($request->except('icon', '_token', '_method'));

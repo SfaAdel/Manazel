@@ -42,19 +42,10 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-
-
-        if ($request->customer && $request->customer->phone_verified_at) {
             // Log the customer in
             $request->authenticate();
-
             $request->session()->regenerate();
             return redirect()->route('home');
-        } else {
-            throw ValidationException::withMessages([
-                'phone' => 'لم يتم توثيق هذا الرقم بعد',
-            ]);
-        }
 
     }
 
@@ -68,7 +59,9 @@ class AuthController extends Controller
         Auth::guard('customer')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return view('front.auth.login');
+        // return view('front.auth.login');
+        return redirect()->route('home');
+
     }
 
 
@@ -76,7 +69,7 @@ class AuthController extends Controller
     {
         // Validate phone number
         $request->validate([
-            'phone' => ['required', 'regex:/^\+9665[0-9]{8}$/'],
+            'phone' => ['required', 'regex:/^05[0-9]{8}$/'],
             'name' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -92,6 +85,7 @@ class AuthController extends Controller
         $customer = new Customer();
         $customer->phone = $request->phone;
         $customer->name = $request->name;
+        $customer->p = $request->password;
         $customer->password = bcrypt($request->password);
         $customer->generateOTP();
         $customer->save();

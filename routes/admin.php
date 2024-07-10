@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdvantageController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\ClickController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProviderAvailabilityController;
 use App\Http\Controllers\Admin\QuestionController;
@@ -45,7 +46,7 @@ Route::group([
     Route::resource('admins', AdminController::class, ['except' => 'show']);
 
     Route::resource('categories', CategoryController::class, ['except' => 'show']);
-    Route::patch('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+    // Route::patch('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 
     Route::resource('services', ServiceController::class, ['except' => 'show']);
 
@@ -56,10 +57,14 @@ Route::group([
     Route::get('get-services/{category_id}', [SubServiceController::class, 'getServicesByCategory'])->name('get.services.by.category');
 
     Route::resource('providers', ProviderController::class, ['except' => 'show']);
+    Route::resource('customers', CustomerController::class, ['except' => 'show']);
     Route::resource('testimonials', TestimonialController::class ,  ['except' => 'show']);
 
     Route::resource('teams', TeamController::class);
+
     Route::resource('blogs', BlogController::class);
+    // Route::patch('blogs/{blog}', [BlogController::class, 'update'])->name('blogs.update');
+
     Route::resource('about_us', AboutUsController::class);
 
     Route::resource('counters', AboutUsCounterController::class);

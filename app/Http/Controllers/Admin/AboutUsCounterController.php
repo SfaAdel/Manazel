@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CounterRequest;
 use App\Models\AboutUsCounter;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class AboutUsCounterController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CounterRequest $request)
     {
         //
         if ($request->hasFile('icon')) {
@@ -68,7 +69,7 @@ class AboutUsCounterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AboutUsCounter $counter)
+    public function update(CounterRequest $request, AboutUsCounter $counter)
     {
         //
         $counter->update($request->except('icon', '_token', '_method'));

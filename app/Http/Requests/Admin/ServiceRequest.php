@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ServiceRequest extends FormRequest
 {
@@ -23,10 +24,19 @@ class ServiceRequest extends FormRequest
      */
     public function rules()
     {
+
+        $serviceId = optional($this->route('service'))->id;
+
         return [
-            'name' => 'required|string|min:3|max:50|unique:services,name',
+            'name' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+                Rule::unique('services', 'name')->ignore($serviceId),
+            ],
             'description' => 'required|string|max:10000',
-            'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
 
             // 'collages' => 'required|array',
             'category_id' => 'required|numeric|exists:categories,id',

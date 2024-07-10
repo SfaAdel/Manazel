@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class QuestionRequest extends FormRequest
 {
@@ -22,9 +23,17 @@ class QuestionRequest extends FormRequest
     public function rules(): array
     {
 
+        $questionId = optional($this->route('question'))->id;
+
+
             return [
                 //
-                    'question' => 'required|string|min:3|unique:questions,question',
+                    'question' => [
+                        'required',
+                        'string',
+                        'min:3',
+                        Rule::unique('questions', 'question')->ignore($questionId),
+                    ],
                     'answer' => 'required|string|min:3',
             ];
         }

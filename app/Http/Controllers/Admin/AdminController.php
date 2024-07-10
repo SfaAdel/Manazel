@@ -71,7 +71,7 @@ class AdminController extends Controller
                     'password' => bcrypt($request->input('password')),
                 ]);
         } else {
-            $admin->update($request->except('password'));
+            $admin->update($request->except('password','_method','_token'));
         }
 
         return redirect()->route('admin.admins.index')->with('sucess', 'تم تعديل البيانات');

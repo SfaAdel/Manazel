@@ -2,7 +2,7 @@
 <div class="card-content">
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">الاسم </label>
+            <label class="label required">العنوان </label>
         </div>
         <div class="field-body">
             <div class="field">
@@ -28,7 +28,7 @@
     <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">صورة </label>
+            <label class="label required">الصورة </label>
         </div>
         <div class="field-body">
             <div class="field">

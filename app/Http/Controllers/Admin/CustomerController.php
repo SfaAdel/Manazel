@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CustomerRequest;
+use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -12,9 +15,24 @@ class CustomerController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+{
+    $search = request()->input('search');
+
+    // Apply the search condition before pagination
+    $query = Customer::query();
+
+    if ($search) {
+        $query->where(function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('phone', 'like', '%' . $search . '%');
+        });
     }
+
+    $customers = $query->latest()->paginate(10);
+
+    return view('admin.customers.index', compact('customers', 'search'));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -43,17 +61,34 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Customer $customer)
+    public function edit()
     {
-        //
+        $navCategories = Category::latest()->get();
+
+        $customer = Auth::guard('customer')->user();
+        return view('front.profile.edit', compact('customer','navCategories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Customer $customer)
+    public function update(CustomerRequest $request, Customer $customer)
     {
-        //
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'phone' => 'required|string|max:255|' . $customer->id,
+        //     'profile_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        //     // Add other validation rules as needed
+        // ]);
+
+        $data = $request->only(['name', 'phone']); // Extract the necessary fields
+
+        if ($request->hasFile('profile_img')) {
+            $imageName = time().'.'.$request->profile_img->extension();
+            $request->profile_img->move(public_path('images/customers'), $imageName);
+            $data['profile_img'] = 'images/customers/' . $imageName;
+        }
+
+        $customer->update($data);
+
+        return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 
     /**
@@ -62,5 +97,8 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+        $customer->delete();
+        return redirect()->route('admin.customers.index')->with('delete', 'تم حذف البيانات بنجاح');
+
     }
 }

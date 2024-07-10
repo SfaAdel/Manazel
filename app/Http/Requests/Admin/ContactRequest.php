@@ -11,7 +11,7 @@ class ContactRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,8 @@ class ContactRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|string|min:3|max:50',
-            'email' => 'required|string|email|max:255|unique:admins,email,'.optional($this->admin)->id,
+            'name' => 'required|string|min:3|max:100',
+            'email' => 'required|string|email|max:255',
             'phone' => 'required|string|min:10|max:15',
             'title' => 'required|string|min:3|max:1000',
             'message' => 'required|string|min:5',

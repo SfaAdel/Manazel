@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('otp')->nullable();
             $table->timestamp('otp_till')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
-
+            $table->string('p');
             $table->string('password');
             $table->string('profile_img')->nullable();
             $table->text('address')->nullable();
