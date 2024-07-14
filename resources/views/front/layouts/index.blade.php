@@ -40,7 +40,7 @@
     <link href="{{asset('front/assets/vendor/aos/aos.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
     <link href="{{asset('front/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
 
     <!-- Main CSS File -->
     {{-- <link href="front/assets/css/main.css" rel="stylesheet"> --}}
@@ -63,7 +63,7 @@
     ======================================================== -->
   </head>
 
-< class="index-page ">
+  <body class="index-page ">
 
         <!-- partial:partials/_sidebar.html -->
         @include('front.includes.navbar')
@@ -113,7 +113,8 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> --}}
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
 
             <!-- Main JS File -->

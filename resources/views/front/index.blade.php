@@ -148,15 +148,7 @@
                 {{-- <section class="wow fadeIn animated " style="visibility: visible; animation-name: fadeIn;"> --}}
                     <div class=" mycounter carousel slide" id="advantagesCarousel"  data-bs-ride="carousel">
                         <div class="row">
-                            <!-- counter -->
-                            <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
-                                data-wow-duration="600ms"
-                                style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
-                                <img src="{{ asset('images/counters/' . 'place.PNG') }}" class="img ml-1" alt="Main Company Headquarters">
-                                <span class="timer counter_text alt-font appear mb-1">الرياض</span>
-                                <span class="counter-title">مقر الشركة</span>
-                            </div>
-                            <!-- end counter -->
+
 
                             <!-- counter -->
                             @foreach ($counters as $counter)
@@ -168,6 +160,16 @@
                                 <span class="counter-title">{{ $counter->title }}</span>
                             </div>
                             @endforeach
+                            <!-- end counter -->
+
+  <!-- counter -->
+                            <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
+                                data-wow-duration="600ms"
+                                style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
+                                <img src="{{ asset('images/counters/' . 'place.png') }}" class="img ml-1" alt="Main Company Headquarters">
+                                <span class="timer counter_text alt-font appear mb-1">الرياض</span>
+                                <span class="counter-title">مقر الشركة</span>
+                            </div>
                             <!-- end counter -->
                         </div>
                     </div>

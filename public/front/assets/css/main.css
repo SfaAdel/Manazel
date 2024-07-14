@@ -2238,7 +2238,7 @@ height: 10rem;
     display: none;
     }
 
-@media (max-width: 767.98px) {
+@media (max-width: 1000.98px) {
     #advantage_web{
         display: none;
     }

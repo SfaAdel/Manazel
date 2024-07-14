@@ -15,35 +15,32 @@
                 <a href="{{ route('about') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('about') ? 'active' : '' }}">من نحن</a>
                 <div class="nav-item dropdown">
-                    <a href="services"
+                    <a href="{{ route('categories') }}"
                         class="nav-link dropdown-toggle {{ Request::is('services') ? 'active' : '' }}"
                         id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         خدماتنا
                         <i class="bi bi-caret-down mr-1"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        <li><a class="dropdown-item" href="{{ route('categories') }}"> عرض الكل </a></li>
 
                         @foreach ($navCategories as $navCategory)
-                            <li>
-                                <a class="dropdown-item" href="{{ route('services', $navCategory->id) }}"> {{ $navCategory->name }} </a>
-                            </li>
+                            <li><a class="dropdown-item" href="{{ route('services', $navCategory->id) }}"> {{ $navCategory->name }} </a></li>
                         @endforeach
-
                     </ul>
                 </div>
-                {{-- <a href="#portfolio" class="nav-item mt-1 nav-link">الخصوصية</a> --}}
                 <a href="{{ route('blogs') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('blogs') ? 'active' : '' }}">المدونة</a>
                 <a href="{{ route('contact') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('contact') ? 'active' : '' }}">تواصل معنا</a>
             </div>
-            <a href="{{ route('provider_form') }}" class="btn-getstarted "> اشترك كمزود خدمة </a>
+            <a href="{{ route('provider_form') }}" class="btn-getstarted"> اشترك كمزود خدمة </a>
 
             @if (!(auth()->guard('customer')->check()))
-            <a class="btn-getstarted mx-2" id="login" href="{{ route('login') }}"> تسجيل الدخول </a>
+            <a class="btn-getstarted m-3 d-block"  href="{{ route('login') }}"> تسجيل الدخول </a>
             @else
             <div class="dropdown">
-                <button class="btn-getstarted mx-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn-getstarted mx-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     @if (Auth::guard('customer')->user()->image)
                         <img src="{{ Auth::guard('customer')->user()->image }}" alt="{{ Auth::guard('customer')->user()->name }}" class="user-avatar">
                     @else
@@ -51,25 +48,18 @@
                     @endif
                     {{ Auth::guard('customer')->user()->name }}
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{ route('customer_edit') }}">تعديل الحساب الشخصي</a>
-
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="dropdown-item">تسجيل الخروج</button>
-                    </form>
-                    {{-- <a class="dropdown-item" href="{{ route('general_order') }}">احجز موعد الان</a> --}}
-
-                    <!-- Other dropdown items can be added here -->
-                </div>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="{{ route('customer_edit') }}">تعديل الحساب الشخصي</a></li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item">تسجيل الخروج</button>
+                        </form>
+                    </li>
+                </ul>
             </div>
             @endif
-
-
         </div>
-
-
-
     </nav>
 </header>
 

@@ -143,7 +143,7 @@
 
         <div class="custom-wrapper">
             <div class="custom-logo">
-                <img src="{{ asset('images/website/logo.PNG') }}" alt="">
+                <img src="{{ asset('images/website/logo.png') }}" alt="">
             </div>
             <div class="text-center mt-4 custom-name">
                 تسجيل الدخول
