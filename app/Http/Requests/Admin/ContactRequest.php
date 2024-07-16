@@ -23,10 +23,10 @@ class ContactRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|string|min:3|max:100',
-            'email' => 'required|string|email|max:255',
-            'phone' => 'required|string|min:10|max:15',
-            'title' => 'required|string|min:3|max:1000',
+            'name' => 'required|string|min:3',
+            'email' => 'required|string|email',
+            'phone' => 'required|string|min:10',
+            'title' => 'required|string|min:3',
             'message' => 'required|string|min:5',
         ];
     }

@@ -64,7 +64,7 @@
                                         <label for="star1" title="text">1 star</label>
                                     </div>
                                 </div>
-                                <p>{{ $sub_service->long_description }}</p>
+                                <div>{!! $sub_service->long_description !!}</div>
 
                                 <form method="POST" action="{{ route('book_appointment') }}">
                                     @csrf
@@ -97,7 +97,7 @@
                                                 <label class="form-label" for="city">المدينة</label>
                                                 <select name="" id="city" class="form-control" required>
                                                     <option value="" disabled selected>اختر المدينة</option>
-                                                    @foreach($cities as $city)
+                                                    @foreach ($cities as $city)
                                                         <option value="{{ $city->id }}">{{ $city->name }}</option>
                                                     @endforeach
                                                 </select>
@@ -106,10 +106,13 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label class="form-label" for="district">الحي</label>
-                                                <select name="district_id" id="district" class="form-control" disabled required>
+                                                <select name="district_id" id="district" class="form-control" disabled
+                                                    required>
                                                     <option value="">اختر الحي </option>
-                                                    @foreach($districts as $district)
-                                                        <option value="{{ $district->id }}" data-city-id="{{ $district->city_id }}">{{ $district->name }}</option>
+                                                    @foreach ($districts as $district)
+                                                        <option value="{{ $district->id }}"
+                                                            data-city-id="{{ $district->city_id }}">{{ $district->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -137,19 +140,28 @@
                                     <br>
                                     <div class="product-price-discount d-inline m-3">
                                         <h3 class="d-inline">سعر الخدمة:</h3>
-                                        @if ($sub_service->offer && $sub_service->discount_percentage > 0)
-                                            <span class="original-price mx-"
-                                                style="text-decoration: line-through; color: red;">
-                                                {{ $sub_service->price }}
-                                            </span>
-                                            <span class="final-price" style="color: green;">
-                                                {{ $sub_service->final_price }} ريال
+
+                                        @if ($sub_service->price_on_serve)
+                                            <span class="final-price">
+                                                تسعر عند الزيارة
                                             </span>
                                         @else
-                                            <span class="final-price">
-                                                {{ $sub_service->price }} ريال
-                                            </span>
+                                            @if ($sub_service->offer && $sub_service->discount_percentage > 0)
+                                                <span class="original-price mx-"
+                                                    style="text-decoration: line-through; color: red;">
+                                                    {{ $sub_service->price }}
+                                                </span>
+                                                <span class="final-price" style="color: green;">
+                                                    {{ $sub_service->final_price }} ريال
+                                                </span>
+                                            @else
+                                                <span class="final-price">
+                                                    {{ $sub_service->price }} ريال
+                                                </span>
+                                            @endif
                                         @endif
+
+
                                     </div>
                                     @if (auth()->guard('customer')->check())
                                         <button type="submit" class="round-black-btn">تأكيد الحجز</button>
@@ -171,9 +183,9 @@
 
 
 
-        {{-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> --}}
+    {{-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> --}}
 
-        {{-- <script>
+    {{-- <script>
             (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
               key: "AIzaSyCDHZzBR9t3gE648cp8FRHfs0qUP5S6f1o",
               v: "weekly",
@@ -182,13 +194,11 @@
             });
           </script> --}}
 
-{{-- <script async
+    {{-- <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDHZzBR9t3gE648cp8FRHfs0qUP5S6f1o&loading=async&callback=initMap">
 </script> --}}
 
     <script>
-
-
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: {
@@ -254,30 +264,30 @@
         });
     </script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#city').change(function() {
-            var cityId = $(this).val();
-            if (cityId) {
-                $('#district').prop('disabled', false);
-                $('#district option').each(function() {
-                    var districtCityId = $(this).data('city-id');
-                    if (districtCityId == cityId) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-                $('#district').val('');
-            } else {
-                $('#district').prop('disabled', true);
-                $('#district option').hide();
-                $('#district option[value=""]').show(); // Show the placeholder option
-            }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#city').change(function() {
+                var cityId = $(this).val();
+                if (cityId) {
+                    $('#district').prop('disabled', false);
+                    $('#district option').each(function() {
+                        var districtCityId = $(this).data('city-id');
+                        if (districtCityId == cityId) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    });
+                    $('#district').val('');
+                } else {
+                    $('#district').prop('disabled', true);
+                    $('#district option').hide();
+                    $('#district option[value=""]').show(); // Show the placeholder option
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 
 

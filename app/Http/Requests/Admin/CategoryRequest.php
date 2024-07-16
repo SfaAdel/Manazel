@@ -31,10 +31,9 @@ class CategoryRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:255',
                 Rule::unique('categories', 'name')->ignore($categoryId),
             ],
-            'description' => 'required|string|max:10000',
+            'description' => 'required|string',
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
         ];
     }

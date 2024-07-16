@@ -23,8 +23,8 @@ class ProviderFormRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|string|min:3|max:255',
-            'email' => 'required|string|email|max:255|unique:provider_forms,email',
+            'name' => 'required|string|min:3',
+            'email' => 'required|string|email|unique:provider_forms,email',
             'phone' => [
                 'required',
                 'string',

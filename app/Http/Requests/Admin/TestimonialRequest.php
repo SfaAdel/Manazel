@@ -23,7 +23,7 @@ class TestimonialRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|string|min:3|max:50',
+            'name' => 'required|string|min:3',
             'stars' => 'required|numeric|min:0|max:5',
             'review' => 'required|string',
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',

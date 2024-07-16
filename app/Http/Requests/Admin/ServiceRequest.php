@@ -32,10 +32,9 @@ class ServiceRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:255',
                 Rule::unique('services', 'name')->ignore($serviceId),
             ],
-            'description' => 'required|string|max:10000',
+            'description' => 'required|string',
             'icon' => 'required|image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
 
             // 'collages' => 'required|array',

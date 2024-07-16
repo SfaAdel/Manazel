@@ -24,8 +24,8 @@ class AdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:3|max:50',
-            'email' => 'required|string|email|max:255|unique:admins,email,'.optional($this->admin)->id,
+            'name' => 'required|string|min:3',
+            'email' => 'required|string|email|unique:admins,email,'.optional($this->admin)->id,
             'password' => $this->method() === 'POST' ? 'required|string|min:6|' : '',
         ];
     }

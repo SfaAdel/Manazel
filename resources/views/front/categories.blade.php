@@ -31,25 +31,22 @@
 
 
             <div class="container mt-3">
-
                 <div class="row gy-4">
-                    @foreach ($navCategories as $navCategory)
-                        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                            <div class="service-item position-relative center">
-                                <div class="icon">
-                                    <img class="custom-card-img-top my-3" src="{{ asset('images/categories/' . $navCategory->icon) }}" alt="{{ $navCategory->name }}">
-                                </div>
-                                <h4><a href="{{ route('service_details', $navCategory->id) }}"
-                                        class="stretched-link">{{ $navCategory->name }} </a></h4>
-                                <p> {{ $navCategory->description }} </p>
-                                <a href="{{ route('service_details', $navCategory->id) }}" class="btn btn-blue mt-3">معرفة
-                                    المزيد</a>
-
-                            </div>
-                        </div><!-- End Service Item -->
-                    @endforeach
+                  @foreach ($navCategories as $navCategory)
+                    <div class="col-xl-3 col-md-6 col-sm-12 d-flex" data-aos="fade-up" data-aos-delay="100">
+                      <div class="service-item position-relative center">
+                        <div class="icon">
+                          <img class="custom-card-img-top my-3" src="{{ asset('images/categories/' . $navCategory->icon) }}" alt="{{ $navCategory->name }}">
+                        </div>
+                        <h4><a href="{{ route('services', $navCategory->id) }}" class="stretched-link">{{ $navCategory->name }}</a></h4>
+                        <p>{{ $navCategory->description }}</p>
+                        <a href="{{ route('services', $navCategory->id) }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                      </div>
+                    </div>
+                  @endforeach
                 </div>
-            </div>
+              </div>
+
 
         </section><!-- /Services Section -->
 

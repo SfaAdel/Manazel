@@ -28,7 +28,7 @@
                 <thead>
                     <tr>
                         <th>الاسم </th>
-                        <th> وصف قصير</th>
+                        {{-- <th> وصف قصير</th> --}}
                         <th>القسم</th>
                         <th>الصورة</th>
                         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
@@ -53,7 +53,7 @@
                     @foreach ($titles as $title)
                         <tr>
                             <td>{{ $title->title }}</td>
-                            <td>{{ $title->short_description }}</td>
+                            {{-- <td>{{ $title->short_description }}</td> --}}
                             <td>{{ $sections[$title->section] ?? $title->section }}</td>
                             @if ($title->icon)
                             <td>
@@ -65,6 +65,9 @@
                             <div class="buttons has-addons">
                                 <a class="button is-info" href="{{ route('admin.titles.edit', $title->id) }}">
                                     تعديل
+                                </a>
+                                <a class="button is-warning" href="{{ route('admin.titles.show', $title->id) }}">
+                                    <i class="fa-solid fa-eye"></i>
                                 </a>
                                 {{-- <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $title->id }}" data_name="{{ $title->title }}" data-url="{{ route('admin.titles.destroy', $title->id) }}">حذف</a> --}}
 

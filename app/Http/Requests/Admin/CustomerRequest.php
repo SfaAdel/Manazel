@@ -30,7 +30,6 @@ class CustomerRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:100',
                 Rule::unique('customers', 'name')->ignore($customerId),
             ],
             'phone' => [

@@ -28,7 +28,6 @@ class DistrictRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:1000',
                 Rule::unique('districts')->where(function ($query) {
                     return $query->where('city_id', $this->city_id);
                 })->ignore($districtId),

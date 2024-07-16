@@ -27,7 +27,7 @@ class CounterRequest extends FormRequest
 
         return [
             //
-            'title' => ['required','string','min:3','max:255',
+            'title' => ['required','string','min:3',
         Rule::unique('about_us_counters', 'title')->ignore($counterId), // Ignore the current counter ID
             ]
         ,

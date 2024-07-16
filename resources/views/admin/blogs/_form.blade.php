@@ -41,7 +41,7 @@
           </div>
       </div>
       <hr />
-      <div class="field is-horizontal">
+      {{-- <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">العنوان الثانوي </label>
         </div>
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <hr />
+    <hr /> --}}
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">وصف طويل  </label>
@@ -62,12 +62,15 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::textarea('long_description', null, ['class' => 'input' , 'required'] )!!}
+                    <ck-editor id="long_description" name="long_description" @if (isset($blog))
+                        old-data="{{ $blog->long_description }}" @endif></ck-editor>
                 </div>
             </div>
         </div>
+
     </div>
-  <hr />
+
+    <hr>
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">صورة </label>
@@ -109,3 +112,4 @@
     <button type="submit" class="button is-success">حفظ</button>
   </div>
 </div><!-- End Card Footer -->
+

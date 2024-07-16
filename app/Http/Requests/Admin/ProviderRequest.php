@@ -31,7 +31,6 @@ class ProviderRequest extends FormRequest
             'required',
             'string',
             'min:3',
-            'max:1000',
             Rule::unique('providers', 'name')->ignore($providerId),
         ],
 'phone' => [

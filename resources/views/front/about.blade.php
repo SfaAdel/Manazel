@@ -21,17 +21,22 @@
 
     <main class="container">
 
+        @if ($aboutSection->long_description)
+
+        <section id="why-us" class="section why-us px-4 mt-4 spikes" data-builder="section">
+
+        <div>{!! $aboutSection->long_description !!}</div>
+        </section>
+@endif
         <section id="about" class="about section mt-5 p-5">
-
-
 
             <div class="container">
 
                 <div class="row gy-4 mb-5">
-                    <div class="col-12" data-aos="fade-up">
+                    {{-- <div class="col-12" data-aos="fade-up">
                         <p class="lead">{{ $aboutSection->short_description }}
                         </p>
-                    </div>
+                    </div> --}}
 
 
 
@@ -90,6 +95,8 @@
                         </div>
                     </div>
                 </section>
+
+
 
         </section><!-- /About Section -->
 

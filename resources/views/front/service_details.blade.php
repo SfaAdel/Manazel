@@ -36,8 +36,11 @@
         </div><!-- End Section Title -->
 
 
-        <div class="container custom-card-container mx-4">
-            <div class="row">
+
+        @if (!$sub_services->isEmpty())
+
+        <div class="container custom-card-container">
+            <div class="row m-auto ml-3">
                 @foreach($sub_services as $sub_service)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 align-items-center m-auto my-3"> <!-- Added col-6 for mobile view -->
                         <div class="custom-card">
@@ -53,13 +56,23 @@
                                 </h4>
                                 <h6 class="custom-card-subtitle mb-2 text-muted my-1">التصنيف : {{ $sub_service->service->category->name }}</h6>
                                 <p class="custom-card-text">{{ $sub_service->short_description }}</p>
-                                <div class="buy d-flex align-items-center mt-3">
+                                <div class="">
+
+                                    <div class="price text-success custom-price d-block my-2">
+
+                                        @if ($sub_service->price_on_serve)
+                                        <h5 class="mr-1">
+                                            تسعر عند الزيارة
+                                        </h5>
+                                    @else
+                                    <h5 class="mr-3">{{ $sub_service->price }} ريال</h5>
+
+                                    @endif
+                                    </div>
+
                                     <a href="#" class="btn btn-danger ml-3 custom-btn">
                                         <i class="fas fa-shopping-cart"></i>حجز الخدمة
                                     </a>
-                                    <div class="price text-success custom-price">
-                                        <h5 class="mr-3">{{ $sub_service->price }} ريال</h5>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +81,11 @@
             </div>
         </div>
 
-
+        @else
+        <div class="center text-secondary">
+            <h3>لا يوجد خدمات اخري متاحة بعد</h3>
+        </div>
+    @endif
 
 
                 <!-- More product cards can be added here -->

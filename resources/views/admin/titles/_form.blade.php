@@ -13,19 +13,6 @@
         </div>
     </div>
     <hr />
-      <div class="field is-horizontal">
-          <div class="field-label is-normal">
-              <label class="label required">وصف قصير  </label>
-          </div>
-          <div class="field-body">
-              <div class="field">
-                  <div class="control">
-                      {!! Form::text('short_description', null, ['class' => 'input' , 'required'] )!!}
-                  </div>
-              </div>
-          </div>
-      </div>
-    <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">القسم</label>
@@ -50,7 +37,37 @@
             </div>
         </div>
     </div>
+
     <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">وصف قصير  </label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::text('short_description', null, ['class' => 'input' , 'required'] )!!}
+                </div>
+            </div>
+        </div>
+    </div>
+  <hr />
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+        <label class="label required">وصف طويل  </label>
+    </div>
+    <div class="field-body">
+        <div class="field">
+            <div class="control">
+                <ck-editor id="long_description" name="long_description" @if (isset($title))
+                    old-data="{{ $title->long_description }}" @endif></ck-editor>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr>
 
     <div class="field is-horizontal">
         <div class="field-label is-normal">

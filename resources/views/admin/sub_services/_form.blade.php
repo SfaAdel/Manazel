@@ -55,45 +55,13 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::text('long_description', null, ['class' => 'input', 'required']) !!}
+                    <ck-editor id="long_description" name="long_description" @if (isset($subService))
+                        old-data="{{ $subService->long_description }}" @endif></ck-editor>
                 </div>
             </div>
         </div>
     </div>
-    <hr />
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label required">سعر الخدمة</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    {!! Form::number('price', null, [
-                        'class' => 'input',
-                        'required',
-                        'min' => 0,
-                        'id' => 'price',
-                        'oninput' => 'calculateFinalPrice()',
-                    ]) !!}
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr />
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label required">صورة</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    <uploader label="صورة" name="icon"
-                        @if (isset($subService)) file="{{ asset('images/sub_services/' . $subService->icon) }}" @endif
-                        required></uploader>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
@@ -115,6 +83,52 @@
         </div>
     </div>
     <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">نوع سعر الخدمة </label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" name="price_on_serve" value="0"
+                            @if (isset($subService) && $subService->price_on_serve) checked @endif
+                            onclick="togglePriceInput(false)">
+                        سوف يتم تحديد سعر
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="price_on_serve" value="1"
+                            @if (isset($subService) && !$subService->price_on_serve) checked @endif
+                            onclick="togglePriceInput(true)">
+                        تسعر عند الزيارة
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">سعر الخدمة</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::number('price', null, [
+                        'class' => 'input',
+                        'min' => 0,
+                        'id' => 'price',
+                        'oninput' => 'calculateFinalPrice()',
+                        'disabled' => isset($subService) && !$subService->price_on_serve ? 'disabled' : ''
+                    ]) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+
+
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label">يوجد خصم</label>
@@ -168,12 +182,27 @@
                         'min' => 0,
                         'id' => 'final_price',
                         'readonly' => 'readonly',
+
                     ]) !!}
                 </div>
             </div>
         </div>
     </div>
-
+    <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">صورة</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <uploader label="صورة" name="icon"
+                        @if (isset($subService)) file="{{ asset('images/sub_services/' . $subService->icon) }}" @endif
+                        required></uploader>
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!-- End Card Content -->
 
 <!-- Start Card Footer -->
@@ -222,4 +251,16 @@
             allowClear: true
         });
     });
+</script>
+
+<script>
+    function togglePriceInput(disable) {
+        document.getElementById('price').disabled = disable;
+    }
+
+    // Initialize the state on page load based on the current value
+    window.onload = function() {
+        var priceOnServe = document.querySelector('input[name="price_on_serve"]:checked').value;
+        togglePriceInput(priceOnServe == '1');
+    };
 </script>

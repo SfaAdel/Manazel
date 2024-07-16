@@ -31,10 +31,10 @@ class TitleRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:100',
                 Rule::unique('titles', 'title')->ignore($titleId),
             ],
-            'short_description' => 'required|string|min:3|max:10000',
+            'short_description' => 'required|string|min:3',
+
             'section' => [
                 'required',
                 'string',

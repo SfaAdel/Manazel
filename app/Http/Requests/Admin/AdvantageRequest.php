@@ -31,7 +31,6 @@ class AdvantageRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:255',
                 Rule::unique('advantages', 'name')->ignore($advantageId),
             ],
             // 'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',

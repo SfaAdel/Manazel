@@ -99,6 +99,10 @@
                         <p class="lead">{{$aboutSection->short_description}}</p>
                     </div>
 
+                    <div class="center mt-4">
+                        <a href="{{ route('about') }}" class="btn btn-custom mt-3">معرفة المزيد</a>
+                    </div>
+
                     <div id="advantage_mobile" class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
                         <h2 class="my-3">لماذا عليك اختيارنا ؟</h2>
                         <div id="advantagesCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -173,9 +177,14 @@
                             <!-- end counter -->
                         </div>
                     </div>
+
                 {{-- </section> --}}
             </div>
+
+
         </section><!-- /About Section -->
+
+
         <!-- /Services Section -->
         <section id="services" class="services section mt-4">
 

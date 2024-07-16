@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->foreignId('service_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->boolean('active')->default(1)->nullable();
-            $table->decimal('price')->nullable();
+            $table->boolean('price_on_serve')->default(0)->nullable();
+            $table->decimal('price')->default(0)->nullable();
             $table->boolean('offer')->default(0)->nullable();
             $table->decimal('discount_percentage')->nullable();
             $table->decimal('final_price')->nullable();

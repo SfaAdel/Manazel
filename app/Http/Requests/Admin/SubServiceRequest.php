@@ -29,16 +29,15 @@ class SubServiceRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:255',
                 Rule::unique('sub_services', 'name')->ignore($subServiceId), // Ignore the current sub_service ID
             ],
-            'short_description' => 'required|string|max:10000',
+            'short_description' => 'required|string',
             'long_description' => 'required|string',
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
             'service_id' => 'required|numeric|exists:services,id',
             'offer' => 'required|boolean',
             'active' => 'required|boolean',
-            'price' => 'required|numeric|min:0',
+            'price' => 'numeric|min:0',
             'discount_percentage' => 'nullable|numeric|min:0|max:100',
             'final_price' => 'required|numeric|min:0',
         ];

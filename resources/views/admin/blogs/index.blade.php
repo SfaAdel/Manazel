@@ -32,9 +32,9 @@
                     <tr>
                         <th>العنوان الرئيسي </th>
                         <th>التصنيف</th>
-                        <th> الوصف القصير</th>
-                        <th> العنوان الثانوي</th>
-                        <th> الوصف الطويل</th>
+                        {{-- <th> الوصف القصير</th> --}}
+                        {{-- <th> العنوان الثانوي</th> --}}
+                        {{-- <th> الوصف الطويل</th> --}}
                         <th>الصورة</th>
                         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
@@ -46,9 +46,9 @@
                         <tr>
                             <td>{{ $blog->main_title }}</td>
                             <td>{{ $blog->category ? $blog->category->name : ' - - ' }}</td>
-                            <td>{{ $blog->short_description }}</td>
-                            <td>{{ $blog->second_title }}</td>
-                            <td> ` {{ $blog->long_description }} `</td>
+                            {{-- <td>{{ $blog->short_description }}</td> --}}
+                            {{-- <td>{{ $blog->second_title }}</td> --}}
+                            {{-- <td class="columns is-multiline m-t-30">  {{ $blog->long_description }} </td> --}}
                             @if ($blog->icon)
                             <td>
                                 <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="icon rounded-circle" alt="icon">
@@ -60,6 +60,9 @@
                         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <td>
                             <div class="buttons has-addons">
+                                <a class="button is-warning" href="{{ route('admin.blogs.show', $blog->id) }}">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
                                 <a class="button is-info" href="{{ route('admin.blogs.edit', $blog->id) }}">
                                     تعديل
                                 </a>

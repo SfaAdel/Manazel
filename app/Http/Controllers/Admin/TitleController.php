@@ -54,6 +54,8 @@ class TitleController extends Controller
     public function show(Title $title)
     {
         //
+        return view('admin.titles.show', compact('title'));
+
     }
 
     /**

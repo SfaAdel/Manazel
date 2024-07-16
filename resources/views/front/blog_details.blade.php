@@ -38,16 +38,13 @@
                     </div>
 
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <h2 class="my-3">{{$blog->second_title}}</h2>
+                        {{-- <h2 class="my-3">{{$blog->second_title}}</h2> --}}
                         <div class="row">
 
                                 <div class="col-md-12 mb-4">
-                                    <div class="">
-                                        <div class="">
-                                            {{-- <i class="bi bi-check2-circle display-4 text-info mb-3"></i> --}}
-                                            <p class="card-text">{{$blog->long_description}}</p>
-                                        </div>
-                                    </div>
+
+                                            <div>{!! $blog->long_description !!}</div>
+
                                 </div>
 
                         </div>

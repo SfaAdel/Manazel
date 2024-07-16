@@ -29,7 +29,7 @@
             <div class="footer-contact pt-3 text-right d-flex flex-column align-items-start">
                 <p> <i class="fa fa-location-dot text-info mx-2"></i> <strong class=""> المقر :</strong> <span> الرياض - المملكة العربية السعودية</span></p>
                 <p class="mt-3"> <i class="fa fa-phone text-info mx-2"></i> <strong class="">رقم الهاتف :</strong> <span>00966542936554</span> </p>
-                <p class="mt-3"><i class="fa fa-envelope text-info mx-2"></i> <strong class="">البريد الالكتروني:</strong> <span>primsystems2024@gmail.com</span></p>
+                <p class="mt-3"><i class="fa fa-envelope text-info mx-2"></i> <strong class="">البريد الالكتروني:</strong> <span>Info@mnazel.com</span></p>
             </div>
         </div>
     </div>
@@ -52,6 +52,7 @@
                     <li><i class="bi bi-chevron-right"></i> <a href="{{ route('about') }}">من نحن</a></li>
                     <li><i class="bi bi-chevron-right"></i> <a href="{{ route('categories') }}">خدماتنا</a></li>
                     <li><i class="bi bi-chevron-right"></i> <a href="{{ route('contact') }}">تواصل معنا </a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="mailto:Info@mnazel.com"> Info@mnazel.com  </a></li>
 
                 </ul>
         </div>
@@ -60,10 +61,14 @@
         <div class="col-lg-4 col-md-12 ">
           <h4>تابعنا</h4>
           <div class="social-links d-flex justify-content-center ">
-            <a href=""><i class="bi bi-twitter"></i></a>
+            <a href="https://x.com/Mnazel_KSA"><i class="fa-brands fa-x-twitter"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
+
+            <a href=""><i class="bi bi-tiktok"></i></a>
+            <a href=""><i class="bi bi-youtube"></i></a>
             <a href=""><i class="bi bi-linkedin"></i></a>
+
+            <a href="https://www.instagram.com/mnazel_sa/"><i class="bi bi-instagram"></i></a>
           </div>
         </div>
 

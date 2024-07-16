@@ -31,7 +31,7 @@
                     <thead>
                     <tr>
                         <th>الاسم</th>
-                        <th> الوصف</th>
+                        {{-- <th> الوصف</th> --}}
                         <th>الخدمة التابعة لها</th>
                         <th> السعر</th>
                         <th>عدد مقدمين الخدمة</th>
@@ -49,9 +49,15 @@
                     @foreach($subServices as $subService)
                     <tr>
                         <td>{{ $subService->name }}</td>
-                        <td>{{ $subService->description }}</td>
+                        {{-- <td>{{ $subService->description }}</td> --}}
                         <td>{{ $subService->service ? $subService->service->name : ' - - ' }}</td>
-                        <td>{{ $subService->price }}</td>
+                        <td>
+                            @if($subService->price_on_serve)
+                                 عند الزيارة
+                            @else
+                                {{ $subService->price }}
+                            @endif
+                        </td>
                         <td>{{ $subService->providers }}</td>
                         <td>{{ $subService->active ? 'مفعل' : 'غير مفعل' }}</td>
                         <td>{{ $subService->offer ? 'نعم' : ' لا' }}</td>

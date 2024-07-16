@@ -32,11 +32,10 @@ class BlogRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:1000',
                 Rule::unique('blogs', 'main_title')->ignore($blogId),
             ],
-            'second_title' => 'required|string|min:3|max:3000',
-            'short_description' => 'required|string|min:10|max:10000',
+            // 'second_title' => 'required|string|min:3|max:3000',
+            'short_description' => 'required|string|min:10',
             'long_description' => 'required|string|min:10',
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
             'category_id' => 'required|numeric|exists:categories,id',
@@ -46,7 +45,7 @@ class BlogRequest extends FormRequest
     {
         return [
             'main_title' => 'العنوان الرئيسي',
-            'second_title' => 'العنوان الثانوي',
+            // 'second_title' => 'العنوان الثانوي',
             'short_description' => 'وصف قصير',
             'long_description' => 'وصف طويل',
             'icon' => 'الصورة',

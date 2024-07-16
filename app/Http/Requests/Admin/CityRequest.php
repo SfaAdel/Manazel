@@ -31,7 +31,6 @@ class CityRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:1000',
                 Rule::unique('cities', 'name')->ignore($cityId),
             ],
         ];

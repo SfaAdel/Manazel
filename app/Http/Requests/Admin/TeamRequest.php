@@ -31,7 +31,6 @@ class TeamRequest extends FormRequest
                 'required',
                 'string',
                 'min:3',
-                'max:255',
                 Rule::unique('teams', 'name')->ignore($teamId),
             ],
             'description' => 'required|string',
