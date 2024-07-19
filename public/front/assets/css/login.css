@@ -69,8 +69,8 @@ body {
     box-shadow: none;
     width: 100%;
     height: 40px;
-    background-color: #4CBBD6;
-    border-color: #4CBBD6;
+    background-color: #fd7c07;
+    border-color: #fd7c07;
     color: #fff;
     border-radius: 25px;
     box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
@@ -78,7 +78,7 @@ body {
 }
 
 .custom-wrapper .custom-btn:hover {
-    background-color: #4CBBD6;
+    background-color: #fd7c07;
 }
 
 .custom-wrapper a {
@@ -88,7 +88,7 @@ body {
 }
 
 .custom-wrapper a:hover {
-    color: #0071B8;
+    color: #002044;
 }
 
 .center{

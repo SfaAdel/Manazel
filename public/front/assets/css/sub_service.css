@@ -2,9 +2,9 @@
 	padding: 40px 0;
 	font-family: 'Poppins', sans-serif;
 
-    color: #4CBBD6;
+    color: #fd7c07;
 color: #484848;
-color: #0071B8;
+color: #002044;
 }
 .heading-section {
 	text-align: center;
@@ -15,7 +15,7 @@ color: #0071B8;
     font-size: 12px;
     display: block;
     font-weight: 600;
-    color: #4CBBD6;
+    color: #fd7c07;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -40,7 +40,7 @@ color: #0071B8;
 .quote {
 	position: absolute;
     top: -23px;
-    color: #4CBBD6;
+    color: #fd7c07;
     font-size: 27px;
 }
 .name {
@@ -198,8 +198,8 @@ color: #0071B8;
 }
 .round-black-btn:hover,
 .round-black-btn:focus {
-	background: #0071B8;
-    border: solid 2px #0071B8;
+	background: #002044;
+    border: solid 2px #002044;
 
 	color: #ffffff;
 	text-decoration: none;
@@ -217,7 +217,7 @@ color: #0071B8;
 .product-info-tabs .nav-tabs .nav-link {
 	border: none;
 	border-bottom: 2px solid transparent;
-	color: #0071B8;
+	color: #002044;
 }
 .product-info-tabs .nav-tabs .nav-item .nav-link:hover {
 	border: none;

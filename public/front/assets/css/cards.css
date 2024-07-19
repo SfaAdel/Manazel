@@ -23,19 +23,19 @@
 }
 
 .card .btn {
-    background-color: #0071b8;
+    background-color: #002044;
     color: #ffffff;
     font-size: 1rem;
     padding: 0.5rem 1.5rem;
 }
 
 .card .btn:hover {
-    background-color: #4cbbd6;
+    background-color: #fd7c07;
     color: #ffffff;
 }
 
 .btn-custom {
-    background-color: #0071b8;
+    background-color: #002044;
     color: #ffffff;
     font-size: 18px;
     padding: 10px 30px;
@@ -46,7 +46,7 @@
 }
 
 .btn-custom:hover {
-    background-color: #4cbbd6;
+    background-color: #fd7c07;
     color: #ffffff;
     transform: scale(1.05);
 }
@@ -56,12 +56,12 @@
 }
 
 .btn-blue {
-    background-color: #0071b8;
+    background-color: #002044;
     color: #ffffff;
 }
 
 .btn-blue:hover {
-    background-color: #4cbbd6;
+    background-color: #fd7c07;
     transform: scale(1.05);
     color: #ffffff;
 }
@@ -98,7 +98,7 @@
 
 .custom-card-title:hover {
     font-size: 1.2rem;
-    color: #4cbbd6;
+    color: #fd7c07;
 }
 
 .custom-card-subtitle {
@@ -113,8 +113,8 @@
 .custom-btn {
     padding: 5px 10px;
     font-size: 0.9rem;
-    background-color: #4cbbd6;
-    border-color: #4cbbd6;
+    background-color: #fd7c07;
+    border-color: #fd7c07;
 }
 
 .custom-price {

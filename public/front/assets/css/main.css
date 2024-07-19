@@ -43,16 +43,16 @@
   --default-color: #484848;
 
   /* Heading Color - This color is used for titles, headings and secondary elements. */
-  --heading-color: #0071B8;
+  --heading-color: #002044;
 
   /* Accent Color - This is the main accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out. */
-  --accent-color: #4CBBD6;
+  --accent-color: #fd7c07;
 
   /* Contrast Color - This is a color used for text when the background color is one of the heading, accent, or default colors. Its purpose is to ensure proper contrast and readability when placed over these more dominant colors. */
   /* --contrast-color: #ffffff; */
 
-  /* --contrast-color: #0071B8;
-  --contrast-color: #4CBBD6;
+  /* --contrast-color: #002044;
+  --contrast-color: #fd7c07;
   --contrast-color: #484848; */
 
 }
@@ -63,7 +63,7 @@
   --nav-color: #ffffff;
 
   /* Nav Hover Color - This color is applied to main navmenu links when they are hovered over. */
-  --nav-hover-color: #4CBBD6;
+  --nav-hover-color: #fd7c07;
 
   /* Nav Dropdown Background Color - This color is used as the background for dropdown boxes that appear when hovering over primary navigation items. */
   --nav-dropdown-background-color: #ffffff;
@@ -72,7 +72,7 @@
   --nav-dropdown-color: #484848;
 
   /* Nav Dropdown Hover Color - Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
-  --nav-dropdown-hover-color: #4CBBD6;
+  --nav-dropdown-hover-color: #fd7c07;
 }
 
 /* Smooth scroll */
@@ -552,12 +552,12 @@ section,
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-    --background-color: #0071B8;
-    /* --background-color: #4CBBD6; */
+    --background-color: #002044;
+    /* --background-color: #fd7c07; */
 
     --default-color: #ffffff;
     --heading-color: #ffffff;
-    --contrast-color: #0071B8;
+    --contrast-color: #002044;
     width: 100%;
     min-height: 80vh;
     position: relative;
@@ -652,11 +652,11 @@ section,
 }
 
 .hero .btn-watch-video:hover {
-    color: color-mix(in srgb, #4CBBD6, transparent 15%);
+    color: color-mix(in srgb, #fd7c07, transparent 15%);
 }
 
 .hero .btn-watch-video:hover i {
-  color: color-mix(in srgb, #4CBBD6, transparent 15%);
+  color: color-mix(in srgb, #fd7c07, transparent 15%);
 }
 
 .hero .animated {
@@ -2130,7 +2130,7 @@ section,
 
 /* =============================== */
 .mycounter{
-    background: #0071B8;
+    background: #002044;
     border-radius: 16px;
     padding: 2rem 1rem;
     margin: 0 0.15rem;
@@ -2286,7 +2286,7 @@ margin-right: 65px !important;
 
   .service-item a.btn {
     padding: 10px 20px;
-    background: #007bff;
+    background: #fd7c07;
     color: #fff;
     border: none;
     border-radius: 5px;

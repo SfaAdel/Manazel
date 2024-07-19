@@ -1,6 +1,6 @@
 .btn-getstarted,
 .btn-getstarted:focus {
-  background:  #0072b8f3;
+  background:  #002044;
   color: #ffff;
 
   font-size: 14px;
@@ -17,9 +17,9 @@
 
 /* Add this CSS to your stylesheet */
 .navmenu a.active {
-    color: #4CBBD6;
+    color: #fd7c07;
 color: #484848;
-color: #0071B8;
+color: #002044;
   }
 
 /* .logo_img{
@@ -53,7 +53,7 @@ color: #0071B8;
 
   .navbar-light .navbar-nav .nav-link:hover,
   .navbar-light .navbar-nav .nav-link.active {
-    color:  #4CBBD6 !important;
+    color:  #fd7c07 !important;
   }
 
   .navbar-light .navbar-brand h1 {
@@ -75,7 +75,7 @@ color: #0071B8;
 
   .profile-links a {
     border-radius: 5px;
-    color: #4CBBD6;
+    color: #fd7c07;
     padding-block: 0.5rem;
     background-color: transparent;
   }
@@ -154,7 +154,7 @@ color: #0071B8;
     }
 
     .sticky-top.navbar-light .navbar-brand h1 {
-      color:  #4CBBD6;
+      color:  #fd7c07;
     }
   }
 
