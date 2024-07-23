@@ -198,7 +198,25 @@
                 <div class="control">
                     <uploader label="صورة" name="icon"
                         @if (isset($subService)) file="{{ asset('images/sub_services/' . $subService->icon) }}" @endif
-                        required></uploader>
+                        ></uploader>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">صورة بانر العرض</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <uploader label="bannar" name="bannar"
+                        @if (isset($subService)) file="{{ asset('images/sub_service_bannars/' . $subService->bannar) }}" @endif
+                        id ="bannar"
+                        required
+                        disabled
+                        ></uploader>
                 </div>
             </div>
         </div>
@@ -216,6 +234,8 @@
 <script>
     function toggleDiscount(isEnabled) {
         document.getElementById('discount_percentage').disabled = !isEnabled;
+        document.getElementById('bannar').disabled = !isEnabled;
+        document.getElementById('bannar').required = isEnabled;
         calculateFinalPrice();
     }
 

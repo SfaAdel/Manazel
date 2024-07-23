@@ -158,7 +158,9 @@ class HomeController extends Controller
 
         $navCategories = Category::latest()->get();
 
-        return view('front.about', compact('navCategories','whyUsAnsweres','whyUsSection','counters','teams','teamSection', 'advantages','advantageSection','contactSection','aboutSection'));
+        $cities = City::latest()->get();
+
+        return view('front.about', compact('cities','navCategories','whyUsAnsweres','whyUsSection','counters','teams','teamSection', 'advantages','advantageSection','contactSection','aboutSection'));
     }
 
     public function blog()

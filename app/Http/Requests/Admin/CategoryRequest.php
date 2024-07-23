@@ -35,6 +35,7 @@ class CategoryRequest extends FormRequest
             ],
             'description' => 'required|string',
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'bannar' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
         ];
     }
 
@@ -43,7 +44,8 @@ class CategoryRequest extends FormRequest
         return [
             'name' => 'اسم الخدمة',
             'description' => 'وصف الخدمة',
-            'icon' => 'صورة الخدمة'
+            'icon' => 'صورة الخدمة',
+            'bannar' => 'صورة البانر'
         ];
     }
 }

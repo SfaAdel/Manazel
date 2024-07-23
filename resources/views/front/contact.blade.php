@@ -14,7 +14,7 @@
                     <h1 class="my-3">{{$contactSection->title}}</h1>
                     <p>
                         {{$contactSection->short_description}}
-                        <i class="bi bi-heart text-danger"></i>
+
                     </p>
 
                 </div>
@@ -24,6 +24,12 @@
 
 
 <section id="contact" class="contact section px-4 mt-4">
+
+    <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2> سعداء بتواصلك معنا <i class="fa-regular fa-heart text-custom"></i> </h2>
+            </div><!-- End Section Title -->
+
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -106,7 +112,7 @@
                         </div>
 
                         <div class="col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">ارسال</button>
+                            <button type="submit" class="btn btn-custom">ارسال</button>
                         </div>
                     </div>
                 </form>

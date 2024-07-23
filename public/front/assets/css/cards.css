@@ -51,6 +51,16 @@
     transform: scale(1.05);
 }
 
+.text-custom{
+    color: #fd7c07;
+}
+.text-custom:hover {
+
+    transform: scale(1.09);
+}
+
+
+
 .center {
     text-align: center; /* Center aligns inline elements */
 }

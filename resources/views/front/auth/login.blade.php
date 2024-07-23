@@ -77,7 +77,7 @@
 
 
 
-    <main class="container mt-4">
+    <main class="container mt-2">
         {{-- <div class="container mt-4">
             <div class="row justify-content-center mt-4 mt-4">
                 <div class="col-md-8 mt-5">
@@ -145,10 +145,10 @@
             <div class="custom-logo">
                 <img src="{{ asset('images/website/logo.png') }}" alt="">
             </div>
-            <div class="text-center mt-4 custom-name">
+            <div class="text-center mt-3 custom-name">
                 تسجيل الدخول
             </div>
-            <form method="POST" class="p-3 mt-3" action="{{ route('login_success') }}">
+            <form method="POST" class="p-3 mt-1" action="{{ route('login_success') }}">
                 @csrf
 
                 <div>

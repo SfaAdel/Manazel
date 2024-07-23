@@ -22,32 +22,57 @@
     <main class="container">
 
         @if ($aboutSection->long_description)
+            <section id="why-us" class="section why-us px-4 mt-4 spikes" data-builder="section">
 
-        <section id="why-us" class="section why-us px-4 mt-4 spikes" data-builder="section">
+                <div>{!! $aboutSection->long_description !!}</div>
+            </section>
+        @endif
 
-        <div>{!! $aboutSection->long_description !!}</div>
-        </section>
-@endif
-        <section id="about" class="about section mt-5 p-5">
+
+        <!-- About Section -->
+        <section id="about" class="about section p-5 mt-4">
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2 class="">{{ $aboutSection->title }}</h2>
+            </div><!-- End Section Title -->
 
             <div class="container">
-
                 <div class="row gy-4 mb-5">
-                    {{-- <div class="col-12" data-aos="fade-up">
-                        <p class="lead">{{ $aboutSection->short_description }}
-                        </p>
-                    </div> --}}
+                    <div class="col-12" data-aos="fade-up">
+                        <p class="lead">{{ $aboutSection->short_description }}</p>
+                    </div>
 
+                    <div id="advantage_mobile" class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+                        <h2 class="my-3">لماذا عليك اختيارنا ؟</h2>
+                        <div id="advantagesCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach ($advantages as $index => $advantage)
+                                    <div class="carousel-item @if ($index == 0) active @endif">
+                                        <div class="card border-secondry">
+                                            <div class="card-body text-center">
+                                                <i class="bi bi-check2-circle display-4 text-custom mb-3"></i>
+                                                <p class="card-text">{{ $advantage->name }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
 
+                        </div>
+                        <div class="my-4 align-items-center" data-aos="zoom-in" data-aos-delay="200">
+                            <img src="{{ asset('images/titles/' . $aboutSection->icon) }}"
+                                class="img-fluid animated rounded" alt="Why Us">
+                        </div>
+                    </div>
 
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div id="advantage_web" class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                         <h2 class="my-3">لماذا عليك اختيارنا ؟</h2>
                         <div class="row">
                             @foreach ($advantages as $advantage)
                                 <div class="col-md-6 mb-4">
-                                    <div class="card border-info">
+                                    <div class="card border-custom">
                                         <div class="card-body text-center">
-                                            <i class="bi bi-check2-circle display-4 text-info mb-3"></i>
+                                            <i class="bi bi-check2-circle display-4 text-custom mb-3"></i>
                                             <p class="card-text">{{ $advantage->name }}</p>
                                         </div>
                                     </div>
@@ -56,49 +81,48 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div id="advantage_web" class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
                         <img src="{{ asset('images/titles/' . $aboutSection->icon) }}" class="img-fluid animated rounded"
                             alt="Why Us">
                     </div>
                 </div>
 
-                <section class="wow fadeIn animated " style="visibility: visible; animation-name: fadeIn;">
-                    <div class="m-4 mycounter">
-                        <div class="row">
-                            <!-- counter -->
-                            <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
-                                data-wow-duration="600ms"
-                                style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
-                                <img src="{{ asset('images/counters/' . 'place.png') }}" class="img ml-1"
-                                    alt="Main Company Headquarters">
-                                <span class="timer counter_text alt-font appear mb-1">الرياض</span>
-                                <span class="counter-title">مقر الشركة</span>
-                            </div>
-                            <!-- end counter -->
 
-                            <!-- counter -->
-                            @foreach ($counters as $counter)
-                                <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3"
-                                    data-wow-duration="900ms"
-                                    style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
-                                    {{-- <i class="fa fa-smile-beam medium-icon text-info"></i> --}}
-                                    <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img ml-1"
-                                        alt="icon">
+            </div>
 
-                                    <span class="timer counter alt-font appear" data-to="810"
-                                        data-speed="7000">{{ $counter->number }}</span>
-                                    <span class="counter-title">{{ $counter->title }}</span>
-                                </div>
-                            @endforeach
-                            <!-- end counter -->
+            <div class=" mycounter carousel slide" id="advantagesCarousel" data-bs-ride="carousel">
+                <div class="row">
 
+
+                    <!-- counter -->
+                    @foreach ($counters as $counter)
+                        <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3"
+                            data-wow-duration="900ms"
+                            style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
+                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img ml-1" alt="icon">
+                            <span class="timer counter alt-font appear" data-to="810"
+                                data-speed="7000">{{ $counter->number }}</span>
+                            <span class="counter-title">{{ $counter->title }}</span>
                         </div>
+                    @endforeach
+                    <!-- end counter -->
+
+                    <!-- counter -->
+                    <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
+                        data-wow-duration="600ms"
+                        style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
+                        <img src="{{ asset('images/counters/' . 'place.png') }}" class="img ml-1"
+                            alt="Main Company Headquarters">
+                        <span class="timer counter_text alt-font appear mb-1">الرياض</span>
+                        <span class="counter-title">مقر الشركة</span>
                     </div>
-                </section>
+                    <!-- end counter -->
+                </div>
+            </div>
 
+        </section>
+        <!-- /About Section -->
 
-
-        </section><!-- /About Section -->
 
 
         <!-- Why Us Section -->
@@ -195,6 +219,42 @@
             </div>
 
         </section><!-- /Testimonials Section -->
+
+        <!-- place Section -->
+        <section id="why-us" class="section why-us px-4 mt-4 spikes" data-builder="section">
+
+            <div class="container-fluid">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-12 d-flex flex-column justify-content-center order-2 order-lg-1">
+
+
+                        <!-- Section Title -->
+                        <div class="container section-title" data-aos="fade-up">
+                            <h2>أماكن تواجدنا في المملكة</h2>
+                        </div><!-- End Section Title -->
+
+
+                        <div class="row">
+                            @foreach ($cities as $city)
+                                <div class="col-md-6 mb-4">
+                                    <div class="card border-secondry">
+                                        <div class="card-body text-center">
+                                            <i class="fa fa-location display-4 text-custom mb-3"></i>
+                                            <p class="card-text">{{ $city->name }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section><!-- /place Section -->
 
 
     </main>

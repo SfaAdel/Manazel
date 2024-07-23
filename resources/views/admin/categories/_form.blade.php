@@ -40,6 +40,22 @@
             </div>
         </div>
     </div>
+    <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">صورة البانر</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <uploader label="bannar" name="bannar"
+                        @if (isset($category)) file="{{ asset('images/categories_bannars/' . $category->bannar) }}" @endif
+                        required
+                        ></uploader>
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!-- End Card Content -->
 <!-- Start Card Footer -->
 <div class="card-footer">

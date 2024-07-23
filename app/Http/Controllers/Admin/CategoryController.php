@@ -40,8 +40,13 @@ class CategoryController extends Controller
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/categories'), $ImageName);
         }
+        if ($request->hasFile('bannar')) {
+            $BannarImageName = time() . '.' . $request->bannar->extension();
+            $request->bannar->move(('images/categories_bannars/'), $BannarImageName);
+        }
         Category::create($request->except('icon', '_token') +
-            ['icon' => $ImageName]);
+            ['icon' => $ImageName]+
+            ['bannar' => $BannarImageName]);
 
         return redirect()->route('admin.categories.index')->with('success', 'تم اضافة البيانات بنجاح');
     }
@@ -71,11 +76,16 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         //
-        $category->update($request->except('icon', '_token', '_method'));
+        $category->update($request->except('icon','bannar', '_token', '_method'));
         if ($request->hasFile('icon')) {
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/categories'), $ImageName);
             $category->update(['icon' => $ImageName]);
+        }
+        if ($request->hasFile('bannar')) {
+            $BannarImageName = time() . '.' . $request->bannar->extension();
+            $request->bannar->move(('images/categories_bannars/'), $BannarImageName);
+            $category->update(['bannar' => $BannarImageName]);
         }
 
         return redirect()->route('admin.categories.index')->with('success', 'تم تعديل البيانات بنجاح');

@@ -45,9 +45,14 @@ class SubServiceController extends Controller
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/sub_services'), $ImageName);
         }
+        if ($request->hasFile('bannar')) {
+            $BannarImageName = time() . '.' . $request->bannar->extension();
+            $request->bannar->move(('images/sub_service_bannars/'), $BannarImageName);
+        }
 
         SubService::create($request->except('icon', '_token') +
-            ['icon' => $ImageName]);
+            ['icon' => $ImageName]+
+            ['bannar' => $BannarImageName]);
 
 
         return redirect()->route('admin.sub_services.index')->with('success', 'تم اضافة البيانات بنجاح');
@@ -84,11 +89,16 @@ class SubServiceController extends Controller
     public function update(SubServiceRequest $request, SubService $subService)
     {
         //
-        $subService->update($request->except('icon', '_token', '_method'));
+        $subService->update($request->except('icon', 'bannar', '_token', '_method'));
         if ($request->hasFile('icon')) {
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/sub_services'), $ImageName);
             $subService->update(['icon' => $ImageName]);
+        }
+        if ($request->hasFile('bannar')) {
+            $BannarImageName = time() . '.' . $request->bannar->extension();
+            $request->bannar->move(('images/sub_service_bannars/'), $BannarImageName);
+            $subService->update(['bannar' => $BannarImageName]);
         }
         return redirect()->route('admin.sub_services.index')->with('success', 'تم تعديل البيانات بنجاح');
     }

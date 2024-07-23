@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse mr-4 justify-content-center" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
                 <a href="{{ route('home') }}"
-                    class="nav-item mt-1 nav-link {{ Request::is('home') ? 'active' : '' }}">الرئيسية</a>
+                    class="nav-item mx-3 mt-1 nav-link {{ Request::is('home') ? 'active' : '' }}">الرئيسية</a>
                 <a href="{{ route('about') }}"
                     class="nav-item mt-1 nav-link {{ Request::is('about') ? 'active' : '' }}">من نحن</a>
                 <div class="nav-item dropdown">

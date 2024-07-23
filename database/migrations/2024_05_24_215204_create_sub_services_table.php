@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('short_description')->nullable();
             $table->text('long_description')->nullable();
             $table->string('icon')->nullable();
+            $table->string('bannar')->nullable();
             $table->foreignId('service_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->boolean('active')->default(1)->nullable();
             $table->boolean('price_on_serve')->default(0)->nullable();

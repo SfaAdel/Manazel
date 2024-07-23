@@ -6,8 +6,8 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur"
-        style="background-image: url('front/assets/img/background.jpg');">
-        <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
+        style="background-image: url('{{ asset('images/categories_bannars/' . $sub_service->service->category->bannar) }}');">
+        <div class="background-blur" style="background-image: url('{{ asset('images/categories_bannars/' . $sub_service->service->category->bannar) }}');"></div>
         <div class="container">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -50,7 +50,6 @@
                                             class="img-fluid animated rounded m-3" alt="photo">
                                         {{ $sub_service->name }}
                                     </div>
-
                                     <div class="rate mx-1">
                                         <input type="radio" id="star5" name="rate" value="5" checked />
                                         <label for="star5" title="text">5 stars</label>
