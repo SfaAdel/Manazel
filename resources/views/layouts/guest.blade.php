@@ -19,7 +19,7 @@
             <div>
                 <a href="/">
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
-<img src="{{asset('front/assets/img/logo2.png')}}" width="180"  alt="">
+<img src="{{asset('front/assets/img/admin_logo.png')}}" width="180"  alt="">
                 </a>
             </div>
 

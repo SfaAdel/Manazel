@@ -205,8 +205,9 @@ class HomeController extends Controller
     public function all_categories()
     {
         $navCategories = Category::latest()->get();
+        $categoriesSection = Title::where('section', 'services')->first();
 
-        return view('front.categories', compact('navCategories'));
+        return view('front.categories', compact('navCategories','categoriesSection'));
     }
 
     public function provider_form()

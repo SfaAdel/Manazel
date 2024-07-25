@@ -40,12 +40,6 @@ class ProviderSeeder extends Seeder
             'status' => 1,
         ]);
         Provider::create([
-            'name' => 'احمد احمد محمود',
-            'phone' => '0551234565',
-            'category_id' => 5,
-            'status' => 1,
-        ]);
-        Provider::create([
             'name' => 'احمد ياسر ',
             'phone' => '0551234566',
             'category_id' => 2,

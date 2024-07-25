@@ -13,3 +13,20 @@
 .text_gray{
     color:#484848 ;
 }
+
+.scrollable-dropdown {
+    max-height: 145px; /* Set a fixed height */
+    overflow-y: auto;  /* Enable vertical scrolling */
+}
+
+.btn-filter{
+    background-color: #fd7c07;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 30px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block; /* Ensures button width doesn't expand */
+}
+

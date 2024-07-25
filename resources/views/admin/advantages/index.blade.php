@@ -29,7 +29,7 @@
                 <thead>
                     <tr>
                         <th>الاسم </th>
-                        {{-- <th>الصورة</th> --}}
+                        <th>الصورة</th>
                         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <th>الاجراءات</th>
                         @endif
@@ -39,11 +39,11 @@
                     @foreach ($advantages as $advantage)
                         <tr>
                             <td>{{ $advantage->name }}</td>
-                            {{-- @if ($advantage->icon)
+                            @if ($advantage->icon)
                             <td>
                                 <img src="{{ asset('images/advantages/' . $advantage->icon) }}" class="icon rounded-circle" alt="icon">
                             </td>
-                        @endif --}}
+                        @endif
 
                         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <td>

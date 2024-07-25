@@ -84,6 +84,22 @@
             </div>
         </div>
     </div>
+    <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">صورة البانر</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <uploader label="banner" name="banner"
+                        @if (isset($blog)) file="{{ asset('images/blogs_banners/' . $blog->banner) }}" @endif
+                        required
+                        ></uploader>
+                </div>
+            </div>
+        </div>
+    </div>
     {{-- <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">

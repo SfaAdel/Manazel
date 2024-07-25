@@ -1,12 +1,11 @@
-@extends('front/layouts.index')
+@extends('front/layouts.home')
 @section('page.title', 'الرئيسية')
 
 @section('content')
 
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur mb-5"
-        style="background-image: url('front/assets/img/background.png');">
-        <div class="background-blur" style="background-image: url('front/assets/img/background.png');"></div>
+        style="background-image: url('{{ asset('images/pages_banners/' . $mainSection->banner) }}');">
         <div class="container px-4">
             <div class="row gy-4 mr-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -25,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img center" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="front/assets/img/logo2.png" class="img-fluid animated" alt="">
+                    <img src="{{ asset('images/titles/' . $mainSection->icon) }}" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -59,7 +58,7 @@
             <section id="offers" class="testimonials section p-5 mt-4">
 
                 <!-- Section Title -->
-                <div class="container section-title" data-aos="fade-up">
+                <div class="container section-title offer_title" data-aos="fade-up">
                     <h2>العروض و الخصومات <i class="fa fa-fire text-custom"></i></h2>
                     <p>نقدم لكم افضل العروض والخصومات على جميع خدماتنا</p>
                 </div>
@@ -93,7 +92,7 @@
                                                     data-aos="zoom-out">
                                                     <div class="d-flex mt-3 align-items-center justify-content-center">
                                                         <a href="{{ route('sub_service_details', $subService->id) }}"
-                                                            class="btn-custom">
+                                                            class="btn-custom offer_btn">
                                                             احصل علي العرض
                                                         </a>
                                                     </div>
@@ -108,6 +107,7 @@
 
                     </div>
                 </div>
+
 
 
             </section>
@@ -138,7 +138,8 @@
                                     <div class="carousel-item @if ($index == 0) active @endif">
                                         <div class="card border-custom">
                                             <div class="card-body text-center">
-                                                <i class="bi bi-check2-circle display-4 text-custom mb-3"></i>
+                                                {{-- <i class="bi bi-check2-circle display-4 text-custom mb-3"></i> --}}
+                                                <img src="{{ asset('images/advantages/' . $advantage->icon) }}" class="img ml-1 new_icon" alt="icon">
                                                 <p class="card-text">{{ $advantage->name }}</p>
                                             </div>
                                         </div>
@@ -160,7 +161,8 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="card border-custom">
                                         <div class="card-body text-center">
-                                            <i class="bi bi-check2-circle display-4 text-custom mb-3"></i>
+                                            {{-- <i class="bi bi-check2-circle display-4 text-custom mb-3"></i> --}}
+                                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}" class="img ml-1 new_icon" alt="icon">
                                             <p class="card-text">{{ $advantage->name }}</p>
                                         </div>
                                     </div>
@@ -188,7 +190,7 @@
                         <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3"
                             data-wow-duration="900ms"
                             style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
-                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img ml-1" alt="icon">
+                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon" alt="icon">
                             <span class="timer counter alt-font appear" data-to="810"
                                 data-speed="7000">{{ $counter->number }}</span>
                             <span class="counter-title">{{ $counter->title }}</span>
@@ -200,7 +202,7 @@
                     <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
                         data-wow-duration="600ms"
                         style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
-                        <img src="{{ asset('images/counters/' . 'place.png') }}" class="img ml-1"
+                        <img src="{{ asset('images/counters/' . 'place.png') }}" class="img  new_icon"
                             alt="Main Company Headquarters">
                         <span class="timer counter_text alt-font appear mb-1">الرياض</span>
                         <span class="counter-title">مقر الشركة</span>
@@ -344,7 +346,7 @@
                             <div class="swiper-slide">
                                 <div class="testimonial-item">
                                     <img src="{{ asset('images/teams/' . $team->icon) }}"
-                                        class="mobile_icon testimonial-img" alt="">
+                                        class="mobile_icon testimonial-img " alt="">
 
                                     <h3> {{ $team->name }}</h3>
                                     <p>

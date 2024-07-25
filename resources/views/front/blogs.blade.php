@@ -4,20 +4,19 @@
 @section('content')
 
 <!-- Hero Section -->
-<section id="hero" class="hero section background-blur" style="background-image: url('front/assets/img/background.jpg');">
-    <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
+<section id="hero" class="hero section background-blur" style="background-image: url('{{ asset('images/pages_banners/' . $blogSection->banner) }}');">
     <div class="container">
         <div class="row text-center">
             <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
                 <h1 class="my-3">مدونة منازل</h1>
                 <p>{{ $blogSection->short_description }}</p>
 
-                <div class="container m-3">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ابحث عن موضوع
+                <div class=" m-2">
+                    <div class="dropdown ">
+                        <button class="btn btn-filter dropdown-toggle" type="button" data-toggle="dropdown">ابحث عن موضوع
                             <span class="caret"></span>
                         </button>
-                        <ul id="category-list" class="dropdown-menu text-right p-3">
+                        <ul id="category-list" class="dropdown-menu text-right p-3 search_filter">
                             <li>
                                 <a href="{{ route('blogs.filter') }}" class="text_gray">جميع المواضيع</a>
                             </li>
@@ -56,7 +55,7 @@
 
                 @foreach($blogs as $blog)
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="blog-entry d-flex align-items-start center card bg-success-subtle p-4 blog_card">
+                        <div class="blog-entry d-flex align-items-start center card p-4 blog_card">
                             <div class="entry-info m-2 center">
                                 <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="card-img-top blog_img" alt="">
                                 <h4 class="mt-4">{{ $blog->main_title }}</h4>
@@ -81,6 +80,16 @@
             });
         });
     });
+
+    $(document).ready(function() {
+    var listItemCount = $('#category-list li').length;
+    if (listItemCount > 5) {
+        $('#category-list').addClass('scrollable-dropdown');
+    }
+});
+
 </script>
+
+
 
 @endsection

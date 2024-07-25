@@ -4,8 +4,7 @@
 @section('content')
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section background-blur" style="background-image: url('assets/img/background.jpg');">
-        <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
+    <section id="hero" class="hero section background-blur" style="background-image: url('{{ asset('images/pages_banners/7.png') }}');">
         <div class="container">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -122,7 +121,7 @@
                             <div class="card-footer mt-3">
                                 <div class="buttons has-addons">
                                     <a class="btn btn-secondary submit" href="{{ route('home') }}"> الغاء </a>
-                                    <button type="submit" class="btn btn-primary submit">حفظ</button>
+                                    <button type="submit" class="btn btn-blue submit">حفظ</button>
                                 </div>
                             </div><!-- End Card Footer -->
                         </form>

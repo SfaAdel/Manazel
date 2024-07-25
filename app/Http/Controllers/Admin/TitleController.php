@@ -39,9 +39,13 @@ class TitleController extends Controller
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/titles'), $ImageName);
         }
-
+        if ($request->hasFile('banner')) {
+            $BannerImageName = time() . '.' . $request->banner->extension();
+            $request->banner->move(('images/pages_banners/'), $BannerImageName);
+        }
         Title::create($request->except('icon', '_token') +
-            ['icon' => $ImageName]);
+            ['icon' => $ImageName]+
+            ['banner' => $BannerImageName]);
 
 
         return redirect()->route('admin.titles.index')->with('success', 'تم اضافة البيانات بنجاح');
@@ -79,6 +83,11 @@ class TitleController extends Controller
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/titles'), $ImageName);
             $title->update(['icon' => $ImageName]);
+        }
+        if ($request->hasFile('banner')) {
+            $BannerImageName = time() . '.' . $request->banner->extension();
+            $request->banner->move(('images/pages_banners/'), $BannerImageName);
+            $title->update(['banner' => $BannerImageName]);
         }
         return redirect()->route('admin.titles.index')->with('success', 'تم تعديل البيانات بنجاح');
 

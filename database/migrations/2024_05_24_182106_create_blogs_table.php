@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('second_title')->nullable();
             $table->text('long_description')->nullable();
             $table->string('icon')->nullable();
+            $table->string('banner')->nullable();
             $table->foreignId('category_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });

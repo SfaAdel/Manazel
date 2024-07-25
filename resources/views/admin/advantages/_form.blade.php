@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    {{-- <hr />
+    <hr />
 
     <div class="field is-horizontal">
         <div class="field-label is-normal">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
 </div><!-- End Card Content -->
 <!-- Start Card Footer -->

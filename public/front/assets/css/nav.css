@@ -12,14 +12,14 @@
 .btn-getstarted:hover,
  .btn-getstarted:focus:hover {
   color:#ffffff;
-  background: color-mix(in srgb, #484848, transparent 15%);
+  background: color-mix(in srgb, #fd7c07, transparent 15%);
 }
 
 /* Add this CSS to your stylesheet */
 .navmenu a.active {
     color: #fd7c07;
-color: #484848;
-color: #002044;
+/* color: #484848; */
+/* color: #002044; */
   }
 
 /* .logo_img{
@@ -41,7 +41,9 @@ color: #002044;
     position: relative;
     margin-left: 1.5rem;
     padding-block: 1.5rem;
-    color:#ffffff;
+    /* color:#002044; */
+    color:#fefefe;
+
     font-weight: 700;
     transition: 0.5s;
   }

@@ -91,6 +91,19 @@
                         </div>
                     </div>
                 </div>
+                <hr>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">صورة البانر</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <img src="{{ asset('images/pages_banners/' . $title->banner) }}" alt="Blog Image" style="max-width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div><!-- End Card Content -->
         </section>
     </div>

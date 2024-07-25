@@ -6,8 +6,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur"
-        style="background-image: url('front/assets/img/background.jpg');">
-        <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
+        style="background-image: url('{{ asset('images/pages_banners/' . $aboutSection->banner) }}');">
         <div class="container ">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -72,7 +71,8 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="card border-custom">
                                         <div class="card-body text-center">
-                                            <i class="bi bi-check2-circle display-4 text-custom mb-3"></i>
+                                            {{-- <i class="bi bi-check2-circle display-4 text-custom mb-3"></i> --}}
+                                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}" class="img ml-1 new_icon" alt="icon">
                                             <p class="card-text">{{ $advantage->name }}</p>
                                         </div>
                                     </div>
@@ -99,7 +99,7 @@
                         <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3"
                             data-wow-duration="900ms"
                             style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
-                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img ml-1" alt="icon">
+                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img ml-1 new_icon" alt="icon">
                             <span class="timer counter alt-font appear" data-to="810"
                                 data-speed="7000">{{ $counter->number }}</span>
                             <span class="counter-title">{{ $counter->title }}</span>
@@ -111,7 +111,7 @@
                     <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
                         data-wow-duration="600ms"
                         style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
-                        <img src="{{ asset('images/counters/' . 'place.png') }}" class="img ml-1"
+                        <img src="{{ asset('images/counters/' . 'place.png') }}" class="img ml-1 new_icon"
                             alt="Main Company Headquarters">
                         <span class="timer counter_text alt-font appear mb-1">الرياض</span>
                         <span class="counter-title">مقر الشركة</span>
@@ -236,12 +236,12 @@
                         </div><!-- End Section Title -->
 
 
-                        <div class="row">
+                        <div class="row d-flex justify-content-center align-items-center">
                             @foreach ($cities as $city)
-                                <div class="col-md-6 mb-4">
-                                    <div class="card border-secondry">
+                                <div class="col-md-3 mb-4">
+                                    <div class="card city-card border-secondary">
                                         <div class="card-body text-center">
-                                            <i class="fa fa-location display-4 text-custom mb-3"></i>
+                                            <i class="fa-solid fa-location-dot text-custom"></i>
                                             <p class="card-text">{{ $city->name }}</p>
                                         </div>
                                     </div>

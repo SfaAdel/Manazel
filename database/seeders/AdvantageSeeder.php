@@ -16,22 +16,28 @@ class AdvantageSeeder extends Seeder
         //
 
         Advantage::create([
-            'name' => 'استخدام أفضل الأدوات'
+            'name' => 'استخدام أفضل الأدوات',
+            'icon'=>'1.png',
         ]);
         Advantage::create([
-            'name' => 'خدمة متنوعة و شاملة '
+            'name' => 'خدمة متنوعة و شاملة ',
+            'icon'=>'2.png',
         ]);
         Advantage::create([
-            'name' => 'أفضل خدمة صيانة '
+            'name' => 'أفضل خدمة صيانة',
+            'icon'=>'3.png',
         ]);
         Advantage::create([
-            'name' => 'أفضل قيمة مقابل السعر '
+            'name' => 'أفضل قيمة مقابل السعر',
+            'icon'=>'4.png',
         ]);
         Advantage::create([
-            'name' => 'خدمة في الوقت المحدد '
+            'name' => 'خدمة في الوقت المحدد ',
+            'icon'=>'5.png',
         ]);
         Advantage::create([
-            'name' => 'التعامل مع امهر المتخصصين'
+            'name' => 'التعامل مع امهر المتخصصين',
+            'icon'=>'6.png',
         ]);
     }
 }

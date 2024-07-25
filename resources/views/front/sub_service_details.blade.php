@@ -7,7 +7,6 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur"
         style="background-image: url('{{ asset('images/categories_bannars/' . $sub_service->service->category->bannar) }}');">
-        <div class="background-blur" style="background-image: url('{{ asset('images/categories_bannars/' . $sub_service->service->category->bannar) }}');"></div>
         <div class="container">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -21,7 +20,7 @@
         <div class="pd-wrap">
             <div class="container">
                 <div class="row p-3">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="product-dtl">
                             @if (session()->has('success'))
                                 <div class="alert alert-success" id="success-alert">
@@ -45,24 +44,27 @@
 
                             <div class="product-info">
                                 <div>
-                                    <div class="product-name">
+                                    <div class="product-name center mb-3">
                                         <img src="{{ asset('images/sub_services/' . $sub_service->icon) }}"
-                                            class="img-fluid animated rounded m-3" alt="photo">
+                                            class="product_img img-fluid animated rounded mb-2" alt="photo">
+                                        <br>
                                         {{ $sub_service->name }}
                                     </div>
-                                    <div class="rate mx-1">
-                                        <input type="radio" id="star5" name="rate" value="5" checked />
-                                        <label for="star5" title="text">5 stars</label>
-                                        <input type="radio" id="star4" name="rate" value="4" checked />
-                                        <label for="star4" title="text">4 stars</label>
-                                        <input type="radio" id="star3" name="rate" value="3" checked />
-                                        <label for="star3" title="text">3 stars</label>
-                                        <input type="radio" id="star2" name="rate" value="2" />
-                                        <label for="star2" title="text">2 stars</label>
-                                        <input type="radio" id="star1" name="rate" value="1" />
-                                        <label for="star1" title="text">1 star</label>
-                                    </div>
+                                    <br>
                                 </div>
+                                <div class="rate mx-1 center">
+                                    <input type="radio" id="star5" name="rate" value="5" checked />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" value="4" checked />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" value="3" checked />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                </div>
+                                <br>
                                 <div>{!! $sub_service->long_description !!}</div>
 
                                 <form method="POST" action="{{ route('book_appointment') }}">

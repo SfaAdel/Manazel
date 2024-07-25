@@ -6,7 +6,6 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur" style="background-image:url('{{ asset('images/categories_bannars/' . $service->category->bannar) }}');">
-        <div class="background-blur" style="background-image: url('{{ asset('images/categories_bannars/' . $service->category->bannar) }}');"></div>
         <div class="container ">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -43,7 +42,7 @@
             <div class="row m-auto ml-3">
                 @foreach($sub_services as $sub_service)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 align-items-center m-auto my-3"> <!-- Added col-6 for mobile view -->
-                        <div class="custom-card">
+                        <div class="custom-card center">
                             <div class="center">
                                 <img class="custom-card-img-top my-3" src="{{ asset('images/sub_services/' . $sub_service->icon) }}" alt="{{ $sub_service->name }}">
                             </div>
@@ -51,28 +50,33 @@
                                 <!-- Optionally, you can keep the like button here if needed -->
                             </div>
                             <div class="custom-card-body">
+
                                 <h4 class="custom-card-title">
-                                    <a href="{{ route('sub_service_details', $sub_service->id) }}" class="stretched-link">{{ $sub_service->name }}</a>
+                                    {{ $sub_service->name }}
                                 </h4>
-                                <h6 class="custom-card-subtitle mb-2 text-muted my-1">التصنيف : {{ $sub_service->service->category->name }}</h6>
+
+                                <h6 class="custom-card-subtitle mb-2 text-muted my-1 text-bold"> <span class="custom-card-subtitle-span">التصنيف :</span> {{ $sub_service->service->category->name }}</h6>
                                 <p class="custom-card-text">{{ $sub_service->short_description }}</p>
                                 <div class="">
 
                                     <div class="price text-success custom-price d-block my-2">
 
                                         @if ($sub_service->price_on_serve)
-                                        <h5 class="mr-1">
+                                        <h5 class="mr-1 text-custom">
+                                            <span> السعر  :</span>
                                             تسعر عند الزيارة
                                         </h5>
                                     @else
-                                    <h5 class="mr-3">{{ $sub_service->price }} ريال</h5>
+                                    <h5 class="mr-3 text-custom"> <span> السعر  :</span> {{ $sub_service->price }} ريال</h5>
 
                                     @endif
                                     </div>
+<div>
+    <a href="{{ route('sub_service_details', $sub_service->id) }}" class="btn btn-service stretched-link">
+        <i class="fas fa-shopping-cart"></i>حجز الخدمة
+    </a>
+</div>
 
-                                    <a href="#" class="btn btn-danger ml-3 custom-btn">
-                                        <i class="fas fa-shopping-cart"></i>حجز الخدمة
-                                    </a>
                                 </div>
                             </div>
                         </div>

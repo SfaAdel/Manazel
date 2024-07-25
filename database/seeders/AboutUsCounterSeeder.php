@@ -18,17 +18,17 @@ class AboutUsCounterSeeder extends Seeder
         AboutUsCounter::create([
             'title' => 'مشروع منجز',
             'number' => '14000',
-            'icon' => '1717063589.PNG',
+            'icon' => '1.png',
         ]);
         AboutUsCounter::create([
             'title' => 'عملاء سعداء',
             'number' => '18000',
-            'icon' => '1717063619.PNG',
+            'icon' => '2.png',
         ]);
         AboutUsCounter::create([
             'title' => 'تاريخ الإنشاء',
             'number' => '2000',
-            'icon' => '1717063602.PNG',
+            'icon' => '3.png',
         ]);
     }
 }

@@ -5,8 +5,7 @@
 
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section background-blur" style="background-image: url('front/assets/img/background.jpg');">
-        <div class="background-blur" style="background-image: url('front/assets/img/service-bg.jpg');"></div>
+    <section id="hero" class="hero section background-blur" style="background-image: url('{{ asset('images/pages_banners/' . $categoriesSection->banner) }}');">
         <div class="container ">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -36,11 +35,11 @@
                     <div class="col-xl-3 col-md-6 col-sm-12 d-flex" data-aos="fade-up" data-aos-delay="100">
                       <div class="service-item position-relative center">
                         <div class="icon">
-                          <img class="custom-card-img-top my-3" src="{{ asset('images/categories/' . $navCategory->icon) }}" alt="{{ $navCategory->name }}">
+                          <img class="custom-card-img-top my-3 new_icon" src="{{ asset('images/categories/' . $navCategory->icon) }}" alt="{{ $navCategory->name }}">
                         </div>
                         <h4><a href="{{ route('services', $navCategory->id) }}" class="stretched-link">{{ $navCategory->name }}</a></h4>
                         <p>{{ $navCategory->description }}</p>
-                        <a href="{{ route('services', $navCategory->id) }}" class="btn btn-blue mt-3">معرفة المزيد</a>
+                        <a href="{{ route('services', $navCategory->id) }}" class="btn btn-blue mt-3"> تعرف علي الخدمات</a>
                       </div>
                     </div>
                   @endforeach

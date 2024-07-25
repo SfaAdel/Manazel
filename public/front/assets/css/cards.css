@@ -59,7 +59,22 @@
     transform: scale(1.09);
 }
 
+.btn-service{
+    background-color: #002044;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block; /* Ensures button width doesn't expand */
+}
 
+.btn-service:hover {
+    background-color: #fd7c07;
+    color: #ffffff;
+    transform: scale(1.05);
+}
 
 .center {
     text-align: center; /* Center aligns inline elements */
@@ -104,16 +119,18 @@
     font-size: 1.1rem;
     margin-bottom: 10px;
     font-weight: bold;
+color: #002044 !important;
 }
 
-.custom-card-title:hover {
-    font-size: 1.2rem;
-    color: #fd7c07;
-}
+
 
 .custom-card-subtitle {
     font-size: 0.9rem;
     color: #6c757d;
+}
+
+.custom-card-subtitle-span{
+font-weight: bolder;
 }
 
 .custom-card-text {
@@ -129,4 +146,11 @@
 
 .custom-price {
     font-size: 1rem;
+font-weight: bold;
 }
+
+.new_icon{
+    height: 6rem;
+    width: 6rem;
+}
+

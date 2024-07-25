@@ -44,9 +44,14 @@ class BlogController extends Controller
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/blogs'), $ImageName);
         }
+        if ($request->hasFile('banner')) {
+            $BannerImageName = time() . '.' . $request->banner->extension();
+            $request->banner->move(('images/blogs_banners/'), $BannerImageName);
+        }
 
         Blog::create($request->except('icon', '_token') +
-            ['icon' => $ImageName]);
+            ['icon' => $ImageName]+
+            ['banner' => $BannerImageName]);
 
 
         return redirect()->route('admin.blogs.index')->with('success', 'تم اضافة البيانات بنجاح');
@@ -85,6 +90,11 @@ class BlogController extends Controller
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/blogs'), $ImageName);
             $blog->update(['icon' => $ImageName]);
+        }
+        if ($request->hasFile('banner')) {
+            $BannerImageName = time() . '.' . $request->banner->extension();
+            $request->banner->move(('images/blogs_banners/'), $BannerImageName);
+            $blog->update(['banner' => $BannerImageName]);
         }
         return redirect()->route('admin.blogs.index')->with('success', 'تم تعديل البيانات بنجاح');
     }

@@ -7,7 +7,6 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur"
         style="background-image: url('{{ asset('images/categories_bannars/' . $category->bannar) }}');">
-        <div class="background-blur" style="background-image: url('{{ asset('images/categories_bannars/' . $category->bannar) }}');"></div>
         <div class="container ">
             <div class="row text-center">
                 <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
@@ -41,7 +40,7 @@
                                 data-aos-delay="100">
                                 <div class="service-item position-relative center">
                                     <div class="icon">
-                                        <img class="custom-card-img-top my-3"
+                                        <img class="custom-card-img-top my-1 new_icon"
                                             src="{{ asset('images/services/' . $service->icon) }}"
                                             alt="{{ $service->name }}">
                                     </div>
