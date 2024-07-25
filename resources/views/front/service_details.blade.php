@@ -26,7 +26,7 @@
 
 
     <!-- Services Section -->
-    <section id="services" class="section ">
+    <section id="services" class="services section mt-5">
 
         <!-- Section Title -->
         <div class="container section-title text-center my-4">
@@ -38,13 +38,15 @@
 
         @if (!$sub_services->isEmpty())
 
-        <div class="container custom-card-container">
-            <div class="row m-auto ml-3">
+        <div class="container mt-3">
+
+            <div class="row gy-4">
                 @foreach($sub_services as $sub_service)
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 align-items-center m-auto my-3"> <!-- Added col-6 for mobile view -->
-                        <div class="custom-card center">
+                <div class="col-xl-3 col-md-6 d-flex align-items-center m-auto my-3" data-aos="fade-up"
+                data-aos-delay="100">
+                <div class="service-item position-relative center">
                             <div class="center">
-                                <img class="custom-card-img-top my-3" src="{{ asset('images/sub_services/' . $sub_service->icon) }}" alt="{{ $sub_service->name }}">
+                                <img class="custom-card-img-top my-1 new_icon" src="{{ asset('images/sub_services/' . $sub_service->icon) }}" alt="{{ $sub_service->name }}">
                             </div>
                             <div class="card-img-overlay d-flex justify-content-end">
                                 <!-- Optionally, you can keep the like button here if needed -->
@@ -55,7 +57,7 @@
                                     {{ $sub_service->name }}
                                 </h4>
 
-                                <h6 class="custom-card-subtitle mb-2 text-muted my-1 text-bold"> <span class="custom-card-subtitle-span">التصنيف :</span> {{ $sub_service->service->category->name }}</h6>
+                                {{-- <h6 class="custom-card-subtitle mb-2 text-muted my-1 text-bold"> <span class="custom-card-subtitle-span">التصنيف :</span> {{ $sub_service->service->category->name }}</h6> --}}
                                 <p class="custom-card-text">{{ $sub_service->short_description }}</p>
                                 <div class="">
 

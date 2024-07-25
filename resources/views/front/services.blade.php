@@ -47,8 +47,8 @@
                                     <h4><a href="{{ route('service_details', $service->id) }}"
                                             class="stretched-link">{{ $service->name }} </a></h4>
                                     <p> {{ $service->description }} </p>
-                                    <a href="{{ route('service_details', $service->id) }}" class="btn btn-blue mt-3">معرفة
-                                        المزيد</a>
+                                    <a href="{{ route('service_details', $service->id) }}" class="btn btn-blue mt-3">اختر
+                                        خدمة</a>
 
                                 </div>
                             </div><!-- End Service Item -->

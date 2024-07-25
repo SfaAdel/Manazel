@@ -234,7 +234,7 @@
                                 <div class="icon">
                                     <h4>
                                         <img src="{{ asset('images/categories/' . $category->icon) }}"
-                                            class="service_icon ml-1" alt="icon">
+                                            class="service_icon" alt="icon">
                                         {{ $category->name }}
                                     </h4>
                                 </div>

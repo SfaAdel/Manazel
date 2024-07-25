@@ -44,9 +44,9 @@
 
                             <div class="product-info">
                                 <div>
-                                    <div class="product-name center mb-3">
+                                    <div class="product-name center mb-2">
                                         <img src="{{ asset('images/sub_services/' . $sub_service->icon) }}"
-                                            class="product_img img-fluid animated rounded mb-2" alt="photo">
+                                            class="product_img img-fluid animated rounded mb-3" alt="photo">
                                         <br>
                                         {{ $sub_service->name }}
                                     </div>
@@ -65,7 +65,6 @@
                                     <label for="star1" title="text">1 star</label>
                                 </div>
                                 <br>
-                                <div>{!! $sub_service->long_description !!}</div>
 
                                 <form method="POST" action="{{ route('book_appointment') }}">
                                     @csrf
@@ -165,12 +164,14 @@
 
                                     </div>
                                     @if (auth()->guard('customer')->check())
-                                        <button type="submit" class="round-black-btn">تأكيد الحجز</button>
+                                        <button type="submit" class="round-black-btn btn btn-custom">تأكيد الحجز</button>
                                     @else
-                                        <a class="round-black-btn" href="{{ route('login') }}">يجب عليك تسجيل الدخول قبل
-                                            حجز الخدمة</a>
+                                        <a class="btn btn-blue m-3" href="{{ route('login') }}">يجب عليك تسجيل الدخول أولا</a>
                                     @endif
                                 </form>
+<hr class="my-3">
+                                <div class="my-3">{!! $sub_service->long_description !!}</div>
+
                             </div>
                         </div>
                     </div>
