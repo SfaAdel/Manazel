@@ -7,7 +7,7 @@
     <section id="hero" class="hero section background-blur mb-5"
         style="background-image: url('{{ asset('images/pages_banners/' . $mainSection->banner) }}');">
         <div class="container px-4">
-            <div class="row gy-4 mr-4">
+            <div class="row gy-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
                     <h1 class="my-3">
                         أهلا بك في <span class="text-custom"> منازل </span>

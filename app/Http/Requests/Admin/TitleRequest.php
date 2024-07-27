@@ -41,6 +41,7 @@ class TitleRequest extends FormRequest
                 Rule::unique('titles', 'section')->ignore($titleId),
             ],
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
+            'banner' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
 
         ];
     }
@@ -51,6 +52,8 @@ class TitleRequest extends FormRequest
             'short_description' => 'وصف قصير',
             'section' => 'القسم',
             'icon' => 'صورة',
+            'banner' => 'صورة البانر',
+
         ];
     }
 }

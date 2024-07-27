@@ -6,16 +6,23 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur" style="background-image: url('{{ asset('images/pages_banners/' . $categoriesSection->banner) }}');">
-        <div class="container ">
-            <div class="row text-center">
-                <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
 
-                    <h1 class="my-3">جميع التصنيفات  </h1>
-                    {{-- <p>{{ $category->description }}</p> --}}
+        <div class="container px-4">
+            <div class="row gy-4">
+                <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+                    <h1 class="my-3">
+                        جميع التصنيفات
+                    </h1>
+                    <hr class="text-light">
+                    <p class="mt-2">{{ $categoriesSection->short_description }}</p>
 
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img center" data-aos="zoom-out" data-aos-delay="200">
+                    <img src="{{ asset('images/titles/' . $categoriesSection->icon) }}" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
+
     </section>
 
     <main class="container my-6 p-6">

@@ -85,7 +85,7 @@ class AuthController extends Controller
         $customer = new Customer();
         $customer->phone = $request->phone;
         $customer->name = $request->name;
-        $customer->p = $request->password;
+        // $customer->p = $request->password;
         $customer->password = bcrypt($request->password);
         $customer->generateOTP();
         $customer->save();

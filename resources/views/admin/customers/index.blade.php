@@ -37,7 +37,7 @@
           <tr>
             <th>الاسم </th>
             <th>رقم الهاتف</th>
-            <th>كلمة المرور</th>
+            {{-- <th>كلمة المرور</th> --}}
             <th>الاجراءات</th>
           </tr>
           </thead>
@@ -46,7 +46,7 @@
               <tr>
                 <td>{{ $customer->name }}</td>
                 <td>{{ $customer->phone }}</td>
-                <td>{{ $customer->p }}</td>
+                {{-- <td>{{ $customer->p }}</td> --}}
                 <td>
                     <div class="buttons has-addons">
                         {{-- <a class="button is-info" href="{{ route('admin.customers.edit', $customer->id) }}">

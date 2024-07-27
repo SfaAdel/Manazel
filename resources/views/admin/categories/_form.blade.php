@@ -56,6 +56,20 @@
             </div>
         </div>
     </div>
+    <hr />
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">لوجو البانر </label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <uploader label="لوجو البانر" name="logo" @if (isset($category))
+                        file="{{ asset('images/categories/' . $category->logo) }}" @endif></uploader>
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!-- End Card Content -->
 <!-- Start Card Footer -->
 <div class="card-footer">

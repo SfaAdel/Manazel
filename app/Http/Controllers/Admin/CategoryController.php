@@ -44,9 +44,14 @@ class CategoryController extends Controller
             $BannarImageName = time() . '.' . $request->bannar->extension();
             $request->bannar->move(('images/categories_bannars/'), $BannarImageName);
         }
-        Category::create($request->except('icon', '_token') +
+        if ($request->hasFile('logo')) {
+            $LogoImageName = time() . '.' . $request->logo->extension();
+            $request->logo->move(('images/categories/'), $LogoImageName);
+        }
+        Category::create($request->except('icon','bannar','logo', '_token') +
             ['icon' => $ImageName]+
-            ['bannar' => $BannarImageName]);
+            ['bannar' => $BannarImageName]+
+            ['logo' => $LogoImageName]);
 
         return redirect()->route('admin.categories.index')->with('success', 'تم اضافة البيانات بنجاح');
     }
@@ -76,7 +81,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         //
-        $category->update($request->except('icon','bannar', '_token', '_method'));
+        $category->update($request->except('icon','bannar','logo', '_token', '_method'));
         if ($request->hasFile('icon')) {
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/categories'), $ImageName);
@@ -86,6 +91,11 @@ class CategoryController extends Controller
             $BannarImageName = time() . '.' . $request->bannar->extension();
             $request->bannar->move(('images/categories_bannars/'), $BannarImageName);
             $category->update(['bannar' => $BannarImageName]);
+        }
+        if ($request->hasFile('logo')) {
+            $LogoImageName = time() . '.' . $request->logo->extension();
+            $request->logo->move(('images/categories'), $LogoImageName);
+            $category->update(['logo' => $LogoImageName]);
         }
 
         return redirect()->route('admin.categories.index')->with('success', 'تم تعديل البيانات بنجاح');

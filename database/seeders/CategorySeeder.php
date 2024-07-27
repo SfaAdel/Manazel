@@ -19,12 +19,14 @@ class CategorySeeder extends Seeder
             'description' => 'صيانة واصلاح وتركيب جميع انواع الغسالات',
             'icon' => '4.png',
             'bannar' => '4.png',
+            'logo' => 'logo1.png',
         ]);
         Category::create([
             'name' => 'سباكة',
             'description' => 'صيانة واصلاح وتركيب جميع انواع الثلاجات',
             'icon' => '3.png',
             'bannar' => '3.png',
+            'logo' => 'logo2.png',
 
         ]);
         Category::create([
@@ -32,6 +34,7 @@ class CategorySeeder extends Seeder
             'description' => 'صيانة واصلاح وتركيب جميع انواع الافران',
             'icon' => '2.png',
             'bannar' => '2.png',
+            'logo' => 'logo1.png',
 
         ]);
         Category::create([
@@ -39,6 +42,8 @@ class CategorySeeder extends Seeder
             'description' => 'صيانة واصلاح وتركيب جميع انواع المكيفات',
             'icon' => '1.png',
             'bannar' => '1.png',
+            'logo' => 'logo2.png',
+
         ]);
     }
 }

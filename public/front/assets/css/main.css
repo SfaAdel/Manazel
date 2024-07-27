@@ -408,9 +408,11 @@ h6 {
     opacity: 0;
     left: 15px;
     z-index: 99999;
-    background-color: var(--background-color);
-    width: 44px;
-    height: 44px;
+    /* background-color: var(--background-color); */
+    background-color: var(--accent-color);
+    color: #fff;
+    width: 50px;
+    height: 50px;
     border-radius: 50px;
     transition: all 0.4s;
 }
@@ -681,12 +683,15 @@ section,
     .hero h1 {
         font-size: 28px;
         line-height: 36px;
+        text-align: center;
     }
 
     .hero p {
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 30px;
+        text-align: center;
+
     }
 
     .hero .btn-get-started,
@@ -2198,7 +2203,7 @@ section,
 .counter-section span.counter,
 span.counter_text {
     font-size: 40px;
-    color:#002044;
+    color: #002044;
     line-height: 60px;
     display: block;
     /* letter-spacing: 2px; */
@@ -2302,7 +2307,6 @@ span.counter_text {
     }
 }
 
-
 /* ==========counters responsive=========== */
 /* Mobile view adjustments for carousel
 @media (max-width: 767.98px) {
@@ -2352,7 +2356,6 @@ span.counter_text {
     .mobile_icon {
         width: 4.2rem !important;
     }
-
 }
 
 /* ================================= */
@@ -2417,7 +2420,6 @@ span.counter_text {
     .service_icon {
         width: 2rem;
     }
-
 }
 
 /* =======new offer section========== */
@@ -2509,7 +2511,7 @@ span.counter_text {
     }
 }
 
-.product_img{
-height: 6rem;
-width: 6rem;
+.product_img {
+    height: 6rem;
+    width: 6rem;
 }

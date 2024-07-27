@@ -7,11 +7,18 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section background-blur"
         style="background-image: url('{{ asset('images/categories_bannars/' . $sub_service->service->category->bannar) }}');">
-        <div class="container">
-            <div class="row text-center">
-                <div class="d-flex flex-column justify-content-center" data-aos="zoom-out">
-                    <p class="">تفاصيل خدمة</p>
-                    <h1 class="my-3">{{ $sub_service->name }}</h1>
+
+        <div class="container px-4">
+            <div class="row gy-4">
+                <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+                    <h1 class="my-3">
+                        {{ $sub_service->service->category->name }}
+                    </h1>
+                    <hr class="text-light">
+                    <p class="mt-2">{{ $sub_service->service->category->description }}</p>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img center" data-aos="zoom-out" data-aos-delay="200">
+                    <img src="{{ asset('images/categories/' . $sub_service->service->category->logo) }}" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
