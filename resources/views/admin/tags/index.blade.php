@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', 'الشعارات')
+@section('page.title', 'الوسوم')
 <!-- Start Content Section -->
 @section('content')
   <!-- Start Card -->
@@ -14,7 +14,7 @@
         <span class="icon">
             <i class="fa-solid fa-tag"></i>
         </span>
-              <span>اضافة شعار</span>
+              <span>اضافة وسوم</span>
           </a>
 
       </div><!-- End Card Header -->

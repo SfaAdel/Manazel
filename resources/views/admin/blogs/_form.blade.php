@@ -18,7 +18,7 @@
 
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">الشعارات</label>
+            <label class="label required">الوسوم</label>
         </div>
         <div class="field-body">
             <div class="field">

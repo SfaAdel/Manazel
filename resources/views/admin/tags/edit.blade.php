@@ -12,7 +12,7 @@
         <span class="icon is-small">
             <i class="fa-solid fa-list"></i>
         </span>
-        <span>قائمة الشعارات</span>
+        <span>قائمة الوسوم</span>
       </a>
     </div><!-- End Card Header -->
     <!-- Start Form -->
