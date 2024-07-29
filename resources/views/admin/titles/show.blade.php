@@ -86,7 +86,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <img src="{{ asset('images/titles/' . $title->icon) }}" alt="Blog Image" style="max-width: 100%;">
+                                <img src="{{ asset('images/titles/' . $title->icon) }}" alt="Blog Image" style="max-width: 30rem;">
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <img src="{{ asset('images/pages_banners/' . $title->banner) }}" alt="Blog Image" style="max-width: 100%;">
+                                <img src="{{ asset('images/pages_banners/' . $title->banner) }}" alt="Blog Image" style="max-width: 30rem;">
                             </div>
                         </div>
                     </div>

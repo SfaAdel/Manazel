@@ -23,13 +23,13 @@
       <div class="row gy-4 center">
         <div class="col-lg-4 col-md-6 footer-about ">
           <a href="{{ route('home') }}" class="center">
-            <span class="sitename">منازل</span>
+            <span class="sitename">{{$setting->name}}</span>
           </a>
           <div class="footer-contact pt-3 text-right d-flex flex-column align-items-center">
             <div class="footer-contact pt-3 text-right d-flex flex-column align-items-start">
-                <p> <i class="fa fa-location-dot text-custom mx-2"></i> <strong class=""> المقر :</strong> <span> الرياض - المملكة العربية السعودية</span></p>
-                <p class="mt-3"> <i class="fa fa-phone text-custom mx-2"></i> <strong class="">رقم الهاتف :</strong> <span>00966542936554</span> </p>
-                <p class="mt-3"><i class="fa fa-envelope text-custom mx-2"></i> <strong class="">البريد الالكتروني:</strong> <span>Info@mnazel.com</span></p>
+                <p> <i class="fa fa-location-dot text-custom mx-2"></i> <strong class=""> المقر :</strong> <span> {{$setting->address}}  </span></p>
+                <p class="mt-3"> <i class="fa fa-phone text-custom mx-2"></i> <strong class="">رقم الهاتف :</strong> <span>{{$setting->phone}}</span> </p>
+                <p class="mt-3"><i class="fa fa-envelope text-custom mx-2"></i> <strong class="">البريد الالكتروني:</strong> <span>{{$setting->email}}</span></p>
             </div>
         </div>
     </div>
@@ -73,7 +73,7 @@
                     <li><i class="bi bi-chevron-right"></i> <a href="{{ route('about') }}">من نحن</a></li>
                     <li><i class="bi bi-chevron-right"></i> <a href="{{ route('categories') }}">خدماتنا</a></li>
                     <li><i class="bi bi-chevron-right"></i> <a href="{{ route('contact') }}">تواصل معنا </a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="mailto:Info@mnazel.com"> Info@mnazel.com  </a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="mailto:{{$setting->email}}"> {{$setting->email}}  </a></li>
 
                 </ul>
         </div>
@@ -82,14 +82,14 @@
         <div class="col-lg-4 col-md-12 mb-4">
           <h4>تابعنا</h4>
           <div class="social-links d-flex justify-content-center ">
-            <a href="https://x.com/Mnazel_KSA"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href="{{$setting->x}}"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="{{$setting->facebook}}"><i class="bi bi-facebook"></i></a>
 
-            <a href=""><i class="bi bi-tiktok"></i></a>
-            <a href=""><i class="bi bi-youtube"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="{{$setting->tiktok}}"><i class="bi bi-tiktok"></i></a>
+            <a href="{{$setting->youtube}}"><i class="bi bi-youtube"></i></a>
+            <a href="{{$setting->linkedin}}"><i class="bi bi-linkedin"></i></a>
 
-            <a href="https://www.instagram.com/mnazel_sa/"><i class="bi bi-instagram"></i></a>
+            <a href="{{$setting->instagram}}"><i class="bi bi-instagram"></i></a>
           </div>
         </div>
 
@@ -97,13 +97,13 @@
     </div>
 
     <div class="container copyright text-center mt-2">
-      <p> <span></span> <strong class="px-1 sitename">منازل</strong> <span> © جميع الحقوق محفوظة </span></p>
+      <p> <span></span> <strong class="px-1 sitename">{{$setting->name}}</strong> <span> © جميع الحقوق محفوظة </span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        صنع بكل حب <a href="https://bootstrapmade.com/"><i class="fa fa-heart text-danger"></i></a>
+        صنع بكل حب <a href="#"><i class="fa fa-heart text-danger"></i></a>
       </div>
     </div>
 

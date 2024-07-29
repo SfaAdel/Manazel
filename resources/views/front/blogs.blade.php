@@ -40,6 +40,14 @@
         <div class="container section-title" data-aos="fade-up">
             <h2>{{ $blogSection->title }}</h2>
             <p>{{ $blogSection->short_description }}</p>
+            <div class="m-2">
+                <div class="tag-list">
+                    @foreach($tags as $tag)
+                    <a href="{{ route('blogs.filterByTag', $tag->id) }}" class="mx-1">{{ $tag->name }}</a>
+                @endforeach
+
+                </div>
+            </div>
         </div><!-- End Section Title -->
 
         @if (!isset($blogs) || $blogs->isEmpty())

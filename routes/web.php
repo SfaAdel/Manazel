@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClickController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CustomerController;
@@ -97,6 +98,7 @@ Route::post('login', [AuthController::class, 'login']);
 
     Route::post('/register-click', [ClickController::class, 'registerClick'])->name('register.click');
 
+    Route::get('/blogs/filter/tag/{tag}', [BlogController::class, 'filterByTag'])->name('blogs.filterByTag');
 
     Route::get('/about', [HomeController::class, 'about'])->name('about');
     Route::get('/blogs', [HomeController::class, 'blog'])->name('blogs');

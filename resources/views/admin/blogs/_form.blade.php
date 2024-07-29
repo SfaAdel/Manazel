@@ -15,6 +15,26 @@
         </div>
     </div>
     <hr />
+
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label required">الشعارات</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <select-all :inputs="{{ $tags }}" forname="tags[]"
+                        @if(isset($blog) && $blog->tags->isNotEmpty())
+                            :oldvalues="{{ $blog->tags }}"
+                        @endif>
+                    </select-all>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<hr/>
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">العنوان الرئيسي </label>

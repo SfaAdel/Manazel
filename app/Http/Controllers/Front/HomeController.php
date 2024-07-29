@@ -12,8 +12,10 @@ use App\Models\Customer;
 use App\Models\CustomerReview;
 use App\Models\District;
 use App\Models\Service;
+use App\Models\Setting;
 use App\Models\SubService;
 use App\Models\SubServiceAvailability;
+use App\Models\Tag;
 use App\Models\Team;
 use App\Models\Testimonial;
 use App\Models\Title;
@@ -63,7 +65,9 @@ class HomeController extends Controller
 
         $subServicesWithOffer = SubService::where('offer', 1)->get();
 
-        return view('front.index', compact('subServicesWithOffer','navCategories','mainSection','contactSection','whyUsSection', 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
+        $setting= Setting::first();
+
+        return view('front.index', compact('setting','subServicesWithOffer','navCategories','mainSection','contactSection','whyUsSection', 'aboutSection','testimonialSection','blogSection','advantageSection','teamSection', 'serviceSection','categories','teams','titles','advantages','blogs','testimonials','whyUsAnsweres','counters'));
     }
 
     public function service($id)
@@ -72,8 +76,9 @@ class HomeController extends Controller
         $services = Service::where('category_id', $id)->latest()->get();
         $category = Category::find($id);
         $navCategories = Category::latest()->get();
+        $setting= Setting::first();
 
-        return view('front.services', compact('navCategories','services','category'));
+        return view('front.services', compact('setting','navCategories','services','category'));
     }
 
     public function service_details($id)
@@ -82,8 +87,9 @@ class HomeController extends Controller
         $sub_services = SubService::where('service_id', $id)->where('active', 1)->latest()->get();
         $service = Service::find($id);
         $navCategories = Category::latest()->get();
+        $setting= Setting::first();
 
-        return view('front.service_details', compact('navCategories', 'sub_services', 'service'));
+        return view('front.service_details', compact('setting','navCategories', 'sub_services', 'service'));
     }
 
     public function sub_service_details($id)
@@ -102,11 +108,12 @@ class HomeController extends Controller
             ->groupBy('day');
 
         $navCategories = Category::latest()->get();
+        $setting= Setting::first();
 
         $cities = City::latest()->get();
         $districts = District::latest()->get();
 
-        return view('front.sub_service_details', compact('navCategories','sub_service','availabilities','cities','districts'));
+        return view('front.sub_service_details', compact('setting','navCategories','sub_service','availabilities','cities','districts'));
     }
 
     public function submit_review(Request $request, $id)
@@ -136,8 +143,9 @@ class HomeController extends Controller
 
         $contactSection = Title::where('section', 'contacts')->first();
         $navCategories = Category::latest()->get();
+        $setting= Setting::first();
 
-        return view('front.contact', compact('contactSection','navCategories'));
+        return view('front.contact', compact('setting','contactSection','navCategories'));
     }
 
     public function about()
@@ -157,48 +165,70 @@ class HomeController extends Controller
         $counters=AboutUsCounter::latest()->limit(3)->get();
 
         $navCategories = Category::latest()->get();
+        $setting= Setting::first();
 
         $cities = City::latest()->get();
 
-        return view('front.about', compact('cities','navCategories','whyUsAnsweres','whyUsSection','counters','teams','teamSection', 'advantages','advantageSection','contactSection','aboutSection'));
+        return view('front.about', compact('setting','cities','navCategories','whyUsAnsweres','whyUsSection','counters','teams','teamSection', 'advantages','advantageSection','contactSection','aboutSection'));
     }
 
     public function blog()
     {
+
+
         $blogs = Blog::latest()->get();
         $blogSection = Title::where('section', 'blogs')->first();
         $categories = Category::latest()->get();
         $navCategories = Category::latest()->get();
+        $setting= Setting::first();
+        $tags = Tag::all();
 
-        return view('front.blogs', compact('navCategories','blogs','blogSection','categories'));
+        return view('front.blogs', compact('tags','setting','navCategories','blogs','blogSection','categories'));
     }
 
     public function blog_details($id)
     {
         $blog = Blog::find($id);
         $navCategories = Category::latest()->get();
+        $setting= Setting::first();
 
-        return view('front.blog_details', compact('blog','navCategories'));
+        return view('front.blog_details', compact('setting','blog','navCategories'));
+    }
+
+    public function filterByTag($tagId = null)
+    {
+
+
+        $blogSection = Title::where('section', 'blogs')->first();
+        $categories = Category::latest()->get();
+        $navCategories = Category::latest()->get();
+        $setting = Setting::first();
+        $tags = Tag::all(); // Make sure this line is present in all relevant methods
+
+        return view('front.blogs', compact('setting', 'navCategories', 'blogs', 'blogSection', 'categories', 'tags'));
     }
 
     public function filterByCategory($id = null)
-    {
-        $categories = Category::all();
-        $blogSection = Title::where('section', 'blogs')->first();
-        $navCategories = Category::latest()->get();
+{
+    $categories = Category::all();
+    $blogSection = Title::where('section', 'blogs')->first();
+    $navCategories = Category::latest()->get();
+    $setting = Setting::first();
+    $tags = Tag::all(); // Add this line to fetch all tags
 
-        if ($id) {
-            $blogs = Blog::where('category_id', $id)->get();
-            $selectedCategory = Category::find($id);
-        } else {
-            $blogs = Blog::all();
-            $selectedCategory = null;
-        }
-
-        $noBlogsMessage = $blogs->isEmpty() ? 'لا يوجد مدونات في هذه الفئة' : '';
-
-        return view('front.blogs', compact('blogs', 'categories', 'blogSection', 'navCategories', 'selectedCategory', 'noBlogsMessage'));
+    if ($id) {
+        $blogs = Blog::where('category_id', $id)->get();
+        $selectedCategory = Category::find($id);
+    } else {
+        $blogs = Blog::all();
+        $selectedCategory = null;
     }
+
+    $noBlogsMessage = $blogs->isEmpty() ? 'لا يوجد مدونات في هذه الفئة' : '';
+
+    return view('front.blogs', compact('setting', 'blogs', 'categories', 'blogSection', 'navCategories', 'selectedCategory', 'noBlogsMessage', 'tags'));
+}
+
 
 
 
@@ -206,15 +236,17 @@ class HomeController extends Controller
     {
         $navCategories = Category::latest()->get();
         $categoriesSection = Title::where('section', 'services')->first();
+        $setting= Setting::first();
 
-        return view('front.categories', compact('navCategories','categoriesSection'));
+        return view('front.categories', compact('setting','navCategories','categoriesSection'));
     }
 
     public function provider_form()
     {
         $navCategories = Category::latest()->get();
+        $setting= Setting::first();
 
-        return view('front.provider_form', compact('navCategories'));
+        return view('front.provider_form', compact('setting','navCategories'));
     }
 
 

@@ -25,6 +25,9 @@ use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\TitleController;
 use App\Http\Controllers\Admin\WhyUsController;
 use App\Http\Controllers\Admin\ProviderFormController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\TagController;
 use App\Models\City;
 use App\Models\District;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +53,7 @@ Route::group([
 
     Route::resource('services', ServiceController::class, ['except' => 'show']);
 
+    Route::resource('tags', TagController::class, ['except' => 'show']);
     Route::resource('cities', CityController::class, ['except' => 'show']);
     Route::resource('districts', DistrictController::class, ['except' => 'show']);
 
@@ -61,9 +65,10 @@ Route::group([
     Route::resource('testimonials', TestimonialController::class ,  ['except' => 'show']);
 
     Route::resource('teams', TeamController::class);
-
     Route::resource('blogs', BlogController::class);
     // Route::patch('blogs/{blog}', [BlogController::class, 'update'])->name('blogs.update');
+
+    Route::resource('settings', SettingController::class);
 
     Route::resource('about_us', AboutUsController::class);
 

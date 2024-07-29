@@ -59,6 +59,12 @@
         @endif
         <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة المدونات</a>
     </collapse-item>
+    <collapse-item title="الشعارات" icon="fa-solid fa-tag">
+        @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
+            <a class="link-item" href="{{ route('admin.tags.create') }}">اضافة شعار</a>
+        @endif
+        <a class="link-item" href="{{ route('admin.tags.index') }}">قائمة الشعارات</a>
+    </collapse-item>
     <collapse-item title=" العناوين" icon="fa-solid fa-heading">
         {{-- <a class="link-item" href="{{ route('admin.titles.create') }}"> اضافة عنوان</a> --}}
         <a class="link-item" href="{{ route('admin.titles.index') }}">قائمة العناوين</a>
@@ -111,6 +117,8 @@
             التواصل</span> </a>
     <a class="link-item" href="{{ route('admin.provider_form.index') }}"> <i class="fa-solid fa-bell"></i><span>طلبات
             الانضمام كمزود خدمة</span> </a>
+
+    <a href="{{ route('admin.settings.index') }}" class="card link-item-no-collapse"><i class="fa fa-cogs"></i><span>الاعدادات</span></a>
 
     <a href="{{ route('admin.logout') }}"
         onclick="event.preventDefault();

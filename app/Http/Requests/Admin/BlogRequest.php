@@ -27,18 +27,18 @@ class BlogRequest extends FormRequest
         $blogId = optional($this->route('blog'))->id;
 
         return [
-            //
             'main_title' => [
                 'required',
                 'string',
                 'min:3',
                 Rule::unique('blogs', 'main_title')->ignore($blogId),
             ],
-            // 'second_title' => 'required|string|min:3|max:3000',
             'short_description' => 'required|string|min:10',
             'long_description' => 'required|string|min:10',
             'icon' => 'image|mimes:jpeg,png,bmp,gif,jpg,svg,webp|max:10240',
             'category_id' => 'required|numeric|exists:categories,id',
+            'tags' => 'array',
+            'tags.*' => 'exists:tags,id',
         ];
     }
     public function attributes()

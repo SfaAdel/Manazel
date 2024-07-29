@@ -1,7 +1,7 @@
 <header id="header" class="container-xxl position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-light m-auto text-center px-4 px-lg-5 py-3 py-lg-0" id="navbar">
         <a href="{{ route('home') }}" class="navbar-brand p-0">
-            <img src="{{asset('front/assets/img/logo.png')}}" alt="logo" class="img-thumbnail ml-3">
+            <img src="{{ asset('images/settings/' . $setting->logo) }}" alt="logo" class="img-thumbnail ml-3">
         </a>
 
         <button class="navbar-toggler" style="box-shadow: none; border: none" type="button" data-bs-toggle="collapse"

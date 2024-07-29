@@ -20,8 +20,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-
-{{$blog->category->name}}
+                                {{ $blog->category->name }}
                             </div>
                         </div>
                     </div>
@@ -34,7 +33,9 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input type="text" class="input" value="{{ $blog->main_title }}" readonly>
+<p class="text-success">
+    {{ $blog->main_title }}
+</p>
                             </div>
                         </div>
                     </div>
@@ -47,12 +48,33 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input type="text" class="input" value="{{ $blog->short_description }}" readonly>
+                                <p> {{ $blog->short_description }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr />
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">الشعارات</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                @if($blog->tags->isNotEmpty())
+                                    <ul>
+                                        @foreach($blog->tags as $tag)
+                                            <li class="text-success">{{ $tag->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <p class="text-danger">لا توجد شعارات</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<hr/>
                 {{-- <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">العنوان الثانوي</label>
@@ -66,19 +88,7 @@
                     </div>
                 </div>
                 <hr /> --}}
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">وصف طويل</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <div class="control">
-                                <div>{!! $blog->long_description !!}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
+
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">صورة</label>
@@ -86,7 +96,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <img src="{{ asset('images/blogs/' . $blog->icon) }}" alt="Blog Image" style="max-width: 100%;">
+                                <img src="{{ asset('images/blogs/' . $blog->icon) }}" alt="Blog Image" style="max-width: 20rem;">
                             </div>
                         </div>
                     </div>
@@ -99,11 +109,26 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <img src="{{ asset('images/blogs_banners/' . $blog->banner) }}" alt="Blog Image" style="max-width: 100%;">
+                                <img src="{{ asset('images/blogs_banners/' . $blog->banner) }}" alt="Banner Image" style="max-width: 20rem;">
                             </div>
                         </div>
                     </div>
                 </div>
+                <hr>
+
+<div class="field is-horizontal">
+    <div class="field-label is-normal">
+        <label class="label">وصف طويل</label>
+    </div>
+    <div class="field-body">
+        <div class="field">
+            <div class="control">
+                <div>{!! $blog->long_description !!}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
             </div><!-- End Card Content -->
         </section>
     </div>

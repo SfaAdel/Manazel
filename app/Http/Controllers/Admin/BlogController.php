@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\BlogRequest;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Setting;
+use App\Models\Tag;
+use App\Models\Title;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -28,8 +31,9 @@ class BlogController extends Controller
     {
         //
         $categories = Category::all(['id', 'name']);
+        $tags = Tag::all(['id', 'name']);
 
-        return view('admin.blogs.create', compact('categories'));
+        return view('admin.blogs.create', compact('categories','tags'));
     }
 
     /**
@@ -49,10 +53,11 @@ class BlogController extends Controller
             $request->banner->move(('images/blogs_banners/'), $BannerImageName);
         }
 
-        Blog::create($request->except('icon', '_token') +
+        $blog = Blog::create($request->except('icon', '_token','tags') +
             ['icon' => $ImageName]+
             ['banner' => $BannerImageName]);
 
+        $blog->tags()->sync($request->input('tags', []));
 
         return redirect()->route('admin.blogs.index')->with('success', 'تم اضافة البيانات بنجاح');
     }
@@ -74,8 +79,9 @@ class BlogController extends Controller
     {
         //
         $categories = Category::all(['id', 'name']);
+        $tags = Tag::all(['id', 'name']);
 
-        return view('admin.blogs.edit', compact('blog','categories'));
+        return view('admin.blogs.edit', compact('blog','categories','tags'));
 
     }
 
@@ -85,7 +91,7 @@ class BlogController extends Controller
     public function update(BlogRequest $request, Blog $blog)
     {
         //
-        $blog->update($request->except('icon', '_token', '_method'));
+        $blog->update($request->except('icon', '_token', '_method','tags'));
         if ($request->hasFile('icon')) {
             $ImageName = time() . '.' . $request->icon->extension();
             $request->icon->move(('images/blogs'), $ImageName);
@@ -96,6 +102,10 @@ class BlogController extends Controller
             $request->banner->move(('images/blogs_banners/'), $BannerImageName);
             $blog->update(['banner' => $BannerImageName]);
         }
+
+        $blog->tags()->sync($request->input('tags', []));
+
+
         return redirect()->route('admin.blogs.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 
@@ -108,4 +118,25 @@ class BlogController extends Controller
         $blog->delete();
         return redirect()->route('admin.blogs.index')->with('delete', 'تم حذف البيانات بنجاح');
     }
+
+
+    public function filterByTag($tagId)
+    {
+        $categories = Category::all();
+        $blogSection = Title::where('section', 'blogs')->first();
+        $navCategories = Category::latest()->get();
+        $setting = Setting::first();
+        $tags = Tag::all();
+
+        $blogs = Blog::whereHas('tags', function ($query) use ($tagId) {
+            $query->where('tag_id', $tagId);
+        })->get();
+
+        $noBlogsMessage = $blogs->isEmpty() ? 'لا يوجد مدونات في هذه الفئة' : '';
+
+        return view('front.blogs', compact('setting', 'blogs', 'categories', 'blogSection', 'navCategories', 'tags', 'noBlogsMessage'));
+    }
 }
+
+
+

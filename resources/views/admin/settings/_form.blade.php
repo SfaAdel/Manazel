@@ -6,19 +6,7 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::text('site_name', null, ['class' => 'input', 'required']) !!}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label required">وصف الموقع</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    {!! Form::textarea('site_description', null, ['class' => 'textarea', 'rows' => 3  , 'required'] )!!}
+                    {!! Form::text('name', null, ['class' => 'input', 'required']) !!}
                 </div>
             </div>
         </div>
@@ -73,12 +61,48 @@
     </div>
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label">Twitter</label>
+            <label class="label">X</label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    {!! Form::text('twitter', null, ['class' => 'input'] )!!}
+                    {!! Form::text('x', null, ['class' => 'input'] )!!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">LinkedIn</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::text('linkedin', null, ['class' => 'input'] )!!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">Instagram</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::text('instagram', null, ['class' => 'input'] )!!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">Tiktok</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    {!! Form::text('tiktok', null, ['class' => 'input'] )!!}
                 </div>
             </div>
         </div>
@@ -95,18 +119,7 @@
             </div>
         </div>
     </div>
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label required">شروط النشر</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <div class="control">
-                    {!! Form::textarea('publication_policy', null, ['class' => 'textarea', 'rows' => 6  , 'required'] )!!}
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="field is-horizontal">
         <div class="field-label is-normal">
             <label class="label required">العنوان</label>
@@ -119,14 +132,16 @@
             </div>
         </div>
     </div>
+    <hr />
     <div class="field is-horizontal">
         <div class="field-label is-normal">
-            <label class="label required">الموقع علي الخريطة</label>
+            <label class="label required">لوجو الموقع </label>
         </div>
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <google-map :editable="true" @if(isset($setting)) :address="{latitude:{{ $setting->latitude }}, longitude:{{ $setting->longitude }}}" @endif></google-map>
+                    <uploader label="لوجو الموقع" name="logo" @if (isset($setting))
+                        file="{{ asset('images/settings/' . $setting->logo) }}" @endif></uploader>
                 </div>
             </div>
         </div>
@@ -134,7 +149,7 @@
 </div>
 <footer class="card-footer">
     <div class="buttons has-addons">
-        <a class="button is-info" href="{{ route('admin.dashboard') }}"> الغاء </a>
+        <a class="button is-info" href="{{ route('admin.settings.index') }}"> الغاء </a>
         <button type="submit" class="button is-success">حفظ</button>
     </div>
 </footer>
