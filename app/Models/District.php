@@ -18,4 +18,12 @@ class District extends Model
     {
         return $this->hasMany(Appointment::class);
     }
+    public function providerForms()
+    {
+        return $this->hasMany(ProviderForm::class);
+    }
+    public function generalRequests()
+    {
+        return $this->hasMany(GeneralRequest::class);
+    }
 }

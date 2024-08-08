@@ -90,7 +90,7 @@
 
             </div>
 
-            <div class=" mycounter carousel slide" id="advantagesCarousel" data-bs-ride="carousel">
+            {{-- <div class=" mycounter carousel slide" id="advantagesCarousel" data-bs-ride="carousel">
                 <div class="row">
 
 
@@ -112,6 +112,74 @@
                         data-wow-duration="600ms"
                         style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
                         <img src="{{ asset('images/counters/' . 'place.png') }}" class="img ml-1 new_icon"
+                            alt="Main Company Headquarters">
+                        <span class="timer counter_text alt-font appear mb-1">الرياض</span>
+                        <span class="counter-title">مقر الشركة</span>
+                    </div>
+                    <!-- end counter -->
+                </div>
+            </div> --}}
+
+            <div id="advantage_mobile" class="mycounter carousel slide" id="advantagesCarousel" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <!-- Grouping counters in slides -->
+                    @php
+                        $countersWithPlace = $counters->concat([
+                            (object)['icon' => 'place.png', 'number' => '', 'title' => 'مقر الشركة']
+                        ])->chunk(2); // Split counters including place into chunks of 2
+                    @endphp
+                    @foreach ($countersWithPlace as $index => $counterChunk)
+                        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                            <div class="row">
+                                @foreach ($counterChunk as $counter)
+                                    <div class="col-md-3 col-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3">
+                                        <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon" alt="icon">
+                                        @if($counter->number)
+                                            <span class="timer counter alt-font appear" data-to="810" data-speed="7000">{{ $counter->number }}</span>
+                                        @else
+                                            <span class="timer counter_text alt-font appear mb-1">الرياض</span>
+                                        @endif
+                                        <span class="counter-title">{{ $counter->title }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Carousel controls if needed -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div id="advantage_web" class=" mycounter carousel slide" id="advantagesCarousel" data-bs-ride="carousel">
+                <div class="row">
+
+
+                    <!-- counter -->
+                    @foreach ($counters as $counter)
+                        <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3"
+                            data-wow-duration="900ms"
+                            style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
+                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon" alt="icon">
+                            <span class="timer counter alt-font appear" data-to="810"
+                                data-speed="7000">{{ $counter->number }}</span>
+                            <span class="counter-title">{{ $counter->title }}</span>
+                        </div>
+                    @endforeach
+                    <!-- end counter -->
+
+                    <!-- counter -->
+                    <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
+                        data-wow-duration="600ms"
+                        style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
+                        <img src="{{ asset('images/counters/' . 'place.png') }}" class="img  new_icon"
                             alt="Main Company Headquarters">
                         <span class="timer counter_text alt-font appear mb-1">الرياض</span>
                         <span class="counter-title">مقر الشركة</span>

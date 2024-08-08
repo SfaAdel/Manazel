@@ -32,6 +32,11 @@ class SubService extends Model
         return $this->hasMany(CustomerReview::class);
     }
 
+    public function generalRequests()
+    {
+        return $this->hasMany(GeneralRequest::class);
+    }
+
     public function availabilities()
     {
         return $this->hasMany(SubServiceAvailability::class);

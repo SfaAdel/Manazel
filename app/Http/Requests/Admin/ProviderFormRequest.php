@@ -24,7 +24,7 @@ class ProviderFormRequest extends FormRequest
         return [
             //
             'name' => 'required|string|min:3',
-            'email' => 'required|string|email|unique:provider_forms,email',
+            'nationality' => 'required|string',
             'phone' => [
                 'required',
                 'string',
@@ -44,7 +44,7 @@ class ProviderFormRequest extends FormRequest
     {
         return [
             'name' => ' الاسم',
-            'email' => ' البريد الالكترونى',
+            'nationality' => 'الجنسية',
             'phone' => 'رقم الهاتف',
             'category' => 'القسم',
             'birth_date' => 'تاريخ الميلاد',

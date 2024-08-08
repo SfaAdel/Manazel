@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProviderForm extends Model
+class GeneralRequest extends Model
 {
     use HasFactory;
-
     public function district()
     {
         return $this->belongsTo(District::class);
+    }
+    public function subService()
+    {
+        return $this->belongsTo(SubService::class);
     }
 }

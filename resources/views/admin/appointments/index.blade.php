@@ -116,9 +116,13 @@
                                                             </select>
                                                         </div>
                                                     </div>
-
+                                                    @if ($appointment->subService->price_on_serve == 1 && $appointment->status == 'completed')
+                                                    <div class="field d-inline mx-3">
+                                                        <input type="number" name="price" class="input" min="0" placeholder="تغيير السعر" value="{{ $appointment->price }}">
+                                                    </div>
+                                                    @endif
                                                     @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
-                                                        <button type="submit" class="button is-primary mx-3" {{ $appointment->status == 'completed' ? 'disabled' : '' }}>تحديث</button>
+                                                        <button type="submit" class="button is-primary mx-3" {{ $appointment->status == 'completed' & $appointment->subService->price_on_serve == 0 ? 'disabled' : '' }}>تحديث</button>
                                                     @endif
                                                 </div>
                                             </div>

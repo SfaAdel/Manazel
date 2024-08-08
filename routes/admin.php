@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\ClickController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GeneralRequestController;
 use App\Http\Controllers\Admin\ProviderAvailabilityController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\TitleController;
@@ -87,6 +88,7 @@ Route::group([
 
     Route::resource('orders', OrderController::class);
     Route::resource('appointments', AppointmentController::class);
+    Route::resource('general_requests', GeneralRequestController::class);
 
     Route::resource('contacts', ContactController::class);
     // Route::resource('abouts', TeamController::class);

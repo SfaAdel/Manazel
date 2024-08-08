@@ -191,8 +191,12 @@ class HomeController extends Controller
         $blog = Blog::find($id);
         $navCategories = Category::latest()->get();
         $setting= Setting::first();
+        $cities = City::latest()->get();
+        $districts = District::latest()->get();
+        $subServices=SubService::latest()->get();
+        $services=Service::latest()->get();
 
-        return view('front.blog_details', compact('setting','blog','navCategories'));
+        return view('front.blog_details', compact('services','subServices','districts','cities','setting','blog','navCategories'));
     }
 
     public function filterByTag($tagId = null)
@@ -245,8 +249,9 @@ class HomeController extends Controller
     {
         $navCategories = Category::latest()->get();
         $setting= Setting::first();
+        $cities = City::latest()->get();
 
-        return view('front.provider_form', compact('setting','navCategories'));
+        return view('front.provider_form', compact('cities','setting','navCategories'));
     }
 
 

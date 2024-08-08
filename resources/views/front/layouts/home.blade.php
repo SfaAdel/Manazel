@@ -163,7 +163,7 @@
                 <i class="bi bi-arrow-up-short"></i>
               </a>
               <a href="tel:+{{$setting->phone}}" class="fixed-icon phone d-flex align-items-center justify-content-center" onclick="registerClick('call')">
-                <i class="bi bi-phone"></i>
+                <i class="fa-solid fa-phone"></i>
             </a>
             <a href="https://wa.me/{{$setting->whatsapp}}" class="fixed-icon whatsapp d-flex align-items-center justify-content-center" onclick="registerClick('whatsapp')">
                 <i class="fab fa-whatsapp"></i>

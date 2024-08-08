@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone')->unique()->nullable();
-            $table->string('email')->nullable();
+            $table->string('nationality')->nullable();
             $table->string('category')->nullable();
             $table->date('birth_date')->nullable();
+            $table->foreignId('city_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

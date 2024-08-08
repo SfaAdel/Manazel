@@ -95,13 +95,28 @@
                             <hr />
 
 
+                            <div class="row mt-3">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="city">اختر المدينه التي تود المشاركة فيها كمزود خدمة
+                                        </label>
+                                        <select name="city_id" id="city" class="form-control" required>
+                                            <option value="" disabled selected>اختر المدينة</option>
+                                            @foreach ($cities as $city)
+                                                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label class="form-label" for="email"> البريد الالكتروني</label>
-                                        <input type="email" id="email" class="form-control"
-                                            placeholder="ادخل عنوان بريدك الالكتروني" name="email" required
-                                            value="{{ old('email') }}" />
+                                        <label class="form-label" for="nationality"> الجنسية </label>
+                                        <input type="string" id="nationality" class="form-control"
+                                            placeholder="ادخل جنسيتك" name="nationality" required
+                                            value="{{ old('nationality') }}" />
                                     </div>
                                 </div>
                                 <!-- Col -->

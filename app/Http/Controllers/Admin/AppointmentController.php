@@ -44,8 +44,10 @@ class AppointmentController extends Controller
         foreach ($appointments as $appointment) {
             if ($appointment->subService && $appointment->subService->service && $appointment->subService->service->category) {
                 $categoryId = $appointment->subService->service->category->id;
-                $providers[$appointment->id] = Provider::where('category_id', $categoryId)->get();
-            }
+                $providers[$appointment->id] = Provider::where('category_id', $categoryId)
+                ->where('status', '1')
+                ->get();
+                        }
         }
 
         return view('admin.appointments.index', compact('appointments','search','providers'));
@@ -165,12 +167,6 @@ class AppointmentController extends Controller
 
   // In AppointmentController.php
 
-
-
-
-
-
-
     /**
      * Update the specified resource in storage.
      */
@@ -189,10 +185,21 @@ class AppointmentController extends Controller
                     ->update(['availability' => true]);
 
                      $appointment->delete();
-                 } else {
+                 }elseif ($status === 'completed') {
+                    $appointment->update(['status' => $status]);
+                    $appointment->update(['price' => $appointment->subService->final_price]);
+                }
+                 else {
                      $appointment->update(['status' => $status]);
                  }
+
              }
+
+             if ($request->input('price')) {
+                if ($appointment->status === 'completed' && $appointment->subService->price_on_serve == 1) {
+                    $appointment->update(['price' => $request->input('price')]);
+                }
+            }
 
              // Update the provider_id if provided
              if ($request->filled('provider_id')) {

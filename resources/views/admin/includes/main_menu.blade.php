@@ -59,11 +59,11 @@
         @endif
         <a class="link-item" href="{{ route('admin.blogs.index') }}">قائمة المدونات</a>
     </collapse-item>
-    <collapse-item title="الشعارات" icon="fa-solid fa-tag">
+    <collapse-item title="الوسوم" icon="fa-solid fa-tag">
         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
-            <a class="link-item" href="{{ route('admin.tags.create') }}">اضافة شعار</a>
+            <a class="link-item" href="{{ route('admin.tags.create') }}">اضافة وسوم</a>
         @endif
-        <a class="link-item" href="{{ route('admin.tags.index') }}">قائمة الشعارات</a>
+        <a class="link-item" href="{{ route('admin.tags.index') }}">قائمة الوسوم</a>
     </collapse-item>
     <collapse-item title=" العناوين" icon="fa-solid fa-heading">
         {{-- <a class="link-item" href="{{ route('admin.titles.create') }}"> اضافة عنوان</a> --}}
@@ -99,6 +99,9 @@
     </collapse-item> --}}
     <collapse-item title="المواعيد والحجوزات" icon="fa-regular fa-calendar-check">
         <a class="link-item" href="{{ route('admin.appointments.index') }}">قائمة المواعيد</a>
+    </collapse-item>
+    <collapse-item title=" الطلبات الخارجية" icon="fa-regular fa-calendar-check">
+        <a class="link-item" href="{{ route('admin.general_requests.index') }}">قائمة الطلبات</a>
     </collapse-item>
     @if (auth('admin')->user()->role == 'super_admin')
         <collapse-item title=" الادارة" icon="fa fa-user-lock">
