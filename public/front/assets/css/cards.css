@@ -154,3 +154,10 @@ font-weight: bold;
     width: 4rem;
 }
 
+/* Media query for mobile view */
+@media (max-width: 768px) {
+    .new_icon{
+        height: 3rem;
+        width: 3rem;
+    }
+}

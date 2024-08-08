@@ -2202,20 +2202,15 @@ section,
 }
 .counter-section span.counter,
 span.counter_text {
-    font-size: 40px;
+    font-size: 32px;
     color: #002044;
     line-height: 60px;
     display: block;
-    /* letter-spacing: 2px; */
     text-align: center;
-    /* text-shadow: 5px 5px 0px currentColor; */
-    /* -webkit-text-stroke-color: #ffffffff; */
-    /* -webkit-text-fill-color: transparent; */
-    /* -webkit-text-stroke-width: 2px; */
 }
 .counter-title {
-    -size: 12px;
-    -transform: uppercase;
+    font-size: 12px;
+    text-transform: uppercase;
     color: #002044;
 }
 .counter-icon {
@@ -2240,7 +2235,6 @@ span.counter_text {
 .counter-subheadline span {
     float: right;
 }
-
 .counter_text {
     font-size: 40px;
     color: var(--accent-color);
@@ -2248,13 +2242,11 @@ span.counter_text {
     display: block;
     letter-spacing: 2px;
 }
-
 .medium-icon {
     font-size: 40px !important;
     margin-bottom: 15px !important;
 }
-
-/* Add media query for mobile view */
+/* Media query for mobile view */
 @media (max-width: 768px) {
     .mycounter .row {
         display: flex;
@@ -2263,9 +2255,15 @@ span.counter_text {
     }
     .counter-section {
         flex: 0 0 auto;
-        margin-right: 10px;
+    }
+    .counter-section span.counter, span.counter_text {
+        font-size: 28px;
+    }
+    .mycounter {
+        padding: 1rem 0rem;
     }
 }
+
 
 .spikes {
     position: relative;
