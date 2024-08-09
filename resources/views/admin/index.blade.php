@@ -28,6 +28,7 @@
                 <table class="custom-table">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>الاسم</th>
                             <th>المجال</th>
                             <th>رقم الهاتف</th>
@@ -37,6 +38,7 @@
                     <tbody>
                         @foreach($technicians as $technician)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $technician->name }}</td>
                             <td>{{ $technician->category->name ?? '--' }}</td>
                             <td>{{ $technician->phone }}</td>
@@ -85,6 +87,7 @@
             <table class="custom-table">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>الخدمة الفرعية</th>
                         <th>اليوم</th>
                         <th>الوقت</th>
@@ -100,6 +103,7 @@
                                              {{ $request->subService->name }}
                             </a>
                         </td> --}}
+                        <td>{{ $loop->iteration }}</td>
                         <td> {{ $request->subService->name }}</td>
                         <td>{{ $request->day }}</td>
                         <td>{{ $request->time }}</td>
@@ -130,10 +134,17 @@
     <a href="{{ route('dashboard', ['profit_period' => 'all']) }}" class="btn btn-primary mx-2">عرض الكل</a>
 </div>
 
-    <div class="custom-card-body">
-        <p>عدد الطلبات: <strong>{{ $profits->number_of_orders }}</strong></p>
-        <p>إجمالي الأرباح: <strong>{{ $profits->total_profits ?? '0' }} ريال</strong></p>
-    </div>
+<div class="custom-card-body">
+    <p>عدد طلبات العملاء المكتملة: <strong>{{ $profits->total_appointments_count }}</strong></p>
+    <p>إجمالي أرباح طلبات العملاء: <strong>{{ $profits->total_appointments_profits }} ريال</strong></p>
+    <br>
+    <p>عدد الطلبات الخارجية المكتملة: <strong>{{ $profits->total_general_requests_count }}</strong></p>
+    <p>إجمالي أرباح الطلبات الخارجية: <strong>{{ $profits->total_general_requests_profits }} ريال</strong></p>
+    <br>
+    <p>إجمالي الأرباح: <strong>{{ $profits->total_profits ?? '0' }} ريال</strong></p>
+</div>
+
+
 </div>
 
 
@@ -184,6 +195,7 @@
                 <table class="custom-table">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>الخدمة</th>
                             <th>عدد الطلبات</th>
                         </tr>
@@ -191,6 +203,7 @@
                     <tbody>
                         @foreach($serviceStats as $service)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $service->name }}</td>
                             <td>{{ $service->request_count }}</td>
                         </tr>

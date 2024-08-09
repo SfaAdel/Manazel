@@ -26,7 +26,7 @@ class GeneralRequestController extends Controller
             });
         }
         $generalRequests = GeneralRequest::latest()->paginate(10);
-        return view('admin.general_requests.index', compact('generalRequests'));
+        return view('admin.general_requests.index', compact('generalRequests','search'));
     }
 
     /**

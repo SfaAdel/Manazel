@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CustomerRequest;
 use App\Models\Category;
 use App\Models\Customer;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,9 +65,10 @@ class CustomerController extends Controller
     public function edit()
     {
         $navCategories = Category::latest()->get();
+        $setting= setting::first();
 
         $customer = Auth::guard('customer')->user();
-        return view('front.profile.edit', compact('customer','navCategories'));
+        return view('front.profile.edit', compact('setting','customer','navCategories'));
     }
 
     public function update(CustomerRequest $request, Customer $customer)

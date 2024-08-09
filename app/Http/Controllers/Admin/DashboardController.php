@@ -121,7 +121,16 @@ class DashboardController extends Controller
     // Get profits based on the selected period
     $profits = $this->getProfits($profitPeriod);
 
-return view('admin.index', compact('profits', 'profitPeriod','callClicks', 'whatsappClicks', 'period','technicians', 'requests', 'profits', 'callClicks', 'whatsappClicks', 'serviceStats', 'day', 'subServiceId', 'offDayFilter', 'subCategories', 'subCategoryId'));
+    $completedExternalRequests = DB::table('general_requests')
+    ->where('status', 'completed')
+    ->select(DB::raw('count(id) as count'), DB::raw('sum(price) as total_price'))
+    ->first();
+
+$completedExternalRequestsCount = $completedExternalRequests->count ?? 0;
+$completedExternalRequestsProfits = $completedExternalRequests->total_price ?? 0;
+
+
+return view('admin.index', compact('completedExternalRequestsProfits','completedExternalRequestsCount','profits', 'profitPeriod','callClicks', 'whatsappClicks', 'period','technicians', 'requests', 'profits', 'callClicks', 'whatsappClicks', 'serviceStats', 'day', 'subServiceId', 'offDayFilter', 'subCategories', 'subCategoryId'));
 }
 
 private function getClicks($type, $period)
@@ -138,24 +147,56 @@ private function getClicks($type, $period)
 
     return $query->count();
 }
-
 private function getProfits($period)
 {
-    $query = Appointment::join('sub_services', 'appointments.sub_service_id', '=', 'sub_services.id')
+    // Query to get the sum of prices and count from appointments
+    $appointmentsQuery = Appointment::where('status', 'completed')
         ->select(
-            DB::raw('count(appointments.id) as number_of_orders'),
-            DB::raw('sum(sub_services.final_price) as total_profits')
+            DB::raw('sum(price) as total_appointments_profits'),
+            DB::raw('count(id) as total_appointments_count')
         );
 
+    // Query to get the sum of prices and count from general_requests
+    $generalRequestsQuery = DB::table('general_requests')
+        ->where('status', 'completed')
+        ->select(
+            DB::raw('sum(price) as total_general_requests_profits'),
+            DB::raw('count(id) as total_general_requests_count')
+        );
+
+    // Apply the period filter to both queries
     if ($period == 'today') {
-        $query->whereDate('appointments.created_at', today());
+        $appointmentsQuery->whereDate('day', today());
+        $generalRequestsQuery->whereDate('created_at', today());
     } elseif ($period == 'month') {
-        $query->whereMonth('appointments.created_at', today()->month);
+        $appointmentsQuery->whereMonth('day', today()->month);
+        $generalRequestsQuery->whereMonth('created_at', today()->month);
     } elseif ($period == 'year') {
-        $query->whereYear('appointments.created_at', today()->year);
+        $appointmentsQuery->whereYear('day', today()->year);
+        $generalRequestsQuery->whereYear('created_at', today()->year);
     }
 
-    return $query->first();
+    // Get the results
+    $appointmentsData = $appointmentsQuery->first();
+    $generalRequestsData = $generalRequestsQuery->first();
+
+    // Calculate totals
+    $totalAppointmentsProfits = $appointmentsData->total_appointments_profits ?? 0;
+    $totalGeneralRequestsProfits = $generalRequestsData->total_general_requests_profits ?? 0;
+    $totalProfits = $totalAppointmentsProfits + $totalGeneralRequestsProfits;
+
+    $totalAppointmentsCount = $appointmentsData->total_appointments_count ?? 0;
+    $totalGeneralRequestsCount = $generalRequestsData->total_general_requests_count ?? 0;
+
+    // Return combined data
+    return (object)[
+        'total_appointments_count' => $totalAppointmentsCount,
+        'total_general_requests_count' => $totalGeneralRequestsCount,
+        'total_profits' => $totalProfits,
+        'total_appointments_profits' => $totalAppointmentsProfits,
+        'total_general_requests_profits' => $totalGeneralRequestsProfits,
+    ];
 }
+
 
 }
