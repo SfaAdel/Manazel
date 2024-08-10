@@ -110,8 +110,8 @@
                     @else
                     <div class="dropdown">
                         <button class="btn-getstarted mx-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            @if (Auth::guard('customer')->user()->image)
-                                <img src="{{ Auth::guard('customer')->user()->image }}" alt="{{ Auth::guard('customer')->user()->name }}" class="user-avatar">
+                            @if (Auth::guard('customer')->user()->profile_img)
+                            <img src="{{ asset('images/customers/' . Auth::guard('customer')->user()->profile_img)}}" alt="{{ Auth::guard('customer')->user()->name }}" class="user-avatar" width="25px" height="25px">
                             @else
                                 <img src="{{ asset('front/assets/img/customer-profile/user.png') }}" alt="Default Image" class="user-avatar profile_img">
                             @endif
@@ -119,6 +119,7 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="{{ route('customer_edit') }}">تعديل الحساب الشخصي</a></li>
+                            <li><a class="dropdown-item" href="{{ route('customer_orders') }}"> متابعة الطلبات</a></li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf

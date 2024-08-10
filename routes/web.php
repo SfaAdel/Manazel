@@ -74,7 +74,15 @@ Route::middleware('auth:customer')->group(function () {
     //any routes of orders
 
     Route::get('/customer-profile/edit', [CustomerController::class, 'edit'])->name('customer_edit');
-    Route::post('/profile/edit', [CustomerController::class, 'update'])->name('customer.profile.update');
+    Route::put('/profile/edit', [CustomerController::class, 'update'])->name('customer.profile.update');
+
+    Route::get('/customer-profile/orders', [CustomerController::class, 'orders'])->name('customer_orders');
+
+    Route::patch('customer/appointments/{appointment}/cancel', [CustomerController::class, 'cancelAppointment'])->name('customer.appointments.cancel');
+
+
+    Route::put('/profile/password', [CustomerController::class, 'updatePassword'])->name('customer.profile.password');
+    Route::delete('/profile/delete', [CustomerController::class, 'destroy'])->name('customer.profile.delete');
 
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });

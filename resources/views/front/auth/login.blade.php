@@ -142,17 +142,17 @@
         </div> --}}
 
         <div class="custom-wrapper">
-            <div class="custom-logo">
+            <div class="custom-logo d-flex align-items-center justify-content-center">
                 <img src="{{ asset('images/website/logo.png') }}" alt="">
             </div>
-            <div class="text-center mt-3 custom-name">
+            <div class="text-center mt-3 custom-name d-flex align-items-center justify-content-center">
                 تسجيل الدخول
             </div>
             <form method="POST" class="p-3 mt-1" action="{{ route('login_success') }}">
                 @csrf
 
-                <div>
-                    <span class="far fa-user m-2"></span>
+                <div class="align-items-center justify-content-center">
+                    <span class="far fa-user my-2"></span>
                     <input id="phone" type="text"
                         class="custom-form-field p-2 @error('phone') is-invalid @enderror" name="phone"
                         placeholder="رقم الهاتف" value="{{ old('phone') }}" required>
@@ -164,8 +164,8 @@
                 </div>
 
 
-                <div>
-                    <span class="fas fa-key m-2"></span>
+                <div class="align-items-center justify-content-center">
+                    <span class="fas fa-key my-2"></span>
                     <input id="password" type="password"
                         class="custom-form-field p-2 @error('password') is-invalid @enderror" name="password"
                         placeholder="كلمة المرور" required>
@@ -176,10 +176,11 @@
                     @enderror
                 </div>
 
+                <div class="d-flex align-items-center justify-content-center">
+                    <button class="btn-getstarted mt-1">تسجيل الدخول</button>
+                </div>
 
 
-
-                <button class="custom-btn mt-3">تسجيل الدخول</button>
             </form>
             <div class="text-center fs-6">
                 <a href="#">هل نسيت كلمة المرور؟</a> ام <a href="{{ route('register') }}">تريد انشاء حساب جديد</a>

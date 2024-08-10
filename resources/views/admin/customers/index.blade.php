@@ -1,7 +1,7 @@
 <!-- Layout Extend -->
 @extends('admin.layouts.app')
 <!-- SEO Section -->
-@section('page.title', ' الموظفين')
+@section('page.title', ' العملاء')
 <!-- Start Content Section -->
 @section('content')
   <!-- Start Card -->
@@ -37,7 +37,9 @@
           <tr>
             <th>الاسم </th>
             <th>رقم الهاتف</th>
-            {{-- <th>كلمة المرور</th> --}}
+            <th>عدد الطلبات المكتملة</th>
+            <th>عدد الطلبات المعلقة</th>
+            <th>إجمالي الطلبات</th>
             <th>الاجراءات</th>
           </tr>
           </thead>
@@ -45,15 +47,23 @@
             @foreach($customers as $customer)
               <tr>
                 <td>{{ $customer->name }}</td>
-                <td>{{ $customer->phone }}</td>
-                {{-- <td>{{ $customer->p }}</td> --}}
+                <td>
+                    <a href="tel:{{ $customer->phone }}">{{ $customer->phone }}</a>
+                </td>
+                <td>{{ $customer->completed_appointments_count }}</td>
+                <td>{{ $customer->pending_appointments_count }}</td>
+                <td>{{ $customer->appointments_count }}</td>
                 <td>
                     <div class="buttons has-addons">
                         {{-- <a class="button is-info" href="{{ route('admin.customers.edit', $customer->id) }}">
                             تعديل
                         </a> --}}
+                        <a target="_blank"
+                        href="https://api.whatsapp.com/send?phone={{ '966' . substr($customer->phone, 1) }}"
+                        class="text-success mx-2">
+                        <i class="fa-brands fa-whatsapp text-success fa-2x"></i>
+                        </a>
                         <a class="modal-open button is-danger" status-name="تأكيد الحذف"  traget-modal=".delete-modal" data_id="{{ $customer->id }}" data_name="{{ $customer->name }}" data-url="{{ route('admin.customers.destroy', $customer->id) }}">حذف</a>
-
                     </div>
                 </td>
               </tr>

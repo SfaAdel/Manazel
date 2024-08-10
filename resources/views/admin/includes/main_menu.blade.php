@@ -32,11 +32,14 @@
         @endif
         <a class="link-item" href="{{ route('admin.districts.index') }}">قائمة الأحياء</a>
     </collapse-item>
-    <collapse-item title="الموظفين" icon="fa-solid fa-users">
+    <collapse-item title="الفنيين" icon="fa-solid fa-users">
         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
-            <a class="link-item" href="{{ route('admin.providers.create') }}">اضافة موظف</a>
+            <a class="link-item" href="{{ route('admin.providers.create') }}">اضافة فنى</a>
         @endif
-        <a class="link-item" href="{{ route('admin.providers.index') }}">قائمة الموظفين</a>
+        <a class="link-item" href="{{ route('admin.providers.index') }}">قائمة الفنيين</a>
+    </collapse-item>
+    <collapse-item title="اجازات الفنيين" icon="fa-regular fa-face-laugh-beam">
+        <a class="link-item" href="{{ route('admin.provider_availabilities.index') }}">قائمة الاجازات</a>
     </collapse-item>
     <collapse-item title="العملاء" icon="fa-solid fa-users">
         <a class="link-item" href="{{ route('admin.customers.index') }}">قائمة بيانات العملاء</a>
@@ -90,9 +93,6 @@
             <a class="link-item" href="{{ route('admin.counters.create') }}"> اضافة عداد</a>
         @endif
         <a class="link-item" href="{{ route('admin.counters.index') }}">قائمة الاعداد</a>
-    </collapse-item>
-    <collapse-item title="اجازات العاملين" icon="fa-regular fa-face-laugh-beam">
-        <a class="link-item" href="{{ route('admin.provider_availabilities.index') }}">قائمة الاجازات</a>
     </collapse-item>
     {{-- <collapse-item title="الطلبات" icon="fa fa-handshake">
         <a class="link-item" href="{{ route('admin.orders.index') }}">قائمة الطلبات</a>

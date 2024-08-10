@@ -1,15 +1,13 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Customer extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     public function orders()
     {
@@ -18,15 +16,13 @@ class Customer extends Authenticatable
 
     public function appointments()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Appointment::class);
     }
 
     public function reviews()
     {
         return $this->hasMany(CustomerReview::class);
     }
-
-
 
     /**
      * The attributes that are mass assignable.
@@ -77,31 +73,24 @@ class Customer extends Authenticatable
         return $this->phone;
     }
 
-// ====================================== OTP
-public function generateOTP()
-{
-    if (config('verification.otp_provider') == 'vonage') {
-        $this->otp = rand(111111, 999999);
-        $this->otp_till = now()->addMinutes(4);
-        $this->save();
+    // ====================================== OTP
+    public function generateOTP()
+    {
+        if (config('verification.otp_provider') == 'vonage') {
+            $this->otp = rand(111111, 999999);
+            $this->otp_till = now()->addMinutes(4);
+            $this->save();
+        }
     }
-}
 
-public function resetOTP()
-{
-    if (config('verification.otp_provider') == 'vonage') {
-        $this->otp = null;
-        $this->otp_till = null;
-        $this->phone_verified_at = now();
-        $this->save();
+    public function resetOTP()
+    {
+        if (config('verification.otp_provider') == 'vonage') {
+            $this->otp = null;
+            $this->otp_till = null;
+            $this->phone_verified_at = now();
+            $this->save();
+        }
     }
+    // ====================================== OTP
 }
-// ====================================== OTP
-
-
-use HasFactory, Notifiable;
-
-protected $guarded = ['id'];
-}
-
-

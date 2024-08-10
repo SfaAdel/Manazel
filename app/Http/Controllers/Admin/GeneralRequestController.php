@@ -13,21 +13,26 @@ class GeneralRequestController extends Controller
      */
     public function index()
     {
-        //
         $search = request()->input('search');
+
+        // Initialize the query
         $generalRequests = GeneralRequest::latest();
 
+        // Apply search filter if provided
         if ($search) {
             $generalRequests->where(function ($query) use ($search) {
-                $query->where('day', 'like', '%' . $search . '%')
-                      ->orWhereHas('customer', function ($query) use ($search) {
-                          $query->where('name', 'like', '%' . $search . '%');
-                      });
+                $query->where('name', 'like', '%' . $search . '%')
+                      ->orWhere('phone', 'like', '%' . $search . '%');
             });
         }
-        $generalRequests = GeneralRequest::latest()->paginate(10);
-        return view('admin.general_requests.index', compact('generalRequests','search'));
+
+        // Paginate the results
+        $generalRequests = $generalRequests->paginate(10);
+
+        // Return the view with data
+        return view('admin.general_requests.index', compact('generalRequests', 'search'));
     }
+
 
     /**
      * Show the form for creating a new resource.

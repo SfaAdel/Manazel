@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerRequest extends FormRequest
 {
@@ -22,8 +23,8 @@ class CustomerRequest extends FormRequest
      */
     public function rules(): array
     {
-
-        $customerId = optional($this->route('customer'))->id;
+        // Ensure the customer ID is correctly retrieved
+        $customerId = $this->route('customer') ? $this->route('customer')->id : Auth::guard('customer')->id();
 
         return [
             'name' => [
@@ -40,9 +41,9 @@ class CustomerRequest extends FormRequest
                 Rule::unique('customers', 'phone')->ignore($customerId),
             ],
             'password' => $this->method() === 'POST' ? 'required|string|min:6' : '',
-
         ];
     }
+
 
     public function attributes()
     {

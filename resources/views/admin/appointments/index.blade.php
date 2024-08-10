@@ -148,7 +148,7 @@
                                                 </span>
                                             @else
                                                 <a target="_blank"
-                                                    href="https://api.whatsapp.com/send?phone=2{{ $appointment->customer->phone }}&text={{ urlencode('عزيزي ' . $appointment->customer->name . ' تم بنجاح حجز موعد يوم ' . $appointment->day . ' الساعة ' . $appointment->time . ' من اجل خدمة ' . $appointment->subService->name . ' اذا كان لديك اى استفسارات تواصل معنا من خلال الرقم التالى') }}"
+                                                    href="https://api.whatsapp.com/send?phone=+966{{ $appointment->customer->phone }}&text={{ urlencode('عزيزي ' . $appointment->customer->name . ' تم بنجاح حجز موعد يوم ' . $appointment->day . ' الساعة ' . $appointment->time . ' من اجل خدمة ' . $appointment->subService->name . ' اذا كان لديك اى استفسارات تواصل معنا من خلال الرقم التالى') }}"
                                                     class="text-success mx-2">
                                                     <i class="fa-brands fa-whatsapp text-success fa-2x"></i>
                                                 </a>

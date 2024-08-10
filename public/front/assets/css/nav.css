@@ -7,6 +7,8 @@
   padding: 8px 25px;
   border-radius: 50px;
   transition: 0.3s;
+  margin-top: 10px;
+
 }
 
 .btn-getstarted:hover,
@@ -165,4 +167,5 @@ width: 20px;
 height: 20px;
 margin-inline: 5px;
 }
+
 
