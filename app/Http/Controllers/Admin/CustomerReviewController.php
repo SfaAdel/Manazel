@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\CustomerReview;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerReviewController extends Controller
 {
@@ -16,7 +17,22 @@ class CustomerReviewController extends Controller
     {
         //
     }
+    public function submitReview(Request $request, $subServiceId)
+    {
+        $request->validate([
+            'stars' => 'required|integer|min:1|max:5',
+            'comment' => 'required|string|max:255',
+        ]);
 
+        $review = new CustomerReview();
+        $review->sub_service_id = $subServiceId;
+        $review->customer_id = Auth::guard('customer')->id();
+        $review->stars = $request->input('stars');
+        $review->comment = $request->input('comment');
+        $review->save();
+
+        return back()->with('success', 'تم اضافة تقييمك بنجاح.');
+    }
     /**
      * Show the form for creating a new resource.
      */

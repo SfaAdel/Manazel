@@ -42,7 +42,7 @@
             <div class="dropdown">
                 <button class="btn-getstarted mx-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     @if (Auth::guard('customer')->user()->profile_img)
-                        <img src="{{ asset('images/customers/' . Auth::guard('customer')->user()->profile_img)}}" alt="{{ Auth::guard('customer')->user()->name }}" class="user-avatar" width="25px" height="25px">
+                        <img src="{{ asset('images/customers/' . Auth::guard('customer')->user()->profile_img)}}" alt="" class="user-avatar" width="25px" height="25px">
                     @else
                         <img src="{{ asset('front/assets/img/customer-profile/user.png') }}" alt="Default Image" class="user-avatar profile_img" width="25px" height="25px>
                     @endif

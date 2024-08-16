@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClickController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\CustomerReviewController;
 use App\Http\Controllers\Admin\GeneralRequestController;
 use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\HomeController;
@@ -100,7 +101,7 @@ Route::get('/categories', [HomeController::class, 'all_categories'])->name('cate
 Route::get('/services/{slug}', [HomeController::class, 'service'])->name('services');
 Route::get('/service-details/{slug}', [HomeController::class, 'service_details'])->name('service_details');
 Route::get('/sub-service-details/{slug}', [HomeController::class, 'sub_service_details'])->name('sub_service_details');
-Route::post('sub_service/{slug}/review', [HomeController::class, 'submit_review'])->name('submit_review');
+Route::post('/sub_service/{id}/review', [CustomerReviewController::class, 'submitReview'])->name('submit_review');
 
 Route::post('/appointments', [AppointmentController::class, 'bookAppointment'])->name('book_appointment');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

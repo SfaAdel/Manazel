@@ -59,12 +59,12 @@
 
                 <!-- Section Title -->
                 <div class="container section-title offer_title" data-aos="fade-up">
-                    <h2>العروض و الخصومات <i class="fa fa-fire text-custom"></i></h2>
+                    <h2>العروض والخصومات<i class="fa fa-fire text-custom" style="font-size: 18px"></i></h2>
                     <p>نقدم لكم افضل العروض والخصومات على جميع خدماتنا</p>
                 </div>
                 <!-- End Section Title -->
 
-                <div class="container" data-aos="fade-up" data-aos-delay="100">
+                {{-- <div class="container" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper">
                         <script type="application/json" class="swiper-config">
                         {
@@ -106,12 +106,60 @@
                         <div class="swiper-pagination"></div>
 
                     </div>
+                </div> --}}
+
+                <div class="container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="offer_center">
+                        <div class="offer_slider" id="offerSlider">
+                            <div class="offer_cards">
+                                @foreach ($subServicesWithOffer as $subService)
+                                    <div id="offer_content" class="d-flex p-3 m-2">
+                                        <div class="card--container card text-white text-left m-2"
+                                             style="background-image: url('{{ asset('images/sub_service_bannars/' . $subService->bannar) }}');">
+                                            <div class="card--body">
+                                                <div class="d-flex flex-column h-100">
+                                                    <!-- Content here -->
+                                                </div>
+                                            </div>
+                                            <a href="{{ route('sub_service_details', $subService->id) }}" class=" offer_btn">
+                                                احصل علي العرض
+                                            </a>
+                                        </div>
+                                        <!-- Add more cards here -->
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-
-
             </section>
+
         @endif
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById('offerSlider');
+    const scrollAmount = slider.scrollWidth / slider.childElementCount;
+    let scrollPosition = slider.scrollWidth - slider.clientWidth; // Start from the rightmost position
+
+    function autoScroll() {
+        if (scrollPosition > 0) {
+            scrollPosition -= scrollAmount;
+        } else {
+            scrollPosition = slider.scrollWidth - slider.clientWidth; // Reset to the rightmost position
+        }
+        slider.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+    }
+
+    setInterval(autoScroll, 3000); // Change 3000 to your desired interval in milliseconds
+});
+
+</script>
+
+
 
         <!-- About Section -->
         <section id="about" class="about section p-5 mt-4">

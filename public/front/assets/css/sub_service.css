@@ -110,8 +110,8 @@ color: #002044;
 .reviews-counter span {
 	vertical-align: -2px;
 }
-.rate {
-    /* padding: 0 10px 0 0; */
+/* .rate {
+    padding: 0 10px 0 0;
 align-content: center;
 margin: auto !important;
 width: 80%;
@@ -150,7 +150,8 @@ justify-content: center;
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
-}
+} */
+
 .product-dtl p {
 	font-size: 14px;
 	line-height: 24px;
@@ -281,4 +282,35 @@ font-size: 14px;
 }
 .final-price {
     color: green;
+}
+
+/* =========rates======== */
+.rate {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+.rate input[type="radio"] {
+    display: none;
+}
+.rate label {
+    font-size: 1.8rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.rate input[type="radio"]:checked ~ label {
+    color: #f7b731;
+}
+.rate label:hover,
+.rate label:hover ~ label {
+    color: #f7b731;
+}
+
+.review-section-title{
+    text-align: center;
+    /* padding-bottom: 60px; */
+    position: relative;
+font-size: 1.5rem;
+
 }
