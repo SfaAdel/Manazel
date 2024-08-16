@@ -228,9 +228,6 @@
                                                 @endforeach
                                             </div>
 
-
-
-
                                             <!-- Pagination Links -->
 
                                             <div class="pagination-links center m-2 p-2">

@@ -42,7 +42,7 @@ class DashboardController extends Controller
             }
 
 
-        $technicians = $techniciansQuery->get();
+        $technicians = $techniciansQuery->paginate(10)->withQueryString()->onEachSide(1)->appends(request()->query());
 
         // Requests with optional filters
         // $requests = Appointment::select('sub_service_id', 'day', 'time', 'status')
@@ -67,7 +67,7 @@ class DashboardController extends Controller
         $requests->where('sub_service_id', $subServiceId);
     }
 
-    $requests = $requests->get();
+    $requests = $requests->paginate(10)->withQueryString()->onEachSide(1)->appends(request()->query());
 
 
         // Profits

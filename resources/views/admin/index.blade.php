@@ -47,7 +47,16 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="pagination-wrapper d-flex justify-content-center">
+                    {{ $technicians->links('vendor.pagination.arabic') }}
+                </div>
+
             </div>
+
+
+
+
+
         </div>
     </div>
 
@@ -113,7 +122,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="pagination-links center m-2 p-2">
+                {{ $requests->links('vendor.pagination.arabic') }}
+            </div>
         </div>
+
     </div>
 </div>
 
