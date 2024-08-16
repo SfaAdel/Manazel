@@ -108,56 +108,108 @@
                     </div>
                 </div> --}}
 
-                <div class="container" data-aos="fade-up" data-aos-delay="100">
-                    <div class="offer_center">
-                        <div class="offer_slider" id="offerSlider">
-                            <div class="offer_cards">
-                                @foreach ($subServicesWithOffer as $subService)
-                                    <div id="offer_content" class="d-flex p-3 m-2">
-                                        <div class="card--container card text-white text-left m-2"
-                                             style="background-image: url('{{ asset('images/sub_service_bannars/' . $subService->bannar) }}');">
-                                            <div class="card--body">
-                                                <div class="d-flex flex-column h-100">
-                                                    <!-- Content here -->
-                                                </div>
-                                            </div>
-                                            <a href="{{ route('sub_service_details', $subService->id) }}" class=" offer_btn">
-                                                احصل علي العرض
-                                            </a>
-                                        </div>
-                                        <!-- Add more cards here -->
-                                    </div>
-                                @endforeach
+             <!-- Swiper Container -->
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                @foreach ($subServicesWithOffer as $subService)
+                    <div class="swiper-slide">
+                        <div class="card--container card text-white text-left m-2"
+                             style="background-image: url('{{ asset('images/sub_service_bannars/' . $subService->bannar) }}');">
+                            <div class="card--body">
+                                <!-- Your card content here -->
                             </div>
+                            <a href="{{ route('sub_service_details', $subService->id) }}" class="offer_btn">
+                                احصل علي العرض
+                            </a>
                         </div>
                     </div>
-                </div>
+                @endforeach
+            </div>
+            <!-- Add Pagination and Navigation -->
+            <div class="swiper-pagination"></div>
+            <div class="offer-button-next">..</div>
+            <div class="offer-button-prev">..</div>
+        </div>
+    </div>
 
             </section>
 
         @endif
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.getElementById('offerSlider');
-    const scrollAmount = slider.scrollWidth / slider.childElementCount;
-    let scrollPosition = slider.scrollWidth - slider.clientWidth; // Start from the rightmost position
 
-    function autoScroll() {
-        if (scrollPosition > 0) {
-            scrollPosition -= scrollAmount;
-        } else {
-            scrollPosition = slider.scrollWidth - slider.clientWidth; // Reset to the rightmost position
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var swiper = new Swiper(".mySwiper", {
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    breakpoints: {
+                        // When window width is >= 320px
+                        320: {
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
+                            spaceBetween: 5,
+                        },
+                        // When window width is >= 640px
+                        640: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                            spaceBetween: 20,
+                        },
+                        // When window width is >= 1024px
+                        1024: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                            spaceBetween: 30,
+                        },
+                        // When window width is >= 1280px
+                        1280: {
+                            slidesPerView: 4,
+                            slidesPerGroup: 4,
+                            spaceBetween: 40,
+                        },
+                    }
+                });
+            });
+            </script>
+
+{{-- <script>
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            480: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            987: {
+                slidesPerView: 3,
+            },
+            1200: {
+                slidesPerView: 4,
+            }
         }
-        slider.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-        });
-    }
+    });
+</script> --}}
 
-    setInterval(autoScroll, 3000); // Change 3000 to your desired interval in milliseconds
-});
-
-</script>
 
 
 

@@ -95,7 +95,11 @@ class HomeController extends Controller
     public function sub_service_details($id)
     {
         // Fetch all services where category_id matches the given id
-        $sub_service = SubService::with('reviews.customer')->find($id);
+        $sub_service = SubService::with('reviews.customer')->findOrFail($id);
+
+        // Paginate the reviews, showing 5 reviews per page
+        $reviews = $sub_service->reviews()->paginate(4)->withQueryString()->onEachSide(1)->appends(request()->query());
+
 
         $subService = SubService::with('availabilities')->findOrFail($id);
 
@@ -113,7 +117,7 @@ class HomeController extends Controller
         $cities = City::latest()->get();
         $districts = District::latest()->get();
 
-        return view('front.sub_service_details', compact('setting','navCategories','sub_service','availabilities','cities','districts'));
+        return view('front.sub_service_details', compact('reviews','setting','navCategories','sub_service','availabilities','cities','districts'));
     }
 
     public function submit_review(Request $request, $id)

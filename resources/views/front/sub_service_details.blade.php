@@ -18,7 +18,8 @@
                     <p class="mt-2">{{ $sub_service->service->category->description }}</p>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img center" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="{{ asset('images/categories/' . $sub_service->service->category->logo) }}" class="img-fluid animated" alt="">
+                    <img src="{{ asset('images/categories/' . $sub_service->service->category->logo) }}"
+                        class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -49,6 +50,7 @@
                                 </div>
                             @endif
 
+                            {{-- <section id="services" class="services section p-3 mt-4"> --}}
                             <div class="product-info">
                                 <div>
                                     <div class="product-name center mb-2">
@@ -60,17 +62,17 @@
                                     <br>
                                 </div>
                                 {{-- <div class="rate mx-1 center">
-                                    <input type="radio" id="star5" name="rate" value="5" checked />
-                                    <label for="star5" title="text">★</label>
-                                    <input type="radio" id="star4" name="rate" value="4" checked />
-                                    <label for="star4" title="text">★</label>
-                                    <input type="radio" id="star3" name="rate" value="3" checked />
-                                    <label for="star3" title="text">★</label>
-                                    <input type="radio" id="star2" name="rate" value="2" />
-                                    <label for="star2" title="text">★</label>
-                                    <input type="radio" id="star1" name="rate" value="1" />
-                                    <label for="star1" title="text">★</label>
-                                </div> --}}
+            <input type="radio" id="star5" name="rate" value="5" checked />
+            <label for="star5" title="text">★</label>
+            <input type="radio" id="star4" name="rate" value="4" checked />
+            <label for="star4" title="text">★</label>
+            <input type="radio" id="star3" name="rate" value="3" checked />
+            <label for="star3" title="text">★</label>
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label for="star2" title="text">★</label>
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label for="star1" title="text">★</label>
+        </div> --}}
                                 <br>
 
                                 <form method="POST" action="{{ route('book_appointment') }}">
@@ -173,108 +175,131 @@
                                     @if (auth()->guard('customer')->check())
                                         <button type="submit" class="round-black-btn btn btn-custom">تأكيد الحجز</button>
                                     @else
-                                        <a class="btn btn-blue m-3" href="{{ route('login') }}">يجب عليك تسجيل الدخول أولا</a>
+                                        <a class="btn btn-blue m-3" href="{{ route('login') }}">يجب عليك تسجيل الدخول
+                                            أولا</a>
                                     @endif
                                 </form>
-
+                            </div>
+                            {{-- </section> --}}
 
                             {{-- reviews section --}}
 
-                            <section id="about" class="about section px-2 mt-2">
+                            <section id="about" class="about section px-2 mt-2 review-section">
                                 <!-- Section Title -->
-                                <div class="container section-title" data-aos="fade-up">
+                                <div class="container section-title review-section-title" data-aos="fade-up">
                                 </div><!-- End Section Title -->
                                 @if ($sub_service->reviews->count())
-                                <div class="reviews">
-                                    <div class="container section-title review-section-title p-2" data-aos="fade-up">
-                                        <h2 class="">تقيمات العملاء</h2>
-                                    </div>
-                                    <section id="customers_testimonials">
-                                        <div class="testimonial-box-container">
-                                            @foreach ($sub_service->reviews as $review)
-
-                                                <div class="testimonial-box">
-                                                    <div class="testimonial-box-top">
-                                                        <div class="profile">
-                                                            <div class="profile-img">
-                                                                <img src="{{ asset('images/customers/' . $review->customer->profile_img)}}" />
+                                    <div class="reviews">
+                                        <div class="container section-title review-section-title" data-aos="fade-up">
+                                            <h2 class="">تقيمات العملاء</h2>
+                                        </div>
+                                        <section id="customers_testimonials">
+                                            <div class="testimonial-box-container">
+                                                @foreach ($reviews as $review)
+                                                    <div class="testimonial-box">
+                                                        <div class="testimonial-box-top">
+                                                            <div class="profile">
+                                                                <div class="profile-img">
+                                                                    @if ($review->customer)
+                                                                        <img src="{{ asset('images/customers/' . $review->customer->profile_img) }}"
+                                                                            alt="" />
+                                                                    @else
+                                                                        <img src="{{ asset('images/customers/default.png') }}"
+                                                                            alt="" />
+                                                                    @endif
+                                                                </div>
+                                                                <div class="name-user">
+                                                                    <strong>{{ $review->customer->name ?? '--' }} </strong>
+                                                                    <span>@ {{ $review->customer->name ?? '--' }}</span>
+                                                                </div>
                                                             </div>
-                                                            <div class="name-user">
-                                                                <strong>{{ $review->customer->name }}</strong>
-                                                                <span>@ {{ $review->customer->name }}</span>
+                                                            <div class="star_reviews">
+
+                                                                @for ($i = 0; $i < $review->stars; $i++)
+                                                                    <i class="fas fa-star"></i>
+                                                                @endfor
+
                                                             </div>
-                                                        </div>
-                                                        <div class="star_reviews">
-
-                                                            @for ($i = 0; $i < $review->stars; $i++)
-                                                            <i class="fas fa-star"></i>
-                                                            @endfor
-
-                                                        </div>
-                                                        <div class="client-comment">
-                                                            <p>{{ $review->comment }}</p>
+                                                            <div class="client-comment">
+                                                                <p>{{ $review->comment }}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </section>
-                                </div>
+                                                @endforeach
+                                            </div>
+
+
+
+
+                                            <!-- Pagination Links -->
+
+                                            <div class="pagination-links center m-2 p-2">
+                                                {{ $reviews->links('vendor.pagination.arabic') }}
+                                            </div>
+
+
+                                        </section>
+                                    </div>
                                 @else
                                     <p>لا توجد تقيمات بعد.</p>
                                 @endif
 
                                 @if (auth()->guard('customer')->check())
+                                    <div class="container">
 
-                                <div class="container">
+                                        <div class=" mt-1 container section-title review-section-title p-2 mt-4"
+                                            data-aos="fade-up">
+                                            <h2 class="">شارك بـرأيك</h2>
+                                        </div>
+                                        <form class="review-form" method="POST"
+                                            action="{{ route('submit_review', $sub_service->id) }}">
+                                            @csrf
 
-                                    <div class=" mt-1 container section-title review-section-title p-2 mt-4" data-aos="fade-up">
-                                        <h2 class="">شارك بـرأيك</h2>
-                                    </div>
-                                    <form class="review-form" method="POST" action="{{ route('submit_review', $sub_service->id) }}">
-                                        @csrf
-
-                                        <div class="form-group mt-1">
-                                            {{-- <label>اعطي تقيمك</label> --}}
-                                            <div class="reviews-counter center">
-                                                <div class="rate mx-3">
-                                                    <input type="radio" id="star5" name="stars" value="5"/>
-                                                    <label for="star5" title="5 stars">★</label>
-                                                    <input type="radio" id="star4" name="stars" value="4" />
-                                                    <label for="star4" title="4 stars">★</label>
-                                                    <input type="radio" id="star3" name="stars" value="3"  />
-                                                    <label for="star3" title="3 stars">★</label>
-                                                    <input type="radio" id="star2" name="stars" value="2" />
-                                                    <label for="star2" title="2 stars">★</label>
-                                                    <input type="radio" id="star1" name="stars" value="1"  />
-                                                    <label for="star1" title="1 star">★</label>
+                                            <div class="form-group mt-1">
+                                                {{-- <label>اعطي تقيمك</label> --}}
+                                                <div class="reviews-counter center">
+                                                    <div class="rate mx-3">
+                                                        <input type="radio" id="star5" name="stars"
+                                                            value="5" />
+                                                        <label for="star5" title="5 stars">★</label>
+                                                        <input type="radio" id="star4" name="stars"
+                                                            value="4" />
+                                                        <label for="star4" title="4 stars">★</label>
+                                                        <input type="radio" id="star3" name="stars"
+                                                            value="3" />
+                                                        <label for="star3" title="3 stars">★</label>
+                                                        <input type="radio" id="star2" name="stars"
+                                                            value="2" />
+                                                        <label for="star2" title="2 stars">★</label>
+                                                        <input type="radio" id="star1" name="stars"
+                                                            value="1" />
+                                                        <label for="star1" title="1 star">★</label>
+                                                    </div>
                                                 </div>
+
                                             </div>
 
-                                        </div>
+                                            <div class="form-group my-2">
+                                                <textarea class="form-control" name="comment" rows="10"></textarea>
+                                            </div>
 
-                                        <div class="form-group my-2">
-                                            <textarea class="form-control" name="comment" rows="10"></textarea>
-                                        </div>
+                                            <button class="btn btn-custom" type="submit">نشر</button>
+                                        </form>
 
-                                        <button class="btn btn-custom" type="submit">نشر</button>
-                                    </form>
-
-                                </div>
-
+                                    </div>
                                 @endif
 
                             </section>
-                                {{--end reviews section --}}
+                            {{-- end reviews section --}}
 
-                                <hr class="my-3">
-                                <div class="my-3">{!! $sub_service->long_description !!}</div>
+                            <hr class="my-3">
+                            <div class="my-3">{!! $sub_service->long_description !!}</div>
 
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </main>
 

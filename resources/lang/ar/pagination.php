@@ -13,8 +13,12 @@ return [
     |
     */
 
-    'previous' => '&laquo; السابق',
-
-    'next'     => 'التالي &raquo;',
-
+    'previous' => 'السابق',
+    'next' => 'التالي',
+    'showing' => 'عرض',
+    'to' => 'إلى',
+    'of' => 'من',
+    'results' => 'نتائج',
 ];
+
+
