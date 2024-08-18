@@ -8,7 +8,11 @@ use App\Models\Customer;
 use App\Notifications\SendVerificationCode;
 use App\Notifications\SendVerifySMS;
 use App\Providers\RouteServiceProvider;
+
 use App\Services\Vonage as ServicesVonage;
+use App\Services\WhatsAppService;
+use App\Services\ShrinkItService;
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +34,14 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+
+    protected $whatsAppService;
+
+    public function __construct(WhatsAppService $whatsAppService)
+    {
+        $this->whatsAppService = $whatsAppService;
+    }
+
     public function loginForm(): View
     {
         return view('front.auth.login');
@@ -69,7 +81,7 @@ class AuthController extends Controller
     {
         // Validate phone number
         $request->validate([
-            'phone' => ['required', 'regex:/^05[0-9]{8}$/'],
+            // 'phone' => ['required', 'regex:/^05[0-9]{8}$/'],
             'name' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -90,10 +102,19 @@ class AuthController extends Controller
         $customer->generateOTP();
         $customer->save();
 
-        // Send OTP to SMS using provider
-        if (config('verification.otp_provider') == 'vonage') {
-            (new \App\Services\Vonage())->send($customer);
-        }
+        // ****** Send OTP to SMS using provider *****
+        // if (config('verification.otp_provider') == 'vonage') {
+        //     (new \App\Services\Vonage())->send($customer);
+        // }
+
+        // ****** Send OTP via WhatsApp using ShrinkIt ******
+        // $message = "Your verification code is: " . $customer->otp;
+        // $this->whatsAppService->sendMessage('+966'.$customer->phone, $message);
+
+        // Send OTP using ShrinkIt WhatsApp API
+        $shrinkItService = new ShrinkItService();
+        $shrinkItService->sendMessage('+2'.$customer->phone, 'Your verification code is: ' . $customer->otp);
+
 
         // Return view for OTP verification
         return redirect()->route('verify_code', ['phone' => $request->phone])->with('success', 'تم ارسال رمز التحقق الى رقم الهاتف الخاص بك');

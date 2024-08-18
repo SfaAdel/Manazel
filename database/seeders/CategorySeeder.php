@@ -15,31 +15,31 @@ class CategorySeeder extends Seeder
     {
         //
         Category::create([
-            'name' => 'أجهزة منزلية',
-            'description' => 'صيانة واصلاح وتركيب جميع انواع الغسالات',
+            'name' => 'صيانة الأجهزة المنزلية',
+            'description' => 'صيانة واصلاح وتركيب جميع انواعالأجهزة المنزلية بالمملكة',
             'icon' => '4.png',
             'bannar' => '4.png',
             'logo' => 'logo1.png',
         ]);
         Category::create([
-            'name' => 'سباكة',
-            'description' => 'صيانة واصلاح وتركيب جميع انواع الثلاجات',
+            'name' => 'أعمال السباكة',
+            'description' => 'كل مايخص أعمال السباكة من صيانة وتأسيس وتشطيب',
             'icon' => '3.png',
             'bannar' => '3.png',
             'logo' => 'logo2.png',
 
         ]);
         Category::create([
-            'name' => 'كهرباء',
-            'description' => 'صيانة واصلاح وتركيب جميع انواع الافران',
+            'name' => 'أعمال الكهرباء',
+            'description' => 'جميع أعمال صيانة الكهرباء والتاسيس والتشطيب',
             'icon' => '2.png',
             'bannar' => '2.png',
             'logo' => 'logo1.png',
 
         ]);
         Category::create([
-            'name' => 'مكيفات',
-            'description' => 'صيانة واصلاح وتركيب جميع انواع المكيفات',
+            'name' => 'مكيفات الهواء',
+            'description' => 'جميع أعمال المكيفات من فك وتركيب وغسيل وصيانة لجميع الأنواع',
             'icon' => '1.png',
             'bannar' => '1.png',
             'logo' => 'logo2.png',
