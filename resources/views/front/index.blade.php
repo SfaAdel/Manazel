@@ -55,7 +55,7 @@
         <!-- offers Section -->
         @if ($subServicesWithOffer->isNotEmpty())
 
-            <section id="offers" class="testimonials section px-1 py-4 mt-2">
+            <section id="offers" class="testimonials section py-5 mt-4">
 
                 <!-- Section Title -->
                 <div class="container section-title offer_title" data-aos="fade-up">
@@ -116,9 +116,11 @@
                     <div class="swiper-slide">
                         <div class="card--container card text-white text-left m-2"
                              style="background-image: url('{{ asset('images/sub_service_bannars/' . $subService->bannar) }}');">
-                            <div class="card--body">
+                            <div class="card--body" >
                                 <!-- Your card content here -->
                             </div>
+<br>
+<br>
                             <a href="{{ route('sub_service_details', $subService->id) }}" class="offer_btn">
                                 احصل علي العرض
                             </a>
@@ -371,7 +373,8 @@
                                 <div class="icon">
                                     <h4>
                                         <img src="{{ asset('images/categories/' . $category->icon) }}"
-                                            class="service_icon" alt="icon">
+                                            class="service_icon mb-1" alt="icon">
+                                            <br>
                                         {{ $category->name }}
                                     </h4>
                                 </div>

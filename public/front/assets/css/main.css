@@ -1051,7 +1051,26 @@ section,
         min-width: 48%;
         margin-bottom: 20px;
     }
+    h2{
+        text-align:center;
+    }
+    .why-us .content h3 {
+    font-size: 22px;
+    text-align:center;
+    margin-bottom:15px;
+    }
+    .why-us .faq-container .faq-item h3 {
+        font-weight: 800;
+        font-size: 20px;
+        /* text-align:center; */
+
+    }
+    .why-us .faq-container .faq-item {
+        text-align: center;
+    }
 }
+
+
 /*--------------------------------------------------------------
 # Call To Action Section
 --------------------------------------------------------------*/
@@ -2494,8 +2513,8 @@ span.counter_text {
 
 @media (max-width: 767.98px) {
     .city-card .card-body {
-        padding: 20px 10px;
-    }
+        padding: 22px 20px;
+        width: 110px;    }
 
     .city-card .fa-location-dot {
         font-size: 30px;
@@ -2504,7 +2523,13 @@ span.counter_text {
     .city-card .card-text {
         font-size: 16px;
     }
+    #place_section{
+        align-items: center;
+        margin: auto;
+    }
 }
+
+
 
 .product_img {
     height: 6rem;

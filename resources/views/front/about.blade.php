@@ -304,7 +304,7 @@
                         </div><!-- End Section Title -->
 
 
-                        <div class="row d-flex justify-content-center align-items-center">
+                        <div class="row d-flex justify-content-center align-items-center" id="place_section">
                             @foreach ($cities as $city)
                                 <div class="col-md-3 mb-4">
                                     <div class="card city-card border-secondary">
