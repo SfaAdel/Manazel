@@ -44,6 +44,37 @@ class SubService extends Model
 
 
 
+    // protected static function booted()
+    // {
+    //     static::saving(function ($subService) {
+    //         if ($subService->service) {
+    //             $category = $subService->service->category;
+
+    //             if ($category) {
+    //                 $providersCount = Provider::where('category_id', $category->id)
+    //                                           ->where('status', 1)
+    //                                           ->count();
+    //                 $subService->providers = $providersCount;
+    //             }
+    //         }
+    //     });
+    // }
+
+    // public function initializeAvailability() {
+    //     $startDate = Carbon::now()->startOfDay();
+    //     $endDate = Carbon::now()->addDays(30)->endOfDay();
+
+    //     $dates = [];
+    //     for ($date = $startDate; $date->lte($endDate); $date->addDay()) {
+    //         $dates[] = $date->copy();
+    //     }
+
+    //     foreach ($dates as $date) {
+    //         // Calculate available time slots and insert into sub_service_availabilities table
+    //         $this->calculateAndInsertAvailabilityForDate($date);
+    //     }
+    // }
+
     protected static function booted()
     {
         static::saving(function ($subService) {
@@ -58,11 +89,17 @@ class SubService extends Model
                 }
             }
         });
+
+        static::created(function ($subService) {
+            $subService->initializeAvailability();
+        });
     }
 
-    public function initializeAvailability() {
-        $startDate = Carbon::now()->startOfDay();
-        $endDate = Carbon::now()->addDays(30)->endOfDay();
+    public function initializeAvailability()
+    {
+        $appointmentTimes = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00'];
+        $startDate = Carbon::tomorrow();
+        $endDate = Carbon::tomorrow()->addDays(30)->endOfDay();
 
         $dates = [];
         for ($date = $startDate; $date->lte($endDate); $date->addDay()) {
@@ -70,9 +107,18 @@ class SubService extends Model
         }
 
         foreach ($dates as $date) {
-            // Calculate available time slots and insert into sub_service_availabilities table
-            $this->calculateAndInsertAvailabilityForDate($date);
+            foreach ($appointmentTimes as $time) {
+                for ($i = 0; $i < $this->providers; $i++) {
+                    SubServiceAvailability::create([
+                        'sub_service_id' => $this->id,
+                        'day' => $date,
+                        'time' => $time,
+                        'availability' => true,
+                    ]);
+                }
+            }
         }
     }
+
 
 }

@@ -105,6 +105,7 @@ class SubServiceController extends Controller
             $request->bannar->move(('images/sub_service_bannars/'), $BannarImageName);
             $subService->update(['bannar' => $BannarImageName]);
         }
+
         return redirect()->route('admin.sub_services.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 

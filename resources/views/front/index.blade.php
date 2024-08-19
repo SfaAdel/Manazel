@@ -55,7 +55,7 @@
         <!-- offers Section -->
         @if ($subServicesWithOffer->isNotEmpty())
 
-            <section id="offers" class="testimonials section p-5 mt-4">
+            <section id="offers" class="testimonials section px-1 py-4 mt-2">
 
                 <!-- Section Title -->
                 <div class="container section-title offer_title" data-aos="fade-up">
