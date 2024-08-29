@@ -21,7 +21,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">تعديل البيانات الشخصية</div>
+                    <div class="card-header"><h1 style="font-size: 24px">تعديل البيانات الشخصية</h1></div>
                     <div class="card-body">
                         @if (session('success'))
                             <div class="alert alert-success" role="alert">
@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" title="حفظ">
                                     حفظ
                                 </button>
                             </div>
@@ -129,7 +129,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-secondary">
+                                <button type="submit" class="btn btn-secondary" title="تغيير كلمة المرور">
                                     تغيير كلمة المرور
                                 </button>
                             </div>

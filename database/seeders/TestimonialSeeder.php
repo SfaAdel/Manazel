@@ -18,37 +18,37 @@ class TestimonialSeeder extends Seeder
             'name' => 'نورا',
             'stars' => 3,
             'review' => 'عمل رائع',
-            'icon' => 'noura.PNG',
+            'icon' => '1724121305.png',
         ]);
         Testimonial::create([
             'name' => 'مصطفي',
             'stars' => 5,
             'review' => 'خدمة رائعة',
-            'icon' => 'moustafa.PNG',
+            'icon' => '1724121315.png',
         ]);
         Testimonial::create([
             'name' => 'لمى',
             'stars' => 5,
             'review' => 'خدمة ممتازة',
-            'icon' => 'lama.PNG',
+            'icon' => '1724121322.png',
         ]);
         Testimonial::create([
             'name' => 'شروق',
             'stars' => 4,
             'review' => 'خدمة ممتازة مع اشخاص متخصصين',
-            'icon' => 'shrouk.PNG',
+            'icon' => '1724121329.png',
         ]);
         Testimonial::create([
             'name' => 'يوسف',
             'stars' => 3,
             'review' => 'عمل جيد',
-            'icon' => 'youssef.PNG',
+            'icon' => '1724121340.png',
         ]);
         Testimonial::create([
             'name' => 'احمد',
             'stars' => 5,
             'review' => 'عمل ممتاز والتزام رائع بالمواعيد',
-            'icon' => 'ahmed.PNG',
+            'icon' => '1724121347.png',
         ]);
     }
 }

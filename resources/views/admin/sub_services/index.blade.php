@@ -30,6 +30,7 @@
                 <table class="table is-fullwidth">
                     <thead>
                     <tr>
+                        <th>#</th>
                         <th>الاسم</th>
                         {{-- <th> الوصف</th> --}}
                         <th>الخدمة التابعة لها</th>
@@ -48,6 +49,7 @@
                     <tbody>
                     @foreach($subServices as $subService)
                     <tr>
+                        <td>{{ $subService->id }}</td>
                         <td>{{ $subService->name }}</td>
                         {{-- <td>{{ $subService->description }}</td> --}}
                         <td>{{ $subService->service ? $subService->service->name : ' - - ' }}</td>

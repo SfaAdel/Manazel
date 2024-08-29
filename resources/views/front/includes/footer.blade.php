@@ -22,7 +22,7 @@
     <div class="container footer-top ">
       <div class="row gy-4 center">
         <div class="col-lg-4 col-md-6 footer-about ">
-          <a href="{{ route('home') }}" class="center">
+          <a href="{{ route('home') }}" class="center" title="{{$setting->name}}">
             <span class="sitename">{{$setting->name}}</span>
           </a>
           <div class="footer-contact pt-3 text-right d-flex flex-column align-items-center">
@@ -39,7 +39,7 @@
             <h4>خدماتنا</h4>
             <ul>
                 @foreach ($navCategories as $navCategory)
-                <li><i class="bi bi-chevron-right"></i> <a href="{{ route('services', $navCategory->id) }}">  {{ $navCategory->name }} </a></li>
+                <li><i class="bi bi-chevron-right"></i> <a href="{{ route('services', ['id' => $navCategory->id, 'name' => $navCategory->name]) }}" title="{{$navCategory->name}}">  {{ $navCategory->name }} </a></li>
                 @endforeach
             </ul>
           </div>
@@ -50,14 +50,14 @@
                 <div class="col-6">
                     <ul>
                         @foreach ($navCategories->slice(0, ceil($navCategories->count() / 2)) as $navCategory)
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('services', $navCategory->id) }}">  {{ $navCategory->name }} </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('services', ['id' => $navCategory->id, 'name' => $navCategory->name]) }}" title="{{ $navCategory->name }}">  {{ $navCategory->name }} </a></li>
                         @endforeach
                     </ul>
                 </div>
                 <div class="col-6">
                     <ul>
                         @foreach ($navCategories->slice(ceil($navCategories->count() / 2)) as $navCategory)
-                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('services', $navCategory->id) }}">  {{ $navCategory->name }} </a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="{{ route('services', ['id' => $navCategory->id, 'name' => $navCategory->name]) }}" title="{{ $navCategory->name }}">  {{ $navCategory->name }} </a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -68,12 +68,12 @@
         <div class="col-lg-2 col-md-3 footer-links" id="footer_web">
           <h4>لتصل اسرع</h4>
                 <ul>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('home') }}">الرئيسية</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('blogs') }}">المدونات</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('about') }}">من نحن</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('categories') }}">خدماتنا</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('contact') }}">تواصل معنا </a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="mailto:{{$setting->email}}"> {{$setting->email}}  </a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('home') }}" title="الرئيسية">الرئيسية</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('blogs') }}" title="المدونات">المدونات</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('about') }}" title="من نحن">من نحن</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('categories') }}" title="خدماتنا">خدماتنا</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="{{ route('contact') }}" title="تواصل معنا">تواصل معنا </a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="mailto:{{$setting->email}}" title="{{$setting->email}}"> {{$setting->email}}  </a></li>
 
                 </ul>
         </div>
@@ -82,14 +82,14 @@
         <div class="col-lg-4 col-md-12 mb-4">
           <h4>تابعنا</h4>
           <div class="social-links d-flex justify-content-center ">
-            <a href="{{$setting->x}}"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="{{$setting->facebook}}"><i class="bi bi-facebook"></i></a>
+            <a href="{{$setting->x}}" title="Twitter" rel="nofollow"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="{{$setting->facebook}}" title="Facebook" rel="nofollow"><i class="bi bi-facebook"></i></a>
 
-            <a href="{{$setting->tiktok}}"><i class="bi bi-tiktok"></i></a>
-            <a href="{{$setting->youtube}}"><i class="bi bi-youtube"></i></a>
-            <a href="{{$setting->linkedin}}"><i class="bi bi-linkedin"></i></a>
+            <a href="{{$setting->tiktok}}" title="Tiktok" rel="nofollow"><i class="bi bi-tiktok"></i></a>
+            <a href="{{$setting->youtube}}" title="Youtube" rel="nofollow"><i class="bi bi-youtube"></i></a>
+            <a href="{{$setting->linkedin}}" title="Linkedin" rel="nofollow"><i class="bi bi-linkedin"></i></a>
 
-            <a href="{{$setting->instagram}}"><i class="bi bi-instagram"></i></a>
+            <a href="{{$setting->instagram}}" title="Instagram" rel="nofollow"><i class="bi bi-instagram"></i></a>
           </div>
         </div>
 
@@ -103,7 +103,7 @@
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        صنع بكل حب <a href="#"><i class="fa fa-heart text-danger"></i></a>
+        صنع بكل حب <a href="#" title="صنع بكل حب"><i class="fa fa-heart text-danger"></i></a>
       </div>
     </div>
 

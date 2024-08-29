@@ -1,111 +1,127 @@
 @extends('front/layouts.index')
-@section('page.title', ' خدماتنا')
+@section('page.title', $service->name)
+@section('page.description', $service->description)
 
 @section('content')
 
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section background-blur" style="background-image:url('{{ asset('images/categories_bannars/' . $service->category->bannar) }}');">
+    <section id="hero" class="hero section background-blur"
+        style="background-image:url('{{ asset('images/categories_bannars/' . $service->category->bannar) }}');">
 
         <div class="container px-4">
             <div class="row gy-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
                     <h1 class="my-3">
-                        {{ $service->category->name }}
+                        {{ $service->name }}
                     </h1>
                     <hr class="text-light">
-                    <p class="mt-2">{{ $service->category->description }}</p>
+                    <p class="mt-2">{{ $service->description }}</p>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img center" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="{{ asset('images/categories/' . $service->category->logo) }}" class="img-fluid animated" alt="">
+                    <img src="{{ asset('images/categories/' . $service->category->logo) }}" class="img-fluid animated"
+                        alt="{{ $service->category->name }}" title="{{ $service->category->name }}">
                 </div>
             </div>
         </div>
     </section>
 
-<main class="container my-6 p-6">
+    <main class="container my-6 p-6">
 
 
 
 
 
-    <!-- Services Section -->
-    <section id="services" class="services section mt-5">
+        <!-- Services Section -->
+        <section id="services" class="services section mt-5">
 
-        <!-- Section Title -->
-        <div class="container section-title text-center my-4">
-            <h2 class="mt-5">{{$service->name}} </h2>
-            <p>{{$service->description}}</p>
-        </div><!-- End Section Title -->
+            <!-- Section Title -->
+            <div class="container section-title text-center my-4">
+                <h2 class="mt-5">{{ $service->name }} </h2>
+                <p>{{ $service->description }}</p>
+            </div><!-- End Section Title -->
 
 
 
-        @if (!$sub_services->isEmpty())
+            @if (!$sub_services->isEmpty())
 
-        <div class="container mt-3">
+                <div class="container mt-3">
 
-            <div class="row gy-4">
-                @foreach($sub_services as $sub_service)
-                <div class="col-xl-3 col-md-6 d-flex align-items-center m-auto my-3" data-aos="fade-up"
-                data-aos-delay="100">
-                <div class="service-item position-relative center">
-                            <div class="center">
-                                <img class="custom-card-img-top my-1 new_icon" src="{{ asset('images/sub_services/' . $sub_service->icon) }}" alt="{{ $sub_service->name }}">
-                            </div>
-                            <div class="card-img-overlay d-flex justify-content-end">
-                                <!-- Optionally, you can keep the like button here if needed -->
-                            </div>
-                            <div class="custom-card-body">
-
-                                <h4 class="custom-card-title">
-                                    {{ $sub_service->name }}
-                                </h4>
-
-                                {{-- <h6 class="custom-card-subtitle mb-2 text-muted my-1 text-bold"> <span class="custom-card-subtitle-span">التصنيف :</span> {{ $sub_service->service->category->name }}</h6> --}}
-                                <p class="custom-card-text">{{ $sub_service->short_description }}</p>
-                                <div class="">
-
-                                    <div class="price text-success custom-price d-block my-2">
-
-                                        @if ($sub_service->price_on_serve)
-                                        <h5 class="mr-1 text-custom">
-                                            <span> السعر  :</span>
-                                            تسعر عند الزيارة
-                                        </h5>
-                                    @else
-                                    <h5 class="mr-3 text-custom"> <span> السعر  :</span> {{ $sub_service->price }} ريال</h5>
-
-                                    @endif
+                    <div class="row gy-4">
+                        @foreach ($sub_services as $sub_service)
+                            <div class="col-xl-3 col-md-6 d-flex align-items-center m-auto my-3" data-aos="fade-up"
+                                data-aos-delay="100">
+                                <div class="service-item position-relative center">
+                                    <div class="center">
+                                        <img class="custom-card-img-top my-1 new_icon"
+                                            src="{{ asset('images/sub_services/' . $sub_service->icon) }}"
+                                            alt="{{ $sub_service->name }}" title="{{ $sub_service->name }}">
                                     </div>
-<div>
-    <a href="{{ route('sub_service_details', $sub_service->id) }}" class="btn btn-service stretched-link">
-        <i class="fas fa-shopping-cart"></i>حجز الخدمة
-    </a>
-</div>
+                                    <div class="card-img-overlay d-flex justify-content-end">
+                                        <!-- Optionally, you can keep the like button here if needed -->
+                                    </div>
+                                    <div class="custom-card-body">
 
+                                        <h4 class="custom-card-title">
+                                            {{ $sub_service->name }}
+                                        </h4>
+
+                                        {{-- <h6 class="custom-card-subtitle mb-2 text-muted my-1 text-bold"> <span class="custom-card-subtitle-span">التصنيف :</span> {{ $sub_service->service->category->name }}</h6> --}}
+                                        <p class="custom-card-text">{{ $sub_service->short_description }}</p>
+                                        <div class="">
+
+                                            <div class="price text-success custom-price d-block my-2">
+
+                                                @if ($sub_service->price_on_serve)
+                                                    <h5 class="mr-1 text-custom">
+                                                        <span> السعر :</span>
+                                                        تسعر عند الزيارة
+                                                    </h5>
+                                                @else
+                                                    @if ($sub_service->offer)
+                                                        <span class="original-price mx-1"
+                                                        style="text-decoration: line-through; color: red;">
+                                                        {{ $sub_service->price }}
+                                                        </span>
+                                                        <span class="final-price" style="color: green;">
+                                                            {{ $sub_service->final_price }} ريال
+                                                        </span>
+                                                    @else
+                                                    <h5 class="mr-3 text-custom"> <span> السعر :</span>
+                                                        {{ $sub_service->price }} ريال</h5>
+                                                    @endif
+                                                @endif
+                                            </div>
+                                            <div>
+                                                <a href="{{ route('sub_service_details', ['id' => $sub_service->id, 'name' => $sub_service->name]) }}"
+                                                    class="btn btn-service stretched-link"
+                                                    title="حجز خدمة {{ $sub_service->name }}">
+                                                    <i class="fas fa-shopping-cart"></i>حجز الخدمة
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                @endforeach
-            </div>
-        </div>
-
-        @else
-        <div class="center text-secondary">
-            <h3>لا يوجد خدمات اخري متاحة بعد</h3>
-        </div>
-    @endif
+                </div>
+            @else
+                <div class="center text-secondary">
+                    <h3>لا يوجد خدمات اخري متاحة بعد</h3>
+                </div>
+            @endif
 
 
-                <!-- More product cards can be added here -->
+            <!-- More product cards can be added here -->
 
 
 
 
-        <div class="container mt-4">
+            <div class="container mt-4">
 
-            {{-- <section id="why-us" class="section why-us" data-builder="section">
+                {{-- <section id="why-us" class="section why-us" data-builder="section">
 
                 <div class="container-fluid">
 
@@ -174,12 +190,12 @@
 
             </section><!-- /Why Us Section --> --}}
 
-        </div>
-        {{-- <div class="center mt-4">
+            </div>
+            {{-- <div class="center mt-4">
             <a class="btn-getstarted btn btn-blue" href="{{ route('enroll') }}" >احجز خدمتك الان</a>
         </div> --}}
-    </section><!-- /Services Section -->
+        </section><!-- /Services Section -->
 
 
-</main>
+    </main>
 @endsection

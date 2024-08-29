@@ -62,7 +62,7 @@
 
 
             <button class="navbar-toggler" style="box-shadow: none; border: none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse">
+                data-bs-target="#navbarCollapse" title="القائمة الرئيسية">
                 <span><i class="fas fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse mr-4 justify-content-center" id="navbarCollapse">
@@ -149,7 +149,7 @@
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary" title="تحقق من الرمز">
                                             {{ __('تحقق') }}
                                         </button>
                                     </div>

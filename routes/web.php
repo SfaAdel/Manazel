@@ -98,10 +98,16 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/categories', [HomeController::class, 'all_categories'])->name('categories');
 
-Route::get('/services/{slug}', [HomeController::class, 'service'])->name('services');
-Route::get('/service-details/{slug}', [HomeController::class, 'service_details'])->name('service_details');
-Route::get('/sub-service-details/{slug}', [HomeController::class, 'sub_service_details'])->name('sub_service_details');
+Route::get('/services/{id}/{name}', [HomeController::class, 'service'])->name('services');
+// Route::get('/service-details/{slug}', [HomeController::class, 'service_details'])->name('service_details');
+// Route::get('/sub-service-details/{slug}', [HomeController::class, 'sub_service_details'])->name('sub_service_details');
+// Route::post('/sub_service/{id}/review', [CustomerReviewController::class, 'submitReview'])->name('submit_review');
+
+Route::get('/service-details/{id}/{name}', [HomeController::class, 'service_details'])->name('service_details');
+Route::get('/sub-service-details/{id}/{name}', [HomeController::class, 'sub_service_details'])->name('sub_service_details');
 Route::post('/sub_service/{id}/review', [CustomerReviewController::class, 'submitReview'])->name('submit_review');
+
+
 
 Route::post('/appointments', [AppointmentController::class, 'bookAppointment'])->name('book_appointment');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
@@ -118,9 +124,12 @@ Route::post('/register-click', [ClickController::class, 'registerClick'])->name(
 Route::get('/blogs/filter/tag/{slug}', [BlogController::class, 'filterByTag'])->name('blogs.filterByTag');
 
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+
+// Blog routes
+Route::get('/blogs/filter/tag/{id}/{slug}', [BlogController::class, 'filterByTag'])->name('blogs.filterByTag');
 Route::get('/blogs', [HomeController::class, 'blog'])->name('blogs');
-Route::get('/blog-details/{slug}', [HomeController::class, 'blog_details'])->name('blog_details');
-Route::get('/blogs/category/{slug?}', [HomeController::class, 'filterByCategory'])->name('blogs.filter');
+Route::get('/blog-details/{id}/{slug}', [HomeController::class, 'blog_details'])->name('blog_details');
+Route::get('/blogs/category/{id?}/{slug?}', [HomeController::class, 'filterByCategory'])->name('blogs.filter');
 
 
 

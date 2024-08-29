@@ -1,5 +1,6 @@
 @extends('front/layouts.index')
-@section('page.title', 'خدماتنا')
+@section('page.title', 'اشترك الان كمزود خدمة')
+@section('page.description',  'اشترك كمزود خدمه للعمل مع شركة منازل في صيانة وتنظيف المكيفات، تركيب وصيانة الغسالات، شحن الفريون وتاسيس الكهرباء وتمتع بتوفير حلول صيانة موثوقة واحترافية لعملائك' )
 
 @section('content')
 
@@ -135,8 +136,8 @@
                             <!-- Start Card Footer -->
                             <div class="card-footer mt-3">
                                 <div class="buttons has-addons">
-                                    <a class="btn btn-secondary submit" href="{{ route('home') }}"> الغاء </a>
-                                    <button type="submit" class="btn btn-blue submit">حفظ</button>
+                                    <a class="btn btn-secondary submit" href="{{ route('home') }}" title="الغاء"> الغاء </a>
+                                    <button type="submit" class="btn btn-blue submit" title="حفظ">حفظ</button>
                                 </div>
                             </div><!-- End Card Footer -->
                         </form>

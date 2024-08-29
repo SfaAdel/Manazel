@@ -1,5 +1,6 @@
 @extends('front/layouts.index')
-@section('page.title', ' جميع التصنيفات')
+@section('page.title', 'جميع {{$categoriesSection->title}}')
+@section('page.description',  $categoriesSection->short_description )
 
 @section('content')
 
@@ -11,7 +12,7 @@
             <div class="row gy-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
                     <h1 class="my-3">
-                        جميع التصنيفات
+                        جميع {{$categoriesSection->title}}
                     </h1>
                     <hr class="text-light">
                     <p class="mt-2">{{ $categoriesSection->short_description }}</p>
@@ -44,9 +45,9 @@
                         <div class="icon">
                           <img class="custom-card-img-top my-3 new_icon" src="{{ asset('images/categories/' . $navCategory->icon) }}" alt="{{ $navCategory->name }}">
                         </div>
-                        <h4><a href="{{ route('services', $navCategory->id) }}" class="stretched-link">{{ $navCategory->name }}</a></h4>
+                        <h4><a href="{{ route('services', ['id' => $navCategory->id, 'name' => $navCategory->name]) }}" class="stretched-link" title="{{ $navCategory->name }}">{{ $navCategory->name }}</a></h4>
                         <p>{{ $navCategory->description }}</p>
-                        <a href="{{ route('services', $navCategory->id) }}" class="btn btn-blue mt-3"> تعرف علي الخدمات</a>
+                        <a href="{{ route('services', ['id' => $navCategory->id, 'name' => $navCategory->name]) }}" class="btn btn-blue mt-3" title="{{$navCategory->name}}"> تعرف علي الخدمات</a>
                       </div>
                     </div>
                   @endforeach

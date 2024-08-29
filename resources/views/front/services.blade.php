@@ -1,5 +1,6 @@
 @extends('front/layouts.index')
-@section('page.title', ' خدماتنا')
+@section('page.title', $category->name)
+@section('page.description',   $category->description )
 
 @section('content')
 
@@ -17,7 +18,7 @@
                     <p class="mt-2">{{ $category->description }}</p>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img center" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="{{ asset('images/categories/' . $category->logo) }}" class="img-fluid animated" alt="">
+                    <img src="{{ asset('images/categories/' . $category->logo) }}" class="img-fluid animated" alt="{{$category->name}}" title="{{$category->name}}">
                 </div>
             </div>
         </div>
@@ -47,12 +48,12 @@
                                     <div class="icon">
                                         <img class="custom-card-img-top my-1 new_icon"
                                             src="{{ asset('images/services/' . $service->icon) }}"
-                                            alt="{{ $service->name }}">
+                                            alt="{{ $service->name }}" title="{{ $service->name }}">
                                     </div>
-                                    <h4><a href="{{ route('service_details', $service->id) }}"
-                                            class="stretched-link">{{ $service->name }} </a></h4>
+                                    <h4><a href="{{ route('service_details', ['id' => $service->id, 'name' => $service->name]) }}"
+                                            class="stretched-link" title="{{ $service->name }}">{{ $service->name }} </a></h4>
                                     <p> {{ $service->description }} </p>
-                                    <a href="{{ route('service_details', $service->id) }}" class="btn btn-blue mt-3">اختر
+                                    <a href="{{ route('service_details', ['id' => $service->id, 'name' => $service->name]) }}" class="btn btn-blue mt-3" title="اختر خدمة">اختر
                                         خدمة</a>
 
                                 </div>

@@ -46,7 +46,7 @@
                 </div>
                 <div class="card-body">
                     @if($appointments->isEmpty())
-                        <p>لم تقم بــ أى طلبات بعد . . اطلب  <a href="{{ route('categories') }}">  خدمتك </a> الان </p>
+                        <p>لم تقم بــ أى طلبات بعد . . اطلب  <a href="{{ route('categories') }}" title="اطلب الان">  خدمتك </a> الان </p>
                     @else
                         <table class="table">
                             <thead>

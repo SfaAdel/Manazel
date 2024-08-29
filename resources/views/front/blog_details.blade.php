@@ -1,5 +1,6 @@
 @extends('front/layouts.index')
-@section('page.title', ' المدونة')
+@section('page.title', ' مدونة ' . $blog->main_title)
+@section('page.description',  $blog->short_description )
 
 @section('content')
 
@@ -68,7 +69,7 @@
 
                     <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
                         <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="img-fluid animated rounded"
-                            alt="Why Us">
+                            alt="{{$blog->main_title}}">
                     </div>
                 </div>
 
@@ -85,7 +86,7 @@
                 <!-- Section Title -->
                 <div class="container section-title" data-aos="fade-up">
                     <h2>اطلب خدمتك الان</h2>
-                    <p>
+                    <p class="mb-3">
                         وسنتواصل معك فى اقرب وقت
                         <i class="bi bi-heart text-danger"></i>
                     </p>
@@ -190,8 +191,8 @@
                             <!-- Start Card Footer -->
                             <div class="card-footer mt-3">
                                 <div class="buttons has-addons">
-                                    <a class="btn btn-secondary submit" href="{{ route('home') }}"> الغاء </a>
-                                    <button type="submit" class="btn btn-blue submit">تأكيد الطلب </button>
+                                    <a class="btn btn-secondary submit" href="{{ route('home') }}" title="الغاء"> الغاء </a>
+                                    <button type="submit" class="btn btn-blue submit" title="تأكيد الطلب">تأكيد الطلب </button>
                                 </div>
                             </div><!-- End Card Footer -->
                         </form>

@@ -92,13 +92,13 @@
                 <div class="control">
                     <label class="radio">
                         <input type="radio" name="price_on_serve" value="0"
-                            @if (isset($subService) && $subService->price_on_serve) checked @endif
+                            @if (isset($subService) && !$subService->price_on_serve) checked @endif
                             onclick="togglePriceInput(false)">
                         سوف يتم تحديد سعر
                     </label>
                     <label class="radio">
                         <input type="radio" name="price_on_serve" value="1"
-                            @if (isset($subService) && !$subService->price_on_serve) checked @endif
+                            @if (isset($subService) && $subService->price_on_serve) checked @endif
                             onclick="togglePriceInput(true)">
                         تسعر عند الزيارة
                     </label>

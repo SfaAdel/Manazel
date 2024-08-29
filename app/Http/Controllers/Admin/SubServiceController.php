@@ -47,8 +47,8 @@ class SubServiceController extends Controller
         }
         if ($request->hasFile('bannar')) {
             $BannarImageName = time() . '.' . $request->bannar->extension();
-            $request->bannar->move(('images/sub_service_bannars/'), $BannarImageName);
-            SubService::create($request->except('icon', '_token') +
+            $request->bannar->move(('images/sub_service_bannars'), $BannarImageName);
+            SubService::create($request->except('icon', '_token','banner') +
             ['icon' => $ImageName]+
             ['bannar' => $BannarImageName]);
 

@@ -41,9 +41,9 @@ class TitleController extends Controller
         }
         if ($request->hasFile('banner')) {
             $BannerImageName = time() . '.' . $request->banner->extension();
-            $request->banner->move(('images/pages_banners/'), $BannerImageName);
+            $request->banner->move(('images/pages_banners'), $BannerImageName);
         }
-        Title::create($request->except('icon', '_token') +
+        Title::create($request->except('icon', '_token','banner') +
             ['icon' => $ImageName]+
             ['banner' => $BannerImageName]);
 

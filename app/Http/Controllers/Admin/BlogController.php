@@ -50,10 +50,10 @@ class BlogController extends Controller
         }
         if ($request->hasFile('banner')) {
             $BannerImageName = time() . '.' . $request->banner->extension();
-            $request->banner->move(('images/blogs_banners/'), $BannerImageName);
+            $request->banner->move(('images/blogs_banners'), $BannerImageName);
         }
 
-        $blog = Blog::create($request->except('icon', '_token','tags') +
+        $blog = Blog::create($request->except('icon', '_token','tags','banner') +
             ['icon' => $ImageName]+
             ['banner' => $BannerImageName]);
 

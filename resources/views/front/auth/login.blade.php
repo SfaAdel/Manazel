@@ -61,7 +61,7 @@
             </a>
 
             <button class="navbar-toggler" style="box-shadow: none; border: none" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                data-bs-toggle="collapse" data-bs-target="#navbarCollapse" title="القائمة الرئيسية">
                 <span><i class="fas fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse mr-4 justify-content-center" id="navbarCollapse">
@@ -177,13 +177,13 @@
                 </div>
 
                 <div class="d-flex align-items-center justify-content-center">
-                    <button class="btn-getstarted mt-1">تسجيل الدخول</button>
+                    <button class="btn-getstarted mt-1" title="تسجيل الدخول">تسجيل الدخول</button>
                 </div>
 
 
             </form>
             <div class="text-center fs-6">
-                <a href="#">هل نسيت كلمة المرور؟</a> ام <a href="{{ route('register') }}">تريد انشاء حساب جديد</a>
+                <a href="{{ route('register') }}">ليس لديك حساب </a> و <a href="{{ route('register') }}">تريد انشاء حساب جديد</a>
             </div>
         </div>
 

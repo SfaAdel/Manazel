@@ -1,5 +1,6 @@
 @extends('front/layouts.index')
-@section('page.title', 'خدماتنا')
+@section('page.title', 'خدمة '.$sub_service->name )
+@section('page.description',   $sub_service->short_description )
 
 @section('content')
     @include('front.partials.alerts')
@@ -12,14 +13,14 @@
             <div class="row gy-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
                     <h1 class="my-3">
-                        {{ $sub_service->service->category->name }}
+                        {{ $sub_service->name }}
                     </h1>
                     <hr class="text-light">
-                    <p class="mt-2">{{ $sub_service->service->category->description }}</p>
+                    <p class="mt-2">{{ $sub_service->short_description }}</p>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img center" data-aos="zoom-out" data-aos-delay="200">
                     <img src="{{ asset('images/categories/' . $sub_service->service->category->logo) }}"
-                        class="img-fluid animated" alt="">
+                        class="img-fluid animated" alt="{{$sub_service->service->category->name}}" title="{{$sub_service->service->category->name}}">
                 </div>
             </div>
         </div>
@@ -55,11 +56,11 @@
                                 <div>
                                     <div class="product-name center mb-2">
                                         <img src="{{ asset('images/sub_services/' . $sub_service->icon) }}"
-                                            class="product_img img-fluid animated rounded mb-3" alt="photo">
+                                            class="product_img img-fluid animated rounded mb-3" alt="{{$sub_service->name}}" title="{{$sub_service->name}}">
                                         <br>
                                         {{ $sub_service->name }}
                                     </div>
-                                    <br>
+<p class="center mt-2">التصنيف : <a href="{{ route('services',  ['id' => $sub_service->service->category->id, 'name' => $sub_service->service->category->name]) }}">{{$sub_service->service->category->name}}</a></p>
                                 </div>
                                 {{-- <div class="rate mx-1 center">
             <input type="radio" id="star5" name="rate" value="5" checked />
@@ -173,9 +174,9 @@
 
                                     </div>
                                     @if (auth()->guard('customer')->check())
-                                        <button type="submit" class="round-black-btn btn btn-custom">تأكيد الحجز</button>
+                                        <button type="submit" class="round-black-btn btn btn-custom" title="تأكيد الحجز">تأكيد الحجز</button>
                                     @else
-                                        <a class="btn btn-blue m-3" href="{{ route('login') }}">يجب عليك تسجيل الدخول
+                                        <a class="btn btn-blue m-3" href="{{ route('login') }}" title="تسجيل الدخول">يجب عليك تسجيل الدخول
                                             أولا</a>
                                     @endif
                                 </form>
@@ -202,10 +203,10 @@
                                                                 <div class="profile-img">
                                                                     @if ($review->customer)
                                                                         <img src="{{ asset('images/customers/' . $review->customer->profile_img) }}"
-                                                                            alt="" />
+                                                                            alt="{{$review->customer->name}}" title="{{$review->customer->name}}" />
                                                                     @else
                                                                         <img src="{{ asset('images/customers/default.png') }}"
-                                                                            alt="" />
+                                                                        alt="{{$review->customer->name}}" title="{{$review->customer->name}}" />
                                                                     @endif
                                                                 </div>
                                                                 <div class="name-user">
@@ -249,7 +250,7 @@
                                             <h2 class="">شارك بـرأيك</h2>
                                         </div>
                                         <form class="review-form" method="POST"
-                                            action="{{ route('submit_review', $sub_service->id) }}">
+                                            action="{{ route('submit_review', $sub_service->id ) }}">
                                             @csrf
 
                                             <div class="form-group mt-1">
@@ -280,7 +281,7 @@
                                                 <textarea class="form-control" name="comment" rows="10"></textarea>
                                             </div>
 
-                                            <button class="btn btn-custom" type="submit">نشر</button>
+                                            <button class="btn btn-custom" type="submit" title="نشر">نشر</button>
                                         </form>
 
                                     </div>

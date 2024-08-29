@@ -1,5 +1,6 @@
 @extends('front/layouts.index')
-@section('page.title', 'معلومات حولنا')
+@section('page.title',  $aboutSection->title )
+@section('page.description',  $aboutSection->short_description )
 
 @section('content')
 
@@ -60,7 +61,7 @@
                         </div>
                         <div class="my-4 align-items-center" data-aos="zoom-in" data-aos-delay="200">
                             <img src="{{ asset('images/titles/' . $aboutSection->icon) }}"
-                                class="img-fluid animated rounded" alt="Why Us">
+                                class="img-fluid animated rounded" alt="{{$aboutSection->title}}" title="{{$aboutSection->title}}">
                         </div>
                     </div>
 
@@ -72,7 +73,7 @@
                                     <div class="card border-custom">
                                         <div class="card-body text-center">
                                             {{-- <i class="bi bi-check2-circle display-4 text-custom mb-3"></i> --}}
-                                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}" class="img ml-1 new_icon" alt="icon">
+                                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}" class="img ml-1 new_icon" alt="{{ $advantage->name }}" title="{{ $advantage->name }}">
                                             <p class="card-text">{{ $advantage->name }}</p>
                                         </div>
                                     </div>
@@ -83,7 +84,7 @@
 
                     <div id="advantage_web" class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
                         <img src="{{ asset('images/titles/' . $aboutSection->icon) }}" class="img-fluid animated rounded"
-                            alt="Why Us">
+                            alt="{{$aboutSection->title}}" title="{{$aboutSection->title}}">
                     </div>
                 </div>
 
@@ -133,7 +134,7 @@
                             <div class="row">
                                 @foreach ($counterChunk as $counter)
                                     <div class="col-md-3 col-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3">
-                                        <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon" alt="icon">
+                                        <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon" alt="{{ $counter->title }}" title="{{ $counter->title }}">
                                         @if($counter->number)
                                             <span class="timer counter alt-font appear" data-to="810" data-speed="7000">{{ $counter->number }}</span>
                                         @else
@@ -148,11 +149,11 @@
                 </div>
 
                 <!-- Carousel controls if needed -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="prev" title="السابق">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="next" title="التالى">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -167,7 +168,7 @@
                         <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3"
                             data-wow-duration="900ms"
                             style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
-                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon" alt="icon">
+                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon" alt="{{ $counter->title }}" title="{{ $counter->title }}">
                             <span class="timer counter alt-font appear" data-to="810"
                                 data-speed="7000">{{ $counter->number }}</span>
                             <span class="counter-title">{{ $counter->title }}</span>
@@ -180,7 +181,7 @@
                         data-wow-duration="600ms"
                         style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
                         <img src="{{ asset('images/counters/' . 'place.png') }}" class="img  new_icon"
-                            alt="Main Company Headquarters">
+                            alt="مقر الشركة " title="مقر الشركة">
                         <span class="timer counter_text alt-font appear mb-1">الرياض</span>
                         <span class="counter-title">مقر الشركة</span>
                     </div>
@@ -225,7 +226,7 @@
                     </div>
 
                     <div class="col-lg-5 order-1 order-lg-2 why-us-img">
-                        <img src="front/assets/img/why-us.png" class="img-fluid" alt="" data-aos="zoom-in"
+                        <img src="front/assets/img/why-us.png" class="img-fluid" alt="/why-us" data-aos="zoom-in"
                             data-aos-delay="100">
                     </div>
                 </div>
@@ -269,7 +270,7 @@
                             <div class="swiper-slide">
                                 <div class="testimonial-item">
                                     <img src="{{ asset('images/teams/' . $team->icon) }}" class="testimonial-img"
-                                        alt="">
+                                        alt="{{ $team->name }}" title="{{ $team->name }}">
 
                                     <h3> {{ $team->name }}</h3>
                                     <p>

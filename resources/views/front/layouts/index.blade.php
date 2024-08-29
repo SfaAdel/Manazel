@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>منازل | @yield('page.title')</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <meta content="@yield('page.description')" name="description">
+    {{-- <meta content="@yield('page.keywords')" name="keywords"> --}}
+    <meta name="google-site-verification" content="xv3B3oKVmPner0pObVzBTf-S-a5AmQRHBI9fr_mF7Q4" />
 
     <!-- Add Shrinkit SDK -->
     <script src="https://cdn.appgain.io/docs/appgain/appgainSdk/websdk/shrinkit.min.js"></script>
@@ -83,16 +84,16 @@
     <!-- partial -->
 
     <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" title="اذهب لبداية الصفحة">
         <i class="bi bi-arrow-up-short"></i>
     </a>
     <a href="tel:+{{ $setting->phone }}" class="fixed-icon phone d-flex align-items-center justify-content-center"
-        onclick="registerClick('call')">
+        onclick="registerClick('call')" title="اتصل بنا">
         <i class="fa-solid fa-phone"></i>
     </a>
     <a href="https://wa.me/{{ $setting->whatsapp }}"
         class="fixed-icon whatsapp d-flex align-items-center justify-content-center"
-        onclick="registerClick('whatsapp')">
+        onclick="registerClick('whatsapp')" title="تواصل معنا عبر واتساب ">
         <i class="fab fa-whatsapp"></i>
     </a>
 

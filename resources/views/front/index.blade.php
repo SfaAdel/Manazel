@@ -1,5 +1,6 @@
 @extends('front/layouts.home')
-@section('page.title', 'الرئيسية')
+@section('page.title', ' منازل الرئيسية')
+@section('page.description',  $mainSection->short_description )
 
 @section('content')
 
@@ -15,10 +16,11 @@
                     <hr>
                     <p class="mt-2">{{ $mainSection->short_description }}</p>
                     <div class="d-flex mt-3">
-                        <a href="tel:+{{$setting->phone}}" class="btn-get-started" onclick="registerClick('call')"> اتصل بنا</a>
+                        <a href="tel:+{{$setting->phone}}" class="btn-get-started" onclick="registerClick('call')" title="{{$setting->phone}}"> اتصل بنا</a>
 
                         <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
-                            class="glightbox btn-watch-video d-flex align-items-center">
+                            class="glightbox btn-watch-video d-flex align-items-center"
+                            title="شاهد الان">
                             <i class="bi bi-play-circle mx-2"></i><span>شاهد الان</span>
                         </a>
                     </div>
@@ -121,7 +123,7 @@
                             </div>
 <br>
 <br>
-                            <a href="{{ route('sub_service_details', $subService->id) }}" class="offer_btn">
+                            <a href="{{ route('sub_service_details', $subService->id) }}" class="offer_btn" title="{{$subService->name}}">
                                 احصل علي العرض
                             </a>
                         </div>
@@ -216,7 +218,7 @@
 
 
         <!-- About Section -->
-        <section id="about" class="about section p-5 mt-4">
+        <section id="about" class="about section py-5 px-1 mt-4">
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2 class="">{{ $aboutSection->title }}</h2>
@@ -229,7 +231,7 @@
                     </div>
 
                     <div class="center mt-4">
-                        <a href="{{ route('about') }}" class="btn btn-custom mt-3">معرفة المزيد</a>
+                        <a href="{{ route('about') }}" class="btn btn-custom mt-3" title="معرفة المزيد">معرفة المزيد</a>
                     </div>
 
                     <div id="advantage_mobile" class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
@@ -310,11 +312,11 @@
                     </div>
 
                     <!-- Carousel controls if needed -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="prev" title="السابق">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="next" title="التالى">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -359,7 +361,7 @@
         <section id="services" class="services section p-3 mt-4">
 
             <!-- Section Title -->
-            <div class=" section-title" data-aos="fade-up">
+            <div class=" section-title mb-5" data-aos="fade-up">
                 <h2>{{ $serviceSection->title }}</h2>
                 <p>{{ $serviceSection->short_description }}</p>
             </div><!-- End Section Title -->
@@ -379,7 +381,7 @@
                                     </h4>
                                 </div>
                                 <p class="my-1">{{ $category->description }}</p>
-                                <a href="{{ route('services', $category->id) }}" class="btn btn-custom mt-3">تعرف على
+                                <a href="{{ route('services', ['id' => $category->id, 'name' => $category->name]) }}" class="btn btn-custom mt-3" title="{{$category->name}}">تعرف على
                                     الخدمات </a>
                             </div>
                         </div><!-- End Service Item -->
@@ -387,13 +389,13 @@
                 </div>
 
                 <div class="center my-3">
-                    <a href="{{ route('categories') }}" class="btn btn-custom">عرض جميع التصنيفات</a>
+                    <a href="{{ route('categories') }}" class="btn btn-custom" title="عرض جميع التصنيفات">عرض جميع التصنيفات</a>
                 </div>
             </div>
         </section><!-- /Services Section -->
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials section p-5 mt-4">
+        <section id="testimonials" class="testimonials section py-5 px-1 mt-4">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
@@ -455,7 +457,7 @@
         {{-- <hr> --}}
 
         <!-- Team Section -->
-        <section id="teams" class="testimonials section p-5 mt-4">
+        <section id="teams" class="testimonials section py-5 px-1 mt-4">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
@@ -506,7 +508,7 @@
         {{-- <hr> --}}
         @if ($blogs->isNotEmpty())
             <!-- Blog Section -->
-            <section id="blog" class="blog section px-4 mt-4 spikes">
+            <section id="services" class="services section p-3 mt-4">
 
                 <!-- Section Title -->
                 <div class="container section-title" data-aos="fade-up">
@@ -522,8 +524,8 @@
                     @else
                         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-                            <div class="swiper blog-swiper">
-                                <script type="application/json" class="swiper-config">
+                            {{-- <div class="swiper blog-swiper"> --}}
+                                {{-- <script type="application/json" class="swiper-config">
                                 {
                                     "loop": true,
                                     "speed": 600,
@@ -537,10 +539,10 @@
                                     "clickable": true
                                     }
                                 }
-                            </script>
+                                </script> --}}
 
 
-                                <div class="swiper-container">
+                                {{-- <div class="swiper-container">
                                     <div class="swiper-wrapper">
                                         @foreach ($blogs as $blog)
                                             <div class="swiper-slide">
@@ -553,8 +555,9 @@
                                                         <h4 class="mb-4 ">{{ $blog->main_title }}</h4>
                                                         <p class="d-inline mt-4">{{ $blog->short_description }}</p>
 
-                                                        <a href="{{ route('blog_details', $blog->id) }}"
-                                                            class="btn mt-3 d-inline text-primary">قراءة المزيد . . .</a>
+                                                        <a href="{{ route('blog_details', ['id' => $blog->id, 'slug' => $blog->main_title]) }}"
+                                                            class="btn mt-3 d-inline text-primary" title="{{$blog->name}}">قراءة المزيد . . .
+                                                        </a>
 
                                                     </div>
                                                 </div>
@@ -562,12 +565,35 @@
                                             </div><!-- End Blog Entry -->
                                         @endforeach
                                     </div>
+                                </div> --}}
+
+                                <div>
+                                    <div class="row gy-4 m-2 mx-auto">
+                                        @foreach ($blogs as $blog)
+                                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 d-flex align-items-center  my-2">
+                                                <div class="service-item position-relative" data-aos="fade-up"
+                                                    data-aos-delay="{{ $loop->iteration * 100 }}">
+                                                    <div class="icon">
+                                                        <h4>
+                                                            <img src="{{ asset('images/blogs/' . $blog->icon) }}"
+                                                                class="service_icon mb-1" alt="icon">
+                                                                <br>
+                                                                {{ $blog->main_title }}
+                                                        </h4>
+                                                    </div>
+                                                    <p class="my-1">{{ $blog->short_description }}</p>
+                                                    <a href="{{ route('blog_details', ['id' => $blog->id, 'slug' => $blog->main_title]) }}" class="btn btn-custom mt-3" title="{{$category->name}}"> قراءةالمزيد . .
+                                                         </a>
+                                                </div>
+                                            </div><!-- End Service Item -->
+                                        @endforeach
+                                    </div>
                                 </div>
 
                                 <div class="center mt-4">
-                                    <a href="{{ route('blogs') }}" class="btn btn-custom mt-3">عرض كل المدونات</a>
+                                    <a href="{{ route('blogs') }}" class="btn btn-custom mt-3" title="عرض كل المدونات">عرض كل المدونات</a>
                                 </div>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     @endif
                 </div>
@@ -577,7 +603,7 @@
         {{-- <hr> --}}
 
         <!-- Contact Section -->
-        <section id="contact" class="testimonials section p-5 mt-4">
+        <section id="contact" class="testimonials section py-5 px-1 mt-4">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
@@ -590,7 +616,7 @@
 
 
             <div class="center mt-4">
-                <a href="{{ route('contact') }}" class="btn btn-custom mt-3"> تواصل معنا</a>
+                <a href="{{ route('contact') }}" class="btn btn-custom mt-3" title="تواصل معنا"> تواصل معنا</a>
             </div>
 
 

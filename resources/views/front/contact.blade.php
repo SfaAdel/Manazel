@@ -1,5 +1,6 @@
 @extends('front/layouts.index')
-@section('page.title', ' تواصل معنا')
+@section('page.title', $contactSection->title )
+@section('page.description',  $contactSection->short_description )
 
 @section('content')
 
@@ -111,7 +112,7 @@
                         </div>
 
                         <div class="col-md-12 text-center">
-                            <button type="submit" class="btn btn-custom">ارسال</button>
+                            <button type="submit" class="btn btn-custom" title="ارسال">ارسال</button>
                         </div>
                     </div>
                 </form>

@@ -502,6 +502,7 @@ section,
     padding: 60px 0;
     scroll-margin-top: 88px;
     overflow: clip;
+    text-align:center;
 }
 
 @media (max-width: 1199px) {
@@ -516,7 +517,7 @@ section,
 --------------------------------------------------------------*/
 .section-title {
     text-align: center;
-    padding-bottom: 60px;
+    /* padding-bottom: 60px; */
     position: relative;
 }
 
@@ -1070,6 +1071,12 @@ section,
     }
 }
 
+.why-us .faq-container .faq-item h3 {
+        font-weight: 800;
+        font-size: 20px;
+        /* text-align:center; */
+
+    }
 
 /*--------------------------------------------------------------
 # Call To Action Section
@@ -1781,6 +1788,7 @@ section,
 .testimonials .testimonial-item p {
     font-style: italic;
     margin: 0 auto 15px auto;
+font-size: 16px;
 }
 
 .testimonials .swiper-wrapper {

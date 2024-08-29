@@ -1,5 +1,6 @@
 @extends('front/layouts.index')
-@section('page.title', ' المدونة')
+@section('page.title', ' مدونة منازل')
+@section('page.description',  $blogSection->short_description )
 
 @section('content')
 
@@ -13,16 +14,16 @@
 
                 <div class=" m-2">
                     <div class="dropdown ">
-                        <button class="btn btn-filter dropdown-toggle" type="button" data-toggle="dropdown">ابحث عن موضوع
+                        <button class="btn btn-filter dropdown-toggle" type="button" data-toggle="dropdown" title="ابحث عن موضوع">ابحث عن موضوع
                             <span class="caret"></span>
                         </button>
                         <ul id="category-list" class="dropdown-menu text-right p-3 search_filter">
                             <li>
-                                <a href="{{ route('blogs.filter') }}" class="text_gray">جميع المواضيع</a>
+                                <a href="{{ route('blogs.filter' ,  ['id' => 0 , 'slug' => 'جميع المواضيع'] ) }}" class="text_gray" title="جميع المواضيع">جميع المواضيع</a>
                             </li>
                             @foreach($categories as $category)
                                 <li>
-                                    <a href="{{ route('blogs.filter', $category->id) }}" class="text_gray">{{ $category->name }}</a>
+                                    <a href="{{ route('blogs.filter',  ['id' => $category->id, 'slug' => $category->name]) }}" class="text_gray" title="{{$category->name}}">{{ $category->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -37,15 +38,15 @@
     <!-- Blog Section -->
     <section id="blog" class="section px-4 mt-4">
         <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
+        <div class="container section-title mb-2" data-aos="fade-up">
             <h2>{{ $blogSection->title }}</h2>
-            <p>{{ $blogSection->short_description }}</p>
+            <p class="mb-2">{{ $blogSection->short_description }}</p>
+            <br>
             <div class="m-2">
                 <div class="tag-list">
                     @foreach($tags as $tag)
-                    <a href="{{ route('blogs.filterByTag', $tag->id) }}" class="mx-1">{{ $tag->name }}</a>
-                @endforeach
-
+                    <a href="{{ route('blogs.filterByTag', ['id' => $tag->id, 'slug' => $tag->name]) }}" class="mx-1" title="{{ $tag->name }}">{{ $tag->name }}</a>
+                    @endforeach
                 </div>
             </div>
         </div><!-- End Section Title -->
@@ -63,16 +64,17 @@
 
                 @foreach($blogs as $blog)
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="blog-entry d-flex align-items-start center card p-4 blog_card">
+                        <div class="blog-entry d-flex align-items-center center card p-2 blog_card">
                             <div class="entry-info m-2 center">
-                                <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="card-img-top blog_img" alt="">
-                                <h4 class="mt-4">{{ $blog->main_title }}</h4>
-                                <p class="mt-2">{{ $blog->short_description }}</p>
-                                <a href="{{ route('blog_details', $blog->id) }}" class="btn btn-blue mt-2 mx-3">قراءة المزيد</a>
+                                <img src="{{ asset('images/blogs/' . $blog->icon) }}" class="card-img-top blog_img" alt="{{ $blog->main_title }}">
+                                <h4 class="mt-2">{{ $blog->main_title }}</h4>
+                                <p class="mt-1">{{ $blog->short_description }}</p>
+                                <a href="{{ route('blog_details', ['id' => $blog->id, 'slug' => $blog->main_title]) }}" class="btn btn-blue mt-1" title="{{$blog->name}}">قراءة المزيد</a>
                             </div>
                         </div>
                     </div><!-- End Blog Entry -->
                 @endforeach
+
             </div>
         </div>
         @endif
