@@ -74,7 +74,7 @@
 
                                                 @if ($sub_service->price_on_serve)
                                                     <h5 class="mr-1 text-custom">
-                                                        <span> السعر :</span>
+                                                        {{-- <span> السعر :</span> --}}
                                                         تسعر عند الزيارة
                                                     </h5>
                                                 @else

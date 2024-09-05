@@ -63,7 +63,9 @@ class HomeController extends Controller
 
         $counters=AboutUsCounter::latest()->limit(3)->get();
 
-        $subServicesWithOffer = SubService::where('offer', 1)->get();
+        $subServicesWithOffers = SubService::where('active', 1)
+        ->where('offer', 1)
+        ->get();
 
         $setting= Setting::first();
 

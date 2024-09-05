@@ -1,6 +1,6 @@
 @extends('front/layouts.home')
 @section('page.title', ' منازل الرئيسية')
-@section('page.description',  $mainSection->short_description )
+@section('page.description', $mainSection->short_description)
 
 @section('content')
 
@@ -16,11 +16,11 @@
                     <hr>
                     <p class="mt-2">{{ $mainSection->short_description }}</p>
                     <div class="d-flex mt-3">
-                        <a href="tel:+{{$setting->phone}}" class="btn-get-started" onclick="registerClick('call')" title="{{$setting->phone}}"> اتصل بنا</a>
+                        <a href="tel:+{{ $setting->phone }}" class="btn-get-started" onclick="registerClick('call')"
+                            title="{{ $setting->phone }}"> اتصل بنا</a>
 
                         <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
-                            class="glightbox btn-watch-video d-flex align-items-center"
-                            title="شاهد الان">
+                            class="glightbox btn-watch-video d-flex align-items-center" title="شاهد الان">
                             <i class="bi bi-play-circle mx-2"></i><span>شاهد الان</span>
                         </a>
                     </div>
@@ -110,32 +110,33 @@
                     </div>
                 </div> --}}
 
-             <!-- Swiper Container -->
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                @foreach ($subServicesWithOffer as $subService)
-                    <div class="swiper-slide">
-                        <div class="card--container card text-white text-left m-2"
-                             style="background-image: url('{{ asset('images/sub_service_bannars/' . $subService->bannar) }}');">
-                            <div class="card--body" >
-                                <!-- Your card content here -->
-                            </div>
-<br>
-<br>
-                            <a href="{{ route('sub_service_details', $subService->id) }}" class="offer_btn" title="{{$subService->name}}">
-                                احصل علي العرض
-                            </a>
+                <!-- Swiper Container -->
+                <div class="container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            @foreach ($subServicesWithOffer as $subService)
+                                <div class="swiper-slide">
+                                    <div class="card--container card text-white text-left m-2"
+                                        style="background-image: url('{{ asset('images/sub_service_bannars/' . $subService->bannar) }}');">
+                                        <div class="card--body">
+                                            <!-- Your card content here -->
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <a href="{{ route('sub_service_details', ['id' => $subService->id, 'name' => $subService->name]) }}"
+                                            class="offer_btn" title="{{ $subService->name }}">
+                                            احصل علي العرض
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
+                        <!-- Add Pagination and Navigation -->
+                        <div class="swiper-pagination"></div>
+                        {{-- <div class="offer-button-next">..</div>
+            <div class="offer-button-prev">..</div> --}}
                     </div>
-                @endforeach
-            </div>
-            <!-- Add Pagination and Navigation -->
-            <div class="swiper-pagination"></div>
-            <div class="offer-button-next">..</div>
-            <div class="offer-button-prev">..</div>
-        </div>
-    </div>
+                </div>
 
             </section>
 
@@ -186,9 +187,9 @@
                     }
                 });
             });
-            </script>
+        </script>
 
-{{-- <script>
+        {{-- <script>
     const swiper = new Swiper('.swiper-container', {
         slidesPerView: 4,
         spaceBetween: 20,
@@ -243,7 +244,8 @@
                                         <div class="card border-custom">
                                             <div class="card-body text-center">
                                                 {{-- <i class="bi bi-check2-circle display-4 text-custom mb-3"></i> --}}
-                                                <img src="{{ asset('images/advantages/' . $advantage->icon) }}" class="img ml-1 new_icon" alt="icon">
+                                                <img src="{{ asset('images/advantages/' . $advantage->icon) }}"
+                                                    class="img ml-1 new_icon" alt="icon">
                                                 <p class="card-text">{{ $advantage->name }}</p>
                                             </div>
                                         </div>
@@ -266,7 +268,8 @@
                                     <div class="card border-custom">
                                         <div class="card-body text-center">
                                             {{-- <i class="bi bi-check2-circle display-4 text-custom mb-3"></i> --}}
-                                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}" class="img ml-1 new_icon" alt="icon">
+                                            <img src="{{ asset('images/advantages/' . $advantage->icon) }}"
+                                                class="img ml-1 new_icon" alt="icon">
                                             <p class="card-text">{{ $advantage->name }}</p>
                                         </div>
                                     </div>
@@ -284,73 +287,80 @@
 
             </div>
 
-                <div id="advantage_mobile" class="mycounter carousel slide" id="advantagesCarousel" data-bs-ride="carousel" data-bs-interval="3000">
-                    <div class="carousel-inner">
-                        <!-- Grouping counters in slides -->
-                        @php
-                            $countersWithPlace = $counters->concat([
-                                (object)['icon' => 'place.png', 'number' => '', 'title' => 'مقر الشركة']
-                            ])->chunk(2); // Split counters including place into chunks of 2
-                        @endphp
-                        @foreach ($countersWithPlace as $index => $counterChunk)
-                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                <div class="row">
-                                    @foreach ($counterChunk as $counter)
-                                        <div class="col-md-3 col-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3">
-                                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon" alt="icon">
-                                            @if($counter->number)
-                                                <span class="timer counter alt-font appear" data-to="810" data-speed="7000">{{ $counter->number }}</span>
-                                            @else
-                                                <span class="timer counter_text alt-font appear mb-1">الرياض</span>
-                                            @endif
-                                            <span class="counter-title">{{ $counter->title }}</span>
-                                        </div>
-                                    @endforeach
-                                </div>
+            <div id="advantage_mobile" class="mycounter carousel slide" id="advantagesCarousel" data-bs-ride="carousel"
+                data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <!-- Grouping counters in slides -->
+                    @php
+                        $countersWithPlace = $counters
+                            ->concat([(object) ['icon' => 'place.png', 'number' => '', 'title' => 'مقر الشركة']])
+                            ->chunk(2); // Split counters including place into chunks of 2
+                    @endphp
+                    @foreach ($countersWithPlace as $index => $counterChunk)
+                        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                            <div class="row">
+                                @foreach ($counterChunk as $counter)
+                                    <div
+                                        class="col-md-3 col-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3">
+                                        <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon"
+                                            alt="icon">
+                                        @if ($counter->number)
+                                            <span class="timer counter alt-font appear" data-to="810"
+                                                data-speed="7000">{{ $counter->number }}</span>
+                                        @else
+                                            <span class="timer counter_text alt-font appear mb-1">الرياض</span>
+                                        @endif
+                                        <span class="counter-title">{{ $counter->title }}</span>
+                                    </div>
+                                @endforeach
                             </div>
-                        @endforeach
-                    </div>
-
-                    <!-- Carousel controls if needed -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="prev" title="السابق">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#advantagesCarousel" data-bs-slide="next" title="التالى">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-
-                <div id="advantage_web" class=" mycounter carousel slide" id="advantagesCarousel" data-bs-ride="carousel">
-                    <div class="row">
-
-
-                        <!-- counter -->
-                        @foreach ($counters as $counter)
-                            <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3"
-                                data-wow-duration="900ms"
-                                style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
-                                <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon" alt="icon">
-                                <span class="timer counter alt-font appear" data-to="810"
-                                    data-speed="7000">{{ $counter->number }}</span>
-                                <span class="counter-title">{{ $counter->title }}</span>
-                            </div>
-                        @endforeach
-                        <!-- end counter -->
-
-                        <!-- counter -->
-                        <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
-                            data-wow-duration="600ms"
-                            style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
-                            <img src="{{ asset('images/counters/' . 'place.png') }}" class="img  new_icon"
-                                alt="Main Company Headquarters">
-                            <span class="timer counter_text alt-font appear mb-1">الرياض</span>
-                            <span class="counter-title">مقر الشركة</span>
                         </div>
-                        <!-- end counter -->
-                    </div>
+                    @endforeach
                 </div>
+
+                <!-- Carousel controls if needed -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#advantagesCarousel"
+                    data-bs-slide="prev" title="السابق">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#advantagesCarousel"
+                    data-bs-slide="next" title="التالى">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div id="advantage_web" class=" mycounter carousel slide" id="advantagesCarousel" data-bs-ride="carousel">
+                <div class="row">
+
+
+                    <!-- counter -->
+                    @foreach ($counters as $counter)
+                        <div class="col-md-3 col-sm-6 bottom-margin-small text-center counter-section wow fadeInUp xs-margin-bottom-ten animated my-3"
+                            data-wow-duration="900ms"
+                            style="visibility: visible; animation-duration: 900ms; animation-name: fadeInUp;">
+                            <img src="{{ asset('images/counters/' . $counter->icon) }}" class="img new_icon"
+                                alt="icon">
+                            <span class="timer counter alt-font appear" data-to="810"
+                                data-speed="7000">{{ $counter->number }}</span>
+                            <span class="counter-title">{{ $counter->title }}</span>
+                        </div>
+                    @endforeach
+                    <!-- end counter -->
+
+                    <!-- counter -->
+                    <div class="col-md-3 col-sm-6 bottom-margin text-center counter-section wow fadeInUp sm-margin-bottom-ten animated my-3"
+                        data-wow-duration="600ms"
+                        style="visibility: visible; animation-duration: 600ms; animation-name: fadeInUp;">
+                        <img src="{{ asset('images/counters/' . 'place.png') }}" class="img  new_icon"
+                            alt="Main Company Headquarters">
+                        <span class="timer counter_text alt-font appear mb-1">الرياض</span>
+                        <span class="counter-title">مقر الشركة</span>
+                    </div>
+                    <!-- end counter -->
+                </div>
+            </div>
 
 
 
@@ -376,12 +386,13 @@
                                     <h4>
                                         <img src="{{ asset('images/categories/' . $category->icon) }}"
                                             class="service_icon mb-1" alt="icon">
-                                            <br>
+                                        <br>
                                         {{ $category->name }}
                                     </h4>
                                 </div>
                                 <p class="my-1">{{ $category->description }}</p>
-                                <a href="{{ route('services', ['id' => $category->id, 'name' => $category->name]) }}" class="btn btn-custom mt-3" title="{{$category->name}}">تعرف على
+                                <a href="{{ route('services', ['id' => $category->id, 'name' => $category->name]) }}"
+                                    class="btn btn-custom mt-3" title="{{ $category->name }}">تعرف على
                                     الخدمات </a>
                             </div>
                         </div><!-- End Service Item -->
@@ -389,7 +400,8 @@
                 </div>
 
                 <div class="center my-3">
-                    <a href="{{ route('categories') }}" class="btn btn-custom" title="عرض جميع التصنيفات">عرض جميع التصنيفات</a>
+                    <a href="{{ route('categories') }}" class="btn btn-custom" title="عرض جميع التصنيفات">عرض جميع
+                        التصنيفات</a>
                 </div>
             </div>
         </section><!-- /Services Section -->
@@ -525,7 +537,7 @@
                         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                             {{-- <div class="swiper blog-swiper"> --}}
-                                {{-- <script type="application/json" class="swiper-config">
+                            {{-- <script type="application/json" class="swiper-config">
                                 {
                                     "loop": true,
                                     "speed": 600,
@@ -542,7 +554,7 @@
                                 </script> --}}
 
 
-                                {{-- <div class="swiper-container">
+                            {{-- <div class="swiper-container">
                                     <div class="swiper-wrapper">
                                         @foreach ($blogs as $blog)
                                             <div class="swiper-slide">
@@ -567,32 +579,36 @@
                                     </div>
                                 </div> --}}
 
-                                <div>
-                                    <div class="row gy-4 m-2 mx-auto">
-                                        @foreach ($blogs as $blog)
-                                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 d-flex align-items-center  my-2">
-                                                <div class="service-item position-relative" data-aos="fade-up"
-                                                    data-aos-delay="{{ $loop->iteration * 100 }}">
-                                                    <div class="icon">
-                                                        <h4>
-                                                            <img src="{{ asset('images/blogs/' . $blog->icon) }}"
-                                                                class="service_icon mb-1" alt="icon">
-                                                                <br>
-                                                                {{ $blog->main_title }}
-                                                        </h4>
-                                                    </div>
-                                                    <p class="my-1">{{ $blog->short_description }}</p>
-                                                    <a href="{{ route('blog_details', ['id' => $blog->id, 'slug' => $blog->main_title]) }}" class="btn btn-custom mt-3" title="{{$category->name}}"> قراءةالمزيد . .
-                                                         </a>
+                            <div>
+                                <div class="row gy-4 m-2 mx-auto">
+                                    @foreach ($blogs as $blog)
+                                        <div
+                                            class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 d-flex align-items-center  my-2">
+                                            <div class="service-item position-relative" data-aos="fade-up"
+                                                data-aos-delay="{{ $loop->iteration * 100 }}">
+                                                <div class="icon">
+                                                    <h4>
+                                                        <img src="{{ asset('images/blogs/' . $blog->icon) }}"
+                                                            class="service_icon mb-1" alt="icon">
+                                                        <br>
+                                                        {{ $blog->main_title }}
+                                                    </h4>
                                                 </div>
-                                            </div><!-- End Service Item -->
-                                        @endforeach
-                                    </div>
+                                                <p class="my-1">{{ $blog->short_description }}</p>
+                                                <a href="{{ route('blog_details', ['id' => $blog->id, 'slug' => $blog->main_title]) }}"
+                                                    class="btn btn-custom mt-3" title="{{ $category->name }}">
+                                                    قراءةالمزيد . .
+                                                </a>
+                                            </div>
+                                        </div><!-- End Service Item -->
+                                    @endforeach
                                 </div>
+                            </div>
 
-                                <div class="center mt-4">
-                                    <a href="{{ route('blogs') }}" class="btn btn-custom mt-3" title="عرض كل المدونات">عرض كل المدونات</a>
-                                </div>
+                            <div class="center mt-4">
+                                <a href="{{ route('blogs') }}" class="btn btn-custom mt-3" title="عرض كل المدونات">عرض
+                                    كل المدونات</a>
+                            </div>
                             {{-- </div> --}}
                         </div>
                     @endif

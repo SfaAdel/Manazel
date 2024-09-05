@@ -70,6 +70,8 @@
                             <td>
                                 <img src="{{ asset('images/sub_services/' . $subService->icon) }}" class="icon rounded-circle" alt="icon">
                             </td>
+                        @else
+                            <td> -- </td>
                         @endif
                         @if (auth('admin')->user()->role == 'super_admin' || auth('admin')->user()->role == 'data_entry')
                         <td>
