@@ -79,9 +79,8 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        // Validate phone number
+        // Validate phone number and other fields
         $request->validate([
-            // 'phone' => ['required', 'regex:/^05[0-9]{8}$/'],
             'name' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -97,27 +96,29 @@ class AuthController extends Controller
         $customer = new Customer();
         $customer->phone = $request->phone;
         $customer->name = $request->name;
-        // $customer->p = $request->password;
         $customer->password = bcrypt($request->password);
-        $customer->generateOTP();
+        $customer->generateOTP($customer); // Generate OTP here
         $customer->save();
 
-        // ****** Send OTP to SMS using provider *****
-        // if (config('verification.otp_provider') == 'vonage') {
-        //     (new \App\Services\Vonage())->send($customer);
-        // }
-
         // ****** Send OTP via WhatsApp using ShrinkIt ******
-        // $message = "Your verification code is: " . $customer->otp;
-        // $this->whatsAppService->sendMessage('+966'.$customer->phone, $message);
+        try {
+            // Send OTP via WhatsApp using ShrinkIt
+            $result = $this->whatsAppService->sendMessage('+966'.$customer->phone, 'Your verification code is: ' . $customer->otp);
 
-        // Send OTP using ShrinkIt WhatsApp API
-        $shrinkItService = new ShrinkItService();
-        $shrinkItService->sendMessage('+2'.$customer->phone, 'Your verification code is: ' . $customer->otp);
+            // Check if the response is false (meaning it failed)
+            if ($result === false) {
+                throw new \Exception('Failed to send OTP');
+            }
 
+        } catch (\Exception $e) {
+            // Log the error and return with a message to the user
+            Log::error($e->getMessage());
+            return back()->withErrors(['otp' => 'لم نتمكن من ارسال رمز التحقق ، من فضلك حاول مجددا في وقت لاحق']);
+        }
 
-        // Return view for OTP verification
-        return redirect()->route('verify_code', ['phone' => $request->phone])->with('success', 'تم ارسال رمز التحقق الى رقم الهاتف الخاص بك');
+        // Redirect to the OTP verification page with success message
+        return redirect()->route('verify_code', ['phone' => $request->phone])
+                         ->with('success', 'تم ارسال رمز التحقق الى رقم الهاتف الخاص بك');
     }
 
     /**
@@ -160,14 +161,4 @@ class AuthController extends Controller
 
         }
     }
-
-
-
-
-
-
-
-
-
-
 }

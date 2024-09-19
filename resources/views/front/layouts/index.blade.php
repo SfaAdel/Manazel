@@ -6,16 +6,14 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>منازل | @yield('page.title')</title>
     <meta content="@yield('page.description')" name="description">
+    <link rel="shortcut icon" href="{{ asset('front/assets/img/favicon.png') }}" type="image/x-icon" />
+
     {{-- <meta content="@yield('page.keywords')" name="keywords"> --}}
     <meta name="google-site-verification" content="xv3B3oKVmPner0pObVzBTf-S-a5AmQRHBI9fr_mF7Q4" />
 
-    <!-- Add Shrinkit SDK -->
-    <script src="https://cdn.appgain.io/docs/appgain/appgainSdk/websdk/shrinkit.min.js"></script>
-
-
     <!-- Favicons -->
     <link href="{{ asset('front/assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('front/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    {{-- <link href="{{ asset('front/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon"> --}}
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
@@ -165,33 +163,6 @@
             });
         }
     </script>
-
-    <script>
-        const shrinkitConfig = {
-            projectId: "66b335ef25a8f0e13edab328", // Replace with your Project ID
-            apiKey: "8a24ad2f4e3e5850acca8af325e5c51cc46062f2deb82ecab642014d2187747c", // Replace with your API Key
-            websiteName: "Mnazel", // Optional
-            userId: "Your User ID", // Optional
-            useCustomModal: true, // Optional - defaults to false
-
-            // Custom modal config
-            title: "Modal Title", // Optional
-            description: "Modal Description", // Optional
-            yesButton: "YES", // Optional
-            noButton: "NO", // Optional
-            modalLanguage: "en", // Optional [en, ar] - defaults to en
-            modalImage: "https://placehold.co/600x400/png", // Optional
-        };
-
-        Shrinkit.init(shrinkitConfig)
-            .then((response) => {
-                console.log("Shrinkit SDK initialized successfully", response);
-            })
-            .catch((error) => {
-                console.log("Shrinkit SDK initialization failed", error);
-            });
-    </script>
-
 
 </body>
 

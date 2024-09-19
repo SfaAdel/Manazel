@@ -74,23 +74,24 @@ class Customer extends Authenticatable
     }
 
     // ====================================== OTP
-    public function generateOTP()
-    {
-        if (config('verification.otp_provider') == 'vonage') {
-            $this->otp = rand(111111, 999999);
-            $this->otp_till = now()->addMinutes(4);
-            $this->save();
-        }
-    }
+
+// Example of modular OTP generation logic
+public function generateOTP(Customer $customer)
+{
+    $otp = rand(100000, 999999); // Generate a 6-digit OTP
+    $customer->otp = $otp;
+    $customer->otp_till = now()->addMinutes(5); // OTP valid for 5 minutes
+    $customer->save();
+}
+
 
     public function resetOTP()
     {
-        if (config('verification.otp_provider') == 'vonage') {
             $this->otp = null;
             $this->otp_till = null;
             $this->phone_verified_at = now();
             $this->save();
-        }
+
     }
     // ====================================== OTP
 }

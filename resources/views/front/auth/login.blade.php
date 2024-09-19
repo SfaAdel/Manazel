@@ -9,8 +9,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="front/assets/img/favicon.png" rel="icon">
-    <link href="front/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{ asset('front/assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('front/assets/img/favicon.png') }}" rel="apple-touch-icon">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
@@ -183,7 +183,8 @@
 
             </form>
             <div class="text-center fs-6">
-                <a href="{{ route('register') }}">ليس لديك حساب </a> و <a href="{{ route('register') }}">تريد انشاء حساب جديد</a>
+                <a href="{{ route('register') }}">ليس لديك حساب </a> و <a href="{{ route('register') }}">تريد انشاء
+                    حساب جديد</a>
             </div>
         </div>
 

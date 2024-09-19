@@ -8,9 +8,10 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+
     <!-- Favicons -->
-    <link href="front/assets/img/favicon.png" rel="icon">
-    <link href="front/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{ asset('front/assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('front/assets/img/favicon.png') }}" rel="apple-touch-icon">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
@@ -50,7 +51,7 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-  </head>
+</head>
 
 <body class="index-page ">
 
@@ -61,77 +62,22 @@
             </a>
 
 
-            <button class="navbar-toggler" style="box-shadow: none; border: none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse" title="القائمة الرئيسية">
+            <button class="navbar-toggler" style="box-shadow: none; border: none" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarCollapse" title="القائمة الرئيسية">
                 <span><i class="fas fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse mr-4 justify-content-center" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0 my-3">
-                    <a href="{{ route('home') }}"
-                        {{-- class="nav-item mt-1 nav-link text-primary {{ Request::is('home') ? 'active' : '' }}">الرئيسية</a> --}}
+                    <a href="{{ route('home') }}" {{-- class="nav-item mt-1 nav-link text-primary {{ Request::is('home') ? 'active' : '' }}">الرئيسية</a> --}} </div>
+
                 </div>
 
-            </div>
-
-            <a class="btn-getstarted mx-2" href="{{ route('login') }}">   تسجيل الدخول  </a>
+                <a class="btn-getstarted mx-2" href="{{ route('login') }}"> تسجيل الدخول </a>
 
         </nav>
     </header>
 
-    {{-- <form method="POST" action="{{ route('register') }}">
-                                @csrf
 
-                                <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('الاسم') }}</label>
-                                    <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autofocus>
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('رقم الهاتف') }}</label>
-                                    <div class="col-md-6">
-                                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required >
-                                        @error('phone')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('كلمة المرور') }}</label>
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required >
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('تأكيد كلمة المرور') }}</label>
-                                    <div class="col-md-6">
-                                        <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('تسجيل') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form> --}}
 
     <main class="container mt-4">
         <div class="container mt-4">
@@ -144,9 +90,12 @@
                                 @csrf
 
                                 <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('الاسم') }}</label>
+                                    <label for="name"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('الاسم') }}</label>
                                     <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autofocus>
+                                        <input id="name" type="text"
+                                            class="form-control @error('name') is-invalid @enderror" name="name"
+                                            value="{{ old('name') }}" required autofocus>
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -156,9 +105,12 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('رقم الهاتف') }}</label>
+                                    <label for="phone"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('رقم الهاتف') }}</label>
                                     <div class="col-md-6">
-                                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required>
+                                        <input id="phone" type="text"
+                                            class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                            value="{{ old('phone') }}" required>
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -168,9 +120,12 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('كلمة المرور') }}</label>
+                                    <label for="password"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('كلمة المرور') }}</label>
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                                        <input id="password" type="password"
+                                            class="form-control @error('password') is-invalid @enderror"
+                                            name="password" required>
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -180,9 +135,11 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('تأكيد كلمة المرور') }}</label>
+                                    <label for="password_confirmation"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('تأكيد كلمة المرور') }}</label>
                                     <div class="col-md-6">
-                                        <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
+                                        <input id="password_confirmation" type="password" class="form-control"
+                                            name="password_confirmation" required>
                                     </div>
                                 </div>
 
@@ -202,45 +159,40 @@
     </main>
 
 
-            <!-- partial:partials/_footer.html -->
-            {{-- @include('front.includes.footer') --}}
-            <!-- partial -->
+    <!-- partial:partials/_footer.html -->
+    {{-- @include('front.includes.footer') --}}
+    <!-- partial -->
 
 
-            <!-- Vendor JS Files -->
-            <script src="front/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-            <script src="front/assets/vendor/php-email-form/validate.js"></script>
-            <script src="front/assets/vendor/aos/aos.js"></script>
-            <script src="front/assets/vendor/glightbox/js/glightbox.min.js"></script>
-            <script src="front/assets/vendor/swiper/swiper-bundle.min.js"></script>
-            <script src="front/assets/vendor/waypoints/noframework.waypoints.js"></script>
-            <script src="front/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-            <script src="front/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="front/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="front/assets/vendor/php-email-form/validate.js"></script>
+    <script src="front/assets/vendor/aos/aos.js"></script>
+    <script src="front/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="front/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="front/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="front/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="front/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 
-            <!-- Include jQuery, Popper.js, and Bootstrap JS -->
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Include jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-            <!-- Main JS File -->
-            <script src="front/assets/js/main.js"></script>
-            <script src="front/assets/js/sub_service.js"></script>
-
-            </body>
-
-            </html>
+    <!-- Main JS File -->
+    <script src="front/assets/js/main.js"></script>
+    <script src="front/assets/js/sub_service.js"></script>
 
 
 
 
 
 
+</body>
 
-
-
-
+</html>

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Log;
 
 class ShrinkItService
 {
+
+
     protected $client;
 
     public function __construct()

@@ -40,5 +40,9 @@ return [
     'nexmo' => [
         'sms_from' => env('VONAGE_SMS_FROM'),
     ],
+    'shrinkit' => [
+        'api_key' => env('SHRINKIT_API_KEY'),
+    ],
+
 
 ];

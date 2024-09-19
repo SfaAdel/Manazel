@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CustomerReviewController;
 use App\Http\Controllers\Admin\GeneralRequestController;
+use App\Http\Controllers\Admin\OTPController as AdminOTPController;
 use App\Http\Controllers\Front\AuthController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\SmsController;
@@ -124,6 +125,12 @@ Route::post('/register-click', [ClickController::class, 'registerClick'])->name(
 Route::get('/blogs/filter/tag/{slug}', [BlogController::class, 'filterByTag'])->name('blogs.filterByTag');
 
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+
+// Route::get('/send-otp/{phone}', [OTPController::class, 'sendWhatsAppOTP']);
+// Route::get('/test-whatsapp', function (App\Services\WhatsAppService $whatsAppService) {
+//     $response = $whatsAppService->sendMessage('+201003233175', 'Test message via WhatsApp');
+//     dd($response);
+// });
 
 // Blog routes
 Route::get('/blogs/filter/tag/{id}/{slug}', [BlogController::class, 'filterByTag'])->name('blogs.filterByTag');
