@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CustomerRequest;
 use App\Http\Requests\Front\LoginRequest;
 use App\Models\Customer;
 use App\Notifications\SendVerificationCode;
@@ -77,13 +78,9 @@ class AuthController extends Controller
     }
 
 
-    public function register(Request $request)
+    public function register(CustomerRequest $request)
     {
-        // Validate phone number and other fields
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+
 
         // Check if phone already exists
         if (Customer::where('phone', $request->phone)->exists()) {
@@ -103,12 +100,13 @@ class AuthController extends Controller
         // ****** Send OTP via WhatsApp using ShrinkIt ******
         try {
             // Send OTP via WhatsApp using ShrinkIt
-            $result = $this->whatsAppService->sendMessage('+966'.$customer->phone, 'Your verification code is: ' . $customer->otp);
+            $result = $this->whatsAppService->sendMessage($customer->phone, $customer->otp);
 
             // Check if the response is false (meaning it failed)
             if ($result === false) {
                 throw new \Exception('Failed to send OTP');
             }
+
 
         } catch (\Exception $e) {
             // Log the error and return with a message to the user

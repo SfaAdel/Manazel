@@ -36,11 +36,12 @@ class CustomerRequest extends FormRequest
             'phone' => [
                 'required',
                 'string',
-                'size:10', // Ensure the phone number is exactly 10 characters long
-                'regex:/^05[0-9]{8}$/', // Saudi phone number format
+                // 'size:9', // Ensure the phone number is exactly 10 characters long
+                'regex:/^5[0-9]{8}$/', // Saudi phone number format
                 Rule::unique('customers', 'phone')->ignore($customerId),
             ],
             'password' => $this->method() === 'POST' ? 'required|string|min:6' : '',
+            'gender' => ['required', 'in:male,female'],
         ];
     }
 

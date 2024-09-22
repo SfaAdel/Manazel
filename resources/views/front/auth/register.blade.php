@@ -89,6 +89,10 @@
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
 
+                                <div class="alert alert-warning center" id="danger-alert">
+                                    سوف يتم ارسال رمز التأكيد عن طريق واتساب ، تأكد ان الرقم الذي ادخلته رقم سعودي لديه
+                                    حساب علي واتساب </div>
+
                                 <div class="form-group row">
                                     <label for="name"
                                         class="col-md-4 col-form-label text-md-right">{{ __('الاسم') }}</label>
@@ -110,7 +114,7 @@
                                     <div class="col-md-6">
                                         <input id="phone" type="text"
                                             class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                            value="{{ old('phone') }}" required>
+                                            value="{{ old('phone') }}" required placeholder="5x xxx xxxx">
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -142,6 +146,26 @@
                                             name="password_confirmation" required>
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="gender"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('النوع') }}</label>
+                                    <div class="col-md-6">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gender"
+                                                id="male" value="male" required>
+                                            <label class="form-check-label"
+                                                for="male">{{ __('ذكر') }}</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gender"
+                                                id="female" value="female" required>
+                                            <label class="form-check-label"
+                                                for="female">{{ __('أنثى') }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">

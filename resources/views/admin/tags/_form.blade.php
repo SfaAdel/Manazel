@@ -17,7 +17,7 @@
 <!-- Start Card Footer -->
 <div class="card-footer">
   <div class="buttons has-addons">
-    <a class="button is-info" href="{{ route('admin.cities.index') }}"> الغاء </a>
+    <a class="button is-info" href="{{ route('admin.tags.index') }}"> الغاء </a>
     <button type="submit" class="button is-success">حفظ</button>
   </div>
 </div><!-- End Card Footer -->
